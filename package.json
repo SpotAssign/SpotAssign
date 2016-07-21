@@ -1,0 +1,21 @@
+{
+  "name": "spotassign",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "prestart": "babel-node tools/startMessage.js",
+    "start": "npm-run-all--parallel lint:watch webpack-dev-server -d",
+    "lint": "node_modules/.bin/esw webpack.config.* src tools",
+    "lint:watch": "npm run lint -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SpotAssign/SpotAssign.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SpotAssign/SpotAssign/issues"
+  },
+  "homepage": "https://spotassign.com"
+}
