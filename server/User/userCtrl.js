@@ -11,8 +11,7 @@ export default {
 			.exec( ( err, users ) => {
 				if ( err ) {
 					return res.status( 500 ).json( err );
-				}
-				return res.status( 200 ).json( users );
+				} return res.status( 200 ).json( users );
 			} );
 	},
 	getThisUser( req, res, next ) {
@@ -23,8 +22,7 @@ export default {
 			.exec( ( err, user ) => {
 				if ( err ) {
 					return res.status( 500 ).json( err );
-				}
-				return res.status( 200 ).json( user );
+				} return res.status( 200 ).json( user );
 			} );
 	},
 	// POST REQUEST
@@ -32,17 +30,7 @@ export default {
 		new Users( req.body ).save( ( err, user ) => {
 			if ( err ) {
 				return res.send( err );
-			}
-			Users.findByIdAndUpdate( req.body.user, { $push: { users: user._id } }, {
-				safe: true,
-				upsert: true,
-				new: true
-			}, ( error ) => {
-				if ( error ) {
-					return res.send( err );
-				}
-			} );
-			return res.json( user );
+			} return res.json( user );
 		} );
 	},
 	// PUT REQUEST
@@ -50,11 +38,14 @@ export default {
 		if ( !req.params.id ) {
 			return res.status( 400 ).send( 'Not in User' );
 		}
-		Users.findByIdAndUpdate( req.params.id, req.body, ( err, user ) => {
-			if ( err ) { // Return this user??
+		Users.findByIdAndUpdate( req.params.id, req.body )
+		.populate( 'payment' )
+		.populate( 'reservations' )
+		.populat( 'market' )
+		.exec( ( err, user ) => {
+			if ( err ) {
 				return res.send( err );
-			}
-			return res.json( user );
+			} return res.json( user );
 		} );
 	},
 	// DELETE REQUEST

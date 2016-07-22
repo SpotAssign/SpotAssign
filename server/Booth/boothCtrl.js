@@ -47,12 +47,13 @@ export default {
 	editBooth( req, res ) {
 		if ( !req.params.id ) {
 			return res.status( 400 ).send( 'Not in User' );
-		}
-		Booths.findByIdAndUpdate( req.params.id, req.body, ( err, booth ) => {
+		} Booths.findByIdAndUpdate( req.params.id, req.body )
+		.populate( 'market' )
+		.populate( 'reservations' )
+		.exec( ( err, booth ) => {
 			if ( err ) {
 				return res.send( err );
-			}
-			return res.json( booth );
+			} return res.json( booth );
 		} );
 	},
 	// DELETE REQUEST
@@ -70,7 +71,7 @@ export default {
 				new: true
 			}, ( error, user ) => {
 				if ( error ) {
-					return res.send( err );
+					return res.send( error );
 				}
 			} );
 			return res.json( booth );
