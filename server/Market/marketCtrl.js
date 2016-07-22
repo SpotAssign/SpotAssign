@@ -33,7 +33,7 @@ export default {
 			if ( err ) {
 				return res.send( err );
 			}
-			Users.findByIdAndUpdate( req.body.user, { $push: { markets: market._id } }, {
+			Users.findByIdAndUpdate( req.body.user, { $push: { market: market._id } }, {
 				safe: true,
 				upsert: true,
 				new: true
@@ -66,7 +66,7 @@ export default {
 			if ( err ) {
 				return res.send( err );
 			}
-			Users.findByIdAndUpdate( market.user, { $pull: { markets: { $in: [ req.params.id ] } } }, {
+			Users.findByIdAndUpdate( market.user, { $pull: { market: { $in: [ req.params.id ] } } }, {
 				safe: true,
 				upsert: true,
 				new: true

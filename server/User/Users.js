@@ -7,6 +7,7 @@ const Users = mongoose.Schema(
 		email: { type: String },
 		phoneNumber: { type: Number },
 		paymentInfo: { type: Object },
+		photo: { type: String },
 		payments: [ {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: `Payments`
@@ -15,7 +16,7 @@ const Users = mongoose.Schema(
 			type: mongoose.Schema.Types.ObjectId,
 			ref: `Reservations`
 		} ],
-		market: [ {
+		markets: [ {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: `Markets`
 		} ]
