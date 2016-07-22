@@ -2,12 +2,15 @@ import mongoose from 'mongoose';
 
 const Users = mongoose.Schema(
 	{
-		name: { type: String },
+		id: { type: String, required: true },
+		firstName: {type: String},
+		lastName: {type: String},
 		boothCompName: { type: String },
 		email: { type: String },
 		phoneNumber: { type: Number },
 		paymentInfo: { type: Object },
-		photo: { type: String },
+		creationDate: { type: Date },
+		photo: { type: String, default: 'http://www.clker.com/cliparts/m/3/I/C/c/2/grey-silhouette-of-man.svg' },
 		payments: [ {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: `Payments`
