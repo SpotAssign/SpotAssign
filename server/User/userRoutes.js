@@ -2,15 +2,15 @@ import userCtrl from './userCtrl';
 
 export default function ( app ) {
 	// GET REQUEST
-	app.get( '/api/user', userCtrl.getUsers );
-	app.get( '/api/user/:id', userCtrl.getThisUser );
+	app.get( '/api/users', userCtrl.getUsers );
+	app.get( '/api/users/:id', userCtrl.getThisUser );
 
 	// POST REQUEST
-	app.post( '/api/user', userCtrl.addUser );
+	app.post( '/api/users', userCtrl.addUser );
 
 	// PUT REQUEST
-	app.put( '/api/user/:id', userCtrl.editUser );
+	app.put( '/api/users/:id', userCtrl.editUser );
 
 	// DELETE REQUEST
-	app.delete( '/api/user/:id', userCtrl.deleteUser );
+	app.delete( '/api/users/:id', userCtrl.deleteUser );
 }

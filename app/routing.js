@@ -10,7 +10,14 @@ export default function routing( $stateProvider, $urlRouterProvider ) {
 				url: '/',
 				template: testingView
 			}
-		);
+		)
+		.state(
+			'serverTest', {
+				url: '/serverTest',
+				templateUrl: './serverTesting/serverTesting.html',
+				controller: 'serverTestingCtrl'
+			}
+		)
 
 }
 routing.$inject = [ `$stateProvider`, `$urlRouterProvider` ];
