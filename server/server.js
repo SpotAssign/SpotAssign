@@ -3,21 +3,9 @@ import bodyParser from 'body-parser';
 import session from 'express-session';
 import mongoose from 'mongoose';
 import passport from 'passport';
-import webpack from 'webpack';
-import webpackDevConfig from '../webpack.config.dev';
-import open from 'open';
-
-const compiler = webpack( webpackDevConfig );
 
 const app = express();
 const port = 8080;
-
-app.use( require( 'webpack-hot-middleware' )( compiler, { log: console.log } ) );
-app.use( require( 'webpack-dev-middleware' )( compiler, {
-	noInfo: true,
-	publicPath: webpackDevConfig.output.publicPath,
-	stats: { colors: true }
-} ) );
 
 import sessionConfig from './config/sessionConfig';
 import masterRoutes from './masterRoutes';
@@ -40,6 +28,5 @@ app.listen( port, ( err ) => {
 		console.log( err );
 	} else {
 		console.log( `Express is running on ${port}` );
-		// open( `http://localhost:${port}` );
 	}
 } );
