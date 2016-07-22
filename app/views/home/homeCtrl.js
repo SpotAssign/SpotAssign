@@ -1,5 +1,5 @@
 angular.module( 'SpotAssign' )
-	.controller( 'homepageCtrl', function ( $scope, jwtHelper, $rootScope, $location, store, auth ) {
+	.controller( 'homepageCtrl', function ( $scope, jwtHelper, $rootScope, $location, store, auth, profileService ) {
 
 		$scope.login = () => {
 

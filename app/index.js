@@ -20,7 +20,7 @@ $urlRouterProvider.otherwise( '/' );
 .config( function myAppConfig ( authProvider ) {
 
   authProvider.init({
-    domain: 'spotassign.auth0.com',
+    domain: 'spotassignfm.auth0.com',
     clientID: 'IQOgL0n5YfMI3PK2zHxjaIktv0TRBwMA',
     loginState: 'home'
 })
