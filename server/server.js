@@ -3,11 +3,17 @@ import bodyParser from 'body-parser';
 import session from 'express-session';
 import mongoose from 'mongoose';
 import passport from 'passport';
+import RedisStore from 'connect-redis';
+
 
 const app = express();
 const port = 8080;
 
-import sessionConfig from './config/sessionConfig';
+import mongoUri from './config/mlabs'; // mLabs Key
+import sessionConfig from './config/sessionConfig'; // Session Key
+import facebookConfig from './config/facebookConfig'; // Facebook Key
+RedisStore( session );
+
 import masterRoutes from './masterRoutes';
 
 app.use( bodyParser.json() );
@@ -16,7 +22,6 @@ app.use( session( sessionConfig ) );
 app.use( passport.initialize() );
 app.use( passport.session() );
 
-import mongoUri from './config/mlabs';
 mongoose.connect( mongoUri );
 mongoose.connection.once( 'open', () => console.log( `Connected with mongo db at ${mongoUri}` ) );
 
