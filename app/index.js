@@ -1,19 +1,19 @@
-// **********************************************************************************
-//                                  IMPORTS
-// **********************************************************************************
-import angular from 'angular';
-import uiRouter from 'angular-ui-router';
-import routing from './routing';
+angular.module( 'SpotAssign', [ 'ui.router' ] )
 
-import './styles.scss';
-// **********************************************************************************
-//                                 DIRECTIVES
-// **********************************************************************************
-import test from './components/test/test';
+.config( function ( $stateProvider, $urlRouterProvider ) {
 
-angular.module( 'SpotAssign', [ uiRouter ] )
-.config( routing )
-	.directive( 'test', test )
-	.constant( 'ref', {
-		url: 'http://localhost:3000'
-	} );
+	$stateProvider
+		.state( 'home', {
+			url: '/',
+			templateUrl: './views/home/home.html',
+			controller: 'homeCtrl'
+		} )
+		.state( 'event', {
+			url: '/event',
+			templateUrl: './views/event/event.html',
+			controller: 'eventCtrl'
+		} );
+
+	$urlRouterProvider.otherwise( '/' );
+
+} );
