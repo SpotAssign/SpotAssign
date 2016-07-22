@@ -25,7 +25,8 @@ export default {
 	],
 	module: {
 		loaders: [
-			{ test: /\.js$/, include: path.join( __dirname, 'src' ), loaders: [ 'babel' ] },
+			{ test: /\.js$/, include: path.join( __dirname, 'app' ), loaders: [ 'babel' ] },
+			{ test: /\.html$/, loader: 'raw-loader' },
 			{ test: /(\.css)$/, loaders: [ 'style', 'css' ] },
 			{ test: /(\.scss)$/, loaders: [ 'style', 'css', 'sass' ] },
 			{ test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file' },
