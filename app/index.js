@@ -13,4 +13,7 @@ import test from './components/test/test';
 
 angular.module( 'SpotAssign', [ uiRouter ] )
 .config( routing )
-	.directive( 'test', test );
+	.directive( 'test', test )
+	.constant( 'ref', {
+		url: 'http://localhost:3000'
+	} );
