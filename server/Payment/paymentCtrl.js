@@ -1,5 +1,4 @@
 // How do we want to get the payment details onto the reservations, what is created first?
-
 import Payments from './Payments';
 import Reservations from '../Reservation/Reservations';
 
@@ -39,8 +38,8 @@ export default {
 				safe: true,
 				upsert: true,
 				new: true
-			}, ( err, user ) => {
-				if ( err ) {
+			}, ( error, user ) => {
+				if ( error ) {
 					return res.send( err );
 				}
 			} );
@@ -55,10 +54,7 @@ export default {
 		Payments.findByIdAndUpdate( req.params.id, req.body, ( err, payment ) => {
 			if ( err ) {
 				return res.send( err );
-			}
-			else {
-				return res.json( payment );
-			}
+			} return res.json( payment );
 		} );
 	},
 	// DELETE REQUEST
@@ -70,12 +66,12 @@ export default {
 			if ( err ) {
 				return res.send( err );
 			}
-			Reservations.findByIdAndUpdate( response.user, { $pull: { payment: { $in: [ req.params.id ] } } }, {
+			Reservations.findByIdAndUpdate( payment.user, { $pull: { payment: { $in: [ req.params.id ] } } }, {
 				safe: true,
 				upsert: true,
 				new: true
-			}, ( err, user ) => {
-				if ( err ) {
+			}, ( error, user ) => {
+				if ( error ) {
 					return res.send( err );
 				}
 			} );
