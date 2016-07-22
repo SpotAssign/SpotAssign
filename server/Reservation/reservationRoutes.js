@@ -2,15 +2,15 @@ import reservationCtrl from './reservationCtrl';
 
 export default function ( app ) {
 	// GET REQUEST
-	app.get( '/api/reservation', reservationCtrl.getReservations );
-	app.get( '/api/reservation/:id', reservationCtrl.getThisReservation );
+	app.get( '/api/reservations', reservationCtrl.getReservations );
+	app.get( '/api/reservations/:id', reservationCtrl.getThisReservation );
 
 	// POST REQUEST
-	app.post( '/api/reservation', reservationCtrl.addReservation );
+	app.post( '/api/reservations', reservationCtrl.addReservation );
 
 	// PUT REQUEST
-	app.put( '/api/reservation/:id', reservationCtrl.editReservation );
+	app.put( '/api/reservations/:id', reservationCtrl.editReservation );
 
 	// DELETE REQUEST
-	app.delete( '/api/reservation/:id', reservationCtrl.deleteReservation );
+	app.delete( '/api/reservations/:id', reservationCtrl.deleteReservation );
 }
