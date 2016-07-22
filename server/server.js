@@ -40,6 +40,6 @@ app.listen( port, ( err ) => {
 		console.log( err );
 	} else {
 		console.log( `Express is running on ${port}` );
-		open( `http://localhost:${port}` );
+		// open( `http://localhost:${port}` );
 	}
 } );

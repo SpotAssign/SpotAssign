@@ -2,7 +2,7 @@ import Markets from './Markets';
 import Users from '../User/Users';
 
 export default {
-//GET REQUEST
+// GET REQUEST
 	getMarkets( req, res ) {
 		Markets.find( ( req.query ) )
 			.populate( 'admins' )
@@ -37,8 +37,8 @@ export default {
 				safe: true,
 				upsert: true,
 				new: true
-			}, ( err, user ) => {
-				if ( err ) {
+			}, ( error, user ) => {
+				if ( error ) {
 					return res.send( err );
 				}
 			} );
@@ -66,12 +66,12 @@ export default {
 			if ( err ) {
 				return res.send( err );
 			}
-			Users.findByIdAndUpdate( response.user, { $pull: { markets: { $in: [ req.params.id ] } } }, {
+			Users.findByIdAndUpdate( market.user, { $pull: { markets: { $in: [ req.params.id ] } } }, {
 				safe: true,
 				upsert: true,
 				new: true
-			}, ( err, user ) => {
-				if ( err ) {
+			}, ( error, user ) => {
+				if ( error ) {
 					return res.send( err );
 				}
 			} );

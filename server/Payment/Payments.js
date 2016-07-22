@@ -21,4 +21,4 @@ const Payments = Schema(
 	}
 );
 
-module.exports = mongoose.model( 'Payments', Payments );
+export default mongoose.model( 'Payments', Payments );

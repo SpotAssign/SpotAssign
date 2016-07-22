@@ -11,8 +11,7 @@ export default {
 			.exec( ( err, reservation ) => {
 				if ( err ) {
 					return res.status( 500 ).json( err );
-				}
-				return res.status( 200 ).json( reservation );
+				} return res.status( 200 ).json( reservation );
 			} );
 	},
 	getThisReservation( req, res ) {
@@ -37,8 +36,8 @@ export default {
 				safe: true,
 				upsert: true,
 				new: true
-			}, ( err, user ) => {
-				if ( err ) {
+			}, ( error, user ) => {
+				if ( error ) {
 					return res.send( err );
 				}
 			} );
@@ -66,12 +65,12 @@ export default {
 			if ( err ) {
 				return res.send( err );
 			}
-			Payments.findByIdAndUpdate( response.user, { $pull: { reservation: { $in: [ req.params.id ] } } }, {
+			Payments.findByIdAndUpdate( reservation.user, { $pull: { reservation: { $in: [ req.params.id ] } } }, {
 				safe: true,
 				upsert: true,
 				new: true
-			}, ( err, user ) => {
-				if ( err ) {
+			}, ( error, user ) => {
+				if ( error ) {
 					return res.send( err );
 				}
 			} );

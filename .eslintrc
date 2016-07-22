@@ -21,6 +21,9 @@
 		"jquery": true
 	},
 	"rules": {
+    "consistent-return": 0,
+    "no-unused-vars": 0,
+    "no-underscore-dangle": 0,
 		"indent": [ "warn", "tab" ],
 		"comma-dangle": [ "warn", "never" ],
 		"handle-callback-err": 1,

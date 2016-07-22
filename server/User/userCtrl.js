@@ -37,8 +37,8 @@ export default {
 				safe: true,
 				upsert: true,
 				new: true
-			}, ( err ) => {
-				if ( err ) {
+			}, ( error ) => {
+				if ( error ) {
 					return res.send( err );
 				}
 			} );
@@ -61,21 +61,10 @@ export default {
 	deleteUser( req, res ) {
 		if ( !req.params.id ) {
 			return res.status( 400 ).send( 'Find User To Delete' );
-		}
-		Users.findByIdAndRemove( req.params.id, req.body, ( err, user ) => {
+		} Users.findByIdAndRemove( req.params.id, req.body, ( err, user ) => {
 			if ( err ) {
 				return res.send( err );
 			}
-			Users.findByIdAndUpdate( response.user, { $pull: { users: { $in: [ req.params.id ] } } }, {
-				safe: true,
-				upsert: true,
-				new: true
-			}, ( err ) => {
-				if ( err ) { // Return this user??
-					return res.send( err );
-				}
-			} );
-			return res.json( user );
 		} );
 	}
 };
