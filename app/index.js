@@ -6,7 +6,7 @@ $stateProvider
 .state( 'home', {
   url: '/',
   templateUrl: './views/home/home.html',
-  controller: 'homeCtrl'
+  controller: 'homepageCtrl'
 })
 .state( 'event', {
   url: '/event',
@@ -20,8 +20,8 @@ $urlRouterProvider.otherwise( '/' );
 .config( function myAppConfig ( authProvider ) {
 
   authProvider.init({
-    domain: 'camnuckols.auth0.com',
-    clientID: 'w78d4Q6fnYuWng62jd5EtF6duSNaOQ5k',
+    domain: 'spotassign.auth0.com',
+    clientID: 'IQOgL0n5YfMI3PK2zHxjaIktv0TRBwMA',
     loginState: 'home'
 })
         //Called when login is successful
