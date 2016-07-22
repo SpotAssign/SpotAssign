@@ -1,14 +1,13 @@
-const userRoutes = require ('./User/userRoutes');
-const boothRoutes = require('./Booth/boothRoutes');
-const marketRoutes = require ('./Market/marketRoutes');
-const paymentRoutes = require ('./Payment/paymentRoutes');
-const reservationRoutes = require('./Reservation/reservationRoutes');
+import userRoutes from './User/userRoutes';
+import boothRoutes from './Booth/boothRoutes';
+import marketRoutes from './Market/marketRoutes';
+import paymentRoutes from './Payment/paymentRoutes';
+import reservationRoutes from './Reservation/reservationRoutes';
 
-
-module.exports = app => {
-  userRoutes(app);
-  boothRoutes(app);
-  marketRoutes(app);
-  paymentRoutes(app);
-  reservationRoutes(app);
+export default function ( app ) {
+	userRoutes( app );
+	boothRoutes( app );
+	marketRoutes( app );
+	paymentRoutes( app );
+	reservationRoutes( app );
 }

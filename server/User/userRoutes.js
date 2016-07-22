@@ -1,18 +1,16 @@
-const userCtrl = require('./userCtrl')
+import userCtrl from './userCtrl';
 
-module.exports = app => {
-  //GET REQUEST
-    app.get('/api/user', userCtrl.getUsers);
-    app.get('/api/user/:id', userCtrl.getThisUser);
+export default function ( app ) {
+	// GET REQUEST
+	app.get( '/api/user', userCtrl.getUsers );
+	app.get( '/api/user/:id', userCtrl.getThisUser );
 
+	// POST REQUEST
+	app.post( '/api/user', userCtrl.addUser );
 
-  //POST REQUEST
-    app.post('/api/user', userCtrl.addUser);
+	// PUT REQUEST
+	app.put( '/api/user/:id', userCtrl.editUser );
 
-  //PUT REQUEST
-    app.put('/api/user/:id', userCtrl.editUser);
-
-
-  //DELETE REQUEST
-    app.delete('/api/user/:id', userCtrl.deleteUser);
+	// DELETE REQUEST
+	app.delete( '/api/user/:id', userCtrl.deleteUser );
 }

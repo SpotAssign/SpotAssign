@@ -1,18 +1,16 @@
-const boothCtrl = require('./boothCtrl')
+import boothCtrl from './boothCtrl';
 
-module.exports = app => {
-  //GET REQUEST
-    app.get('/api/booths', boothCtrl.getBooths);
-    app.get('/api/booths/:id', boothCtrl.getThisBooth);
+export default function ( app ) {
+	//GET REQUEST
+	app.get( '/api/booths', boothCtrl.getBooths );
+	app.get( '/api/booths/:id', boothCtrl.getThisBooth );
 
+	//POST REQUEST
+	app.post( '/api/booths', boothCtrl.addBooth );
 
-  //POST REQUEST
-    app.post('/api/booths', boothCtrl.addBooth);
+	//PUT REQUEST
+	app.put( '/api/booths/:id', boothCtrl.editBooth );
 
-  //PUT REQUEST
-    app.put('/api/booths/:id', boothCtrl.editBooth);
-
-
-  //DELETE REQUEST
-    app.delete('/api/booths/:id', boothCtrl.deleteBooth);
+	//DELETE REQUEST
+	app.delete( '/api/booths/:id', boothCtrl.deleteBooth );
 }

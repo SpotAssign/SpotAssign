@@ -1,19 +1,19 @@
-const mongoose = require('mongoose');
+import mongoose, { Schema } from 'mongoose';
 
-const Booths = mongoose.Schema(
-  {
-    nickname: {type: String}
-  , availableDates:[ {type: Date} ]
-  , market: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: `Market`
-   }
-   , reservations: [{
-       type: mongoose.Schema.Types.ObjectId,
-       ref: `Reservations`
-    }]
-  , location: {type: Object}
-}
-)
+const Booths = Schema(
+	{
+		nickname: { type: String },
+		availableDates: [ { type: Date } ],
+		market: {
+			type: Schema.Types.ObjectId,
+			ref: `Market`
+		},
+		reservations: [ {
+			type: Schema.Types.ObjectId,
+			ref: `Reservations`
+		} ],
+		location: { type: Object }
+	}
+);
 
-module.exports= mongoose.model('Booths', Booths);
+export default mongoose.model( 'Booths', Booths );

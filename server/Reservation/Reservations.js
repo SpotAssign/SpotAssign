@@ -1,21 +1,21 @@
-const mongoose = require('mongoose');
+import mongoose, { Schema } from 'mongoose';
 
-const Reservations = mongoose.Schema(
-  {
-    dates: {type: Date}
-  , user: {
-       type: mongoose.Schema.Types.ObjectId,
-       ref: `Users`
-    }
-  , market: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: `Markets`
-      }
-  , payment: {
-       type: mongoose.Schema.Types.ObjectId,
-       ref: `Payments`
-    }
-}
-)
+const Reservations = Schema(
+	{
+		dates: { type: Date },
+		user: {
+			type: Schema.Types.ObjectId,
+			ref: `Users`
+		},
+		market: {
+			type: Schema.Types.ObjectId,
+			ref: `Markets`
+		},
+		payment: {
+			type: Schema.Types.ObjectId,
+			ref: `Payments`
+		}
+	}
+);
 
-module.exports= mongoose.model('Reservations', Reservations);
+export default mongoose.model( 'Reservations', Reservations );
