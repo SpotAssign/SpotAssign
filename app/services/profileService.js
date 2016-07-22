@@ -9,7 +9,7 @@ angular.module( 'SpotAssign' )
       profileService.createEmailUser = ( email, picture, authId ) => {
         return $http({
           method: 'POST',
-          url: '/api/user',
+          url: '/api/users',
           data: {
             email: email,
             picture: picture,
@@ -27,7 +27,7 @@ angular.module( 'SpotAssign' )
       profileService.createGoogleOrFacebookUser = ( fname, lname, email, picture, authId ) => {
         return $http({
           method: 'POST',
-          url: '/api/user',
+          url: '/api/users',
           data: {
             fname: fname,
             lname: lname,
