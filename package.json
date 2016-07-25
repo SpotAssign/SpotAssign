@@ -5,10 +5,8 @@
   "main": "server/server.js",
   "scripts": {
     "start": "npm-run-all --parallel open:server lint:watch",
-    "front": "npm-run-all --parallel open:serverfront lint:watch",
     "open:server": "nodemon server/server.js --exec babel-node",
-    "open:serverfront": "babel-node server/server.js",
-    "lint": "node_modules/.bin/esw app server",
+    "lint": "node_modules/.bin/esw webpack.config.* app server",
     "lint:watch": "npm run lint -- --watch"
   },
   "repository": {
@@ -23,6 +21,7 @@
   "dependencies": {
     "angular": "^1.5.7",
     "angular-ui-router": "^0.3.1",
+    "angular-animate": "^1.5.8",
     "babel-polyfill": "^6.9.1",
     "body-parser": "^1.15.2",
     "connect-redis": "^3.1.0",
