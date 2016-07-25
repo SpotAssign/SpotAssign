@@ -2,6 +2,8 @@ import userCtrl from './userCtrl';
 
 export default function ( app ) {
 	// GET REQUEST
+	// app.get('/callback', userCtrl.getAuth );
+
 	app.get( '/api/users', userCtrl.getUsers );
 	app.get( '/api/current', userCtrl.getCurrentUser );
 	app.get( '/api/users/:id', userCtrl.getThisUser );

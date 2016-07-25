@@ -1,6 +1,15 @@
 import Users from './Users';
 
 export default {
+	// ************************************************************************
+	// 								Get Auth with Auth0
+	// ************************************************************************
+	getAuth(re, res) {
+		if ( !req.user ) {
+			throw new Error('user null');
+		}
+		res.redirect('/user');
+	},
 
 	// ************************************************************************
 	// 				Create User w/ Facebook, Google, or Simple Auth
