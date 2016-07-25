@@ -1,8 +1,12 @@
 import userCtrl from './userCtrl';
+import passport from 'passport';
 
 export default function ( app ) {
 	// GET REQUEST
-	// app.get('/callback', userCtrl.getAuth );
+
+	// Auth 0 callback handler
+	app.get('/callback', passport.authenticate( 'auth0', { failureRedirect: '/' } ), userCtrl.getAuth );
+	app.get('/user', userCtrl.getAuthUser)
 
 	app.get( '/api/users', userCtrl.getUsers );
 	app.get( '/api/current', userCtrl.getCurrentUser );
