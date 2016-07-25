@@ -26,6 +26,8 @@
     "babel-polyfill": "^6.9.1",
     "body-parser": "^1.15.2",
     "connect-redis": "^3.1.0",
+    "cookie-parser": "^1.4.3",
+    "eslint-plugin-jsx-a11y": "^1.2.1",
     "express": "^4.14.0",
     "express-session": "^1.14.0",
     "font-awesome": "^4.6.3",
@@ -34,6 +36,7 @@
     "mongoose": "^4.5.5",
     "nodemon": "^1.9.2",
     "passport": "^0.3.2",
+    "passport-auth0": "^0.5.2",
     "toastr": "^2.1.2"
   },
   "devDependencies": {
