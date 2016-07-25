@@ -10,6 +10,5 @@ export const home = angular.module( 'home', [ navbar.name ] )
 			url: '/',
 			template: '<home></home>'
 		} );
-
 	} )
 	.directive( 'home', homeDirective );
