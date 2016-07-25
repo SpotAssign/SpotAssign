@@ -23,7 +23,7 @@ import sessionConfig from './config/sessionConfig';
 import masterRoutes from './masterRoutes';
 
 app.use( bodyParser.json() );
-app.use( express.static( `${__dirname}/../app` ) );
+app.use( express.static( `${__dirname}/../dist` ) );
 app.use( session( sessionConfig ) );
 app.use( passport.initialize() );
 app.use( passport.session() );
