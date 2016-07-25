@@ -8,10 +8,12 @@ import ngAnimate from 'angular-animate';
 
 // IMPORT COMPONENTS
 import { appDirective } from './app.directive';
+import { home } from './components/home/home';
 
 // START MODULE
 angular.module( 'SpotAssign', [
 	uiRouter,
-	ngAnimate
+	ngAnimate,
+	home.name
 ] )
 .directive( 'app', appDirective );
