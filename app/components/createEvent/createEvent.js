@@ -10,5 +10,5 @@ export const createEvent = angular.module( 'createEvent', [ sideNav.name ] )
 			url: '/create',
 			template: '<create-event></create-event>'
 		} );
-} )
-.directive( 'createEvent', createEventDirective );
+	} )
+	.directive( 'createEvent', createEventDirective );

@@ -10,5 +10,5 @@ export const dashboardDirective = () => {
 		restrict: 'E',
 		replace: true,
 		scope: {}
-	}
-}
+	};
+};

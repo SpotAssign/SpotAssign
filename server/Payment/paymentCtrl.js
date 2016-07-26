@@ -66,15 +66,19 @@ export default {
 			if ( err ) {
 				return res.send( err );
 			}
-			Reservations.findByIdAndUpdate( payment.user, { $pull: { payment: { $in: [ req.params.id ] } } }, {
-				safe: true,
-				upsert: true,
-				new: true
-			}, ( error, user ) => {
-				if ( error ) {
-					return res.send( err );
+			Reservations.findByIdAndUpdate(
+				payment.user,
+				{ $pull: { payment: { $in: [ req.params.id ] } } },
+				{
+					safe: true,
+					upsert: true,
+					new: true
+				}, ( error, user ) => {
+					if ( error ) {
+						return res.send( err );
+					}
 				}
-			} );
+			);
 			return res.json( payment );
 		} );
 	}

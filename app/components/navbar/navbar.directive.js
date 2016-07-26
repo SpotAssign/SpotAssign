@@ -6,11 +6,11 @@ import 'materialize-css/bin/materialize.css';
 
 export const navbarDirective = () => {
 	return {
-    template,
-    controller,
-    controllerAs: 'vm',
-    restrict: 'E',
-    replace: true,
-    scope: {}
-  };
+		template,
+		controller,
+		controllerAs: 'vm',
+		restrict: 'E',
+		replace: true,
+		scope: {}
+	};
 };

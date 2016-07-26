@@ -2,6 +2,11 @@
 
 nav {
    background-color: $primary-gray !important;
+   .nav-wrapper {
+       .brand-logo img {
+           height: 50px;
+       }
+   }
 }
 .brand-logo {
 	width: 100px;

@@ -9,7 +9,8 @@ const Markets = Schema(
 		photo: { type: String },
 		startDate: { type: Date },
 		recurrence: {
-			frequency: { type: String, default: 'week' },  // can be "year", "day", "week", "hour".. here we will use "week"
+			// can be "year", "day", "week", "hour".. here we will use "week"
+			frequency: { type: String, default: 'week' },
 			interval: { type: Number, default: 1 },
 			dayOfWeek: [ {
 				day: { type: String }, // choose from "M", "T", "W", "Th", "F", "Sat" and "Sun"

@@ -1,8 +1,9 @@
 import angular from 'angular';
 import { eventDirective } from './event.directive';
 import { dashboard } from '../dashboard/dashboard';
+import { sideNav } from '../sideNav/sideNav';
 
-export const event = angular.module( 'event', [ dashboard.name ] )
+export const event = angular.module( 'event', [ dashboard.name, sideNav.name ] )
 .config( function ( $stateProvider, $urlRouterProvider ) {
 	$urlRouterProvider.otherwise( '/' );
 
