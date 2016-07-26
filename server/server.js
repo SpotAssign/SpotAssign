@@ -34,7 +34,9 @@ app.use( passport.initialize() );
 app.use( passport.session() );
 
 mongoose.connect( config.mongoUri );
-mongoose.connection.once( 'open', () => console.log( `Connected with mongo db at ${config.mongoUri}` ) );
+mongoose.connection.once( 'open', () => {
+	console.log( `Connected with mongo db at ${config.mongoUri}` );
+} );
 
 masterRoutes( app );
 
