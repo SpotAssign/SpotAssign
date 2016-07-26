@@ -1,4 +1,19 @@
-.checkout {
-    margin-left: 200px;
-    
+.checkoutContainer {
+    margin-left: 300px;
+}
+
+.cart {
+    font-size: 1.5em;
+}
+
+.cart-name {
+    font-weight: bolder;
+    text-align: right;
+}
+
+@media ( max-width:600px ) and (min-width: 300px)  {
+    .checkoutContainer {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
