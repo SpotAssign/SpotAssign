@@ -3,7 +3,7 @@ import { checkoutDirective } from './checkout.directive';
 import { sideNav } from '../sideNav/sideNav';
 
 export const checkoutEvent = angular.module( 'checkoutEvent', [ sideNav.name ] )
-	.config( function ( $stateProvider, $urlRouterProvider ) {
+	.config( function( $stateProvider, $urlRouterProvider ) {
 		$urlRouterProvider.otherwise( '/' );
 
 		$stateProvider.state( 'checkout', {
