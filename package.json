@@ -4,9 +4,9 @@
   "description": "",
   "main": "server/server.js",
   "scripts": {
-    "start": "npm-run-all --parallel open:server lint:watch",
-    "open:server": "nodemon server/server.js --exec babel-node",
-    "lint": "node_modules/.bin/esw webpack.config.* app server",
+    "start": "npm-run-all --parallel open:server lint:watch -s",
+    "open:server": "nodemon server/server.js --exec babel-node -s",
+    "lint": "node_modules/.bin/esw app server",
     "lint:watch": "npm run lint -- --watch"
   },
   "repository": {

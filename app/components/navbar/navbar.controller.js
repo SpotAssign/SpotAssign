@@ -1,2 +1,2 @@
-export class NavbarController {  
+export class NavbarController {
 }
