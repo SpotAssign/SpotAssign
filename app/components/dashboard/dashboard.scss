@@ -1,5 +1,5 @@
 .side-nav-space {
-	 margin-left: 300px;
+	 margin-left: 350px;
 }
 @media ( max-width:600px ) and (min-width: 300px)  {
 	 .side-nav-space {
@@ -8,5 +8,6 @@
 	 }
 }
 .days-of-the-week {
-	line-height: 12px;
+	line-height: 9px;
+	border: 1px solid black;
 }
