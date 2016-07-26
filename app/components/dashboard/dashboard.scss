@@ -1,0 +1,13 @@
+.side-nav-space {
+	 margin-left: 350px;
+}
+@media ( max-width:600px ) and (min-width: 300px)  {
+	 .side-nav-space {
+			 margin-left: auto;
+			 margin-right: auto;
+	 }
+}
+.days-of-the-week {
+	line-height: 9px;
+	border: 1px solid black;
+}

@@ -1,23 +1,25 @@
 <div>
-	<sideNav adminClient="false"></sideNav>
-	<navbar></navbar>
-	<div class="row">
+	<side-nav admin-panel="false"></side-nav>
+	<div class="row side-nav-space">
 		<div class="col s12">
-			<h3>Your Map</h3>
-			<h3>Schedule and Hours</h3>
-			<h6>Start Date</h6>
-			<input type="date">
-			<h6>End Date</h6>
-			<input type="date">
-
-			<h5>Schedule</h5>
-			<p>Sunday: </p>
-			<p>Monday: </p>
-			<p>Tuesday: </p>
-			<p>Wednesday: </p>
-			<p>Thursday: </p>
-			<p>Friday: </p>
-			<p>Saturday: </p>
+			<h4>Your Map</h4>
+			<img src="http://placehold.it/450x250"/><button>Edit</button>
+			<h4>Schedule and Hours</h4>
+			<div class = "col s4">
+				<h6>Open Date</h6>
+				<input type="date">
+				<h6>Close Date</h6>
+				<input type="date">
+			</div>
+			<div class = "col s4 days-of-the-week">
+			<p>Sunday: <button>Edit</button></p>
+			<p>Monday: <button>Edit</button></p>
+			<p>Tuesday: <button>Edit</button></p>
+			<p>Wednesday: <button>Edit</button></p>
+			<p>Thursday: <button>Edit</button></p>
+			<p>Friday: <button>Edit</button></p>
+			<p>Saturday: <button>Edit</button></p>
+			</div>
 		</div>
 	</div>
 </div>
