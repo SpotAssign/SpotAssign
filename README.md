@@ -22,18 +22,24 @@ npm start -s
 ```
 
 ## Add configs:
-./server/config/mlabs.js:
-
-```ShellSession
-export default 'mongodb://USERNAME:PASSWORD@URL';
-```
-
-./server/config/sessionConfig.js:
+./server/config/config.js:
 
 ```ShellSession
 export default {
-	secret: 'testsecret',
-	resave: false,
-	saveUninitialized: false
+    // Session Config
+    session: {
+        secret: '',
+        resave: false,
+        saveUninitialized: false
+    },
+
+    // Auth0 Config
+    auth0: {
+        clientID: '',
+        clientSecret: '',
+    },
+
+    // MLabs Config
+    mongoUri: '',
 };
 ```
