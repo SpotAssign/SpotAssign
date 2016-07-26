@@ -1,0 +1,43 @@
+@import '../../styles/colors';
+
+.sideNav {
+	.sideNav-top {
+		background-color: $primary-gray;
+		.sideNav-hamb {
+			margin-left: 15px;
+		}
+		.sideNav-logo {
+			height: 50px;
+			margin-top: 3px;
+		}
+	}
+	.sideNav-side {
+		background-color: $primary-gray;
+		.sideNav-logo-mobile-container {
+			margin: 75px;
+			padding: 0;
+			.sideNav-logo-mobile {
+				width: 150px;
+			}
+		}
+		.sideNav-item {
+			.nav-items-mobile {
+				cursor: pointer;
+				font-size: 21px;
+				color: white;
+			}
+			i {
+				color: white;
+			}
+		}
+	}
+}
+
+@media screen and ( min-width: 600px ) {
+	.sideNav {
+		.sideNav-side {
+			transform: translateX( 0% ) !important;
+		}
+	}
+}
+
