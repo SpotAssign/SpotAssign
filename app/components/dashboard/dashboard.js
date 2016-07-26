@@ -3,6 +3,7 @@ import { dashboardDirective } from './dashboard.directive';
 import { sideNav } from '../sideNav/sideNav';
 
 export const dashboard = angular.module( 'dashboard', [ sideNav.name ] )
+>>>>>>> 900eac93d444bd9f131a72f6c3df28a807908e99
 .config( function ( $stateProvider, $urlRouterProvider ) {
 	$urlRouterProvider.otherwise( '/' );
 
