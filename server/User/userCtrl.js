@@ -6,20 +6,43 @@ export default {
 	// ************************************************************************
 	getAuth( req, res ) {
 		if ( !req.user ) {
-			throw new Error('user null');
+			throw new Error( 'user null' );
 		}
-		res.redirect('/user');
+		res.redirect( '/user' );
 	},
-	getAuthUser ( req, res ) {
-		console.log(req.user);
-		res.render( 'user', {
-			user: req.user
+	getAuthUser( req, res, next ) {
+		Users.findOne( { email: req.user._json.email }, ( err, user ) => {
+			if ( user ) {
+				Users.findById( user._id )
+				.populate( 'payment' )
+				.populate( 'reservations' )
+				.populate( 'market' )
+				.exec( ( error, currentUser ) => {
+					if ( error ) {
+						return res.status( 500 ).json( error );
+					} return res.status( 200 ).json( currentUser );
+				} );
+			} else if ( err ) {
+				return res.status( 500 ).json( err );
+			} else {
+				new Users( {
+					firstName: req.user._json.given_name,
+					lastName: req.user._json.family_name,
+					email: req.user._json.email,
+					creationDate: new Date(),
+					photo: req.user._json.picture
+				} ).save( ( errs, newUser ) => {
+					if ( errs ) {
+						return res.status( 500 ).json( errs );
+					} return res.status( 200 ).json( newUser );
+				} );
+			}
 		} );
 	},
 
 
 	// ************************************************************************
-	// 				Create User w/ Facebook, Google, or Simple Auth
+	// 				Find User By Email, or Create Account
 	// ************************************************************************
 	createUser( req, res ) {
 		if ( req.body.fname ) {
@@ -56,20 +79,6 @@ export default {
 	 //			 					Get Current User
 	 // ************************************************************************
 
-	 getCurrentUser( req, res ) {
-		 if ( !req.user ) {
-			 return res.status( 500 ).json( 'The user does not exist or is not logged in.' );
-		 }
-		 Users.findById( req.user._id )
-		 .populate( 'payment' )
-		 .populate( 'reservations' )
-		 .populate( 'market' )
-		 .exec( ( err, currentUser ) => {
-			 if ( err ) {
-				 return res.status( 500 ).json( err );
-			 } return res.status( 200 ).json( currentUser );
-		 } );
-	 },
 
 	// GET ALL USERS
 	getUsers( req, res ) {

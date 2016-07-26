@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const Users = mongoose.Schema(
 	{
-		id: { type: String, required: true },
+		id: { type: String },
 		firstName: {type: String},
 		lastName: {type: String},
 		boothCompName: { type: String },
