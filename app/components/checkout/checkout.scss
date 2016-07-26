@@ -1,4 +1,5 @@
 .checkoutContainer {
+    margin-top: 50px;
     margin-left: 300px;
 }
 
@@ -6,9 +7,19 @@
     font-size: 1.5em;
 }
 
+.cart-text {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+}
+
 .cart-name {
     font-weight: bolder;
     text-align: right;
+}
+
+.creditCard-form {
+    margin-top: 50px;
 }
 
 @media ( max-width:600px ) and (min-width: 300px)  {
