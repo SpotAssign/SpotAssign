@@ -21,6 +21,7 @@
 		"jquery": true
 	},
 	"rules": {
+        "max-len": "warn",
 		"import/default": 0,
     	"consistent-return": 0,
 		"arrow-body-style": 0,
