@@ -20,8 +20,9 @@
   "homepage": "https://spotassign.com",
   "dependencies": {
     "angular": "^1.5.7",
-    "angular-ui-router": "^0.3.1",
     "angular-animate": "^1.5.8",
+    "angular-materialize": "^0.1.9",
+    "angular-ui-router": "^0.3.1",
     "babel-polyfill": "^6.9.1",
     "body-parser": "^1.15.2",
     "connect-redis": "^3.1.0",

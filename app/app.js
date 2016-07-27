@@ -9,11 +9,15 @@ import ngAnimate from 'angular-animate';
 // IMPORT COMPONENTS
 import { appDirective } from './app.directive';
 import { home } from './components/home/home';
+import { event } from './components/event/event';
+import { dashboard } from './components/dashboard/dashboard';
 
 // START MODULE
 angular.module( 'SpotAssign', [
 	uiRouter,
 	ngAnimate,
-	home.name
+	home.name,
+	event.name,
+	dashboard.name
 ] )
 .directive( 'app', appDirective );
