@@ -12,12 +12,13 @@ import { home } from './components/home/home';
 import { event } from './components/event/event';
 import { dashboard } from './components/dashboard/dashboard';
 
+
 // START MODULE
 angular.module( 'SpotAssign', [
 	uiRouter,
 	ngAnimate,
 	home.name,
 	event.name,
-	dashboard.name
+	dashboard.name,
 ] )
 .directive( 'app', appDirective );
