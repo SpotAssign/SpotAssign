@@ -7,8 +7,8 @@ export const eventDirective = () => {
 		controller,
 		template,
 		controllerAs: 'vm',
-		restrict: 'E',
+		scope: {},
 		replace: true,
-		scope: {}
+		restrict: 'E'
 	};
 };

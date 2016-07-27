@@ -1,14 +1,11 @@
-import angular from 'angular';
 import { eventDirective } from './event.directive';
-import { dashboard } from '../dashboard/dashboard';
-import { sideNav } from '../sideNav/sideNav';
+import angular from 'angular';
+import uiRouter from 'angular-ui-router';
 
-export const event = angular.module( 'event', [ dashboard.name, sideNav.name ] )
-.config( function ( $stateProvider, $urlRouterProvider ) {
-	$urlRouterProvider.otherwise( '/' );
-
+export const event = angular.module( 'event', [ uiRouter ] )
+.config( ( $stateProvider ) => {
 	$stateProvider.state( 'event', {
-		url: '/event',
+		url: '/event', // This will have a dynamic url 'spotassign.com/provo'
 		template: '<event></event>'
 	} );
 } )
