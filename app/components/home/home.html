@@ -1,29 +1,85 @@
 <div>
 	<navbar></navbar>
-
-		<div class="row">
-			<div class="col s8">
-				<img src="http://placehold.it/750x450">
-			</div>
-			<div class="col s4">
-				<h4>The best way to help your customers comfortably find their spots.</h4>
-				<div class="center">
-					<a ui-sref="createEvent">
-						<button class="btn blue">Start Now</button>
-					</a>
-				</div>
-			</div>
+	<div class = "home-body">
+	<div class="row">
+			<div class="slider" slider transition="1500">
+				<ul class="slides">
+					<li>
+						<img class="home-photo" src="{{ vm.concertPhoto }}">
+						<div class="caption center-align">
+							<div class="col s6 tagline">
+								<h4>Help your customers find their spots.</h4>
+								<div class="center">
+									<a ui-sref="createEvent">
+										<button class="btn orange start-now-button">Start Now</button>
+									</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<img class="home-photo" src="{{ vm.boothPhoto }}">
+						<div class="caption center-align">
+							<div class="col s6 tagline">
+								<h4>Organize events of any type. Any time.</h4>
+								<div class="center">
+									<a ui-sref="createEvent">
+										<button class="btn orange start-now-button">Start Now</button>
+									</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<img class="home-photo" src="{{ vm.marketPhoto }}">
+						<div class="caption center-align">
+							<div class="col s6 tagline">
+								<h4>Assign customers to places on-the-spot.</h4>
+								<div class="center">
+									<a ui-sref="createEvent">
+										<button class="btn orange start-now-button">Start Now</button>
+									</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<img class="home-photo" src="{{ vm.stadiumPhoto }}">
+						<div class="caption center-align">
+							<div class="col s6 tagline">
+								<h4>Simplify and maximize event operations.</h4>
+								<div class="center">
+									<a ui-sref="createEvent">
+										<button class="btn orange start-now-button">Start Now</button>
+									</a>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
 		</div>
-
-		<div class="row">
-			<div class="col s2 offset-s1 feature-box">
-				<h5>Easy-to-use drag & drop editor</h5>
+		<!-- <div class="col s4 tagline">
+			<h4>Help your customers find their spots.</h4>
+			<div class="center">
+				<a ui-sref="createEvent">
+					<button class="btn orange">Start Now</button>
+				</a>
 			</div>
-			<div class="col s2 offset-s2 feature-box">
-				<h5>Create custom map for any spots</h5>
-			</div>
-			<div class="col s2 offset-s2 feature-box">
-				<h5>They pay, you get paid</h5>
-			</div>
+		</div> -->
+	</div>
+	<div class="row">
+		<div class="col s2 offset-s1 feature-box center">
+			<i class="fa fa-desktop fa-5x" aria-hidden="true"></i>
+			<h5>Easy-to-use drag & drop editor</h5>
 		</div>
+		<div class="col s2 offset-s2 feature-box center">
+			<i class="fa fa-map-marker fa-5x" aria-hidden="true"></i>
+			<h5>Create custom maps for any event</h5>
+		</div>
+		<div class="col s2 offset-s2 feature-box center">
+			<i class="fa fa-credit-card-alt fa-5x" aria-hidden="true"></i>
+			<h5>Seamless payment options</h5>
+		</div>
+	</div>
+	</div>
 </div>
