@@ -40,6 +40,7 @@
     "toastr": "^2.1.2"
   },
   "devDependencies": {
+    "angular-materialize": "^0.1.9",
     "babel-cli": "6.8.0",
     "babel-core": "6.8.0",
     "babel-loader": "^6.2.4",

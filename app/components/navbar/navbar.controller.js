@@ -3,5 +3,10 @@ export class NavbarController {
 		const img = document.createElement( 'img' );
 		img.src = require( '../../img/SpotAssignLogo.png' );
 		this.picture = img.src;
+
+		$( document ).ready( function() {
+			$( '.button-collapse' ).sideNav();
+		} );
 	}
+
 }

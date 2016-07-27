@@ -1,0 +1,50 @@
+@import '../../styles/colors';
+@import url(https://fonts.googleapis.com/css?family=Nunito:300);
+
+.home-body {
+	color: $secondary-gray;
+	font-family: 'Nunito', sans-serif;
+	.row {
+		margin: 0 !important;
+		.slides {
+			.home-photo {
+				opacity: 20%;
+			}
+		}
+	}
+	@media screen and ( max-width: 600px ) {
+		.feature-box {
+			width: 100% !important;
+			margin: 0 auto !important;
+			margin-top: 10% !important;
+		}
+		.caption {
+			width: 100% !important;
+			margin: 0 auto !important;
+		}
+		.slides li .caption {
+			left: 25% !important;
+		}
+	}
+	.feature-box {
+		margin-top: 5%;
+	}
+	.slider {
+		.slides li .caption {
+			top: 9%;
+			left: 33%;
+		}
+		.start-now-button {
+			margin-top: 7%;
+		}
+	}
+	.active {
+		background-color: $primary-orange !important;
+	}
+	.tagline {
+		margin-top: 10%;
+	}
+	.fa-desktop, .fa-map-marker, .fa-credit-card-alt  {
+		color: $secondary-gray;
+	}
+}
