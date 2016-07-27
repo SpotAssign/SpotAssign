@@ -43,3 +43,10 @@ export default {
     mongoUri: '',
 };
 ```
+
+
+## Generate component files
+
+```ShellSession
+gulp component --name COMPONENT_NAME
+```
