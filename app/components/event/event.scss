@@ -1,5 +1,10 @@
-.event-box {
-	.event-box-grid {
-		border: 1px solid black;
+#event {
+	.event-photo {
+		width: 100%;
+		max-height: 300px;
+		object-fit: cover;
+	}
+	.map {
+		width: 100%;
 	}
 }

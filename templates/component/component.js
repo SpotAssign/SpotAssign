@@ -3,7 +3,7 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
 // DELETE ROUTER IF NOT NEEDED
-export const <%= name %> = angular.module( '<%= name %>', [ uiRouter ])
+export const <%= name %> = angular.module( '<%= name %>', [ uiRouter ] )
 .config( ( $stateProvider ) => {
 	$stateProvider.state( '<%= name %>', {
 		url: '/<%= name %>',
