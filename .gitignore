@@ -1,4 +1,4 @@
-/server/config/
+/server/config
 node_modules
 .idea
 .DS_Store
