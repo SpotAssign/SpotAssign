@@ -1,5 +1,7 @@
 import Reservations from './Reservations';
 import Payments from '../Payment/Payments';
+import Booths from '../Booth/Booths';
+
 
 export default {
 	// GET REQUEST
@@ -8,6 +10,7 @@ export default {
 			.populate( 'user' )
 			.populate( 'market' )
 			.populate( 'payment' )
+			.populate( 'booth' )
 			.exec( ( err, reservation ) => {
 				if ( err ) {
 					return res.status( 500 ).json( err );
@@ -19,6 +22,7 @@ export default {
 			.populate( 'user' )
 			.populate( 'market' )
 			.populate( 'payment' )
+			.populate( 'booth' )
 			.exec( ( err, payment ) => {
 				if ( err ) {
 					return res.status( 500 ).json( err );

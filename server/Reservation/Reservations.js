@@ -11,6 +11,10 @@ const Reservations = Schema(
 			type: Schema.Types.ObjectId,
 			ref: `Markets`
 		},
+		booth: {
+			type: Schema.Types.ObjectId,
+			ref: `Booths`
+		},
 		payment: {
 			type: Schema.Types.ObjectId,
 			ref: `Payments`
