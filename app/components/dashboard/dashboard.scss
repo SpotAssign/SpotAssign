@@ -9,5 +9,10 @@
 }
 .days-of-the-week {
 	line-height: 9px;
-	border: 1px solid black;
+	.day {
+		font-weight: bold;
+	}
+	.to {
+		text-align: center;
+	}
 }
