@@ -5,14 +5,26 @@
 			<h4>Your Map</h4>
 			<img src="http://placehold.it/450x250"/><button>Edit</button>
 			<h4>Schedule and Hours</h4>
+
+
 			<div class = "col s4">
 				<h6>Open Date</h6>
-				<input type="date">
+				<calendar date="vm.openDate"></calendar>
 				<h6>Close Date</h6>
-				<input type="date">
+				<calendar date="vm.closeDate"></calendar>
 			</div>
 			<div class = "col s4 days-of-the-week">
-			<p>Sunday: <button>Edit</button></p>
+			<p>Sunday:
+			<input type="text"> to
+			<input type="text">
+						<select class="browser-default" ng-model="hours">
+								<option value="" disabled selected style="display: none;">AM/PM</option>
+								<option value="AM">AM</option>
+								<option value="PM">PM</option>
+						</select>
+
+
+				<button>Edit</button></p>
 			<p>Monday: <button>Edit</button></p>
 			<p>Tuesday: <button>Edit</button></p>
 			<p>Wednesday: <button>Edit</button></p>
@@ -22,4 +34,16 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="input-field col s12">
+    <select>
+      <option value="" disabled selected>Choose your option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+    </select>
+    <label>Materialize Select</label>
+  </div>
+
+
 </div>

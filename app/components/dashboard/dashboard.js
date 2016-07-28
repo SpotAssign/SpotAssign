@@ -1,8 +1,9 @@
 import angular from 'angular';
 import { dashboardDirective } from './dashboard.directive';
 import { sideNav } from '../sideNav/sideNav';
+import { calendar } from '../calendar/calendar';
 
-export const dashboard = angular.module( 'dashboard', [ sideNav.name ] )
+export const dashboard = angular.module( 'dashboard', [ sideNav.name, calendar.name ] )
 .config( function ( $stateProvider, $urlRouterProvider ) {
 	$urlRouterProvider.otherwise( '/' );
 
