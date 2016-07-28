@@ -28,14 +28,14 @@ import masterRoutes from './masterRoutes';
 
 app.use( cookieParser() );
 app.use( bodyParser.json() );
-app.use( express.static( `${__dirname}/../dist` ) );
+app.use( express.static( `${ __dirname }/../dist` ) );
 app.use( session( config.session ) );
 app.use( passport.initialize() );
 app.use( passport.session() );
 
 mongoose.connect( config.mongoUri );
 mongoose.connection.once( 'open', () => {
-	console.log( `Connected with mongo db at ${config.mongoUri}` );
+	console.log( `Connected with mongo db at ${ config.mongoUri }` );
 } );
 
 masterRoutes( app );

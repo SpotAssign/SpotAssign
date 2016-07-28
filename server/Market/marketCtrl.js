@@ -39,10 +39,11 @@ export default {
 				new: true
 			}, ( error, user ) => {
 				if ( error ) {
-					return res.send( err );
+					return res.send( error );
 				}
+
+				return res.json( market );
 			} );
-			return res.json( market );
 		} );
 	},
 	// PUT REQUEST
