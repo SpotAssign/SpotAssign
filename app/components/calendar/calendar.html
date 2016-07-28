@@ -1,0 +1,28 @@
+<div>
+	<input
+	input-date
+	type="text"
+	name="open"
+	id="calendar"
+	ng-model="date"
+	container=""
+	format="mm/dd/yyyy"
+	months-full="{{ vm.month }}"
+	months-short="{{ vm.monthShort }}"
+	weekdays-full="{{ vm.weekdaysFull }}"
+	weekdays-short="{{ vm.weekdaysShort }}"
+	weekdays-letter="{{ vm.weekdaysLetter }}"
+	disable="vm.disable"
+	min="{{ vm.minDate }}"
+	max="{{ vm.maxDate }}"
+	today="vm.today"
+	clear="vm.clear"
+	close="vm.close"
+	select-years="2"
+	on-start="vm.onStart()"
+	on-render="vm.onRender()"
+	on-open="vm.onOpen()"
+	on-close="vm.onClose()"
+	on-set="vm.onSet()"
+	on-stop="vm.onStop()" />
+</div>
