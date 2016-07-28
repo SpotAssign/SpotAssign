@@ -12,6 +12,11 @@
 			</div>
 
 			<div>
+				Bio: *
+				<input type="text" ng-model="bio">
+			</div>
+
+			<div>
 				City: *
 				<input type="text" ng-model="city">
 			</div>
@@ -27,7 +32,7 @@
 			</div>
 
 			<div class="center">
-				<button class="btn blue" ng-click="createEvent()">Create Event</button>
+				<button class="btn blue" ng-click="vm.createEvent( marketName, bio, city, state )">Create Event</button>
 			</div>
 
 		</div>
