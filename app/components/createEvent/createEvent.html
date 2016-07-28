@@ -4,41 +4,58 @@
 	<div class="row">
 
 		<div class="col s10">
-			<h4>Create your Market/Event</h4>
+			<h4><i class="material-icons">event_seat</i> Create your Event</h4>
 
-			<div>
-				Name: *
+			<div class="col s12">
+				Title:
 				<input type="text" ng-model="marketName">
 			</div>
 
-			<div>
-				Bio: *
-				<input type="text" ng-model="bio">
+			<div class="col s12">
+				Bio:
+				<textarea class="materialize-textarea" ng-model="bio"></textarea>
 			</div>
 
-			<div>
-				City: *
+			<div class="col s6">
+				City:
 				<input type="text" ng-model="city">
 			</div>
 
-			<div>
-				State: *
+			<div class="col s6">
+				State:
 				<input type="text" ng-model="state">
 			</div>
 
 			<div>
-				Payment Information: *
-				<input type="text">
+				<div class="col s12 payment">
+					<i class="material-icons lock">lock</i>
+				Payment Information:
+        <div class="center">
+
+            <form stripe-form="stripeCallback" name="checkoutForm">
+
+							<div class = "col s5">
+                <input validate id="card" ng-model="number" placeholder="Card Number" name="card" payments-format="card" payments-validate="card" />
+							</div>
+
+							<div class = "col s4">
+                <input validate id="expiry" ng-model="expiry" placeholder="Expiration" name="expiry" payments-format="expiry" payments-validate="expiry" />
+							</div>
+
+							<div class = "col s2">
+								<input validate id="cvc" ng-model="cvc" placeholder="CVC" name="cvc" payments-format="cvc" payments-validate="cvc" />
+							</div>
+
+            </form>
+        </div>
+    </div>
+
 			</div>
 
 			<div class="center">
-				<button class="btn blue" ng-click="vm.createEvent( marketName, bio, city, state )">Create Event</button>
+				<button class="btn blue" type="submit" ng-click="vm.createEvent( marketName, bio, city, state )">Create</button>
 			</div>
 
-		</div>
-
-		<div class="col s12">
-			<p>*This information can be changed in your account afterward.</p>
 		</div>
 </div>
 </div>
