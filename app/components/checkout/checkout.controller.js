@@ -1,11 +1,12 @@
 class CheckoutController {
     constructor( service ) {
-        this.newMessage = 'hi there from controller'
+        this.newMessage = 'hi there from controller';
         this.current = {};
-        this.service.userService = service.userService;
+        this.service = service;
+        this.getCurrentUser();
     }
     getCurrentUser() {
-        this.service.userService.getUsers()
+        return this.service.user.getAll()
         .then( ( currentUser ) => {
             this.current = currentUser;
         } );
