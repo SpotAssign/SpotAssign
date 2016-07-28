@@ -1,7 +1,7 @@
 import angular from 'angular';
 import { checkoutDirective } from './checkout.directive';
 import { sideNav } from '../sideNav/sideNav';
-import { userService } from '../../shared/userService.js';
+import { service } from '../../shared/service';
 
 export const checkoutEvent = angular.module( 'checkoutEvent', [ sideNav.name ] )
 	.config( function ( $stateProvider, $urlRouterProvider ) {
@@ -13,4 +13,4 @@ export const checkoutEvent = angular.module( 'checkoutEvent', [ sideNav.name ] )
 		} );
 	} )
 .directive( 'checkout', checkoutDirective )
-.factory( 'userService', userService );
+.factory( 'service', service );

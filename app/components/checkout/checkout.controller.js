@@ -1,16 +1,16 @@
 class CheckoutController {
-    constructor( userService ) {
+    constructor( service ) {
         this.newMessage = 'hi there from controller'
         this.current = {};
-        this.userService = userService;
+        this.service.userService = service.userService;
     }
     getCurrentUser() {
-        this.userService.getCurrentUser()
+        this.service.userService.getUsers()
         .then( ( currentUser ) => {
             this.current = currentUser;
         } );
     }
 }
 
-CheckoutController.$inject= [ 'userService' ];
+CheckoutController.$inject= [ 'service' ];
 export { CheckoutController };

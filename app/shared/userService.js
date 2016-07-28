@@ -1,7 +1,6 @@
 import { api } from './api';
 
-const userService = ( $http, api ) => {
-    return {
+const userService = {
         getUsers( query ) {
             console.log("hi from get users");
             return $http.get( `${api.url}/api/users` )
@@ -18,8 +17,6 @@ const userService = ( $http, api ) => {
             return $http.get( `${api.url}/api/users/${id}` )
             .then( ( { data } ) => { return data; } );
         }
-
-    };
 };
 
 userService.$inject = [ '$http', 'api' ];
