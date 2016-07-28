@@ -1,5 +1,13 @@
 .side-nav-space {
 	 margin-left: 350px;
+	 .dash-icon {
+		 position: relative;
+		 top: 5px;
+	 }
+	 h4 {
+		 margin-top: 8%;
+		 margin-bottom: 5%;
+	 }
 }
 @media ( max-width:600px ) and (min-width: 300px)  {
 	 .side-nav-space {
