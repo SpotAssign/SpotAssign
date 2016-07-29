@@ -10,11 +10,7 @@ export default {
 		}
 		res.redirect( '/#/create' );
 	},
-	getUser(req, res, next) {
-		res.json('user', { user: req.user })
-	},
 	getAuthUser( req, res, next ) {
-		console.log(req.user)
 		Users.findOne( { email: req.user._json.email }, ( err, user ) => {
 			if ( user ) {
 				Users.findById( user._id )
