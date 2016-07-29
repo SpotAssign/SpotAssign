@@ -11,7 +11,7 @@ import { appDirective } from './app.directive';
 import { home } from './components/home/home';
 import { event } from './components/event/event';
 import { dashboard } from './components/dashboard/dashboard';
-
+import { userHome } from './components/userHome/userHome';
 
 // START MODULE
 angular.module( 'SpotAssign', [
@@ -20,5 +20,6 @@ angular.module( 'SpotAssign', [
 	home.name,
 	event.name,
 	dashboard.name,
+	userHome.name
 ] )
 .directive( 'app', appDirective );
