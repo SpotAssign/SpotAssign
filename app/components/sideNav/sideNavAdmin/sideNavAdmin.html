@@ -15,16 +15,21 @@
 
 	<ul class="side-nav sideNav-side" id="mobile-nav">
 
+		<div class="admin-ribbon ar-sticky">Admin</div>
 		<li class="sideNav-logo-mobile-container">
 			<img class="sideNav-logo-mobile"
-				 src="http://placehold.it/150x150"
+				 src="http://placehold.it/200x200"
 			>
 		</li>
 
 		<li class="sideNav-item">
-			<a class="nav-items-mobile">
+			<a class="nav-items-mobile" ui-sref="createEvent">
 				<i class="fa fa-plus" aria-hidden="true"></i>
 				Create Event
+			</a>
+			<a class="nav-items-mobile" ui-sref="createEvent" ng-if="event">
+				<i class="fa fa-plus" aria-hidden="true"></i>
+				Edit Event
 			</a>
 		</li>
 

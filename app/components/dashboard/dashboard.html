@@ -2,11 +2,11 @@
 	<side-nav admin-panel="true"></side-nav>
 	<div class="row side-nav-space">
 		<div class="col s12">
-			<logout></logout>
+			<logout user="vm.user"></logout>
 
 
 			<h4 id="company-title"><i class="material-icons">business</i> Company Information <hr class="divider"></h4>
-			<h6>Name: {{ vm.name }} <button>Edit</button></h6>
+			<h6>Name: {{ vm.params.eventTitle }} <button>Edit</button></h6>
 
 			<h6>Location: {{ vm.location }} <button>Edit</button></h6>
 

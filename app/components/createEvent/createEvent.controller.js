@@ -1,7 +1,9 @@
 class CreateEventController {
-	constructor( service ) {
+	constructor( service, $timeout, $state ) {
 		this.event = {};
 		this.service = service;
+		this.timeout = $timeout;
+		this.state = $state;
 		this.user= {};
 		this.getCurrentUser();
 	}
@@ -13,11 +15,13 @@ class CreateEventController {
 				city,
 				state
 			},
-			bio
+			bio,
+			admins: this.user._id
 		})
 		.then( event => {
-			console.log( event );
+			console.log( event, 'this is event line 21 CreateEventController' );
 			this.event = event;
+			this.state.go( 'dashboard', { event: this.event } )
 		} );
 	};
 
@@ -34,10 +38,14 @@ class CreateEventController {
 	getCurrentUser() {
 		console.log("getting current user")
 		return this.service.user.getCurrentOrCreate()
-		.then( user => {  this.user = user } );
+		.then( user => {
+			this.timeout(() => {
+				this.user = user
+			} );
+		} );
 	}
 
 }
 
-CreateEventController.$inject = [ 'service' ];
+CreateEventController.$inject = [ 'service', '$timeout', '$state' ];
 export { CreateEventController };
