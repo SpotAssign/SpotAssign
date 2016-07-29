@@ -11,13 +11,30 @@
 			margin-top: 3px;
 		}
 	}
+
+	.admin-ribbon {
+		width: 200px;
+	 padding: 3px;
+	 position: absolute;
+	 text-align: center;
+	 color: #f0f0f0;
+	}
+	.ar-sticky {
+		position: fixed;
+		top: 25px;
+		left: -50px;
+		transform: rotate( -45deg );
+		background-color: $primary-orange;
+	}
+
 	.sideNav-side {
 		background-color: $primary-gray;
 		.sideNav-logo-mobile-container {
-			margin: 75px;
+			margin: 50px;
 			padding: 0;
 			.sideNav-logo-mobile {
-				width: 150px;
+				width: 200px;
+				border-radius: 100%;
 			}
 		}
 		.sideNav-item {
@@ -40,4 +57,3 @@
 		}
 	}
 }
-

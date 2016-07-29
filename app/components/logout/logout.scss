@@ -14,7 +14,6 @@
 		border: 1px solid #383838;
 		color: white;
 		border-radius: 2.5px;
-		transform: scale( 1.15 );
 	}
 	.profile-pic {
 		border-radius: 100%;
@@ -27,8 +26,6 @@
 		transition-duration: .3s;
 	}
 	.profile-pic:hover {
-		transform: scale( 1.15 );
-		// height: 58px;
-		// width: 58px;
+		transform: scale( 1.08 );
 	}
 }
