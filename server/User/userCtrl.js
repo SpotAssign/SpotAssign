@@ -8,9 +8,13 @@ export default {
 		if ( !req.user ) {
 			throw new Error( 'user null' );
 		}
-		res.redirect( '/user' );
+		res.redirect( '/#/create' );
+	},
+	getUser(req, res, next) {
+		res.json('user', { user: req.user })
 	},
 	getAuthUser( req, res, next ) {
+		console.log(req.user)
 		Users.findOne( { email: req.user._json.email }, ( err, user ) => {
 			if ( user ) {
 				Users.findById( user._id )
@@ -39,45 +43,6 @@ export default {
 			}
 		} );
 	},
-
-
-	// ************************************************************************
-	// 				Find User By Email, or Create Account
-	// ************************************************************************
-	createUser( req, res ) {
-		if ( req.body.fname ) {
-			 // Google or Facebook Account Creation Auth
-			 new Users( {
-				 id: req.body.id,
-				 firstName: req.body.fname,
-				 lastName: req.body.lname,
-				 email: req.body.email,
-				 creationDate: new Date(),
-				 photo: req.body.picture
-			 } ).save( ( err, newUser ) => {
-				 if ( err ) {
-					 return res.status( 500 ).json( err );
-				 } return res.status( 200 ).json( newUser );
-			 } );
-		   } else {
-			 // Simple Auth
-			   new Users( {
-				   id: req.body.id,
-				   email: req.body.email,
-				   creationDate: new Date(),
-				   photo: req.body.picture
-			   } ).save( ( err, newUser ) => {
-				   if ( err ) {
-					   return res.status( 500 ).json( err );
-				   } return res.status( 200 ).json( newUser );
-			   } );
-		    }
-	},
-
-	 // ************************************************************************
-	 //			 					Get Current User
-	 // ************************************************************************
-
 
 	// GET ALL USERS
 	getUsers( req, res ) {
