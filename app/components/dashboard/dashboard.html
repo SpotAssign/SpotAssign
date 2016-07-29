@@ -5,110 +5,145 @@
 			<logout></logout>
 
 
-			<h4><i class="material-icons">business</i> Company Information <hr></h4>
-				<h6>Name: {{ vm.name }} <button>Edit</button></h6>
+			<h4 id="company-title"><i class="material-icons">business</i> Company Information <hr class="divider"></h4>
+			<h6>Name: {{ vm.name }} <button>Edit</button></h6>
 
-				<h6>Location: {{ vm.location }} <button>Edit</button></h6>
+			<h6>Location: {{ vm.location }} <button>Edit</button></h6>
 
-				<h6>Bio: {{ vm.bio }} <button>Edit</button></h6>
+			<h6>Bio: {{ vm.bio }} <button>Edit</button></h6>
 
-				<h6>Photo: {{ vm.photo }} <button>Edit</button></h6>
+			<h6>Photo: {{ vm.photo }} <button>Edit</button></h6>
 
-			<h4><i class="material-icons">place</i> Your Event Map <hr></h4>
-				<img src="http://placehold.it/450x250"/>
+			<h4><i class="material-icons">place</i> Your Event Map <hr class="divider"></h4>
+			<img src="http://placehold.it/450x250" />
 
-			<h4><i class="material-icons">schedule</i> Schedule and Hours <hr></h4>
+			<h4><i class="material-icons">schedule</i> Schedule and Hours <hr class="divider"></h4>
 
 
-			<div class = "col s12">
-				<div class = "col s3">
-					<h6>Open Date</h6>
-					<calendar date="vm.openDate"></calendar>
+			<div class="row">
+				<div class="col s4">
+					<h6 class="col s6 calendar-header">Open Date: </h6>
+					<calendar class="col s6" date="vm.openDate"></calendar>
 				</div>
-				<div class = "col s3 offset-s1">
-					<h6>Close Date</h6>
-					<calendar date="vm.closeDate"></calendar>
+				<div class="col s4 offset-s1">
+					<h6 class="col s6 calendar-header">Close Date: </h6>
+					<calendar class="col s6" date="vm.closeDate"></calendar>
 				</div>
 			</div>
 
-			<div class = "col s12 days-of-the-week">
+			<div class="col s12 days-of-the-week">
 
-			<div class = "row">
-			<p class="col s2 day">Sunday:</p>
-			<time-picker hours="vm.sunHours1" class="col s3"></time-picker>
-			<p class="col s1 to">to</p>
-			<time-picker hours="vm.sunHours2" class="col s3"></time-picker>
-			<div class= "col s1">
-			<button>Edit</button>
-			<button>Save</button>
-			</div>
-			</div>
+				<div class="row">
+					<p class="col s2 day">Sunday:</p>
+					<time-picker hours="vm.sunHours1" class="col s3"></time-picker>
+					<p class="col s1 to">to</p>
+					<time-picker hours="vm.sunHours2" class="col s3"></time-picker>
+					<div class="row">
+						<div class="col s1">
+							<button class="action-button"><i class="fa fa-pencil-square-o"></i></button>
+						</div>
 
-			<div class = "row">
-			<p class="col s2 day">Monday:</p>
-			<time-picker hours="vm.monHours1" class="col s3"></time-picker>
-			<p class="col s1 to">to</p>
-			<time-picker hours="vm.monHours2" class="col s3"></time-picker>
-			<div class= "col s1">
-			<button>Edit</button>
-			<button>Save</button>
-			</div>
-			</div>
+						<div class="col s1">
+							<button class="action-button"><i class="fa fa-floppy-o"></i></button>
+						</div>
+					</div>
+				</div>
 
-			<div class = "row">
-			<p class="col s2 day">Tuesday:</p>
-			<time-picker hours="vm.tueHours1" class="col s3"></time-picker>
-			<p class="col s1 to">to</p>
-			<time-picker hours="vm.tueHours2" class="col s3"></time-picker>
-			<div class= "col s1">
-			<button>Edit</button>
-			<button>Save</button>
-			</div>
-			</div>
+				<div class="row">
+					<p class="col s2 day">Monday:</p>
+					<time-picker hours="vm.monHours1" class="col s3"></time-picker>
+					<p class="col s1 to">to</p>
+					<time-picker hours="vm.monHours2" class="col s3"></time-picker>
+					<div class="row">
+						<div class="col s1">
+							<button class="action-button"><i class="fa fa-pencil-square-o"></i></button>
+						</div>
 
-			<div class = "row">
-			<p class="col s2 day">Wednesday:</p>
-			<time-picker hours="vm.wedHours1" class="col s3"></time-picker>
-			<p class="col s1 to">to</p>
-			<time-picker hours="vm.wedHours2" class="col s3"></time-picker>
-			<div class= "col s1">
-			<button>Edit</button>
-			<button>Save</button>
-			</div>
-			</div>
+						<div class="col s1">
+							<button class="action-button"><i class="fa fa-floppy-o"></i></button>
+						</div>
+					</div>
+				</div>
 
-			<div class = "row">
-			<p class="col s2 day">Thursday:</p>
-			<time-picker hours="vm.thurHours1" class="col s3"></time-picker>
-			<p class="col s1 to">to</p>
-			<time-picker hours="vm.thurHours2" class="col s3"></time-picker>
-			<div class= "col s1">
-			<button>Edit</button>
-			<button>Save</button>
-			</div>
-			</div>
+				<div class="row">
+					<p class="col s2 day">Tuesday:</p>
+					<time-picker hours="vm.tueHours1" class="col s3"></time-picker>
+					<p class="col s1 to">to</p>
+					<time-picker hours="vm.tueHours2" class="col s3"></time-picker>
+					<div class="row">
+						<div class="col s1">
+							<button class="action-button"><i class="fa fa-pencil-square-o"></i></button>
+						</div>
 
-			<div class = "row">
-			<p class="col s2 day">Friday:</p>
-			<time-picker hours="vm.friHours1" class="col s3"></time-picker>
-			<p class="col s1 to">to</p>
-			<time-picker hours="vm.friHours2" class="col s3"></time-picker>
-			<div class= "col s1">
-			<button>Edit</button>
-			<button>Save</button>
-			</div>
-			</div>
+						<div class="col s1">
+							<button class="action-button"><i class="fa fa-floppy-o"></i></button>
+						</div>
+					</div>
+				</div>
 
-			<div class = "row">
-			<p class="col s2 day">Saturday:</p>
-			<time-picker hours="vm.satHours1" class="col s3"></time-picker>
-			<p class="col s1 to">to</p>
-			<time-picker hours="vm.satHours2" class="col s3"></time-picker>
-			<div class= "col s1">
-			<button>Edit</button>
-			<button>Save</button>
-			</div>
-			</div>
+				<div class="row">
+					<p class="col s2 day">Wednesday:</p>
+					<time-picker hours="vm.wedHours1" class="col s3"></time-picker>
+					<p class="col s1 to">to</p>
+					<time-picker hours="vm.wedHours2" class="col s3"></time-picker>
+					<div class="row">
+						<div class="col s1">
+							<button class="action-button"><i class="fa fa-pencil-square-o"></i></button>
+						</div>
+
+						<div class="col s1">
+							<button class="action-button"><i class="fa fa-floppy-o"></i></button>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<p class="col s2 day">Thursday:</p>
+					<time-picker hours="vm.thurHours1" class="col s3"></time-picker>
+					<p class="col s1 to">to</p>
+					<time-picker hours="vm.thurHours2" class="col s3"></time-picker>
+					<div class="row">
+						<div class="col s1">
+							<button class="action-button"><i class="fa fa-pencil-square-o"></i></button>
+						</div>
+
+						<div class="col s1">
+							<button class="action-button"><i class="fa fa-floppy-o"></i></button>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<p class="col s2 day">Friday:</p>
+					<time-picker hours="vm.friHours1" class="col s3"></time-picker>
+					<p class="col s1 to">to</p>
+					<time-picker hours="vm.friHours2" class="col s3"></time-picker>
+					<div class="row">
+						<div class="col s1">
+							<button class="action-button"><i class="fa fa-pencil-square-o"></i></button>
+						</div>
+
+						<div class="col s1">
+							<button class="action-button"><i class="fa fa-floppy-o"></i></button>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<p class="col s2 day">Saturday:</p>
+					<time-picker hours="vm.satHours1" class="col s3"></time-picker>
+					<p class="col s1 to">to</p>
+					<time-picker hours="vm.satHours2" class="col s3"></time-picker>
+					<div class="row">
+						<div class="col s1">
+							<button class="action-button"><i class="fa fa-pencil-square-o"></i></button>
+						</div>
+
+						<div class="col s1">
+							<button class="action-button"><i class="fa fa-floppy-o"></i></button>
+						</div>
+					</div>
+				</div>
 
 
 			</div>
