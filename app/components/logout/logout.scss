@@ -4,7 +4,14 @@
 		background-color: transparent;
 		border: 1px solid #383838;
 		position: relative;
-		left: 80%;
+		left: 85%;
 		margin-top: 2.5%;
+		transition-duration: .5s;
+	}
+	button:hover {
+		background-color: #383838;
+		border: 1px solid #383838;
+		color: white;
+		border-radius: 2.5px;
 	}
 }

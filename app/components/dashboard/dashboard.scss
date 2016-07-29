@@ -8,6 +8,30 @@
 		 margin-top: 8%;
 		 margin-bottom: 5%;
 	 }
+	 #company-title {
+		 margin-top: 0%;
+	 }
+	  .action-button {
+		 height: 3rem;
+		 border: 1px solid #f2f2f2;
+		 padding: 5px;
+		 border-radius: 2px;
+		 width: 100%;
+		 background-color: rgba( 255, 255, 255, 0.9 );
+	 }
+	 .divider {
+		position: relative;
+		width: 85%;
+		right: 7%;
+		height: 1px;
+		background-color: #383838;
+		border: #383838;
+	 }
+	 .calendar-header {
+		 font-weight: bold;
+		 position: relative;
+		 top: 22px;
+	 }
 }
 @media ( max-width:600px ) and (min-width: 300px)  {
 	 .side-nav-space {
@@ -18,7 +42,7 @@
 .days-of-the-week {
 	line-height: 9px;
 	.day {
-		font-weight: bold;
+		font-weight: thin;
 	}
 	.to {
 		text-align: center;
