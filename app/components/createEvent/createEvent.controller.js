@@ -2,6 +2,8 @@ class CreateEventController {
 	constructor( service ) {
 		this.event = {};
 		this.service = service;
+		this.user= {};
+		this.getCurrentUser();
 	}
 
 	createEvent ( name, bio, city, state ) {
@@ -28,6 +30,11 @@ class CreateEventController {
 				}]
 			}
 		} );
+	}
+	getCurrentUser() {
+		console.log("getting current user")
+		return this.service.user.getCurrentOrCreate()
+		.then( user => {  this.user = user } );
 	}
 
 }
