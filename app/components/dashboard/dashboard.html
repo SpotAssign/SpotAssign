@@ -2,7 +2,6 @@
 	<side-nav admin-panel="true"></side-nav>
 	<div class="row side-nav-space">
 		<div class="col s12">
-			<logout user="vm.user"></logout>
 
 
 			<h4 id="company-title"><i class="material-icons">business</i> Company Information <hr class="divider"></h4>
@@ -19,8 +18,22 @@
 
 			<h4><i class="material-icons">schedule</i> Schedule and Hours <hr class="divider"></h4>
 
+			<h6>Open Date: {{ vm.params.eventTitle }}</h6>
 
-			<div class="row">
+			<h6>Close Date: {{ vm.location }}</h6><br>
+
+			<h6>Are you closed on any days? {{ vm.location }} </h6><br>
+
+			<h6>Sunday: </h6>
+			<h6>Monday: </h6>
+			<h6>Tuesday: </h6>
+			<h6>Wednesday: </h6>
+			<h6>Thursday: </h6>
+			<h6>Friday: </h6>
+			<h6>Saturday: </h6>
+
+
+			<div class="row" ng-if="editDates">
 				<div class="col s4">
 					<h6 class="col s6 calendar-header">Open Date: </h6>
 					<calendar class="col s6" date="vm.openDate"></calendar>
@@ -31,7 +44,7 @@
 				</div>
 			</div>
 
-			<div class="col s12 days-of-the-week">
+			<div class="col s12 days-of-the-week" ng-if="editDays">
 
 				<div class="row">
 					<p class="col s2 day">Sunday:</p>

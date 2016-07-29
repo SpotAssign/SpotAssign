@@ -49,6 +49,10 @@
 		}
 	}
 }
+.active {
+	background-color: blue !important;
+	height: 500px !important;
+}
 
 @media screen and ( min-width: 600px ) {
 	.sideNav {
