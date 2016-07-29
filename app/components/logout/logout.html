@@ -1,4 +1,4 @@
 <div id="logout">
-	<button>Log Out</button>
-	<img src="" alt="">
+	<a href="/#/v2/logout"><button>Log Out</button></a>
+	<a ui-sref="dashboard({ user: user })"><img class="profile-pic" ng-if="user" src="{{ user.photo }}" alt="User Photo"></a>
 </div>

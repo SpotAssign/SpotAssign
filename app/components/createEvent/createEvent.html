@@ -1,14 +1,16 @@
 <div>
 	<side-nav admin-panel="true"></side-nav>
 	<div class = "side-nav-space">
+
+<logout user="vm.user"></logout>
+
 	<div class="row">
-	{{user}}
 		<div class="col s10">
 			<h4><i class="material-icons">event_seat</i> Create your Event</h4>
 
 			<div class="col s12">
 				Title:
-				<input type="text" ng-model="marketName">
+				<input type="text" ng-model="eventTitle">
 			</div>
 
 			<div class="col s12">
@@ -53,7 +55,7 @@
 			</div>
 
 			<div class="center">
-				<button class="btn blue" type="submit" ng-click="vm.createEvent( marketName, bio, city, state )">Create</button>
+				<button class="btn blue" type="submit" ng-click="vm.createEvent( eventTitle, bio, city, state )">Create</button>
 			</div>
 
 		</div>

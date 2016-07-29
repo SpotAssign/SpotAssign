@@ -7,7 +7,9 @@ export const logoutDirective = () => {
 		controller,
 		template,
 		controllerAs: 'vm',
-		scope: {},
+		scope: {
+			user: '='
+		},
 		replace: true,
 		restrict: 'E'
   	};
