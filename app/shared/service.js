@@ -1,7 +1,7 @@
 // Checkout the checkout.js for how to use on the module
 // Checkout the CheckoutController for how to use in the controller
 
-const service = ( $http ) => {
+const service = ( $http, $location ) => {
     const api = {
         url: 'http://localhost:8080'
     };
@@ -18,7 +18,13 @@ const service = ( $http ) => {
             // or create a new user if no email is known to exsist in the DB
             getCurrentOrCreate() {
                 return $http.get( `${ api.url }/user` )
-                .then( ( { data } ) => { return data; } );
+                .then( ( { data } ) => {
+                    localStorage.setItem( 'currentUser', JSON.stringify( data ) );
+                    return data;
+                } );
+            },
+            getLocalUser() {
+                return localStorage.getItem( 'currentUser' );
             },
             getOne( id ) {
                 return $http.get( `${ api.url }/api/users/${id}` )
@@ -34,6 +40,10 @@ const service = ( $http ) => {
                         paymentInfo: editedUser.paymentInfo
                     }
                 } ).then( ( { data } ) => { return data; } );
+            },
+            logout () {
+                localStorage.clear();
+                return $location.url( `/v2/logout?returnTo=${api.url}/#/` );
             }
         },
         //  <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
@@ -172,5 +182,5 @@ const service = ( $http ) => {
     };
 };
 
-service.$inject = [ '$http' ];
+service.$inject = [ '$http', '$location' ];
 export { service };
