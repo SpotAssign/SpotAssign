@@ -1,0 +1,113 @@
+@import "../../styles/colors";
+@import "../../styles/globalStyles";
+
+#newMap {
+	#spotColor {
+		width: 100%;
+		height: 45px;
+	}
+	.addType {
+		margin-bottom: 20px;
+	}
+	.breadcrumb {
+		cursor: pointer;
+		color: rgba(255, 255, 255, 0.7);
+	}
+	.activeBreadcrumb {
+		color: white;
+	}
+	.step2 {
+		margin-top: 50px;
+	}
+
+	.collection-item.avatar {
+		padding-left: 20px;
+		padding-top: 15px;
+		.addBox {
+			float: right;
+			font-size: 65px;
+			color: green;
+			cursor: pointer;
+		}
+		.square {
+			width: 50px;
+			height: 50px;
+			border: 2px solid black;
+			display: inline-block;
+		}
+		.circle {
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			border: 2px solid black;
+			border-radius: 25px;
+			margin-left: 15px;
+		}
+		.spotTypeContainer {
+			margin-top: 15px;
+			.spotTypeName, .spotTypePrice {
+				margin-left: 50px;
+				font-size: 2em;
+			}
+			.spotTypeName {
+				font-weight: bold;
+			}
+		}
+	}
+	.previousBtn {
+		margin-left: 30px;
+	}
+	.nextBtn {
+		margin-left: 30px;
+		float: right;
+	}
+	.previousnextContainer {
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		margin-bottom: 25px;
+		margin-right: 25px;
+	}
+
+	.mapContainer {
+		#map {
+			position: relative;
+			margin-top: 25px;
+			outline: 3px solid black;
+			outline-offset: 1px;
+			background-size: contain;
+			background-repeat: no-repeat;
+			display: inline-block;
+			margin-bottom: 60px;
+			.box {
+				width: 60px;
+				height: 60px;
+				position: absolute;
+			}
+			.box.circle {
+				border-radius: 50%;
+			}
+		}
+		.small {
+			width: 300px;
+			height: 300px;
+		}
+		.medium {
+			width: 450px;
+			height: 450px;
+		}
+		.large {
+			width: 600px;
+			height: 600px;
+		}
+	}
+
+	.newMapForm {
+		text-align: center;
+	}
+
+	.spotNumber {
+		color: white;
+		font-size: 20px;
+	}
+}

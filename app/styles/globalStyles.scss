@@ -1,0 +1,9 @@
+@import "colors";
+
+.awesomeButton, .awesomeButton:active, .awesomeButton:focus {
+	background-color: $secondary-gray;
+	color: white;
+}
+.awesomeButton:hover {
+	background-color: $primary-gray;
+}

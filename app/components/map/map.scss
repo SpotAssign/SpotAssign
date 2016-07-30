@@ -1,0 +1,32 @@
+#currentMap {
+	position: relative;
+	margin-top: 25px;
+	outline: 3px solid black;
+	outline-offset: 1px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	display: inline-block;
+	margin-bottom: 60px;
+	.circle {
+		border-radius: 50%;
+	}
+	.spotPrice {
+		color: white;
+		font-size: 20px;
+	}
+}
+
+.small {
+	width: 300px;
+	height: 300px;
+}
+
+.medium {
+	width: 450px;
+	height: 450px;
+}
+
+.large {
+	width: 600px;
+	height: 600px;
+}
