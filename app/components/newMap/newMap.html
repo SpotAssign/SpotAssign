@@ -1,0 +1,165 @@
+<div id="newMap">
+
+	<div class="row">
+
+		<nav>
+			<div class="nav-wrapper">
+				<div class="col s12">
+					<a ng-click="vm.step(1)"
+					   ng-class="vm.currentStep === 1 ? 'activeBreadcrumb' : ''"
+					   class="breadcrumb">
+						Map Settings
+					</a>
+					<a ng-click="vm.step(2)"
+					   ng-class="vm.currentStep === 2 ? 'activeBreadcrumb' : ''"
+					   class="breadcrumb">
+						Spots
+					</a>
+					<a ng-click="vm.step(3)"
+					   ng-class="vm.currentStep === 3 ? 'activeBreadcrumb' : ''"
+					   class="breadcrumb">
+						Confirm
+					</a>
+				</div>
+			</div>
+		</nav>
+
+		<div class="col s8 offset-s2" ng-show="vm.currentStep === 1">
+
+			<h3 class="center">New map</h3>
+
+			<form class="col s12">
+
+				<div class="input-field col s12 m8 offset-m2">
+					<i class="fa fa-tag prefix" aria-hidden="true"></i>
+					<input id="name" ng-model="vm.mapName" type="text" class="validate">
+					<label for="name">Name</label>
+				</div>
+
+				<div class="input-field col s12 m8 offset-m2">
+					<i class="fa fa-map-o prefix" aria-hidden="true"></i>
+					<select ng-model="vm.mapSize" id="map-options">
+						<option value="" selected disabled></option>
+						<option value="small">Small - 300x300px</option>
+						<option value="medium">Medium - 450x450px</option>
+						<option value="large">Large - 600x600px</option>
+					</select>
+					<label>Map size</label>
+				</div>
+
+				<div class="imageUpload center col s12 m6 offset-m3">
+
+					<input type="filepicker"
+						   ng-model="vm.mapImage"
+						   data-fp-mimetypes="image/*"
+						   data-fp-apikey="AWWNzupn7QV1RRT2xGT0gz"
+						   data-fp-container="modal"
+						   data-fp-services="COMPUTER,CONVERT"
+						   data-fp-crop-force="true"
+						   data-fp-crop-ratio="1/1"
+					/>
+
+				</div>
+
+			</form>
+		</div>
+
+		<div class="col s8 offset-s2 step2" ng-show="vm.currentStep === 2">
+			<h4 class="center">New type</h4>
+			<form class="col s12 center">
+				<div class="row">
+					<div class="input-field col s12 m6">
+						<i class="fa fa-tag prefix" aria-hidden="true"></i>
+						<input id="spotName"
+							   type="text"
+							   class="validate"
+							   ng-model="vm.spotName"
+						>
+						<label for="spotName">Name</label>
+					</div>
+					<div class="input-field col s12 m6">
+						<i class="fa fa-money prefix" aria-hidden="true"></i>
+						<input min="4.99"
+							   step="0.01"
+							   id="spotPrice"
+							   type="number"
+							   class="validate"
+							   ng-model="vm.spotPrice"
+						>
+						<label for="spotPrice">Price</label>
+					</div>
+					<div class="input-field col s12 m6">
+						<select ng-model="vm.spotShape">
+							<option value="" disabled selected>Choose your option</option>
+							<option value="square">
+								Square
+							</option>
+							<option value="circle">
+								Circle
+							</option>
+						</select>
+						<label>Shape</label>
+					</div>
+					<div class="input-field col s12 m6">
+						<input id="spotColor"
+							   class="validate"
+							   type="color"
+							   ng-model="vm.spotColor"
+						>
+					</div>
+				</div>
+				<button ng-click="vm.newType()" class="awesomeButton btn waves-effect waves-light addType">Add type</button>
+			</form>
+
+			<div class="col s12" ng-if="vm.spotTypes.length !== 0">
+				<ul class="collection">
+					<li class="collection-item avatar" ng-repeat="type in vm.spotTypes">
+						<div class="col s3">
+							<div style="background-color: {{ type.color ? type.color : '#383838' }}"
+								 class="{{ type.shape }}"
+							></div>
+						</div>
+						<div class="col s6 spotTypeContainer">
+							<span class="spotTypeName center title">{{ type.name }}</span>
+							<span class="spotTypePrice center title">{{ type.price }}$</span>
+						</div>
+						<div class="col s3">
+							<a class="addBox"
+							   ng-click="vm.newBox(type.color, type.shape, type.price)">
+								<i class="fa fa-plus" aria-hidden="true"></i>
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="col s8 offset-s2" ng-show="vm.currentStep === 3">
+			<h3 class="center">{{ vm.mapName }}</h3>
+			<div class="col s12 center finalMapContainer">
+				<map map="vm.finalMap"></map>
+			</div>
+		</div>
+
+		<!--MAP-->
+		<div class="col s12 center mapContainer" ng-show="vm.currentStep < 3">
+			<div ng-if="vm.mapSize"
+				 class="center {{ vm.mapSize }}"
+				 style="background:url( {{ vm.mapImage }} );background-size: contain;"
+				 id="map"
+			></div>
+		</div>
+
+		<!--Bottom BTNS-->
+		<div class="previousnextContainer">
+			<button class="awesomeButton previousBtn center waves-effect waves-light btn" ng-click="vm.previous()">
+				Previous
+			</button>
+
+			<button class="awesomeButton nextBtn center waves-effect waves-light btn" ng-click="vm.next()">
+				Next
+			</button>
+		</div>
+
+	</div>
+</div>
