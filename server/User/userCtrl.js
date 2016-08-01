@@ -4,30 +4,15 @@ export default {
 	// ************************************************************************
 	// 								Get Auth with Auth0
 	// ************************************************************************
+	// THIS FUNCTION ONLY HAS THE USER OBJECT FROM FACEBOOK OR GOOGLE
 	getAuth( req, res ) {
 		if ( !req.user ) {
 			throw new Error( 'user null' );
 		}
-		Users.findOne( { email: req.user._json.email }, ( err, user ) => {
-			if ( user ) {
-				Users.findById( user._id )
-				.populate( 'markets' )
-				.exec( ( error, currentUser ) => {
-					if ( error ) {
-						return res.status( 500 ).json( error );
-					}
-					if ( currentUser.markets.length < 0 ) {
-						res.redirect( '/#/create' );
-					} else {
-						res.redirect( '/#/dashboard' );
-					}
-				} );
-			} else if ( err ) {
-				res.redirect( '/#/create' );
-		}
-	} );
-
+		return res.redirect( '/#/dashboard' );
 	},
+	// THIS FUNCTION IS CALLED WHEN THEY REDIRECT TO DASHBOARD, IT CHECKS IF THE
+	// GOOGLE OR FACEBOOK USER IS EXSISTING THEN RETURNS DATABASE USER OBJECT
 	getAuthUser( req, res, next ) {
 		Users.findOne( { email: req.user._json.email }, ( err, user ) => {
 			if ( user ) {
@@ -43,7 +28,7 @@ export default {
 			} else if ( err ) {
 				return res.status( 500 ).json( err );
 			} else {
-				if ( req.user.identities[0].provider === 'google-oath2' ) {
+				if ( req.user.identities[0].provider === 'google-oauth2' ) {
 					new Users( {
 						firstName: req.user._json.given_name,
 						lastName: req.user._json.family_name,
@@ -55,13 +40,27 @@ export default {
 							return res.status( 500 ).json( errs );
 						} return res.status( 200 ).json( newUser );
 					} );
-				} else if ( req.user.identities[0].provider === 'facebook' ) {
+				}
+					else if ( req.user.identities[0].provider === 'facebook' ) {
 					new Users( {
 						firstName: req.user._json.given_name,
 						lastName: req.user._json.family_name,
 						email: req.user._json.email,
 						creationDate: new Date(),
 						photo: `https://graph.facebook.com/${req.user.identities[0].user_id}/picture?width=9999`
+					} ).save( ( errs, newUser ) => {
+						if ( errs ) {
+							return res.status( 500 ).json( errs );
+						} return res.status( 200 ).json( newUser );
+					} );
+				}
+				else {
+					new Users( {
+						firstName: req.user._json.given_name,
+						lastName: req.user._json.family_name,
+						email: req.user._json.email,
+						creationDate: new Date(),
+						photo: req.user._json.picture
 					} ).save( ( errs, newUser ) => {
 						if ( errs ) {
 							return res.status( 500 ).json( errs );
