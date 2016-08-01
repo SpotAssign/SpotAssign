@@ -2,7 +2,9 @@ import { eventDirective } from './event.directive';
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
-export const event = angular.module( 'event', [ uiRouter ] )
+import { map } from '../map/map';
+
+export const event = angular.module( 'event', [ uiRouter, map.name ] )
 .config( ( $stateProvider ) => {
 	$stateProvider.state( 'event', {
 		url: '/event', // This will have a dynamic url 'spotassign.com/provo'
