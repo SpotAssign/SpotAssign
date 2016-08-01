@@ -24,7 +24,9 @@ const service = ( $http, $location ) => {
                 } );
             },
             getLocalUser() {
-                return localStorage.getItem( 'currentUser' );
+                const LocalUser= localStorage.getItem( 'currentUser' );
+                console.log( LocalUser );
+                return LocalUser && JSON.parse( LocalUser );
             },
             getOne( id ) {
                 return $http.get( `${ api.url }/api/users/${id}` )
