@@ -8,7 +8,6 @@ class DashboardController {
 	}
 
 	getCurrentUser() {
-
 		return this.service.user.getCurrentOrCreate()
 		.then( user => {
 			this.timeout(() => {
