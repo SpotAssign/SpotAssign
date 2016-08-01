@@ -1,11 +1,8 @@
 class SideNavController {
-	constructor( service ) {
+	constructor( service, $timeout ) {
 		this.service = service;
 		this.getCurrentUser();
 		this.currentUser = {};
-		this.setTimeout(function () {
-
-		}, 10);
 		this.userProfilePhoto = {};
 		this.getLocal();
 		$( '.button-collapse' ).sideNav( {
@@ -13,6 +10,8 @@ class SideNavController {
 			edge: 'left',
 			closeOnClick: true
 		} );
+		this.checkUser();
+		this.timeout = $timeout;
 	}
 	logout() {
 		return this.service.user.logout();
@@ -25,13 +24,11 @@ class SideNavController {
 			} );
 		} );
 	}
-	getLocal() {
-		// setTimeout( function () {
-		// 	this.currentUser = this.service.user.getLocalUser();
-		// }, 500 );
-		}
+	checkUser() {
+		let checkUser = localStorage.getItem( 'currentUser' );
+		checkUser = JSON.parse( checkUser );
+		this.checkUser = checkUser.markets.length > 0;
+	}
 }
-
-
-SideNavController.$inject = [ 'service' ];
+SideNavController.$inject = [ 'service', '$timeout' ];
 export { SideNavController };

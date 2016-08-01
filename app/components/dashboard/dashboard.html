@@ -1,20 +1,21 @@
 <div>
 	<side-nav admin-panel="true"></side-nav>
 	<div class="row side-nav-space">
-		<div class="col s12">
+		<div class="col s12" ng-if="vm.user.markets.length > 0">
 
 
-			<h4 id="company-title"><i class="material-icons">business</i> Company Information <hr class="divider"></h4>
-			<h6>Name: {{ vm.params.eventTitle }} <button>Edit</button></h6>
+			<h4 id="company-title"><i class="material-icons">business</i> Event Information <hr class="divider"></h4>
+			<h6>Name: {{ vm.user.markets[ vm.user.markets.length - 1 ].name }} </h6>
 
-			<h6>Location: {{ vm.location }} <button>Edit</button></h6>
+			<h6>Location: {{ vm.user.markets[ vm.user.markets.length - 1 ].location.city }}, {{ vm.user.markets[ vm.user.markets.length - 1 ].location.state }} </h6>
 
-			<h6>Bio: {{ vm.bio }} <button>Edit</button></h6>
+			<h6>Bio: {{ vm.user.markets[ vm.user.markets.length - 1 ].bio }} </h6>
 
-			<h6>Photo: {{ vm.photo }} <button>Edit</button></h6>
+			<h6>Photo: {{ vm.photo }} </h6>
 
 			<h4><i class="material-icons">place</i> Your Event Map <hr class="divider"></h4>
-			<img src="http://placehold.it/450x250" />
+			<!-- <img src="http://placehold.it/450x250" /> <-->
+				<map></map>
 
 			<h4><i class="material-icons">schedule</i> Schedule and Hours <hr class="divider"></h4>
 

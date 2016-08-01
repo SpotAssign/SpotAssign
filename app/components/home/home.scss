@@ -38,9 +38,9 @@
 			margin-top: 7%;
 		}
 	}
-	//.active {
-	//	background-color: $primary-orange !important;
-	//}
+	li.indicator-item.active {
+		background-color: $primary-orange !important;
+	}
 	.tagline {
 		margin-top: 10%;
 	}

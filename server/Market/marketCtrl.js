@@ -33,7 +33,7 @@ export default {
 			if ( err ) {
 				return res.send( err );
 			}
-			Users.findByIdAndUpdate( req.body.user, { $push: { markets: market._id } }, {
+			Users.findByIdAndUpdate( req.body.admins, { $push: { markets: market._id } }, {
 				safe: true,
 				upsert: true,
 				new: true
@@ -53,9 +53,9 @@ export default {
 		}
 		Markets.findByIdAndUpdate( req.params.id, req.body, ( err, market ) => {
 			if ( err ) {
-				return res.send( err );
+				return res.status( 400 ).send( err );
 			}
-			return res.json( market );
+			return res.status( 200 ).json( market );
 		} );
 	},
 	// DELETE REQUEST
@@ -75,8 +75,9 @@ export default {
 				if ( error ) {
 					return res.send( err );
 				}
+
+				return res.json( market );
 			} );
-			return res.json( market );
 		} );
 	}
 };

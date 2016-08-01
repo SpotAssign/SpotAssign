@@ -8,7 +8,25 @@ export default {
 		if ( !req.user ) {
 			throw new Error( 'user null' );
 		}
-		res.redirect( '/#/create' );
+		Users.findOne( { email: req.user._json.email }, ( err, user ) => {
+			if ( user ) {
+				Users.findById( user._id )
+				.populate( 'markets' )
+				.exec( ( error, currentUser ) => {
+					if ( error ) {
+						return res.status( 500 ).json( error );
+					}
+					if ( currentUser.markets.length < 0 ) {
+						res.redirect( '/#/create' );
+					} else {
+						res.redirect( '/#/dashboard' );
+					}
+				} );
+			} else if ( err ) {
+				res.redirect( '/#/create' );
+		}
+	} );
+
 	},
 	getAuthUser( req, res, next ) {
 		Users.findOne( { email: req.user._json.email }, ( err, user ) => {
@@ -16,7 +34,7 @@ export default {
 				Users.findById( user._id )
 				.populate( 'payment' )
 				.populate( 'reservations' )
-				.populate( 'market' )
+				.populate( 'markets' )
 				.exec( ( error, currentUser ) => {
 					if ( error ) {
 						return res.status( 500 ).json( error );

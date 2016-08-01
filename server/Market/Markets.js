@@ -19,10 +19,10 @@ const Markets = Schema(
 			]
 		},
 		endDate: { type: Date },
-		admins: [ {
+		admins: [{
 			type: Schema.Types.ObjectId,
-			ref: `Admins`
-		} ],
+			ref: `Users`
+		}],
 		users: [ {
 			type: Schema.Types.ObjectId,
 			ref: `Users`

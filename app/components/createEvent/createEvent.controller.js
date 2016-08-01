@@ -8,7 +8,8 @@ class CreateEventController {
 		this.getCurrentUser();
 	}
 
-	createEvent ( name, bio, city, state ) {
+	createEvent ( name, bio, city, state, paymentEmail ) {
+
 		return this.service.market.create({
 			name,
 			location: {
@@ -16,10 +17,10 @@ class CreateEventController {
 				state
 			},
 			bio,
-			admins: this.user._id
+			admins: this.user._id,
+			paymentInfo: paymentEmail
 		})
 		.then( event => {
-			console.log( event, 'this is event line 21 CreateEventController' );
 			this.event = event;
 			this.state.go( 'dashboard', { event: this.event } )
 		} );
@@ -36,11 +37,11 @@ class CreateEventController {
 		} );
 	}
 	getCurrentUser() {
-		console.log("getting current user")
+	
 		return this.service.user.getCurrentOrCreate()
 		.then( user => {
 			this.timeout(() => {
-				this.user = user
+				this.user = user;
 			} );
 		} );
 	}
