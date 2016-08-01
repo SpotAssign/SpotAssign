@@ -1,6 +1,4 @@
 class MapController {
-	constructor() {
-	}
 	recreateMap( positions ) {
 		positions.map( position => {
 			$( '#currentMap' ).append(
