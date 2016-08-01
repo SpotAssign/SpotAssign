@@ -11,31 +11,30 @@ const service = ( $http, $location ) => {
         // <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
         user: {
             getAll( query ) {
-                return $http.get( `${ api.url }/api/users` )
+                return $http.get( `${api.url}/api/users` )
                 .then( ( { data } ) => { return data; } );
             },
             // This function will either get the current user,
             // or create a new user if no email is known to exsist in the DB
             getCurrentOrCreate() {
-                return $http.get( `${ api.url }/user` )
+                return $http.get( `${api.url}/user` )
                 .then( ( { data } ) => {
                     localStorage.setItem( 'currentUser', JSON.stringify( data ) );
                     return data;
                 } );
             },
             getLocalUser() {
-                const LocalUser= localStorage.getItem( 'currentUser' );
-                console.log( LocalUser );
-                return LocalUser && JSON.parse( LocalUser );
+                const LocalUser = localStorage.getItem( 'currentUser' );
+                return JSON.parse( LocalUser );
             },
             getOne( id ) {
-                return $http.get( `${ api.url }/api/users/${id}` )
+                return $http.get( `${api.url}/api/users/${id}` )
                 .then( ( { data } ) => { return data; } );
             },
             editOne( id, editedUser ) {
                 return $http( {
                     method: 'PUT',
-                    url: `${ api.url }/api/users/${id}`,
+                    url: `${api.url}/api/users/${id}`,
                     data: {
                         phoneNumber: editedUser.phoneNumber,
                         boothCompName: editedUser.boothCompName,
@@ -53,17 +52,17 @@ const service = ( $http, $location ) => {
         // <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
         market: {
             getAll( query ) {
-                return $http.get( `${ api.url }/api/markets` )
+                return $http.get( `${api.url}/api/markets` )
                 .then( ( { data } ) => { return data; } );
             },
             getOne( id ) {
-                return $http.get( `${ api.url }/api/markets/${ id }` )
+                return $http.get( `${api.url}/api/markets/${id}` )
                 .then( ( { data } ) => { return data; } );
             },
             create( newMarket ) {
                 return $http( {
                     method: 'POST',
-                    url: `${ api.url }/api/markets`,
+                    url: `${api.url}/api/markets`,
                     data: {
                         name: newMarket.name,
                         location: newMarket.location,
@@ -80,7 +79,7 @@ const service = ( $http, $location ) => {
             editOne( id, editedMarket ) {
                 return $http( {
                     method: 'PUT',
-                    url: `${ api.url }/api/markets/${ id }`,
+                    url: `${api.url}/api/markets/${id}`,
                     data: {
                         name: editedMarket.name,
                         location: editedMarket.location,
@@ -95,7 +94,7 @@ const service = ( $http, $location ) => {
                 } ).then( ( { data } ) => { return data; } );
             },
             deleteOne( id ) {
-                return $http.delete( `${ api.url }/markets/${id}` )
+                return $http.delete( `${api.url}/markets/${id}` )
                 .then( ( { data } ) => { return data; } );
             }
         },
