@@ -29,6 +29,7 @@
     "cookie-parser": "^1.4.3",
     "eslint-plugin-jsx-a11y": "^1.2.1",
     "express": "^4.14.0",
+    "filepicker-js": "^2.4.15",
     "express-session": "^1.14.0",
     "font-awesome": "^4.6.3",
     "jquery": "^3.1.0",
