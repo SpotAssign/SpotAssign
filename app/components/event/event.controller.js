@@ -1,7 +1,7 @@
 class EventController {
-  constructor() {
-    this.greeting = 'EventController!';
-  }
+	constructor() {
+		$( '.carousel.carousel-slider' ).carousel( { full_width: true } );
+	}
 }
 
 EventController.$inject = [];

@@ -1,10 +1,51 @@
 #event {
+	background: #efefef;
+	background-image: url('http://imgur.com/bvPVKvS');
+	height: 100%;
+	.row {
+		padding: 0;
+	}
+	.carousel.carousel-slider {
+		max-height: 500px;
+	}
+	.top {
+		padding-top: 40px;
+    	margin-bottom: 40px;
+    	text-align: center;
+		.title {
+			text-align: center;
+			font: 400 44px/71px 'Open Sans', sans-serif;
+			margin: 0;
+			font-weight: 700;
+			font-size: 75px;
+		}
+		p {
+			font: 14px/23px 'Open Sans', sans-serif;
+    		text-shadow: #ffffff 0 1px 0;
+			font-size: 25px;
+			margin-top: 70px;
+			a {
+				background-color: #0072bb;
+				padding: 15px 30px;
+				color: white;
+				border-radius: 8px;
+				text-shadow: #3799ca 0 -1px 0;
+				box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+			}
+			a:hover {
+				text-decoration: none;
+    			background-color: #4d90fe;
+			}
+		}
+	}
 	.event-photo {
 		width: 100%;
 		max-height: 300px;
 		object-fit: cover;
 	}
 	.map {
-		width: 100%;
+		margin-top: 40px;
+		width: 70%;
+		max-height: 350px;
 	}
 }
