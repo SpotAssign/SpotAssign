@@ -71,7 +71,7 @@ const service = ( $http, $location ) => {
                         startDate: newMarket.startDate,
                         recurrence: newMarket.recurrence,
                         endDate: newMarket.endDate,
-                        admins: newMarket.userId
+                        admins: newMarket.admins
                     }
                 } ).then( ( { data } ) => { return data; } );
             },
@@ -88,7 +88,7 @@ const service = ( $http, $location ) => {
                         startDate: editedMarket.startDate,
                         recurrence: editedMarket.recurrence,
                         endDate: editedMarket.endDate,
-                        admins: editedMarket.userId
+                        admins: editedMarket.admins
                     }
                 } ).then( ( { data } ) => { return data; } );
             },
