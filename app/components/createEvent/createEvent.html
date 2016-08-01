@@ -6,9 +6,11 @@
 		<div class="col s10">
 			<h4 id="company-title"><i class="material-icons">event_seat</i> Create an Event<hr class= "divider"></h4>
 
-			<div class="col s12">
+			<div class="row">
+			<div class="col s6">
 				Title:
 				<input type="text" ng-model="eventTitle">
+			</div>
 			</div>
 
 			<div class="col s12">
@@ -28,11 +30,14 @@
 
 			<div>
 				<div class="col s12 payment">
+					<div class="payment-header">
 					<i class="material-icons lock">lock</i>
-				Payment Information:
-        <div class="center">
+				Payment Information</div><br>
 
-            <form stripe-form="stripeCallback" name="checkoutForm">
+						<div class="col s6">Email: <input type="text"></div>
+
+
+            <!-- <form stripe-form="stripeCallback" name="checkoutForm">
 
 							<div class = "col s5">
                 <input validate id="card" ng-model="number" placeholder="Card Number" name="card" payments-format="card" payments-validate="card" />
@@ -46,14 +51,13 @@
 								<input validate id="cvc" ng-model="cvc" placeholder="CVC" name="cvc" payments-format="cvc" payments-validate="cvc" />
 							</div>
 
-            </form>
-        </div>
+            </form> -->
     </div>
 
 			</div>
 
 			<div class="center">
-				<button class="btn create-event-button" type="submit" ng-click="vm.createEvent( eventTitle, bio, city, state )">Create Event</button>
+				<button class="btn create-event-button" type="submit" ng-click="vm.createEvent( eventTitle, bio, city, state, paymentEmail )">Create Event</button>
 			</div>
 
 		</div>

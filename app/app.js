@@ -13,6 +13,7 @@ import { event } from './components/event/event';
 import { dashboard } from './components/dashboard/dashboard';
 import { userHome } from './components/userHome/userHome';
 import { newMap } from './components/newMap/newMap';
+import { editEvent } from './components/editEvent/editEvent';
 
 // START MODULE
 angular.module( 'SpotAssign', [
@@ -22,6 +23,7 @@ angular.module( 'SpotAssign', [
 	event.name,
 	dashboard.name,
 	userHome.name,
-	newMap.name
+	newMap.name,
+	editEvent.name
 ] )
 .directive( 'app', appDirective );
