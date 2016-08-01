@@ -3,6 +3,9 @@ class SideNavController {
 		this.service = service;
 		this.getCurrentUser();
 		this.currentUser = {};
+		this.setTimeout(function () {
+
+		}, 10);
 		this.userProfilePhoto = {};
 		this.getLocal();
 		$( '.button-collapse' ).sideNav( {
@@ -23,12 +26,9 @@ class SideNavController {
 		} );
 	}
 	getLocal() {
-		setTimeout( function () {
-			this.currentUser = this.service.user.getLocalUser();
-		}, 500 );
-			// const userPhoto = document.createElement( 'img' );
-			// userPhoto.src = require( this.currentUser.photo );
-			// this.userProfilePhoto = userPhoto.src;
+		// setTimeout( function () {
+		// 	this.currentUser = this.service.user.getLocalUser();
+		// }, 500 );
 		}
 }
 
