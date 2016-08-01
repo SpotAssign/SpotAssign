@@ -43,17 +43,31 @@ export default {
 			} else if ( err ) {
 				return res.status( 500 ).json( err );
 			} else {
-				new Users( {
-					firstName: req.user._json.given_name,
-					lastName: req.user._json.family_name,
-					email: req.user._json.email,
-					creationDate: new Date(),
-					photo: req.user._json.picture
-				} ).save( ( errs, newUser ) => {
-					if ( errs ) {
-						return res.status( 500 ).json( errs );
-					} return res.status( 200 ).json( newUser );
-				} );
+				if ( req.user.identities[0].provider === 'google-oath2' ) {
+					new Users( {
+						firstName: req.user._json.given_name,
+						lastName: req.user._json.family_name,
+						email: req.user._json.email,
+						creationDate: new Date(),
+						photo: req.user._json.picture
+					} ).save( ( errs, newUser ) => {
+						if ( errs ) {
+							return res.status( 500 ).json( errs );
+						} return res.status( 200 ).json( newUser );
+					} );
+				} else if ( req.user.identities[0].provider === 'facebook' ) {
+					new Users( {
+						firstName: req.user._json.given_name,
+						lastName: req.user._json.family_name,
+						email: req.user._json.email,
+						creationDate: new Date(),
+						photo: `https://graph.facebook.com/${req.user.identities[0].user_id}/picture?width=9999`
+					} ).save( ( errs, newUser ) => {
+						if ( errs ) {
+							return res.status( 500 ).json( errs );
+						} return res.status( 200 ).json( newUser );
+					} );
+				}
 			}
 		} );
 	},
