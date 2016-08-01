@@ -22,6 +22,7 @@ const service = ( $http, $location ) => {
                     localStorage.setItem( 'currentUser', JSON.stringify( data ) );
                     return data;
                 } );
+                
             },
             getLocalUser() {
                 const LocalUser = localStorage.getItem( 'currentUser' );
