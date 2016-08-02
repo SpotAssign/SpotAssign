@@ -26,7 +26,6 @@ class SideNavController {
 	checkUser() {
 		let checkUser = localStorage.getItem( 'currentUser' );
 		checkUser = JSON.parse( checkUser );
-		this.checkUser = checkUser.markets.length > 0;
 	}
 
 

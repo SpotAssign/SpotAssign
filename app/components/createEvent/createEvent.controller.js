@@ -8,6 +8,8 @@ class CreateEventController {
 		this.getCurrentUser();
 	}
 
+
+
 	createEvent ( name, bio, city, state, paymentEmail ) {
 
 		return this.service.market.create({
@@ -37,7 +39,7 @@ class CreateEventController {
 		} );
 	}
 	getCurrentUser() {
-	
+
 		return this.service.user.getCurrentOrCreate()
 		.then( user => {
 			this.timeout(() => {
@@ -45,6 +47,8 @@ class CreateEventController {
 			} );
 		} );
 	}
+
+
 
 }
 

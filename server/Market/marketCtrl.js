@@ -33,7 +33,7 @@ export default {
 			if ( err ) {
 				return res.send( err );
 			}
-			Users.findByIdAndUpdate( req.body.admins, { $push: { markets: market._id } }, {
+			Users.findByIdAndUpdate( req.body.admins, { $push: { admin: market._id } }, {
 				safe: true,
 				upsert: true,
 				new: true
