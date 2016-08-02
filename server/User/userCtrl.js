@@ -20,6 +20,7 @@ export default {
 				.populate( 'payment' )
 				.populate( 'reservations' )
 				.populate( 'markets' )
+				.populate( 'admin' )
 				.exec( ( error, currentUser ) => {
 					if ( error ) {
 						return res.status( 500 ).json( error );
@@ -77,6 +78,7 @@ export default {
 			.populate( 'payment' )
 			.populate( 'reservations' )
 			.populate( 'market' )
+			.populate( 'admin' )
 			.exec( ( err, users ) => {
 				if ( err ) {
 					return res.status( 500 ).json( err );
@@ -89,6 +91,7 @@ export default {
 			.populate( 'payment' )
 			.populate( 'reservations' )
 			.populate( 'market' )
+			.populate( 'admin' )
 			.exec( ( err, user ) => {
 				if ( err ) {
 					return res.status( 500 ).json( err );
@@ -104,6 +107,7 @@ export default {
 		.populate( 'payment' )
 		.populate( 'reservations' )
 		.populate( 'market' )
+		.populate( 'admin' )
 		.exec( ( err, user ) => {
 			if ( err ) {
 				return res.send( err );

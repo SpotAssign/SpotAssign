@@ -21,6 +21,10 @@ const Users = mongoose.Schema(
 		markets: [ {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: `Markets`
+		} ],
+		admin: [ {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: `Markets`
 		} ]
 	}
 );
