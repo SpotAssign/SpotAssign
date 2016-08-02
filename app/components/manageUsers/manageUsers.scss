@@ -1,0 +1,34 @@
+@import '../../styles/colors';
+
+#createEvent {
+
+		.side-nav-space {
+			 margin-left: 350px;
+		}
+		@media ( max-width:600px ) and (min-width: 300px)  {
+			 .side-nav-space {
+					 margin-left: auto;
+					 margin-right: auto;
+			 }
+		}
+		.divider {
+		 position: relative;
+		 width: 96.5%;
+		 right: 1.5%;
+		 height: 1px;
+		 background-color: $secondary-gray;
+		 border: $secondary-gray;
+		}
+		.invite-user-button {
+			background-color: $primary-orange;
+			display: inline-block;
+		}
+
+		h4 {
+ 		 margin-top: 8%;
+ 		 margin-bottom: 5%;
+ 	 }
+ 	 #company-title {
+ 		 margin-top: 5%;
+ 	 }
+}

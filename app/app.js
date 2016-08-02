@@ -14,6 +14,8 @@ import { dashboard } from './components/dashboard/dashboard';
 import { userHome } from './components/userHome/userHome';
 import { newMap } from './components/newMap/newMap';
 import { editEvent } from './components/editEvent/editEvent';
+import { manageUsers } from './components/manageUsers/manageUsers';
+
 
 // START MODULE
 angular.module( 'SpotAssign', [
@@ -24,6 +26,7 @@ angular.module( 'SpotAssign', [
 	dashboard.name,
 	userHome.name,
 	newMap.name,
-	editEvent.name
+	editEvent.name,
+	manageUsers.name
 ] )
 .directive( 'app', appDirective );
