@@ -4,26 +4,65 @@
 			<div class="row">
 				<div class="col s12 m8 offset-m2">
 					<h3 class="center">Search event in your area!</h3>
+					<h5>Search</h5>
 					<div class="input-field col s6">
-          				<input id="location" type="text" class="validate">
+          				<input id="location" type="text" class="validate" ng-model="searchLocVal">
           				<label for="location">Location</label>
         			</div>
 					<div class="input-field col s6">
-          				<input id="title" type="text" class="validate">
+          				<input id="title" type="text" class="validate" ng-model="searchTitleVal">
           				<label for="title">Title</label>
         			</div>
-					<a class="waves-effect waves-light btn col s4 offset-s4">Search</a>
+					<a class="waves-effect waves-light btn col s4 offset-s4" ng-Click="findVal(searchVal)">Search</a>
 				</div>
 			</div>
 
 			<div class="row">
-				<ul class="collapsible col s12 m8 offset-m2" data-collapsible="accordion">
+				<ul class="collapsible col s14 m10 offset-m1" data-collapsible="accordion" ng-repeat="mkt in data | filter:searchVal">
 					<li>
 						<div class="collapsible-header">
-							Provo
+						<ul class="collapsible-centering" >
+								<li class="MktInfo">Provo</li>{result.name}
+								<li class="MktInfo">Old McDonald</li>{result.contact}
+								<li class="MktInfo">867-5309</li>
+								<li class="MktPic"><img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=50%C3%97150&w=50&h=45"></li>
+						</ul>
 						</div>
 						<div class="collapsible-body">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aut, beatae cumque deserunt dicta doloremque enim et fugit ipsa iure magni maxime nemo nesciunt odio perspiciatis quam qui sapiente vero! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, asperiores beatae cumque dicta dolorem enim error et, facilis fuga hic mollitia nam officia possimus quo quos repellat sed ut voluptatem.</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aut, beatae cumque deserunt dicta doloremque enim et fugit ipsa iure magni maxime nemo nesciunt odio perspiciatis quam qui sapiente vero! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, asperiores beatae cumque dicta dolorem enim error et, facilis fuga hic mollitia nam officia possimus quo quos repellat sed ut voluptatem.
+							{result.desc}</p>
+						</div>
+					</li>
+					
+					<li>
+						<div class="collapsible-header">
+							<ul class="collapsible-centering">
+								<li class="MktInfo">Market Title</li>
+								<li class="MktInfo">Contact Representative</li>
+								<li class="MktInfo">Contact Number</li>
+								<li class="MktPic"><img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=50%C3%97150&w=50&h=45"></li>
+								
+							</ul>
+							
+						</div>
+						<div class="collapsible-body">
+							<p>Bresaola ham hock shoulder t-bone landjaeger bacon turducken jowl swine brisket beef ribs sirloin tri-tip. Alcatra turducken shankle rump beef ribs. Biltong short ribs beef sirloin pork loin andouille. Flank fatback cow, venison pork belly landjaeger pork chop.</p>
+						</div>
+					</li>
+					<li>
+						<div class="collapsible-header">
+							<ul class="collapsible-centering">
+								<li class="MktInfo">Soulard's Farmers Market</li>
+								<li class="MktInfo">Maw Kettle</li>
+								<li class="MktInfo">(xxx) xxx-xxxx</li>
+								<li class="MktPic"><img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=50%C3%97150&w=50&h=45"></li>
+							</ul>
+							
+						</div>
+						<div class="collapsible-body">
+							<p>Kielbasa pancetta beef ribs short ribs pork loin picanha. Kielbasa flank ribeye doner short ribs beef chuck, capicola swine drumstick corned beef biltong. Bresaola tri-tip alcatra porchetta beef. Strip steak spare ribs pork loin, pork chop short ribs brisket sirloin cupim biltong porchetta alcatra swine. Fatback short ribs ground round, boudin prosciutto turducken shankle hamburger beef spare ribs t-bone shank kielbasa tongue venison.
+
+Tri-tip cupim leberkas short ribs bacon filet mignon. Jowl spare ribs bacon fatback chicken strip steak. Beef doner kielbasa porchetta beef ribs ham hamburger pancetta andouille. Tenderloin chuck sirloin, landjaeger bacon kielbasa pork chop pork venison fatback tri-tip biltong tail cow drumstick. Picanha meatloaf ham hock filet mignon jerky drumstick hamburger cow pork tongue alcatra shankle bacon. Pig tail beef, pork chop short ribs beef ribs boudin prosciutto frankfurter chuck cupim. Pork loin ribeye fatback cupim cow porchetta.</p>
 						</div>
 					</li>
 				</ul>
