@@ -1,5 +1,6 @@
 import userCtrl from './userCtrl';
 import passport from 'passport';
+import middleware from '../middleware/middleware';
 
 export default function ( app ) {
 	// Auth 0 callback handler
@@ -8,17 +9,17 @@ export default function ( app ) {
 		passport.authenticate( 'auth0', { failureRedirect: '/' } ),
 		userCtrl.getAuth
 	);
-	app.get( '/user', userCtrl.getAuthUser );
+	app.get( '/user', middleware, userCtrl.getAuthUser );
 
 
 	// GET REQUEST
-	app.get( '/api/users', userCtrl.getUsers );
-	app.get( '/api/users/:id', userCtrl.getThisUser );
+	app.get( '/api/users', middleware, userCtrl.getUsers );
+	app.get( '/api/users/:id', middleware, userCtrl.getThisUser );
 
 
 	// PUT REQUEST
-	app.put( '/api/users/:id', userCtrl.editUser );
+	app.put( '/api/users/:id', middleware, userCtrl.editUser );
 
 	// DELETE REQUEST
-	app.delete( '/api/users/:id', userCtrl.deleteUser );
+	app.delete( '/api/users/:id', middleware, userCtrl.deleteUser );
 }
