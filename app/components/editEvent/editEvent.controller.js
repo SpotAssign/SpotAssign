@@ -10,9 +10,9 @@ class EditEventController {
 fillFields() {
 	const user = JSON.parse( localStorage.getItem( 'currentUser' ) );
 		if ( user ) {
-			const event = user.markets[user.markets.length - 1];
+			const event = user.admin[user.admin.length - 1];
 			this.event = event;
-			console.log( this.event, 'this is this.event');
+			// console.log( this.event, 'this is this.event');
 			this.timeout( () => {
 				document.getElementById( 'eventTitle' ).value = this.event.name;
 				document.getElementById( 'bio' ).value = this.event.bio;

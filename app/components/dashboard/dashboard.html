@@ -1,17 +1,17 @@
 <div>
 	<side-nav admin-panel="true"></side-nav>
 	<div class="row side-nav-space">
-		<div class="col s12" ng-if="vm.user.markets.length > 0">
+		<div class="col s12" ng-if="vm.user.admin.length > 0">
 
 
 			<h4 id="company-title"><i class="material-icons">business</i> Event Information <hr class="divider"></h4>
-			<h6>Name: {{ vm.user.markets[vm.user.markets.length - 1].name }} </h6>
+			<h6>Name: {{ vm.user.admin[vm.user.admin.length - 1].name }} </h6>
 
-			<h6>Location: {{ vm.user.markets[vm.user.markets.length - 1].location.city }}, {{ vm.user.markets[vm.user.markets.length - 1].location.state }} </h6>
+			<h6>Location: {{ vm.user.admin[vm.user.admin.length - 1].location.city }}, {{ vm.user.admin[vm.user.admin.length - 1].location.state }} </h6>
 
-			<h6>Bio: {{ vm.user.markets[vm.user.markets.length - 1].bio }} </h6>
+			<h6>Bio: {{ vm.user.admin[vm.user.admin.length - 1].bio }} </h6>
 
-			<h6>Payment Email: {{ vm.user.markets[vm.user.markets.length - 1].paymentInfo }}</h6>
+			<h6>Payment Email: {{ vm.user.admin[vm.user.admin.length - 1].paymentInfo }}</h6>
 
 			<h6>Photo: {{ vm.photo }} </h6>
 
