@@ -1,29 +1,32 @@
 @import '../../styles/colors';
 @import url(https://fonts.googleapis.com/css?family=Work+Sans:300);
 
-nav {
-   background-color: $primary-gray !important;
-   .nav-wrapper {
-       .brand-logo img {
-           height: 50px;
-       }
-			 ul {
-				 li {
-					 font-family: 'Work Sans', sans-serif;
+#homeNav {
+	nav {
+	   background-color: $primary-gray !important;
+	   .nav-wrapper {
+		   img.brand-logo {
+			   height: 63px;
+			   width: 300px;
+			   margin-left: 5%;
+			   margin-top: .25%;
+		   }
+				 ul {
+					 li {
+						 font-family: 'Work Sans', sans-serif;
+					 }
 				 }
+				 .fa-bars {
+					 margin-left: 50%;
+				 }
+	   }
+		 @media screen and ( max-width: 1000px ) {
+				.nav-wrapper {
+					text-align: center;
+				}
+			 .brand-logo {
+				 height: 63px;
 			 }
-			 .fa-bars {
-				 margin-left: 50%;
-			 }
-   }
-	 @media screen and ( max-width: 1000px ) {
-	 		.nav-wrapper {
-				text-align: center;
-			}
-	 }
-}
-.brand-logo {
-	width: 300px;
-	margin-left: 5%;
-	margin-top: .25%;
+		 }
+	}
 }

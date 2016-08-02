@@ -8,6 +8,8 @@ class CreateEventController {
 		this.getCurrentUser();
 	}
 
+
+
 	createEvent ( name, bio, city, state, paymentEmail ) {
 
 		return this.service.market.create({

@@ -18,15 +18,12 @@ class SideNavController {
 	getCurrentUser() {
 		return this.service.user.getCurrentOrCreate()
 		.then( user => {
-			this.timeout( () => {
-				this.currentUser = user;
-			} );
+			this.currentUser = user;
 		} );
 	}
 	checkUser() {
 		let checkUser = localStorage.getItem( 'currentUser' );
 		checkUser = JSON.parse( checkUser );
-		this.checkUser = checkUser.markets.length > 0;
 	}
 
 
