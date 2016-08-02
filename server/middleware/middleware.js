@@ -1,9 +1,10 @@
 export default function (req, res, next) {
 	if ( req.isAuthenticated() ) {
-		console.log("user is authenticated, please proceed");
+		console.log( req.isAuthenticated(),"user is authenticated, please proceed");
 		next();
 	} else {
-		console.log("user is not authenticated, redirect");
-		return res.redirect( '/#/' );
+		console.log(req.isAuthenticated(),"user is not authenticated, I should redirect");
+		req.session.redirectTo = '/#/';
+		res.redirect( '/' );
 	}
 }
