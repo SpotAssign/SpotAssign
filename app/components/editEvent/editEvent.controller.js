@@ -40,9 +40,7 @@ fillFields() {
 	}
 
 	toggleMap() {
-		console.log( this.map );
 		this.map = !this.map;
-		console.log( this.map );
 	}
 
 

@@ -37,7 +37,7 @@ class CreateEventController {
 		} );
 	}
 	getCurrentUser() {
-	
+
 		return this.service.user.getCurrentOrCreate()
 		.then( user => {
 			this.timeout(() => {
@@ -45,6 +45,10 @@ class CreateEventController {
 			} );
 		} );
 	}
+
+		toggleMap() {
+			this.map = !this.map;
+		}
 
 }
 

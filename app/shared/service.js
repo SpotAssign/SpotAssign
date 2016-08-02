@@ -22,7 +22,7 @@ const service = ( $http, $location ) => {
                     localStorage.setItem( 'currentUser', JSON.stringify( data ) );
                     return data;
                 } );
-                
+
             },
             getLocalUser() {
                 const LocalUser = localStorage.getItem( 'currentUser' );
@@ -144,24 +144,27 @@ const service = ( $http, $location ) => {
         //  <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
         //                           BOOTHS SERVICE
         // <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
-        booth: {
+        map: {
             getAll( query ) {
-                return $http.get( `${api.url}/api/booths` )
+                return $http.get( `${api.url}/api/map` )
                 .then( ( { data } ) => { return data; } );
             },
             getOne( id ) {
-                return $http.get( `${api.url}/api/booths/${id}` )
+                return $http.get( `${api.url}/api/map/${id}` )
                 .then( ( { data } ) => { return data; } );
             },
-            create( newBooth ) {
+            create( newMap ) {
                 return $http( {
                     method: 'POST',
-                    url: `${api.url}/api/booths`,
+                    url: `${api.url}/api/map`,
                     data: {
-                        nickname: newBooth.nickname,
-                        availableDates: newBooth.availableDates,
-                        market: newBooth.marketId,
-                        location: newBooth.location
+                        nickname: newMap.nickname,
+                        availableDates: newMap.availableDates,
+                        market: newMap.marketId,
+                        location: newMap.location,
+												mapType: newMap.mapType,
+												mapImage: newMap.mapImage,
+												spots: newMap.spots
                     }
                 } ).then( ( { data } ) => { return data; } );
             },

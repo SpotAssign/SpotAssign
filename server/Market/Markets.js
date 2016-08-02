@@ -27,9 +27,9 @@ const Markets = Schema(
 			type: Schema.Types.ObjectId,
 			ref: `Users`
 		} ],
-		booths: [ {
+		map: [ {
 			type: Schema.Types.ObjectId,
-			ref: `Booths`
+			ref: `Map`
 		} ]
 	}
 );
