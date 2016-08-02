@@ -18,9 +18,7 @@ class SideNavController {
 	getCurrentUser() {
 		return this.service.user.getCurrentOrCreate()
 		.then( user => {
-			this.timeout( () => {
-				this.currentUser = user;
-			} );
+			this.currentUser = user;
 		} );
 	}
 	checkUser() {

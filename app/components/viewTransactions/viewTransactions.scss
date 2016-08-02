@@ -1,0 +1,117 @@
+@import '../../styles/colors';
+
+#viewTransactions {
+
+		.side-nav-space {
+			 margin-left: 350px;
+		}
+		@media ( max-width:600px ) and (min-width: 300px)  {
+			 .side-nav-space {
+					 margin-left: auto;
+					 margin-right: auto;
+			 }
+		}
+		.divider {
+		 position: relative;
+		 width: 96.5%;
+		 right: 1.5%;
+		 height: 1px;
+		 background-color: $secondary-gray;
+		 border: $secondary-gray;
+		}
+		.invite-user-button {
+			background-color: $primary-orange;
+			margin-top: 5px;
+			margin-left: 10px;
+		}
+
+		h4 {
+ 		 margin-top: 8%;
+ 		 margin-bottom: 5%;
+ 	 	}
+
+		.searchRow {
+			margin-left: auto;
+			margin-right: auto;
+			width: 600px;
+			border: $secondary-gray 2px solid;
+			div {
+				display: inline-block;
+				font-size: 1.4em;
+				width: 200px;
+				text-align: center;
+			}
+			input {
+				display: inline-block;
+				width: 370px;
+				margin-left: 5px;
+
+			}
+		}
+
+		.repeatUser {
+			border: $secondary-gray 1px solid;
+			height: 150px;
+			width: 100%;
+			margin-bottom: 2px;
+			position: relative;
+			min-width: 600px;
+			max-width: 600px;
+			margin-left: auto;
+			margin-right: auto;
+
+			li {
+				position: absolute;
+				img {
+					max-height: 125px;
+					margin-left: 10%;
+					margin-top: 12.5px;
+				}
+			}
+
+			.name {
+				margin-left:160px;
+				margin-top: 15px;
+				font-size: 1.7em;
+			}
+			.email {
+				margin-left:160px;
+				margin-top: 45px;
+			}
+			.creation {
+				margin-left:450px;
+				letter-spacing: 0.015em;
+				margin-top: 25px;
+				font-size: 0.74em;
+			}
+			.reservations {
+				margin-left: 160px;
+				margin-top: 80px;
+			}
+			.payments {
+				margin-left:300px;
+				margin-top: 80px;
+			}
+
+			button {
+				position: absolute;
+				margin-top: 113px;
+				font-size: 0.7em;
+				padding-right: 10px;
+				padding-left: 10px;
+				padding-bottom: 0px;
+				padding-top: 0px;
+				height: 32px;
+			}
+			.add {
+				margin-left: 80%;
+			}
+			.delete {
+				margin-left: 65%;
+			}
+		}
+
+ 	 #company-title {
+ 		 margin-top: 5%;
+ 	 }
+}
