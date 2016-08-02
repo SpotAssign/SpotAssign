@@ -1,7 +1,7 @@
 <div id="createEvent">
 	<side-nav admin-panel="true"></side-nav>
 	<div class = "side-nav-space">
-		<new-map class="new-map" ng-show="vm.map"></new-map>
+		<new-map class="new-map" show-map="vm.map" ng-show="vm.map"></new-map>
 
 	<div class="create-event-wrapper row" ng-show="!vm.map">
 		<div class="col s10">
@@ -46,7 +46,8 @@
 										<i class="material-icons header-icon">place</i>
 									Your Map</div><br>
 									<button ng-click="vm.toggleMap()">Design Your Map</button>
-
+									<map map="vm.myMap"></map>
+{{ vm.myMap }}
             <!-- <form stripe-form="stripeCallback" name="checkoutForm">
 
 							<div class = "col s5">

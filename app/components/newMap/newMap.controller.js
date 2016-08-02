@@ -5,6 +5,7 @@ class NewMapController {
 		this.currentStep = 1;
 		this.spotTypes = [];
 		this.state = $state;
+		this.getMap();
 
 		$( document ).ready( function () {
 			$( 'select' ).material_select();
@@ -60,7 +61,6 @@ class NewMapController {
 				$( '.nextBtn' ).show();
 			} else if ( this.currentStep === 2 ) {
 				$( '.nextBtn' ).show();
-			} else {
 			}
 		} else {
 			$( '.previousBtn' ).hide();
@@ -148,12 +148,21 @@ class NewMapController {
 		this.saveMap( positions );
 	}
 
-	createMap(  ) {
+	createMap() {
 		this.service.map.create( this.finalMap ).then( response => {
 			console.log( response, 'line 150 newMapCtrl this is our map' );
+			localStorage.setItem( 'map', JSON.stringify( response ) );
+			this.state.go( 'createEvent', {}, { reload: true } );
 			this.map = response;
+			this.myMap = JSON.parse( localStorage.getItem( 'map' ) );
 		} );
 	}
+
+	getMap() {
+		this.myMap = JSON.parse( localStorage.getItem( 'map' ) );
+		console.log( this.myMap, 'line 163 this is newMapCtrl' );
+	}
+
 
 	saveMap( spots ) {
 		this.finalMap = {
