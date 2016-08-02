@@ -48,7 +48,9 @@ class CreateEventController {
 		} );
 	}
 
-
+		toggleMap() {
+			this.map = !this.map;
+		}
 
 }
 

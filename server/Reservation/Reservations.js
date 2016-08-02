@@ -11,9 +11,9 @@ const Reservations = Schema(
 			type: Schema.Types.ObjectId,
 			ref: `Markets`
 		},
-		booth: {
+		map: {
 			type: Schema.Types.ObjectId,
-			ref: `Booths`
+			ref: `Map`
 		},
 		payment: {
 			type: Schema.Types.ObjectId,

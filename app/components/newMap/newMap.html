@@ -32,13 +32,14 @@
 
 				<div class="input-field col s12 m8 offset-m2">
 					<i class="fa fa-tag prefix" aria-hidden="true"></i>
-					<input id="name" ng-model="vm.mapName" placeholder="" type="text" class="validate">
-					<label for="name">Name</label>
+					<input id="name" ng-model="vm.mapName" placeholder="Name your map" type="text" class="validate">
+					<label for="name">Title</label>
 				</div>
 
 				<div class="input-field col s12 m8 offset-m2">
 					<i class="fa fa-map-o prefix" aria-hidden="true"></i>
 					<select ng-model="vm.mapSize" id="map-options">
+						<option value="" disabled selected>Choose map size</option>
 						<option value="small">Small - 300x300px</option>
 						<option value="medium">Medium - 450x450px</option>
 						<option value="large">Large - 600x600px</option>
@@ -74,7 +75,7 @@
 							   class="validate"
 							   ng-model="vm.spotName"
 						>
-						<label for="spotName">Name</label>
+						<label for="spotName">Spot Name</label>
 					</div>
 					<div class="input-field col s12 m6">
 						<i class="fa fa-usd prefix" aria-hidden="true"></i>
@@ -137,6 +138,9 @@
 			<h3 class="center title">{{ vm.mapName }}</h3>
 			<div class="col s12 center finalMapContainer">
 				<map map="vm.finalMap"></map>
+				<button ng-hide="vm.currentStep !== 3" class="orange confirmBtn awesomeButton center waves-effect waves-light btn" ng-click="vm.createMap()">
+					Save Map
+				</button>
 			</div>
 		</div>
 
