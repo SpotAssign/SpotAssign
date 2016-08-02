@@ -1,4 +1,9 @@
 class MapController {
+	buySpot( spot ) {
+		console.log( spot );
+		// Add to cart
+	}
+
 	recreateMap( positions ) {
 		positions.map( position => {
 			$( '#currentMap' ).append(
