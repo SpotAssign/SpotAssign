@@ -12,18 +12,20 @@ fillFields() {
 		if ( user ) {
 			const event = user.markets[user.markets.length - 1];
 			this.event = event;
-
+			console.log( this.event, 'this is this.event');
 			this.timeout( () => {
 				document.getElementById( 'eventTitle' ).value = this.event.name;
 				document.getElementById( 'bio' ).value = this.event.bio;
 				document.getElementById( 'city' ).value = this.event.location.city;
 				document.getElementById( 'state' ).value = this.event.location.state;
-				document.getElementById( 'email' ).value = this.event.paymentInfo[0];
+				document.getElementById( 'email' ).value = this.event.paymentInfo;
 			} );
 		}
 	}
 
 	editEvent( title, bio, city, state, paymentInfo ) {
+		console.log( title, bio, city, state, paymentInfo, 'this is location info' );
+
 		this.service.market.editOne( this.event._id, {
 			name: title,
 			location: {
@@ -35,6 +37,12 @@ fillFields() {
 		} ).then( response => {
 			console.log( response, 'this is line 28 editeventcontroller work' );
 		} );
+	}
+
+	toggleMap() {
+		console.log( this.map );
+		this.map = !this.map;
+		console.log( this.map );
 	}
 
 

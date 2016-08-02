@@ -2,7 +2,7 @@
 
 	<div class="row">
 
-		<nav>
+		<nav class="newmap-nav">
 			<div class="nav-wrapper">
 				<div class="col s12">
 					<a ng-click="vm.step(1)"
@@ -26,20 +26,19 @@
 
 		<div class="col s8 offset-s2" ng-show="vm.currentStep === 1">
 
-			<h3 class="center">New map</h3>
+			<h3 class="center title">New map</h3>
 
 			<form class="col s12">
 
 				<div class="input-field col s12 m8 offset-m2">
 					<i class="fa fa-tag prefix" aria-hidden="true"></i>
-					<input id="name" ng-model="vm.mapName" type="text" class="validate">
+					<input id="name" ng-model="vm.mapName" placeholder="" type="text" class="validate">
 					<label for="name">Name</label>
 				</div>
 
 				<div class="input-field col s12 m8 offset-m2">
 					<i class="fa fa-map-o prefix" aria-hidden="true"></i>
 					<select ng-model="vm.mapSize" id="map-options">
-						<option value="" selected disabled></option>
 						<option value="small">Small - 300x300px</option>
 						<option value="medium">Medium - 450x450px</option>
 						<option value="large">Large - 600x600px</option>
@@ -64,8 +63,8 @@
 			</form>
 		</div>
 
-		<div class="col s8 offset-s2 step2" ng-show="vm.currentStep === 2">
-			<h4 class="center">New type</h4>
+		<div class="col s8 offset-s2" ng-show="vm.currentStep === 2">
+			<h4 class="center title">Event Spots</h4>
 			<form class="col s12 center">
 				<div class="row">
 					<div class="input-field col s12 m6">
@@ -78,7 +77,7 @@
 						<label for="spotName">Name</label>
 					</div>
 					<div class="input-field col s12 m6">
-						<i class="fa fa-money prefix" aria-hidden="true"></i>
+						<i class="fa fa-usd prefix" aria-hidden="true"></i>
 						<input min="4.99"
 							   step="0.01"
 							   id="spotPrice"
@@ -108,7 +107,7 @@
 						>
 					</div>
 				</div>
-				<button ng-click="vm.newType()" class="awesomeButton btn waves-effect waves-light addType">Add type</button>
+				<button ng-click="vm.newType()" class="awesomeButton btn waves-effect waves-light addType">Add Spot</button>
 			</form>
 
 			<div class="col s12" ng-if="vm.spotTypes.length !== 0">
@@ -121,7 +120,7 @@
 						</div>
 						<div class="col s6 spotTypeContainer">
 							<span class="spotTypeName center title">{{ type.name }}</span>
-							<span class="spotTypePrice center title">{{ type.price }}$</span>
+							<span class="spotTypePrice center title">${{ type.price }}</span>
 						</div>
 						<div class="col s3">
 							<a class="addBox"
@@ -135,7 +134,7 @@
 		</div>
 
 		<div class="col s8 offset-s2" ng-show="vm.currentStep === 3">
-			<h3 class="center">{{ vm.mapName }}</h3>
+			<h3 class="center title">{{ vm.mapName }}</h3>
 			<div class="col s12 center finalMapContainer">
 				<map map="vm.finalMap"></map>
 			</div>
@@ -150,15 +149,17 @@
 			></div>
 		</div>
 
-		<!--Bottom BTNS-->
-		<div class="previousnextContainer">
+
+
 			<button class="awesomeButton previousBtn center waves-effect waves-light btn" ng-click="vm.previous()">
 				Previous
 			</button>
 
-			<button class="awesomeButton nextBtn center waves-effect waves-light btn" ng-click="vm.next()">
-				Next
-			</button>
+			<!--Bottom BTNS-->
+			<div class="previousnextContainer">
+				<button class="awesomeButton nextBtn center waves-effect waves-light btn" ng-click="vm.next()">
+					Next
+				</button>
 		</div>
 
 	</div>

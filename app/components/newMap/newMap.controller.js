@@ -11,26 +11,50 @@ class NewMapController {
 				.removeClass( 'fp__btn' )
 				.text( 'upload background' );
 		} );
+		$( '.previousBtn' ).hide();
 		this.draggable();
 	}
 
 	step( stepNum ) {
 		this.currentStep = stepNum;
+		if ( this.currentStep > 1 ) {
+			$( '.previousBtn' ).show();
+		}
 		if ( this.currentStep === 3 ) {
+			$( '.nextBtn' ).hide();
 			this.getMapPositions();
+		} else {
+			$( '.previousBtn' ).hide();
 		}
 	}
 	next() {
 		if ( this.currentStep < 2 ) {
 			this.currentStep++;
+
+			if ( this.currentStep === 3 ) {
+				$( '.nextBtn' ).hide();
+			}
 		} else {
 			this.currentStep++;
+			if ( this.currentStep === 3 ) {
+				$( '.nextBtn' ).hide();
+			}
 			this.getMapPositions();
+		}
+		if ( this.currentStep > 0 ) {
+			$( '.previousBtn' ).show();
 		}
 	}
 	previous() {
 		if ( this.currentStep > 1 ) {
 			this.currentStep--;
+
+			if ( this.currentStep === 1 ) {
+				$( '.previousBtn' ).hide();
+				$( '.nextBtn' ).show();
+			}
+		} else {
+			$( '.previousBtn' ).hide();
 		}
 	}
 	newType() {
@@ -46,7 +70,7 @@ class NewMapController {
 		if ( !color ) color = '#383838';
 		$( '#map' ).append(
 			`<div class="box ${shape}" style="background-color:${color}">
-				<p class="spotNumber">${price}$</p>
+				<p class="spotNumber">$${price}</p>
 			</div>`
 		);
 		this.draggable();
