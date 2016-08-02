@@ -11,13 +11,18 @@ class NewMapController {
 				.removeClass( 'fp__btn' )
 				.text( 'upload background' );
 		} );
+		$( '.previousBtn' ).hide();
 		this.draggable();
 	}
 
 	step( stepNum ) {
 		this.currentStep = stepNum;
-		if ( this.currentStep === 3 ) {
+		if ( this.currentStep > 1 ) {
+				$( '.previousBtn' ).show();
+		} else if ( this.currentStep === 3 ) {
 			this.getMapPositions();
+		} else {
+				$( '.previousBtn' ).hide();
 		}
 	}
 	next() {
@@ -27,10 +32,15 @@ class NewMapController {
 			this.currentStep++;
 			this.getMapPositions();
 		}
+		if ( this.currentStep > 0 ) {
+			$( '.previousBtn' ).show();
+		}
 	}
 	previous() {
 		if ( this.currentStep > 1 ) {
 			this.currentStep--;
+		} else {
+			$( '.previousBtn' ).hide();
 		}
 	}
 	newType() {

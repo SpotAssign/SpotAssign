@@ -1,8 +1,9 @@
 <div id="editEvent">
 		<side-nav admin-panel="true"></side-nav>
 		<div class = "side-nav-space">
+			<new-map class="new-map" ng-hide="!vm.map"></new-map>
 
-<form name="editEventForm">
+<form name="editEventForm" ng-hide="vm.map">
 		<div class="create-event-wrapper row">
 			<div class="col s10">
 				<h4 id="company-title"><i class="material-icons">event_seat</i> Edit your Event<hr class= "divider"></h4>
@@ -29,22 +30,25 @@
 					<input type="text" id="state" ng-model="state">
 				</div>
 
-				<div>
+
 					<div class="col s12 payment">
 						<div class="payment-header">
 						<i class="material-icons lock">lock</i>
 					Payment Information</div><br>
 
 							<div class="col s6">Email: <input type="text" id="email" ng-model="paymentEmail"></div>
-
 	    </div>
 
-				</div>
+			<div class="col s12 payment">
+				<div class="payment-header">
+				<i class="material-icons lock">place</i>
+			Your Map</div><br>
+			<button ng-click="vm.toggleMap()">Design Your Map</button>
 
 				</form>
 
 				<div class="center save-button">
-					<button class="btn orange create-event-button" type="submit" ng-click="vm.editEvent( eventTitle, bio, city, state, paymentEmail )" ng-if="!editEventForm.$pristine">Save Changes</button>
+					<button class="btn orange create-event-button" ng-click="vm.editEvent( eventTitle, bio, city, state, paymentEmail )" ng-if="!editEventForm.$pristine">Save Changes</button>
 				</div>
 
 			</div>
