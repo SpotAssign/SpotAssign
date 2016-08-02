@@ -5,18 +5,43 @@ class manageUsersController {
 		this.timeout = $timeout;
 		this.state = $state;
 		this.user= {};
+		this.marketID = [];
+		this.marketUsers = [];
 		this.getCurrentUser();
 	}
 
 	getCurrentUser() {
 		return this.service.user.getCurrentOrCreate()
 		.then( user => {
-			this.timeout(() => {
+			this.timeout( () => {
 				this.user = user;
+				this.marketID = user.admin[0]._id;
+				this.getMarketUsers( user.admin[0]._id );
 			} );
 		} );
 	}
 
+	getMarketUsers(marketID) {
+		return this.service.market.getOne( marketID )
+		.then ( market => {
+			this.marketUsers = market.users;
+		} );
+	}
+
+	// This function will need to redirect the user to the Add Reservation page, it also passes the User Id
+	addReservation(userId) {
+		// Do Stuff
+	}
+
+	// This function will remove the User from the Market
+	deleteUser(userId) {
+		// Do Stuff
+	}
+
+	// This function will send an email to an invited user
+	inviteUser(email) {
+		// Send Invite Email
+	}
 }
 
 manageUsersController.$inject = [ 'service', '$timeout', '$state' ];

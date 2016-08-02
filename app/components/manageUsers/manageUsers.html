@@ -1,4 +1,4 @@
-<div id="createEvent">
+<div id="manageUsers">
 	<side-nav admin-panel="true"></side-nav>
 	<div class = "side-nav-space">
 
@@ -7,16 +7,45 @@
 			<h4 id="company-title"><i class="material-icons">person</i> Manage Users<hr class= "divider"></h4>
 
 			<div class="row">
-			<div class="col s6">
+			<div class="">
 				<h5>Invite User:</h5>
-				<input type="text" ng-model="email" placeholder="Email Address">
-				<button class="btn invite-user-button col s3" type="submit" ng-click="vm.inviteUser(email)"><i class="material-icons">person add</i></button>
+				<input type="text" class="col s5" ng-model="email" placeholder="Email Address">
+				<button class="btn invite-user-button col s2" type="submit" ng-click="vm.inviteUser(email)"><i class="material-icons">person add</i></button>
 			</div>
 			</div>
 
 			<div class="col s12">
 				<h5>Current Users:</h5>
-
+				<div class="searchRow">
+					<div>
+						Search User By:
+					</div>
+					<input type="text" class="" ng-model="search" placeholder="Search">
+				</div>
+				<div ng-repeat="user in vm.marketUsers | filter: search">
+					<ul class="repeatUser">
+						<li>
+							<img class="circle userPhoto" ng-src="{{user.photo}}" alt="" />
+						</li>
+						<li class="name">
+							{{user.firstName}} {{user.lastName}}
+						</li>
+						<li class="email">
+							{{user.email}}
+						</li>
+						<li class="creation">
+							User Since: {{user.creationDate | date : shortDate  }}
+						</li>
+						<li class="payments" ng-hide="">
+							Payments: {{user.payments}}
+						</li>
+						<li class="reservations">
+							Reservations: {{user.reservations}}
+						</li>
+						<button class="btn add" type="button" name="button" ng-click="addReservation(user._id)">Add Reservation</button>
+						<button class="btn delete" type="button" name="button" ng-click="deleteUser(user._id)">Delete User</button>
+					</ul>
+				</div>
 			</div>
 
 		</div>
