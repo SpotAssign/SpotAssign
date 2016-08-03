@@ -16,11 +16,11 @@ fillFields() {
 			this.event = event;
 			// console.log( this.event, 'this is this.event');
 			this.timeout( () => {
-				document.getElementById( 'eventTitle' ).value = this.event.name;
-				document.getElementById( 'bio' ).value = this.event.bio;
-				document.getElementById( 'city' ).value = this.event.location.city;
-				document.getElementById( 'state' ).value = this.event.location.state;
-				document.getElementById( 'email' ).value = this.event.paymentInfo;
+				document.getElementById( 'eventTitle' ).value = this.event.name ? this.event.name : '';
+				document.getElementById( 'bio' ).value = this.event.bio ? this.event.bio : '';
+				document.getElementById( 'city' ).value = this.event.location.city ? this.event.location.city : '';
+				document.getElementById( 'state' ).value = this.event.location.state ? this.event.location.state : '';
+				document.getElementById( 'email' ).value = this.event.paymentInfo ? this.event.paymentInfo : '';
 			} );
 		}
 	}

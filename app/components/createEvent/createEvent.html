@@ -14,23 +14,23 @@
 			Event Details</div><br>
 			<div class="col s6">
 				Title:
-				<input type="text" ng-model="eventTitle">
+				<input id="title" type="text" ng-model="eventTitle">
 			</div>
 			</div>
 
 			<div class="col s12">
 				Bio:
-				<textarea class="materialize-textarea" ng-model="bio"></textarea>
+				<textarea id="bio" class="materialize-textarea" ng-model="bio"></textarea>
 			</div>
 
 			<div class="col s6">
 				City:
-				<input type="text" ng-model="city">
+				<input id="city" type="text" ng-model="city">
 			</div>
 
 			<div class="col s6">
 				State:
-				<input type="text" ng-model="state">
+				<input id="state" type="text" ng-model="state">
 			</div>
 
 			<div>
@@ -39,14 +39,14 @@
 					<i class="material-icons header-icon">lock</i>
 				Payment Information</div><br>
 
-						<div class="col s6">Email: <input type="text"></div>
+						<div class="col s6">Email: <input id="email" type="text" ng-model="paymentEmail"></div>
 
 									<div class="col s12 payment">
 										<div class="payment-header">
 										<i class="material-icons header-icon">place</i>
 									Your Map</div><br>
 									<div class="map" ng-show="vm.stateParams.map"><map map="vm.stateParams.map"></map></div>
-									<button ng-click="vm.toggleMap(); vm.editMap = true;" ng-show="!vm.stateParams.map">Design Your Map</button>
+									<button ng-click="vm.toggleMap(); vm.saveEventDetailsWhileDesigningMap( eventTitle, bio, city, state, paymentEmail )" ng-show="!vm.stateParams.map">Design Your Map</button>
             <!-- <form stripe-form="stripeCallback" name="checkoutForm">
 
 							<div class = "col s5">
