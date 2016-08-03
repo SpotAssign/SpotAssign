@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
-const Booths = Schema(
+const Map = Schema(
 	{
 		nickname: { type: String },
 		availableDates: [ { type: Date } ],
@@ -12,8 +12,11 @@ const Booths = Schema(
 			type: Schema.Types.ObjectId,
 			ref: `Reservations`
 		} ],
-		location: { type: Object }
+		location: { type: Object },
+		mapType: String,
+		mapImage: Object,
+		spots: Array
 	}
 );
 
-export default mongoose.model( 'Booths', Booths );
+export default mongoose.model( 'Map', Map );

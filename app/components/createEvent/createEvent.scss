@@ -5,17 +5,36 @@
 		.side-nav-space {
 			 margin-left: 350px;
 		}
+		.new-map {
+			position: relative;
+			left: -50px;
+			width: 106.5%;
+		}
 		@media ( max-width:600px ) and (min-width: 300px)  {
 			 .side-nav-space {
 					 margin-left: auto;
 					 margin-right: auto;
 			 }
 		}
-		.payment {
+		.payment-header {
+			// background-color: $primary-gray;
+			// color: white;
+			// padding-left: 5%;
+			// padding-right: 5%;
+			// height: 50%;
+			// text-align: center;
+			// width: 100%;
+			// border: 1px solid $primary-gray;
+		  // padding-bottom: 1%;
+			// padding-top: 0;
+			// margin: 0 auto;
 
-			.lock {
+			.header-icon {
 				position: relative;
-				top: 4px;
+				top: 6px;
+				left: 0px;
+				margin-bottom: 5%;
+				margin-top: 2%;
 			}
 		}
 		.divider {
@@ -28,6 +47,7 @@
 		}
 		.create-event-button {
 			background-color: $primary-orange;
+			margin: 10%;
 		}
 		h4 {
  		 margin-top: 8%;

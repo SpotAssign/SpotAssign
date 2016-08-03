@@ -1,6 +1,6 @@
 import Reservations from './Reservations';
 import Payments from '../Payment/Payments';
-import Booths from '../Booth/Booths';
+import Map from '../Map/Map';
 
 
 export default {
@@ -10,7 +10,7 @@ export default {
 			.populate( 'user' )
 			.populate( 'market' )
 			.populate( 'payment' )
-			.populate( 'booth' )
+			.populate( 'map' )
 			.exec( ( err, reservation ) => {
 				if ( err ) {
 					return res.status( 500 ).json( err );
@@ -22,7 +22,7 @@ export default {
 			.populate( 'user' )
 			.populate( 'market' )
 			.populate( 'payment' )
-			.populate( 'booth' )
+			.populate( 'map' )
 			.exec( ( err, payment ) => {
 				if ( err ) {
 					return res.status( 500 ).json( err );

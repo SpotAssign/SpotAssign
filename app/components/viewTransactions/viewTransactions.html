@@ -1,0 +1,44 @@
+<div id="viewTransactions">
+	<side-nav admin-panel="true"></side-nav>
+	<div class = "side-nav-space">
+
+	<div class="create-event-wrapper row">
+		<div class="col s10">
+			<h4 id="company-title"><i class="material-icons">payment</i> View Market Transactions<hr class= "divider"></h4>
+
+			<div class="col s12">
+				<h5>Reservations: (This page will change once we I know how the Booths are being put in)</h5>
+				<div class="searchRow">
+					<div>
+						Search Reservations:
+					</div>
+					<input type="text" class="" ng-model="search" placeholder="Search">
+				</div>
+				<div ng-repeat="user in vm.marketUsers | filter: search">
+					<ul class="repeatUser">
+						<li>
+							<img class="circle userPhoto" ng-src="{{user.photo}}" alt="" />
+						</li>
+						<li class="name">
+							{{user.firstName}} {{user.lastName}}
+						</li>
+						<li class="email">
+							{{user.email}}
+						</li>
+						<li class="creation">
+							User Since: {{user.creationDate | date : shortDate  }}
+						</li>
+						<li class="payments" ng-hide="">
+							Payments: {{user.payments}}
+						</li>
+						<li class="reservations">
+							Reservations: {{user.reservations}}
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+</div>
+</div>
+</div>

@@ -1,8 +1,10 @@
 class NewMapController {
-	constructor() {
+	constructor( service, $state ) {
+		this.service = service;
 		this.mapImage = '';
 		this.currentStep = 1;
 		this.spotTypes = [];
+		this.state = $state;
 
 		$( document ).ready( function () {
 			$( 'select' ).material_select();
@@ -17,14 +19,18 @@ class NewMapController {
 
 	step( stepNum ) {
 		this.currentStep = stepNum;
-		if ( this.currentStep > 1 ) {
+		if ( this.currentStep > 1 && this.currentStep < 3 ) {
 			$( '.previousBtn' ).show();
+		} else {
+			$( '.previousBtn' ).hide();
 		}
 		if ( this.currentStep === 3 ) {
 			$( '.nextBtn' ).hide();
+			$( '.previousBtn' ).show();
 			this.getMapPositions();
-		} else {
-			$( '.previousBtn' ).hide();
+		}
+		if ( this.currentStep === 1 || this.currentStep === 2 ) {
+			$( '.nextBtn' ).show();
 		}
 	}
 	next() {
@@ -52,19 +58,26 @@ class NewMapController {
 			if ( this.currentStep === 1 ) {
 				$( '.previousBtn' ).hide();
 				$( '.nextBtn' ).show();
+			} else if ( this.currentStep === 2 ) {
+				$( '.nextBtn' ).show();
+			} else {
 			}
 		} else {
 			$( '.previousBtn' ).hide();
 		}
 	}
 	newType() {
-		this.spotTypes.push( {
-			shape: this.spotShape,
-			name: this.spotName,
-			price: this.spotPrice,
-			color: this.spotColor,
-			size: this.spotSize
-		} );
+		if ( !this.spotShape ) {
+			this.spotShape = 'square';
+		} else {
+			this.spotTypes.push( {
+				shape: this.spotShape,
+				name: this.spotName,
+				price: this.spotPrice,
+				color: this.spotColor,
+				size: this.spotSize
+			} );
+		}
 	}
 	newBox( color, shape, price ) {
 		if ( !color ) color = '#383838';
@@ -134,16 +147,25 @@ class NewMapController {
 		} );
 		this.saveMap( positions );
 	}
+
+	createMap(  ) {
+		this.service.map.create( this.finalMap ).then( response => {
+			console.log( response, 'line 150 newMapCtrl this is our map' );
+			this.map = response;
+		} );
+	}
+
 	saveMap( spots ) {
 		this.finalMap = {
 			mapType: this.mapSize,
 			mapImage: this.mapImage,
 			spots
 		};
-		console.log( this.finalMap );
 	}
+
 }
 
-NewMapController.$inject = [];
+
+NewMapController.$inject = [ 'service', '$state' ];
 
 export { NewMapController };

@@ -7,7 +7,7 @@ export default {
 		Markets.find( ( req.query ) )
 			.populate( 'admins' )
 			.populate( 'users' )
-			.populate( 'booths' )
+			.populate( 'map' )
 			.exec( ( err, markets ) => {
 				if ( err ) {
 					return res.status( 500 ).json( err );
@@ -19,7 +19,7 @@ export default {
 		Markets.findById( req.params.id )
 			.populate( 'admins' )
 			.populate( 'users' )
-			.populate( 'booths' )
+			.populate( 'map' )
 			.exec( ( err, market ) => {
 				if ( err ) {
 					return res.status( 500 ).json( err );
