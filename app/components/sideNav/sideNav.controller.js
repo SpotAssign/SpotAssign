@@ -1,6 +1,7 @@
 class SideNavController {
-	constructor( service, $timeout ) {
+	constructor( service, $timeout, $state ) {
 		this.timeout = $timeout;
+		this.state = $state;
 		this.service = service;
 		this.getCurrentUser();
 		this.currentUser = {};
@@ -18,7 +19,12 @@ class SideNavController {
 	getCurrentUser() {
 		return this.service.user.getCurrentOrCreate()
 		.then( user => {
-			this.currentUser = user;
+			if ( user.userAuthenticated === false ) {
+				return this.state.go( 'home' )
+			}
+			else {
+				this.currentUser = user;
+			}
 		} );
 	}
 	checkUser() {
@@ -28,5 +34,5 @@ class SideNavController {
 
 
 }
-SideNavController.$inject = [ 'service', '$timeout' ];
+SideNavController.$inject = [ 'service', '$timeout', '$state' ];
 export { SideNavController };

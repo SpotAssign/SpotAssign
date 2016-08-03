@@ -1,16 +1,18 @@
 import reservationCtrl from './reservationCtrl';
+import middleware from '../middleware/middleware';
+
 
 export default function ( app ) {
 	// GET REQUEST
-	app.get( '/api/reservations', reservationCtrl.getReservations );
-	app.get( '/api/reservations/:id', reservationCtrl.getThisReservation );
+	app.get( '/api/reservations', middleware, reservationCtrl.getReservations );
+	app.get( '/api/reservations/:id', middleware, reservationCtrl.getThisReservation );
 
 	// POST REQUEST
-	app.post( '/api/reservations', reservationCtrl.addReservation );
+	app.post( '/api/reservations', middleware, reservationCtrl.addReservation );
 
 	// PUT REQUEST
-	app.put( '/api/reservations/:id', reservationCtrl.editReservation );
+	app.put( '/api/reservations/:id', middleware, reservationCtrl.editReservation );
 
 	// DELETE REQUEST
-	app.delete( '/api/reservations/:id', reservationCtrl.deleteReservation );
+	app.delete( '/api/reservations/:id', middleware, reservationCtrl.deleteReservation );
 }
