@@ -21,26 +21,22 @@ class SideNavController {
 
 	getCurrentUser() {
 		if ( localStorage.getItem( 'currentUser' ) ) {
-			return
+			return;
 		} return this.service.user.getCurrentOrCreate()
 		.then( user => {
 			if ( user.userAuthenticated === false ) {
 				return this.state.go( 'home' );
-			} else {
-				this.currentUser = user;
-				this.setPhoto();
-			}
+			} this.currentUser = user;
+			this.setPhoto();
 		} );
 	}
-	
 	setPhoto() {
 		if ( this.userProfilePhoto ) {
-			return ;
-		} else {
-			const Photo = localStorage.getItem( 'userPhoto' );
-			this.userProfilePhoto = JSON.parse( Photo )
-		}
+			return;
+		} const Photo = localStorage.getItem( 'userPhoto' );
+		this.userProfilePhoto = JSON.parse( Photo );
 	}
+
 	checkUser() {
 		let checkUser = localStorage.getItem( 'currentUser' );
 		checkUser = JSON.parse( checkUser );

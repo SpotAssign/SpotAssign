@@ -22,10 +22,8 @@ const service = ( $http, $location ) => {
                     localStorage.setItem( 'currentUser', JSON.stringify( data ) );
                     if ( localStorage.getItem( 'userPhoto' ) ) {
                         return data;
-                    } else {
-                        localStorage.setItem( 'userPhoto', JSON.stringify( data.photo ) )
-                        return data;
-                    }
+                    } localStorage.setItem( 'userPhoto', JSON.stringify( data.photo ) );
+                    return data;
                 } );
             },
             getLocalUser() {
