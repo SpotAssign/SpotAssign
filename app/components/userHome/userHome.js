@@ -7,8 +7,6 @@ import { transactionHistory } from '../transactionHistory/transactionHistory';
 import { rentalHistory } from '../rentalHistory/rentalHistory';
 import { service } from '../../shared/service';
 
-
-// DELETE ROUTER IF NOT NEEDED
 export const userHome = angular.module( 'userHome', [ uiRouter, userSpots.name, rentalHistory.name, transactionHistory.name ] )
 .config( ( $stateProvider ) => {
 	$stateProvider.state( 'userHome', {
