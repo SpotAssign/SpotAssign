@@ -20,9 +20,11 @@ const service = ( $http, $location ) => {
                 return $http.get( `${api.url}/user` )
                 .then( ( { data } ) => {
                     localStorage.setItem( 'currentUser', JSON.stringify( data ) );
+                    if ( localStorage.getItem( 'userPhoto' ) ) {
+                        return data;
+                    } localStorage.setItem( 'userPhoto', JSON.stringify( data.photo ) );
                     return data;
                 } );
-
             },
             getLocalUser() {
                 const LocalUser = localStorage.getItem( 'currentUser' );
