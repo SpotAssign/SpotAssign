@@ -45,8 +45,8 @@
 										<div class="payment-header">
 										<i class="material-icons header-icon">place</i>
 									Your Map</div><br>
-									<button ng-click="vm.toggleMap()" ng-show="!vm.stateParams.map">Design Your Map</button>
 									<div class="map" ng-show="vm.stateParams.map"><map map="vm.stateParams.map"></map></div>
+									<button ng-click="vm.toggleMap(); vm.editMap = true;" ng-show="!vm.stateParams.map">Design Your Map</button>
             <!-- <form stripe-form="stripeCallback" name="checkoutForm">
 
 							<div class = "col s5">

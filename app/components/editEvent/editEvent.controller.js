@@ -1,7 +1,9 @@
 class EditEventController {
-  constructor( service, $timeout ) {
+  constructor( service, $timeout, $stateParams ) {
 		this.service = service;
 		this.timeout = $timeout;
+		this.stateParams = $stateParams;
+		this.myMap = JSON.parse( localStorage.getItem( 'map' ) );
 		this.event = {};
 		this.fillFields();
   }
@@ -45,6 +47,6 @@ fillFields() {
 
 
 }
-EditEventController.$inject = [ 'service', '$timeout' ];
+EditEventController.$inject = [ 'service', '$timeout', '$stateParams' ];
 
 export { EditEventController };

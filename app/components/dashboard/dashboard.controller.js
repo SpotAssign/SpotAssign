@@ -7,7 +7,6 @@ class DashboardController {
 		this.user = {};
 		this.timeout = $timeout;
 		this.getCurrentUser();
-		console.log( this.map )
 	}
 
 	// The User is Always Directed to the Dashboard, but if they are not Admin
