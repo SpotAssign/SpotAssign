@@ -10,5 +10,5 @@ export const userSpotsDirective = () => {
 		scope: {},
 		replace: true,
 		restrict: 'E'
-  	};
+	};
 };
