@@ -1,7 +1,8 @@
 class DashboardController {
-	constructor( service, $state, $timeout ) {
+	constructor( service, $state, $timeout, $stateParams ) {
 		this.service = service;
 		this.state = $state;
+		this.stateParams = $stateParams;
 		this.user = {};
 		this.timeout = $timeout;
 		this.getCurrentUser();
@@ -22,5 +23,5 @@ class DashboardController {
 	}
 }
 
-DashboardController.$inject = [ 'service', '$state', '$timeout' ];
+DashboardController.$inject = [ 'service', '$state', '$timeout', '$stateParams' ];
 export { DashboardController };

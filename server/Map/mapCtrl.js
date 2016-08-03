@@ -1,6 +1,6 @@
-import Map from './Map';
 import Users from '../User/Users';
 import Markets from '../Market/Markets';
+import Map from './Map';
 
 export default {
 	// GET REQUEST

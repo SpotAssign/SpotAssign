@@ -45,9 +45,8 @@
 										<div class="payment-header">
 										<i class="material-icons header-icon">place</i>
 									Your Map</div><br>
-									<button ng-click="vm.toggleMap()">Design Your Map</button>
-									<map map="vm.myMap"></map>
-{{ vm.myMap }}
+									<button ng-click="vm.toggleMap()" ng-show="!vm.stateParams.map">Design Your Map</button>
+									<div class="map" ng-show="vm.stateParams.map"><map map="vm.stateParams.map"></map></div>
             <!-- <form stripe-form="stripeCallback" name="checkoutForm">
 
 							<div class = "col s5">
@@ -68,7 +67,7 @@
 			</div>
 
 			<div class="center">
-				<button class="btn create-event-button" type="submit" ng-click="vm.createEvent( eventTitle, bio, city, state, paymentEmail )">Create Event</button>
+				<button class="btn create-event-button" type="submit" ng-click="vm.createEvent( eventTitle, bio, city, state, paymentEmail, vm.stateParams.map._id )">Create Event</button>
 			</div>
 
 		</div>

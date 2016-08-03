@@ -150,11 +150,8 @@ class NewMapController {
 
 	createMap() {
 		this.service.map.create( this.finalMap ).then( response => {
-			console.log( response, 'line 150 newMapCtrl this is our map' );
-			localStorage.setItem( 'map', JSON.stringify( response ) );
-			this.state.go( 'createEvent', {}, { reload: true } );
-			this.map = response;
-			this.myMap = JSON.parse( localStorage.getItem( 'map' ) );
+			console.log( response.data, 'line 150 newMapCtrl this is our map' );
+			this.state.go( 'createEvent', { map: response } );
 		} );
 	}
 
