@@ -3,8 +3,7 @@ export default function (req, res, next) {
 		console.log( req.isAuthenticated(),"user is authenticated, please proceed");
 		next();
 	} else {
-		console.log(req.isAuthenticated(),"user is not authenticated, I should redirect");
-		req.session.redirectTo = '/#/';
-		res.redirect( '/' );
+		// console.log( res.redirect, req.isAuthenticated(),"user is not authenticated, I should redirect");
+		return res.redirect('http://localhost:8080');
 	}
 }
