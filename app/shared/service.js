@@ -96,7 +96,7 @@ const service = ( $http, $location ) => {
                 } ).then( ( { data } ) => { return data; } );
             },
             deleteOne( id ) {
-                return $http.delete( `${api.url}/markets/${id}` )
+                return $http.delete( `${api.url}/api/markets/${id}` )
                 .then( ( { data } ) => { return data; } );
             }
         },

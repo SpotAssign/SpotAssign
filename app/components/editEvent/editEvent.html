@@ -10,7 +10,7 @@
 
 
 								<div class="save-changes-button">
-									<button class="btn orange create-event-button" ng-click="vm.editEvent( eventTitle, bio, city, state, paymentEmail )" ng-if="!editEventForm.$pristine">Save Changes</button>
+									<button class="btn orange create-event-button" ng-click="vm.editEvent( eventTitle, bio, city, state, paymentEmail )" ng-show="!editEventForm.$pristine">Save Changes</button>
 								</div>
 
 
@@ -55,6 +55,10 @@
 
 				</form>
 
+			</div>
+
+			<div class="center">
+				<button class="btn red" ng-click="vm.deleteEvent()">Delete Event</button>
 			</div>
 	</div>
 

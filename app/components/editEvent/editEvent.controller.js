@@ -1,7 +1,8 @@
 class EditEventController {
-  constructor( service, $timeout, $stateParams ) {
+  constructor( service, $timeout, $stateParams, $state ) {
 		this.service = service;
 		this.timeout = $timeout;
+		this.state = $state;
 		this.stateParams = $stateParams;
 		this.myMap = JSON.parse( localStorage.getItem( 'map' ) );
 		this.event = {};
@@ -41,12 +42,20 @@ fillFields() {
 		} );
 	}
 
+	deleteEvent() {
+		this.service.market.deleteOne( this.event._id ).then( response => {
+			if ( response ) {
+				throw new Error( 'Event Successfully deleted.', 1000 );
+			}
+		} );
+	}
+
 	toggleMap() {
 		this.map = !this.map;
 	}
 
 
 }
-EditEventController.$inject = [ 'service', '$timeout', '$stateParams' ];
+EditEventController.$inject = [ 'service', '$timeout', '$stateParams', '$state' ];
 
 export { EditEventController };

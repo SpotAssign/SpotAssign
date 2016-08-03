@@ -1,21 +1,26 @@
 class NewMapController {
-	constructor( service, $state ) {
+	constructor( service, $state, $timeout ) {
+		this.timeout = $timeout;
 		this.service = service;
 		this.mapImage = '';
 		this.currentStep = 1;
 		this.spotTypes = [];
 		this.state = $state;
 		this.getMap();
+		this.onLoad();
 
-		$( document ).ready( function () {
+	}
+
+	onLoad() {
+			this.timeout(() => {
 			$( 'select' ).material_select();
 			$( '.imageUpload > button' )
 				.addClass( 'awesomeButton btn waves-effect waves-light' )
 				.removeClass( 'fp__btn' )
 				.text( 'upload background' );
-		} );
 		$( '.previousBtn' ).hide();
 		this.draggable();
+	} );
 	}
 
 	step( stepNum ) {
@@ -171,6 +176,6 @@ class NewMapController {
 }
 
 
-NewMapController.$inject = [ 'service', '$state' ];
+NewMapController.$inject = [ 'service', '$state', '$timeout' ];
 
 export { NewMapController };
