@@ -30,7 +30,7 @@ class CreateEventController {
 			this.event = event;
 
 			this.service.map.getOne( this.event.map[ 0 ] ).then( response => {
-				console.log( response, 'this is response' );
+				localStorage.setItem( 'map', JSON.stringify( this.stateParams.map ) );
 				this.state.go( 'dashboard', { event: response, map: this.stateParams.map } );
 			} );
 		} );

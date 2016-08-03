@@ -2,10 +2,12 @@ class DashboardController {
 	constructor( service, $state, $timeout, $stateParams ) {
 		this.service = service;
 		this.state = $state;
+		this.map = JSON.parse( localStorage.getItem( 'map' ) );
 		this.stateParams = $stateParams;
 		this.user = {};
 		this.timeout = $timeout;
 		this.getCurrentUser();
+		console.log( this.map )
 	}
 
 	// The User is Always Directed to the Dashboard, but if they are not Admin

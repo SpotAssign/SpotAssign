@@ -16,7 +16,7 @@
 			<h6>Photo: {{ vm.photo }} </h6>
 
 			<h4><i class="material-icons">place</i> Your Event Map <hr class="divider"></h4>
-			<div ng-show="vm.stateParams.map"><map map="vm.stateParams.map"></map></div>
+			<div ng-show="vm.stateParams.map ? vm.stateParams.map : vm.map"><map map="vm.stateParams.map ? vm.stateParams.map : vm.map"></map></div>
 
 			<h4><i class="material-icons">schedule</i> Schedule and Hours <hr class="divider"></h4>
 
