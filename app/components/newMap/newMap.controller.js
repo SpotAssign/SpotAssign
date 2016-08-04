@@ -1,20 +1,24 @@
 class NewMapController {
-	constructor( service, $state ) {
+	constructor( service, $state, $timeout ) {
+		this.timeout = $timeout;
 		this.service = service;
 		this.mapImage = '';
 		this.currentStep = 1;
 		this.spotTypes = [];
 		this.state = $state;
-
+		this.map = false;
+		this.getMap();
+		this.draggable();
 		$( document ).ready( function () {
-			$( 'select' ).material_select();
 			$( '.imageUpload > button' )
 				.addClass( 'awesomeButton btn waves-effect waves-light' )
 				.removeClass( 'fp__btn' )
 				.text( 'upload background' );
+			$( 'select' ).material_select();
+			$( '.previousBtn' ).hide();
 		} );
-		$( '.previousBtn' ).hide();
-		this.draggable();
+
+
 	}
 
 	step( stepNum ) {
@@ -60,7 +64,6 @@ class NewMapController {
 				$( '.nextBtn' ).show();
 			} else if ( this.currentStep === 2 ) {
 				$( '.nextBtn' ).show();
-			} else {
 			}
 		} else {
 			$( '.previousBtn' ).hide();
@@ -148,11 +151,16 @@ class NewMapController {
 		this.saveMap( positions );
 	}
 
-	createMap(  ) {
+	createMap() {
 		this.service.map.create( this.finalMap ).then( response => {
 			console.log( response, 'line 150 newMapCtrl this is our map' );
-			this.map = response;
+			const savedData = JSON.parse( localStorage.getItem( 'event' ) );
+			this.state.go( 'createEvent', { map: response, event: savedData } );
 		} );
+	}
+
+	getMap() {
+		this.myMap = JSON.parse( localStorage.getItem( 'map' ) );
 	}
 
 	saveMap( spots ) {
@@ -166,6 +174,6 @@ class NewMapController {
 }
 
 
-NewMapController.$inject = [ 'service', '$state' ];
+NewMapController.$inject = [ 'service', '$state', '$timeout' ];
 
 export { NewMapController };

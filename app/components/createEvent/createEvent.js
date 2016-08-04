@@ -10,7 +10,11 @@ export const createEvent = angular.module( 'createEvent', [ sideNav.name, logout
 
 		$stateProvider.state( 'createEvent', {
 			url: '/create',
-			template: '<create-event></create-event>'
+			template: '<create-event></create-event>',
+			params: {
+				'map': null,
+				'event': null
+			}
 		} );
 	} )
 	.directive( 'createEvent', createEventDirective )

@@ -75,7 +75,8 @@ const service = ( $http, $location ) => {
                         startDate: newMarket.startDate,
                         recurrence: newMarket.recurrence,
                         endDate: newMarket.endDate,
-                        admins: newMarket.admins
+                        admins: newMarket.admins,
+												map: newMarket.map
                     }
                 } ).then( ( { data } ) => { return data; } );
             },
@@ -97,7 +98,7 @@ const service = ( $http, $location ) => {
                 } ).then( ( { data } ) => { return data; } );
             },
             deleteOne( id ) {
-                return $http.delete( `${api.url}/markets/${id}` )
+                return $http.delete( `${api.url}/api/markets/${id}` )
                 .then( ( { data } ) => { return data; } );
             }
         },
@@ -152,6 +153,7 @@ const service = ( $http, $location ) => {
                 .then( ( { data } ) => { return data; } );
             },
             getOne( id ) {
+							console.log( id );
                 return $http.get( `${api.url}/api/map/${id}` )
                 .then( ( { data } ) => { return data; } );
             },

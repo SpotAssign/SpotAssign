@@ -1,11 +1,11 @@
 <div id="createEvent">
 	<side-nav admin-panel="true"></side-nav>
 	<div class = "side-nav-space">
-		<new-map class="new-map" ng-show="vm.map"></new-map>
+		<new-map class="new-map" show-map="vm.map" ng-show="vm.map"></new-map>
 
 	<div class="create-event-wrapper row" ng-show="!vm.map">
 		<div class="col s10">
-			<h4 id="company-title"><i class="material-icons">event_seat</i> Create an Event<hr class= "divider"></h4>
+			<h4 id="company-title">Create an Event<hr class= "divider"></h4>
 
 
 			<div class="row">
@@ -14,23 +14,23 @@
 			Event Details</div><br>
 			<div class="col s6">
 				Title:
-				<input type="text" ng-model="eventTitle">
+				<input id="title" type="text" ng-model="eventTitle">
 			</div>
 			</div>
 
 			<div class="col s12">
 				Bio:
-				<textarea class="materialize-textarea" ng-model="bio"></textarea>
+				<textarea id="bio" class="materialize-textarea" ng-model="bio"></textarea>
 			</div>
 
 			<div class="col s6">
 				City:
-				<input type="text" ng-model="city">
+				<input id="city" type="text" ng-model="city">
 			</div>
 
 			<div class="col s6">
 				State:
-				<input type="text" ng-model="state">
+				<input id="state" type="text" ng-model="state">
 			</div>
 
 			<div>
@@ -39,14 +39,14 @@
 					<i class="material-icons header-icon">lock</i>
 				Payment Information</div><br>
 
-						<div class="col s6">Email: <input type="text"></div>
+						<div class="col s6">Email: <input id="email" type="text" ng-model="paymentEmail"></div>
 
 									<div class="col s12 payment">
 										<div class="payment-header">
 										<i class="material-icons header-icon">place</i>
 									Your Map</div><br>
-									<button ng-click="vm.toggleMap()">Design Your Map</button>
-
+									<div class="map" ng-show="vm.stateParams.map"><map map="vm.stateParams.map"></map></div>
+									<button ng-click="vm.toggleMap(); vm.saveEventDetailsWhileDesigningMap( eventTitle, bio, city, state, paymentEmail )" ng-show="!vm.stateParams.map">Design Your Map</button>
             <!-- <form stripe-form="stripeCallback" name="checkoutForm">
 
 							<div class = "col s5">
@@ -67,10 +67,11 @@
 			</div>
 
 			<div class="center">
-				<button class="btn create-event-button" type="submit" ng-click="vm.createEvent( eventTitle, bio, city, state, paymentEmail )">Create Event</button>
+				<button class="btn create-event-button" type="submit" ng-click="vm.createEvent( eventTitle, bio, city, state, paymentEmail, vm.stateParams.map._id )">Create Event</button>
 			</div>
 
 		</div>
+</div>
 </div>
 </div>
 </div>

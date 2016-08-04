@@ -6,7 +6,7 @@ const Map = Schema(
 		availableDates: [ { type: Date } ],
 		market: {
 			type: Schema.Types.ObjectId,
-			ref: `Market`
+			ref: `Markets`
 		},
 		reservations: [ {
 			type: Schema.Types.ObjectId,

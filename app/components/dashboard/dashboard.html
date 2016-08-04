@@ -1,10 +1,10 @@
 <div>
 	<side-nav admin-panel="true"></side-nav>
 	<div class="row side-nav-space">
-		<div class="col s12" ng-if="vm.user.admin.length > 0">
+		<div class="col s12" ng-show="vm.user.admin.length > 0">
 
 
-			<h4 id="company-title"><i class="material-icons">business</i> Event Information <hr class="divider"></h4>
+			<h4 id="company-title"><i class="material-icons dash-icon">business</i> Event Information <hr class="divider"></h4>
 			<h6>Name: {{ vm.user.admin[vm.user.admin.length - 1].name }} </h6>
 
 			<h6>Location: {{ vm.user.admin[vm.user.admin.length - 1].location.city }}, {{ vm.user.admin[vm.user.admin.length - 1].location.state }} </h6>
@@ -13,13 +13,12 @@
 
 			<h6>Payment Email: {{ vm.user.admin[vm.user.admin.length - 1].paymentInfo }}</h6>
 
-			<h6>Photo: {{ vm.photo }} </h6>
+			<h6>Photo: {{ vm.photo }} </h6>{{ vm.user.admin }}
 
-			<h4><i class="material-icons">place</i> Your Event Map <hr class="divider"></h4>
-			<!-- <img src="http://placehold.it/450x250" /> <-->
-				<map></map>
+			<h4><i class="material-icons dash-icon">place</i> Your Event Map <hr class="divider"></h4>
+			<div ng-show="vm.stateParams.map ? vm.stateParams.map : vm.map"><map map="vm.stateParams.map ? vm.stateParams.map : vm.map"></map></div>
 
-			<h4><i class="material-icons">schedule</i> Schedule and Hours <hr class="divider"></h4>
+			<h4><i class="material-icons dash-icon">schedule</i> Schedule and Hours <hr class="divider"></h4>
 
 			<h6>Open Date: {{ vm.params.eventTitle }}</h6>
 

@@ -1,7 +1,10 @@
 class EditEventController {
-  constructor( service, $timeout ) {
+  constructor( service, $timeout, $stateParams, $state ) {
 		this.service = service;
 		this.timeout = $timeout;
+		this.state = $state;
+		this.stateParams = $stateParams;
+		this.myMap = JSON.parse( localStorage.getItem( 'map' ) );
 		this.event = {};
 		this.fillFields();
   }
@@ -14,11 +17,11 @@ fillFields() {
 			this.event = event;
 			// console.log( this.event, 'this is this.event');
 			this.timeout( () => {
-				document.getElementById( 'eventTitle' ).value = this.event.name;
-				document.getElementById( 'bio' ).value = this.event.bio;
-				document.getElementById( 'city' ).value = this.event.location.city;
-				document.getElementById( 'state' ).value = this.event.location.state;
-				document.getElementById( 'email' ).value = this.event.paymentInfo;
+				document.getElementById( 'eventTitle' ).value = this.event.name ? this.event.name : '';
+				document.getElementById( 'bio' ).value = this.event.bio ? this.event.bio : '';
+				document.getElementById( 'city' ).value = this.event.location.city ? this.event.location.city : '';
+				document.getElementById( 'state' ).value = this.event.location.state ? this.event.location.state : '';
+				document.getElementById( 'email' ).value = this.event.paymentInfo ? this.event.paymentInfo : '';
 			} );
 		}
 	}
@@ -39,12 +42,20 @@ fillFields() {
 		} );
 	}
 
+	deleteEvent() {
+		this.service.market.deleteOne( this.event._id ).then( response => {
+			if ( response ) {
+				throw new Error( 'Event Successfully deleted.', 1000 );
+			}
+		} );
+	}
+
 	toggleMap() {
 		this.map = !this.map;
 	}
 
 
 }
-EditEventController.$inject = [ 'service', '$timeout' ];
+EditEventController.$inject = [ 'service', '$timeout', '$stateParams', '$state' ];
 
 export { EditEventController };
