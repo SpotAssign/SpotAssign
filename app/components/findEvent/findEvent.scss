@@ -1,20 +1,22 @@
-#findEvent {
-}
-.MktInfo {
-    margin-right: 10%;
-    display: inline-block;
-    text-justify: newspaper;
-}
 .collapsible-centering {
-    text-align: justify;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
     
 }
-.MktPic {
-   float: right;
+
+.MktInfo {
+   display: inline;
+
+    
 }
-img {
-    float: right;
+
+.MktImage {
     max-height: 50px;
     max-width: 45px;
-    margin-top: 3px;
+    margin: 3px;
+    // margin-left: 35px;
+    
 }
