@@ -1,5 +1,6 @@
 @import "../../styles/colors";
 @import "../../styles/globalStyles";
+@import url(https://fonts.googleapis.com/css?family=Heebo:100);
 
 #newMap {
 	#spotColor {
@@ -12,6 +13,7 @@
 	}
 	.newmap-nav {
 		padding-left: 5%;
+		font-family: 'Heebo', sans-serif;
 	}
 	.addType {
 		margin-bottom: 20px;
