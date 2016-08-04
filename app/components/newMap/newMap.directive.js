@@ -12,5 +12,5 @@ export const newMapDirective = () => {
 		},
 		replace: true,
 		restrict: 'E'
-  	};
+	};
 };
