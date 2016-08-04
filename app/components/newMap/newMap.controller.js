@@ -21,53 +21,45 @@ class NewMapController {
 
 	}
 
+	addPicture() {
+		filepicker.setKey( 'AWWNzupn7QV1RRT2xGT0gz' );
+		filepicker.pick(
+			{
+				services: [ 'COMPUTER', 'CONVERT' ],
+				conversions: [ 'crop', 'rotate', 'filter' ],
+				mimetype: 'image/*',
+				container: 'modal',
+				cropRatio: [ 1 ],
+				cropForce: true
+			},
+			Blob => {
+				this.mapImage = Blob.url;
+			},
+			FPError => {
+				console.log( 'ERROR', FPError.toString() );
+			}
+		);
+	}
+
 	step( stepNum ) {
 		this.currentStep = stepNum;
-		if ( this.currentStep > 1 && this.currentStep < 3 ) {
-			$( '.previousBtn' ).show();
-		} else {
+		if ( this.currentStep === 1 ) {
 			$( '.previousBtn' ).hide();
-		}
-		if ( this.currentStep === 3 ) {
-			$( '.nextBtn' ).hide();
-			$( '.previousBtn' ).show();
-			this.getMapPositions();
-		}
-		if ( this.currentStep === 1 || this.currentStep === 2 ) {
 			$( '.nextBtn' ).show();
+		} else if ( this.currentStep === 2 ) {
+			$( '.previousBtn' ).show();
+			$( '.nextBtn' ).show();
+		} else if ( this.currentStep === 3 ) {
+			$( '.previousBtn' ).show();
+			$( '.nextBtn' ).hide();
 		}
 	}
-	next() {
-		if ( this.currentStep < 2 ) {
-			this.currentStep++;
 
-			if ( this.currentStep === 3 ) {
-				$( '.nextBtn' ).hide();
-			}
-		} else {
-			this.currentStep++;
-			if ( this.currentStep === 3 ) {
-				$( '.nextBtn' ).hide();
-			}
-			this.getMapPositions();
-		}
-		if ( this.currentStep > 0 ) {
-			$( '.previousBtn' ).show();
-		}
+	next() {
+		this.step( ++this.currentStep );
 	}
 	previous() {
-		if ( this.currentStep > 1 ) {
-			this.currentStep--;
-
-			if ( this.currentStep === 1 ) {
-				$( '.previousBtn' ).hide();
-				$( '.nextBtn' ).show();
-			} else if ( this.currentStep === 2 ) {
-				$( '.nextBtn' ).show();
-			}
-		} else {
-			$( '.previousBtn' ).hide();
-		}
+		this.step( --this.currentStep );
 	}
 	newType() {
 		if ( !this.spotShape ) {
@@ -91,6 +83,7 @@ class NewMapController {
 		);
 		this.draggable();
 	}
+
 	draggable() {
 		$( '.box' )
 			.draggable( {
@@ -108,9 +101,6 @@ class NewMapController {
 				minWidth: 60,
 				aspectRatio: true
 			} );
-	}
-	eraseAll() {
-		$( '#map' ).empty();
 	}
 
 	getMapPositions() {
@@ -153,7 +143,7 @@ class NewMapController {
 
 	createMap() {
 		this.service.map.create( this.finalMap ).then( response => {
-			console.log( response, 'line 150 newMapCtrl this is our map' );
+			console.log( response, 'line 146 newMapCtrl this is our map' );
 			const savedData = JSON.parse( localStorage.getItem( 'event' ) );
 			this.state.go( 'createEvent', { map: response, event: savedData } );
 		} );

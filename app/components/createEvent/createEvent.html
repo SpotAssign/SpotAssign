@@ -1,12 +1,11 @@
 <div id="createEvent">
 	<side-nav admin-panel="true"></side-nav>
 	<div class = "side-nav-space">
-		<new-map class="new-map" show-map="vm.map" ng-show="vm.map"></new-map>
+		<new-map class="new-map" show-map="vm.hasMap" ng-hide="!vm.hasMap"></new-map>
 
-	<div class="create-event-wrapper row" ng-show="!vm.map">
+	<div class="create-event-wrapper row" ng-hide="vm.hasMap">
 		<div class="col s10">
 			<h4 id="company-title">Create an Event<hr class= "divider"></h4>
-
 
 			<div class="row">
 				<div class="payment-header">
