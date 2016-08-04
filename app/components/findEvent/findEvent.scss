@@ -7,11 +7,11 @@
 	}
 	.collapsible-centering {
 		text-align: justify;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between
 
 	}
 	.MktPic {
@@ -24,16 +24,15 @@
 		margin-top: 3px;
 	}
 
-.MktInfo {
-   display: inline;
+	.MktInfo {
+		display: inline;
 
-    
-}
+	}
 
-.MktImage {
-    max-height: 50px;
-    max-width: 45px;
-    margin: 3px;
-    // margin-left: 35px;
-    
+	.MktImage {
+		max-height: 50px;
+		max-width: 45px;
+		margin: 3px;
+		// margin-left: 35px;
+	}
 }
