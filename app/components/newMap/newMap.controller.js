@@ -6,21 +6,19 @@ class NewMapController {
 		this.currentStep = 1;
 		this.spotTypes = [];
 		this.state = $state;
+		this.map = false;
 		this.getMap();
-		this.onLoad();
-
-	}
-
-	onLoad() {
-			this.timeout(() => {
-			$( 'select' ).material_select();
+		this.draggable();
+		$( document ).ready( function () {
 			$( '.imageUpload > button' )
 				.addClass( 'awesomeButton btn waves-effect waves-light' )
 				.removeClass( 'fp__btn' )
 				.text( 'upload background' );
-		$( '.previousBtn' ).hide();
-		this.draggable();
-	} );
+			$( 'select' ).material_select();
+			$( '.previousBtn' ).hide();
+		} );
+
+
 	}
 
 	step( stepNum ) {
@@ -156,7 +154,7 @@ class NewMapController {
 	createMap() {
 		this.service.map.create( this.finalMap ).then( response => {
 			console.log( response, 'line 150 newMapCtrl this is our map' );
-			let savedData = JSON.parse( localStorage.getItem( 'event' ) );
+			const savedData = JSON.parse( localStorage.getItem( 'event' ) );
 			this.state.go( 'createEvent', { map: response, event: savedData } );
 		} );
 	}

@@ -5,10 +5,9 @@
 	color: $secondary-gray;
 	font-family: 'Nunito', sans-serif;
 	.row {
-		margin: 0 !important;
+		margin: 20px !important;
 		.slides {
 			.home-photo {
-				opacity: 20%;
 			}
 		}
 	}
@@ -37,6 +36,10 @@
 		.start-now-button {
 			margin-top: 7%;
 		}
+	}
+	li.indicator-item {
+		height: 10px !important;
+		width: 10px !important;
 	}
 	li.indicator-item.active {
 		background-color: $primary-orange !important;

@@ -1,0 +1,12 @@
+@import '../../styles/colors';
+
+#footer {
+	.page-footer {
+		background-color: $primary-gray;
+		margin-top: 4%;
+	}
+	.footer-copyright {
+		position: relative;
+		bottom: 7px;
+	}
+}
