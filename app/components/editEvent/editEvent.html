@@ -10,7 +10,8 @@
 
 
 								<div class="save-changes-button">
-									<button class="btn orange create-event-button" ng-click="vm.editEvent( eventTitle, bio, city, state, paymentEmail )" ng-show="!editEventForm.$pristine">Save Changes</button>
+									<button class="btn orange create-event-button" ng-click="vm.editEvent( eventTitle, bio, city, state,
+									paymentEmail )" ng-show="!editEventForm.$pristine">Save Changes</button>
 								</div>
 
 
@@ -50,7 +51,7 @@
 				<i class="material-icons header-icon">place</i>
 			Your Map</div><br>
 
-			<button ng-click="vm.toggleMap()" ng-show="vm.stateParams.map ? vm.stateParams.map : vm.myMap">Make New Map</button>
+			<button class="btn orange" ng-click="vm.toggleMap()" ng-show="vm.stateParams.map ? vm.stateParams.map : vm.myMap">Make New Map</button>
 			<div ng-show="vm.stateParams.map ? vm.stateParams.map : vm.myMap"><map map="vm.stateParams.map ? vm.stateParams.map : vm.myMap"></map></div>
 
 				</form>

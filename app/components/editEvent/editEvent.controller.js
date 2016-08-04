@@ -27,7 +27,9 @@ fillFields() {
 	}
 
 	editEvent( title, bio, city, state, paymentInfo ) {
-		console.log( title, bio, city, state, paymentInfo, 'this is location info' );
+		
+		city = city ? city : document.getElementById( 'city' ).value;
+		state = state ? state : document.getElementById( 'state' ).value;
 
 		this.service.market.editOne( this.event._id, {
 			name: title,
@@ -38,14 +40,17 @@ fillFields() {
 			bio,
 			paymentInfo
 		} ).then( response => {
-			console.log( response, 'this is line 28 editeventcontroller work' );
+			this.user = response;
+			if ( response ) {
+				Materialize.toast( 'Settings saved.', 1000 );
+			}
 		} );
 	}
 
 	deleteEvent() {
 		this.service.market.deleteOne( this.event._id ).then( response => {
 			if ( response ) {
-				throw new Error( 'Event Successfully deleted.', 1000 );
+				Materialize.toast( 'Event Successfully deleted.', 1000 );
 			}
 		} );
 	}
