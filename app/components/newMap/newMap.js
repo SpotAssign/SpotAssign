@@ -6,6 +6,13 @@ import 'filepicker-js';
 import { map } from '../map/map';
 
 export const newMap = angular.module( 'newMap', [ map.name ] )
+	.config( function ( $stateProvider, $urlRouterProvider ) {
+		$urlRouterProvider.otherwise( '/' );
 
-.directive( 'newMap', newMapDirective )
-.factory( 'service', service );
+		$stateProvider.state( 'newMap', {
+			url: '/create/map',
+			template: '<new-map></new-map>'
+		} );
+	} )
+	.directive( 'newMap', newMapDirective )
+	.factory( 'service', service );

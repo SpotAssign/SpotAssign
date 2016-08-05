@@ -37,13 +37,12 @@
 
 				<div class="input-field col s12 m8 offset-m2">
 					<i class="fa fa-map-o prefix" aria-hidden="true"></i>
-					<select ng-model="vm.mapSize" id="map-options">
-						<option value="" disabled selected>Choose map size</option>
-						<option value="small">Small - 300x300px</option>
+					<select ng-selected="vm.checkMapSize()" ng-model="vm.mapSize" id="map-options">
+						<option value="small" selected>Small - 300x300px</option>
 						<option value="medium">Medium - 450x450px</option>
 						<option value="large">Large - 600x600px</option>
 					</select>
-					<label>Map size</label>
+					<label>Map size {{ vm.mapSize }}</label>
 				</div>
 
 				<div class="imageUpload center col s12 m6 offset-m3">
@@ -99,7 +98,8 @@
 						>
 					</div>
 				</div>
-				<button ng-click="vm.newType()" class="awesomeButton btn waves-effect waves-light addType">Add Spot</button>
+				<button ng-click="vm.newType()" class="awesomeButton btn waves-effect waves-light addType">Add Spot
+				</button>
 			</form>
 
 			<div class="col s12" ng-if="vm.spotTypes.length !== 0">
@@ -129,7 +129,9 @@
 			<h3 class="center title">{{ vm.mapName }}</h3>
 			<div class="col s12 center finalMapContainer">
 				<map map="vm.finalMap"></map>
-				<button ng-hide="vm.currentStep !== 3" class="orange confirmBtn awesomeButton center waves-effect waves-light btn" ng-click="vm.createMap()">
+				<button ng-hide="vm.currentStep !== 3"
+						class="orange confirmBtn awesomeButton center waves-effect waves-light btn"
+						ng-click="vm.createMap()">
 					Save Map
 				</button>
 			</div>
@@ -137,24 +139,28 @@
 
 		<!--MAP-->
 		<div class="col s12 center mapContainer" ng-show="vm.currentStep < 3">
-			<div ng-if="vm.mapSize"
-				 class="center {{ vm.mapSize }}"
+			<div ng-class="vm.mapSize ? vm.mapSize : ''"
+				 class="center"
 				 style="background:url( {{ vm.mapImage }} );background-size: contain;"
 				 id="map"
 			></div>
 		</div>
 
+		<button
+			class="awesomeButton previousBtn center waves-effect waves-light btn"
+			ng-click="vm.previous()"
+		>
+			Previous
+		</button>
 
-
-			<button class="awesomeButton previousBtn center waves-effect waves-light btn" ng-click="vm.previous()">
-				Previous
+		<!--Bottom BTNS-->
+		<div class="previousnextContainer">
+			<button
+				class="awesomeButton nextBtn center waves-effect waves-light btn"
+				ng-click="vm.next()"
+			>
+				Next
 			</button>
-
-			<!--Bottom BTNS-->
-			<div class="previousnextContainer">
-				<button class="awesomeButton nextBtn center waves-effect waves-light btn" ng-click="vm.next()">
-					Next
-				</button>
 		</div>
 
 	</div>

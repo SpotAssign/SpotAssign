@@ -18,7 +18,6 @@ import { manageUsers } from './components/manageUsers/manageUsers';
 import { viewTransactions } from './components/viewTransactions/viewTransactions';
 
 
-
 // START MODULE
 angular.module( 'SpotAssign', [
 	uiRouter,
@@ -32,4 +31,5 @@ angular.module( 'SpotAssign', [
 	manageUsers.name,
 	viewTransactions.name
 ] )
-.directive( 'app', appDirective );
+	.value( 'mapValue', null )
+	.directive( 'app', appDirective );

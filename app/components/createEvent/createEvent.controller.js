@@ -1,5 +1,5 @@
 class CreateEventController {
-	constructor( service, $timeout, $state, $stateParams ) {
+	constructor( service, $timeout, $state, $stateParams, mapValue ) {
 		this.event = {};
 		this.service = service;
 		this.timeout = $timeout;
@@ -9,13 +9,22 @@ class CreateEventController {
 		this.stateParams = $stateParams;
 		this.hasMap = false;
 
+		this.mapValue = mapValue;
+
 		if ( this.stateParams.event ) {
 			this.timeout( () => {
-				document.getElementById( 'title' ).value = this.stateParams.event.eventTitle ? this.stateParams.event.eventTitle : '';
-				document.getElementById( 'bio' ).value = this.stateParams.event.bio ? this.stateParams.event.bio : '';
-				document.getElementById( 'city' ).value = this.stateParams.event.city ? this.stateParams.event.city : '';
-				document.getElementById( 'state' ).value = this.stateParams.event.state ? this.stateParams.event.state : '';
-				document.getElementById( 'email' ).value = this.stateParams.event.paymentEmail ? this.stateParams.event.paymentEmail : '';
+				const eventData = {
+					title: this.stateParams.event.eventTitle ? this.stateParams.event.eventTitle : '',
+					bio: this.stateParams.event.bio ? this.stateParams.event.bio : '',
+					city: this.stateParams.event.city ? this.stateParams.event.city : '',
+					state: this.stateParams.event.state ? this.stateParams.event.state : '',
+					email: this.stateParams.event.paymentEmail ? this.stateParams.event.paymentEmail : ''
+				};
+				$( '#title' ).val( eventData.title );
+				$( '#bio' ).val( eventData.bio );
+				$( '#city' ).val( eventData.city );
+				$( '#state' ).val( eventData.state );
+				$( '#email' ).val( eventData.email );
 			} );
 		}
 	}
@@ -69,10 +78,6 @@ class CreateEventController {
 			} );
 	}
 
-	toggleMap() {
-		this.hasMap = !this.hasMap;
-	}
-
 	saveEventDetailsWhileDesigningMap( eventTitle, bio, city, state, paymentEmail ) {
 		const event = {
 			eventTitle,
@@ -83,9 +88,10 @@ class CreateEventController {
 		};
 		console.log( event, 'this is event' );
 		localStorage.setItem( 'event', JSON.stringify( event ) );
+		this.state.go( 'newMap' );
 	}
 
 }
 
-CreateEventController.$inject = [ 'service', '$timeout', '$state', '$stateParams' ];
+CreateEventController.$inject = [ 'service', '$timeout', '$state', '$stateParams', 'mapValue' ];
 export { CreateEventController };
