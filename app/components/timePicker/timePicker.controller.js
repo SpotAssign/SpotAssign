@@ -1,4 +1,5 @@
 class TimePickerController {
+
   constructor( service ) {
     this.service = service;
     this.greeting = 'TimePickerController!';
@@ -20,7 +21,6 @@ class TimePickerController {
       .then( user => {
             this.user = user;
             this.marketID = user.admin[0]._id;
-            this.getMarketClosedDays(user.admin[0]._id );
             this.getUpdatedMarket(user.admin[0]._id);
       } );
   }
@@ -36,13 +36,8 @@ class TimePickerController {
 
   saveSchedule( days ) {
     for ( let i = 0; i < days.length; i++ ) {
-        for (let x = 0; x < this.openOn.length; x++) {
-            if ( days[i].value ) {
-                if (days[i].name === this.openOn[x].name) {
-                    this.openOn[x] = days[i];
-                }
-                this.openOn.push( days[i] );
-                }
+        if ( days[i].value ) {
+            this.openOn.push( days[i] );
         }
     }
     const editedObj = {
@@ -50,6 +45,7 @@ class TimePickerController {
             dayOfWeek: this.openOn
         }
     }
+
     return this.service.market.editOne( this.marketID, editedObj )
         .then( response => {
             this.getUpdatedMarket(this.marketID)
@@ -64,15 +60,8 @@ class TimePickerController {
         } )
     }
 
-    getMarketClosedDays(marketID) {
-        return this.service.market.getOne( marketID )
-        .then( market => {
-            this.closedDates = market.closedDates;
-        } );
-    }
-
-    addObservedHoldiay(hol) {
-        this.closedDates.push(hol);
+    addObservedHoldiay( hol ) {
+        this.closedDates.push( hol );
         const editedObject= {
             closedDates: this.closedDates
         }
