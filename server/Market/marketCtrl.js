@@ -55,6 +55,9 @@ export default {
 			if ( err ) {
 				return res.status( 400 ).send( err );
 			}
+			else if ( market.recurrence.daysOfWeek ) {
+
+			}
 			return res.status( 200 ).json( market );
 		} );
 	},

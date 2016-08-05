@@ -13,11 +13,14 @@ const Markets = Schema(
 			frequency: { type: String, default: 'week' },
 			interval: { type: Number, default: 1 },
 			dayOfWeek: [ {
-				day: { type: String }, // choose from "M", "T", "W", "Th", "F", "Sat" and "Sun"
-				hours: { type: Array } // must be two numbers, open and close for the Day
+				name: { type: Object }, // choose from "M", "T", "W", "Th", "F", "Sat" and "Sun"
+				close: { type: Object }, // must be two numbers, open and close for the Day
+				open: { type: Object },
+				value: {type: Boolean }
 			}
 			]
 		},
+		closedDates: { type: Array },
 		endDate: { type: Date },
 		admins: [ {
 			type: Schema.Types.ObjectId,

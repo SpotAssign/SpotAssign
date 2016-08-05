@@ -1,3 +1,111 @@
 #timePicker {
 
+	/*Set Days of Operation*/
+	.setDOO {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		width: 550px;
+
+		h5 {
+			margin-bottom: 20px;
+		}
+
+		.allDaysCheckboxes {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-content: center;
+			justify-content: space-around;
+
+
+			.dayCheckbox {
+				margin-top: 20px;
+				margin-left: 15px;
+				margin-right: 15px;
+			}
+		}
+
+	.right-align-button {
+		margin-top: 35px;
+		margin-left: 395px;
+	}
+
+	/*This is the day name under Hours of Operation*/
+	.dayName {
+		font-size: 1.2em;
+		margin-top: 28px;
+		font-weight: bold;
+	}
+
+		.holidaySearch {}
+
+		.holidaysContainer {
+
+			.holidaysRepeat {
+				position: relative;
+
+				.holidayName {
+					margin-top: 12px;
+					font-weight: bold;
+					font-size: 1.2em;
+					line-height: 0.9em;
+				}
+
+				.holidayDate {
+					font-size: 0.85em;
+				}
+
+				li {
+					margin-top:5px;
+					padding: 5px;
+					border: 1px solid rgba(198, 198, 198, 0.7);
+				}
+			}
+		}
+
+		.showBusinessSchedule {
+			li {
+				border: 1px solid rgba(198, 198, 198, 0.7);
+				margin-bottom: 2px;
+			}
+
+			.openDayName {
+				font-size: 1.3em;
+				font-weight: bold;
+				margin-top: 8px;
+			}
+			.dayHours {
+				margin-top: 10px;
+			}
+
+			.edit {
+				float: right;
+				margin-top: 5px;
+				margin-bottom: 5px;
+			}
+
+			.closedDayName {
+				margin-top: 10px;
+				font-size : 1.1em;
+				font-weight: bold;
+			}
+
+			.closedDayDate {
+				margin-top: 10px;
+				text-align: center;
+			}
+
+			.deleteHoliday {
+				margin-top: 5px;
+				margin-bottom: 5px;
+			}
+
+
+		}
+
+
+	}
+
+
 }
