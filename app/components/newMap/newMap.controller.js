@@ -1,8 +1,9 @@
 class NewMapController {
-	constructor( service, $state, $timeout ) {
+	constructor( service, $state, $timeout, mapValue ) {
 		this.timeout = $timeout;
 		this.service = service;
 		this.mapImage = '';
+		this.mapSize = 'small';
 		this.currentStep = 1;
 		this.spotTypes = [];
 		this.state = $state;
@@ -18,7 +19,11 @@ class NewMapController {
 			$( '.previousBtn' ).hide();
 		} );
 
+		this.mapValue = mapValue;
+	}
 
+	checkMapSize() {
+		this.mapSize = $( '#map-options' ).val();
 	}
 
 	addPicture() {
@@ -159,11 +164,12 @@ class NewMapController {
 			mapImage: this.mapImage,
 			spots
 		};
+		this.mapValue = this.finalMap;
 	}
 
 }
 
 
-NewMapController.$inject = [ 'service', '$state', '$timeout' ];
+NewMapController.$inject = [ 'service', '$state', '$timeout', 'mapValue' ];
 
 export { NewMapController };

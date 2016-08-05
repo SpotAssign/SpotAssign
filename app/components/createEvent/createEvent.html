@@ -1,76 +1,92 @@
 <div id="createEvent">
 	<side-nav admin-panel="true"></side-nav>
-	<div class = "side-nav-space">
+	<div class="side-nav-space">
 		<new-map class="new-map" show-map="vm.hasMap" ng-hide="!vm.hasMap"></new-map>
 
-	<div class="create-event-wrapper row" ng-hide="vm.hasMap">
-		<div class="col s10">
-			<h4 id="company-title">Create an Event<hr class= "divider"></h4>
+		<div class="create-event-wrapper row" ng-hide="vm.hasMap">
+			<div class="col s10">
+				<h4 id="company-title">Create an Event
+					<hr class="divider">
+				</h4>
 
-			<div class="row">
-				<div class="payment-header">
-				<i class="material-icons header-icon" id="event-icon">event</i>
-			Event Details</div><br>
-			<div class="col s6">
-				Title:
-				<input id="title" type="text" ng-model="eventTitle">
-			</div>
-			</div>
-
-			<div class="col s12">
-				Bio:
-				<textarea id="bio" class="materialize-textarea" ng-model="bio"></textarea>
-			</div>
-
-			<div class="col s6">
-				City:
-				<input id="city" type="text" ng-model="city">
-			</div>
-
-			<div class="col s6">
-				State:
-				<input id="state" type="text" ng-model="state">
-			</div>
-
-			<div>
-				<div class="col s12 payment">
+				<div class="row">
 					<div class="payment-header">
-					<i class="material-icons header-icon">lock</i>
-				Payment Information</div><br>
+						<i class="material-icons header-icon" id="event-icon">event</i>
+						Event Details
+					</div>
+					<br>
+					<div class="col s6">
+						Title:
+						<input id="title" type="text" ng-model="eventTitle">
+					</div>
+				</div>
+
+				<div class="col s12">
+					Bio:
+					<textarea id="bio" class="materialize-textarea" ng-model="bio"></textarea>
+				</div>
+
+				<div class="col s6">
+					City:
+					<input id="city" type="text" ng-model="city">
+				</div>
+
+				<div class="col s6">
+					State:
+					<input id="state" type="text" ng-model="state">
+				</div>
+
+				<div>
+					<div class="col s12 payment">
+						<div class="payment-header">
+							<i class="material-icons header-icon">lock</i>
+							Payment Information
+						</div>
+						<br>
 
 						<div class="col s6">Email: <input id="email" type="text" ng-model="paymentEmail"></div>
 
-									<div class="col s12 payment">
-										<div class="payment-header">
-										<i class="material-icons header-icon">place</i>
-									Your Map</div><br>
-									<div class="map" ng-show="vm.stateParams.map"><map map="vm.stateParams.map"></map></div>
-									<button ng-click="vm.toggleMap(); vm.saveEventDetailsWhileDesigningMap( eventTitle, bio, city, state, paymentEmail )" ng-show="!vm.stateParams.map">Design Your Map</button>
-            <!-- <form stripe-form="stripeCallback" name="checkoutForm">
-
-							<div class = "col s5">
-                <input validate id="card" ng-model="number" placeholder="Card Number" name="card" payments-format="card" payments-validate="card" />
+						<div class="col s12 payment">
+							<div class="payment-header">
+								<i class="material-icons header-icon">place</i>
+								Your Map
 							</div>
-
-							<div class = "col s4">
-                <input validate id="expiry" ng-model="expiry" placeholder="Expiration" name="expiry" payments-format="expiry" payments-validate="expiry" />
+							<br>
+							<div class="map" ng-show="vm.mapValue">
+								<!--<map map="vm.mapValue"></map>-->
 							</div>
+							<button
+								ng-click="vm.saveEventDetailsWhileDesigningMap( eventTitle, bio, city, state, paymentEmail )"
+								ng-show="!vm.mapValue">Design Your Map
+							</button>
+							<!-- <form stripe-form="stripeCallback" name="checkoutForm">
 
-							<div class = "col s2">
-								<input validate id="cvc" ng-model="cvc" placeholder="CVC" name="cvc" payments-format="cvc" payments-validate="cvc" />
-							</div>
+                                            <div class = "col s5">
+                                <input validate id="card" ng-model="number" placeholder="Card Number" name="card" payments-format="card" payments-validate="card" />
+                                            </div>
 
-            </form> -->
-    </div>
+                                            <div class = "col s4">
+                                <input validate id="expiry" ng-model="expiry" placeholder="Expiration" name="expiry" payments-format="expiry" payments-validate="expiry" />
+                                            </div>
 
+                                            <div class = "col s2">
+                                                <input validate id="cvc" ng-model="cvc" placeholder="CVC" name="cvc" payments-format="cvc" payments-validate="cvc" />
+                                            </div>
+
+                            </form> -->
+						</div>
+
+					</div>
+
+					<div class="center">
+						<button class="btn create-event-button" type="submit"
+								ng-click="vm.createEvent( eventTitle, bio, city, state, paymentEmail, vm.stateParams.map._id )">
+							Create Event
+						</button>
+					</div>
+
+				</div>
 			</div>
-
-			<div class="center">
-				<button class="btn create-event-button" type="submit" ng-click="vm.createEvent( eventTitle, bio, city, state, paymentEmail, vm.stateParams.map._id )">Create Event</button>
-			</div>
-
 		</div>
-</div>
-</div>
-</div>
+	</div>
 </div>
