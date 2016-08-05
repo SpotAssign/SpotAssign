@@ -29,8 +29,8 @@
     "cookie-parser": "^1.4.3",
     "eslint-plugin-jsx-a11y": "^1.2.1",
     "express": "^4.14.0",
-    "filepicker-js": "^2.4.15",
     "express-session": "^1.14.0",
+    "filepicker-js": "^2.4.15",
     "font-awesome": "^4.6.3",
     "jquery": "^3.1.0",
     "materialize-clockpicker": "^1.0.1",
@@ -40,6 +40,7 @@
     "passport": "^0.3.2",
     "passport-auth0": "^0.5.2",
     "sc-date-time": "^1.1.7",
+    "semantic-ui": "^2.2.2",
     "toastr": "^2.1.2"
   },
   "devDependencies": {

@@ -3,22 +3,22 @@
 		<div class="container">
 			<div class="row">
 				<div class="col s12 m8 offset-m2">
-					<h3 class="center">Search event in your area!</h3>
+					<!-- <h3 class="center">Search event in your area!</h3> -->
 					<h5>Search</h5>
+					<div class="input-field col s6">
+          				<input id="title" type="text" class="validate" ng-model="search.title">
+          				<label for="title">Name</label>
+        			</div>
 					<div class="input-field col s6">
           				<input id="location" type="text" class="validate" ng-model="search.location">
           				<label for="location">Location</label>
-        			</div>
-					<div class="input-field col s6">
-          				<input id="title" type="text" class="validate" ng-model="search.title">
-          				<label for="title">Title</label>
         			</div>
 				</div>
 			</div>
 
 			<div class="row">
 				<ul class="collapsible col s14 m10 offset-m1" data-collapsible="accordion">
-					
+
 					<li ng-repeat="mkt in vm.markets | filter:search" title="Click for market details">
 						<div class="collapsible-header">
 							<ul class="collapsible-centering">
@@ -28,6 +28,11 @@
 								<li class="MktInfo"><img class="MktImage" ng-src="{{mkt.image}}" /></li>
 							</ul>
 						</div>
-						<div class="collapsible-body"><strong>City/State:</strong> {{mkt.location}}<p><strong>Description:</strong> {{mkt.desc}}</p></div>
+						<div class="collapsible-body">
+							<strong>City/State:</strong> {{mkt.location}}<p>
+							<strong>Description:</strong> {{mkt.desc}}</p>
+						</div>
 		</div>
+</div>
+<footer-directive></footer-directive>
 </div>

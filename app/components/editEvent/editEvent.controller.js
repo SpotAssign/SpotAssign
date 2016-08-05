@@ -7,6 +7,43 @@ class EditEventController {
 		this.myMap = JSON.parse( localStorage.getItem( 'map' ) );
 		this.event = {};
 		this.fillFields();
+
+		this.sleep = {
+		"mapType": "medium",
+		"mapImage": "",
+		"spots": [
+				{
+						"price": "32",
+						"type": "square",
+						"color": "rgb(56, 56, 56)",
+						"num": 1,
+						"height": "60px",
+						"width": "60px",
+						"top": "0px",
+						"left": "235px"
+				},
+				{
+						"price": "32",
+						"type": "square",
+						"color": "rgb(56, 56, 56)",
+						"num": 2,
+						"height": "60px",
+						"width": "60px",
+						"top": "50px",
+						"left": "165px"
+				},
+				{
+						"price": "323",
+						"type": "square",
+						"color": "rgb(56, 56, 56)",
+						"num": 3,
+						"height": "60px",
+						"width": "60px",
+						"top": "",
+						"left": ""
+				}
+		]
+	}
   }
 
 
@@ -17,17 +54,17 @@ fillFields() {
 			this.event = event;
 			// console.log( this.event, 'this is this.event');
 			this.timeout( () => {
-				document.getElementById( 'eventTitle' ).value = this.event.name ? this.event.name : '';
-				document.getElementById( 'bio' ).value = this.event.bio ? this.event.bio : '';
-				document.getElementById( 'city' ).value = this.event.location.city ? this.event.location.city : '';
-				document.getElementById( 'state' ).value = this.event.location.state ? this.event.location.state : '';
-				document.getElementById( 'email' ).value = this.event.paymentInfo ? this.event.paymentInfo : '';
+				// document.getElementById( 'eventTitle' ).value = this.event.name ? this.event.name : '';
+				// document.getElementById( 'bio' ).value = this.event.bio ? this.event.bio : '';
+				// document.getElementById( 'city' ).value = this.event.location.city ? this.event.location.city : '';
+				// document.getElementById( 'state' ).value = this.event.location.state ? this.event.location.state : '';
+				// document.getElementById( 'email' ).value = this.event.paymentInfo ? this.event.paymentInfo : '';
 			} );
 		}
 	}
 
 	editEvent( title, bio, city, state, paymentInfo ) {
-		
+
 		city = city ? city : document.getElementById( 'city' ).value;
 		state = state ? state : document.getElementById( 'state' ).value;
 
@@ -42,7 +79,7 @@ fillFields() {
 		} ).then( response => {
 			this.user = response;
 			if ( response ) {
-				Materialize.toast( 'Settings saved.', 1000 );
+				// Materialize.toast( 'Settings saved.', 1000 );
 			}
 		} );
 	}
@@ -50,7 +87,7 @@ fillFields() {
 	deleteEvent() {
 		this.service.market.deleteOne( this.event._id ).then( response => {
 			if ( response ) {
-				Materialize.toast( 'Event Successfully deleted.', 1000 );
+				// Materialize.toast( 'Event Successfully deleted.', 1000 );
 			}
 		} );
 	}
