@@ -7,7 +7,7 @@ import { map } from '../map/map';
 export const event = angular.module( 'event', [ uiRouter, map.name ] )
 .config( ( $stateProvider ) => {
 	$stateProvider.state( 'event', {
-		url: '/event', // This will have a dynamic url 'spotassign.com/provo'
+		url: '/event/:name/:id', // This will have a dynamic url 'spotassign.com/provo'
 		template: '<event></event>'
 	} );
 } )

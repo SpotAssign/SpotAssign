@@ -15,7 +15,7 @@
 
 			<h6>Photo: {{ vm.photo }} </h6>
 
-			<h6>Event URL: </h6>
+			<h6>Event URL: <a ui-sref="event({ name: vm.user.admin[vm.user.admin.length - 1].name })">VISIT YOUR URL</a></h6>
 
 			<h4><i class="material-icons dash-icon">place</i> Your Event Map <hr class="divider"></h4>
 			<div class="event-map" ng-show="vm.stateParams.map ? vm.stateParams.map : vm.map"><map map="vm.stateParams.map ? vm.stateParams.map : vm.map"></map></div>
