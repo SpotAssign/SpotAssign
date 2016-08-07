@@ -1,6 +1,5 @@
 class NewMapController {
-	constructor( service, $state, $timeout, mapValue ) {
-		this.timeout = $timeout;
+	constructor( service, $state, stateService ) {
 		this.service = service;
 		this.mapImage = '';
 		this.mapSize = 'small';
@@ -8,8 +7,9 @@ class NewMapController {
 		this.spotTypes = [];
 		this.state = $state;
 		this.map = false;
-		this.getMap();
 		this.draggable();
+		console.log( stateService.event.getEvent(), 'EVENT' );
+		console.log( stateService.user.getCurrentUser(), 'USER' );
 		$( document ).ready( function () {
 			$( '.imageUpload > button' )
 				.addClass( 'awesomeButton btn waves-effect waves-light' )
@@ -18,12 +18,14 @@ class NewMapController {
 			$( 'select' ).material_select();
 			$( '.previousBtn' ).hide();
 		} );
-
-		this.mapValue = mapValue;
 	}
 
 	checkMapSize() {
 		this.mapSize = $( '#map-options' ).val();
+	}
+
+	checkTypes() {
+		this.spotShape = $( '#spotShape' ).val();
 	}
 
 	addPicture() {
@@ -57,6 +59,7 @@ class NewMapController {
 		} else if ( this.currentStep === 3 ) {
 			$( '.previousBtn' ).show();
 			$( '.nextBtn' ).hide();
+			this.getMapPositions();
 		}
 	}
 
@@ -143,33 +146,26 @@ class NewMapController {
 				}
 			);
 		} );
-		this.saveMap( positions );
+		this.saveMyMap( positions );
 	}
 
 	createMap() {
-		this.service.map.create( this.finalMap ).then( response => {
-			console.log( response, 'line 146 newMapCtrl this is our map' );
-			const savedData = JSON.parse( localStorage.getItem( 'event' ) );
-			this.state.go( 'createEvent', { map: response, event: savedData } );
-		} );
+		// this.service.map.create( this.finalMap ).then( response => {
+		// 	console.log( response, 'line 146 newMapCtrl this is our map' );
+		// 	const savedData = JSON.parse( localStorage.getItem( 'event' ) );
+		// 	this.state.go( 'createEvent', { map: response, event: savedData } );
+		// } );
 	}
 
-	getMap() {
-		this.myMap = JSON.parse( localStorage.getItem( 'map' ) );
+	saveMyMap( spots ) {
+		// this.eventValue.map = {
+		// 	mapType: this.mapSize,
+		// 	mapImage: this.mapImage,
+		// 	spots
+		// };
 	}
-
-	saveMap( spots ) {
-		this.finalMap = {
-			mapType: this.mapSize,
-			mapImage: this.mapImage,
-			spots
-		};
-		this.mapValue = this.finalMap;
-	}
-
 }
 
-
-NewMapController.$inject = [ 'service', '$state', '$timeout', 'mapValue' ];
+NewMapController.$inject = [ 'service', '$state', 'stateService' ];
 
 export { NewMapController };

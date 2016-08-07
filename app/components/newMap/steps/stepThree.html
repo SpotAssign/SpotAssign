@@ -1,0 +1,12 @@
+<div id="stepThree">
+	<h3 class="center title">{{ vm.mapName }}</h3>
+	<!--<map></map>  TODO-->
+	<div class="col s12 center finalMapContainer">
+		<!--<map map="hi"></map>-->
+		<button ng-hide="vm.currentStep !== 3"
+				class="orange confirmBtn awesomeButton center waves-effect waves-light btn"
+				ng-click="vm.createMap()">
+			Save Map
+		</button>
+	</div>
+</div>

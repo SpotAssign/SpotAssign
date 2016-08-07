@@ -1,7 +1,9 @@
 import angular from 'angular';
 import { createEventDirective } from './createEvent.directive';
-import { sideNav } from '../sideNav/sideNav';
 import { service } from '../../shared/service';
+import { stateService } from '../../shared/stateService';
+
+import { sideNav } from '../sideNav/sideNav';
 import { logout } from '../logout/logout';
 
 export const createEvent = angular.module( 'createEvent', [ sideNav.name, logout.name ] )
@@ -10,12 +12,9 @@ export const createEvent = angular.module( 'createEvent', [ sideNav.name, logout
 
 		$stateProvider.state( 'createEvent', {
 			url: '/create',
-			template: '<create-event></create-event>',
-			params: {
-				'map': null,
-				'event': null
-			}
+			template: '<create-event></create-event>'
 		} );
 	} )
 	.directive( 'createEvent', createEventDirective )
+	.factory( 'stateService', stateService )
 	.factory( 'service', service );
