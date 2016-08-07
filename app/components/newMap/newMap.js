@@ -16,7 +16,8 @@ export const newMap = angular.module( 'newMap', [ map.name, sideNav.name ] )
 		$urlRouterProvider.otherwise( '/' );
 
 		$stateProvider.state( 'newMap', {
-			template: '<new-map></new-map>'
+			template: '<new-map></new-map>',
+			url: '/newMap' // TODO
 		} );
 	} )
 	.directive( 'newMap', newMapDirective )

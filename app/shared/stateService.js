@@ -1,16 +1,16 @@
 const stateService = ( $http, $location ) => {
-    let event = null;
-    let map = null;
-    let currentUser = null;
-    return {
-    	event: {
-    		getMap() {
-    			return map;
+	let event = null;
+	let map = null;
+	let currentUser = null;
+	return {
+		event: {
+			getMap() {
+				return map;
 			},
 			setMap( currentMap ) {
 				map = currentMap;
 			},
-    		getEvent() {
+			getEvent() {
 				return event;
 			},
 			setEvent( ev ) {

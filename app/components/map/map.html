@@ -1,23 +1,21 @@
-<div>
-	<button ng-click="vm.getmapdata()">click</button>
-<!--<div id="currentMap"-->
-	 <!--class="{{ map.mapType }}"-->
-	 <!--style="background: url( {{ map.mapImage }} );background-size: contain;background-repeat:no-repeat;"-->
-<!--&gt;-->
-<!--{{vm.map}}-->
+<div id="map">
+	<div id="currentMap"
+		 class="{{ map.mapType }}"
+		 style="background: url( {{ map.mapImage }} );background-size: contain;background-repeat:no-repeat;"
+	>
 
-	<!--&lt;!&ndash;<div ng-repeat="spot in map.spots">&ndash;&gt;-->
-		<!--&lt;!&ndash;<a ng-click="vm.buySpot( spot )">&ndash;&gt;-->
-			<!--&lt;!&ndash;<div style="position:absolute;background-color:{{spot.color}};left:{{spot.left}};top:{{spot.top}};width:{{spot.width}};height:{{spot.height}}"&ndash;&gt;-->
-				<!--&lt;!&ndash;class="{{spot.type}} spot"&ndash;&gt;-->
-			<!--&lt;!&ndash;&gt;&ndash;&gt;-->
-				<!--&lt;!&ndash;<p class="spotPrice"><span id="dollar">$</span>{{spot.price}}</p>&ndash;&gt;-->
-			<!--&lt;!&ndash;</div>&ndash;&gt;-->
-		<!--&lt;!&ndash;</a>&ndash;&gt;-->
-	<!--&lt;!&ndash;</div>&ndash;&gt;-->
-
+		<div ng-repeat="spot in map.spots">
+			<a ng-click="vm.buySpot( spot )">
+				<div
+					style="position:absolute;background-color:{{spot.color}};left:{{spot.left}};top:{{spot.top}};width:{{spot.width}};height:{{spot.height}}"
+					class="{{spot.type}} spot"
+				>
+					<p class="spotPrice"><span id="dollar">$</span>{{spot.price}}</p>
+				</div>
+			</a>
+		</div>
 
 
-<!--</div>-->
+	</div>
 
 </div>

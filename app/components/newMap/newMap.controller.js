@@ -1,15 +1,23 @@
 class NewMapController {
 	constructor( service, $state, stateService ) {
 		this.service = service;
+		this.state = $state;
+		this.stateService = stateService;
+
 		this.mapImage = '';
 		this.mapSize = 'small';
 		this.currentStep = 1;
 		this.spotTypes = [];
-		this.state = $state;
-		this.map = false;
 		this.draggable();
+		const that = this;
+		setTimeout(() => {
+			console.log( this.mapSize, 'BEFORE' );
+			that.mapSize = 'medium';
+			console.log( this.mapSize, 'AFTER' );
+		}, 3000);
 		console.log( stateService.event.getEvent(), 'EVENT' );
 		console.log( stateService.user.getCurrentUser(), 'USER' );
+
 		$( document ).ready( function () {
 			$( '.imageUpload > button' )
 				.addClass( 'awesomeButton btn waves-effect waves-light' )
@@ -20,8 +28,28 @@ class NewMapController {
 		} );
 	}
 
+	draggable() {
+		$( '.box' )
+			.draggable( {
+				containment: '#map',
+				cursor: 'move',
+				grid: [ 5, 5 ],
+				snap: '#map',
+				zIndex: 100
+			} )
+			.resizable( {
+				containment: '#map',
+				maxHeight: 250,
+				maxWidth: 250,
+				minHeight: 60,
+				minWidth: 60,
+				aspectRatio: true
+			} );
+	}
+
 	checkMapSize() {
 		this.mapSize = $( '#map-options' ).val();
+		console.log( this.mapSize );
 	}
 
 	checkTypes() {
@@ -48,40 +76,21 @@ class NewMapController {
 		);
 	}
 
-	step( stepNum ) {
-		this.currentStep = stepNum;
-		if ( this.currentStep === 1 ) {
-			$( '.previousBtn' ).hide();
-			$( '.nextBtn' ).show();
-		} else if ( this.currentStep === 2 ) {
-			$( '.previousBtn' ).show();
-			$( '.nextBtn' ).show();
-		} else if ( this.currentStep === 3 ) {
-			$( '.previousBtn' ).show();
-			$( '.nextBtn' ).hide();
-			this.getMapPositions();
+	newType() {
+		if ( !this.spotColor ) this.spotColor = '#000000';
+		const type = {
+			shape: this.spotShape,
+			name: this.spotName,
+			price: this.spotPrice,
+			color: this.spotColor
+		};
+		if ( type.shape && type.name && type.price && type.color ) {
+			this.spotTypes.push( type );
+		} else {
+			Materialize.toast( 'Add all required fields.', 2000 );
 		}
 	}
 
-	next() {
-		this.step( ++this.currentStep );
-	}
-	previous() {
-		this.step( --this.currentStep );
-	}
-	newType() {
-		if ( !this.spotShape ) {
-			this.spotShape = 'square';
-		} else {
-			this.spotTypes.push( {
-				shape: this.spotShape,
-				name: this.spotName,
-				price: this.spotPrice,
-				color: this.spotColor,
-				size: this.spotSize
-			} );
-		}
-	}
 	newBox( color, shape, price ) {
 		if ( !color ) color = '#383838';
 		$( '#map' ).append(
@@ -90,25 +99,6 @@ class NewMapController {
 			</div>`
 		);
 		this.draggable();
-	}
-
-	draggable() {
-		$( '.box' )
-			.draggable( {
-				containment: '#map',
-				cursor: 'move',
-				grid: [ 5, 5 ],
-				snap: '#map',
-				zIndex: 100
-			} )
-			.resizable( {
-				containment: '#map',
-				maxHeight: 250,
-				maxWidth: 250,
-				minHeight: 60,
-				minWidth: 60,
-				aspectRatio: true
-			} );
 	}
 
 	getMapPositions() {
@@ -158,11 +148,42 @@ class NewMapController {
 	}
 
 	saveMyMap( spots ) {
-		// this.eventValue.map = {
-		// 	mapType: this.mapSize,
-		// 	mapImage: this.mapImage,
-		// 	spots
-		// };
+		const map = {
+			name: this.mapName,
+			size: this.mapSize,
+			image: this.mapImage,
+			spots
+		};
+		this.stateService.event.setMap( map );
+		this.currentMap = map;
+	}
+
+	step( stepNum ) {
+		this.currentStep = stepNum;
+		if ( this.currentStep === 1 ) {
+			$( '.previousBtn' ).hide();
+			$( '.nextBtn' ).show();
+		} else if ( this.currentStep === 2 ) {
+			if ( this.mapName && this.mapSize ) {
+				$( '.previousBtn' ).show();
+				$( '.nextBtn' ).show();
+			} else {
+				this.currentStep--;
+				Materialize.toast( 'Please insert required information.', 2000 );
+			}
+		} else if ( this.currentStep === 3 ) {
+			$( '.previousBtn' ).show();
+			$( '.nextBtn' ).hide();
+			this.getMapPositions();
+		}
+	}
+
+	next() {
+		this.step( ++this.currentStep );
+	}
+
+	previous() {
+		this.step( --this.currentStep );
 	}
 }
 
