@@ -1,7 +1,7 @@
 <div id="map">
 	<div id="currentMap"
-		 class="{{ map.mapType }}"
-		 style="background: url( {{ map.mapImage }} );background-size: contain;background-repeat:no-repeat;"
+		 ng-class="map.size ? map.size : ''"
+		 style="background: url( {{ map.image }} );background-size: contain;background-repeat:no-repeat;"
 	>
 
 		<div ng-repeat="spot in map.spots">

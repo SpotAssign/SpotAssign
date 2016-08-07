@@ -9,12 +9,6 @@ class NewMapController {
 		this.currentStep = 1;
 		this.spotTypes = [];
 		this.draggable();
-		const that = this;
-		setTimeout(() => {
-			console.log( this.mapSize, 'BEFORE' );
-			that.mapSize = 'medium';
-			console.log( this.mapSize, 'AFTER' );
-		}, 3000);
 		console.log( stateService.event.getEvent(), 'EVENT' );
 		console.log( stateService.user.getCurrentUser(), 'USER' );
 
@@ -47,18 +41,9 @@ class NewMapController {
 			} );
 	}
 
-	checkMapSize() {
-		this.mapSize = $( '#map-options' ).val();
-		console.log( this.mapSize );
-	}
-
-	checkTypes() {
-		this.spotShape = $( '#spotShape' ).val();
-	}
-
 	addPicture() {
 		filepicker.setKey( 'AWWNzupn7QV1RRT2xGT0gz' );
-		filepicker.pick(
+		return filepicker.pick(
 			{
 				services: [ 'COMPUTER', 'CONVERT' ],
 				conversions: [ 'crop', 'rotate', 'filter' ],
@@ -70,9 +55,7 @@ class NewMapController {
 			Blob => {
 				this.mapImage = Blob.url;
 			},
-			FPError => {
-				console.log( 'ERROR', FPError.toString() );
-			}
+			FPError => console.log( 'ERROR', FPError.toString() )
 		);
 	}
 
@@ -137,14 +120,6 @@ class NewMapController {
 			);
 		} );
 		this.saveMyMap( positions );
-	}
-
-	createMap() {
-		// this.service.map.create( this.finalMap ).then( response => {
-		// 	console.log( response, 'line 146 newMapCtrl this is our map' );
-		// 	const savedData = JSON.parse( localStorage.getItem( 'event' ) );
-		// 	this.state.go( 'createEvent', { map: response, event: savedData } );
-		// } );
 	}
 
 	saveMyMap( spots ) {

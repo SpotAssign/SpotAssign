@@ -6,10 +6,7 @@ import template from './stepThree.html';
 export const stepThreeDirective = () => {
 	return {
 		template,
-		controller,
-		controllerAs: 'vm',
 		restrict: 'E',
-		replace: true,
-		scope: {}
+		replace: true
 	};
 };

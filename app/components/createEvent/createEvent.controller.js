@@ -7,17 +7,16 @@ class CreateEventController {
 
 		this.currenUser = this.stateService.user.getCurrentUser();
 		this.currentEvent = this.stateService.event.getEvent();
+		this.currentMap = this.stateService.event.getMap();
 	}
 
-
 	createEvent( ev ) {
-		const currentMap = this.stateService.event.getMap();
-		if ( !currentMap ) {
+		if ( !this.currentMap ) {
 			Materialize.toast( 'You must design a map to create an event.', 2000 );
 		} else if ( ev.title && ev.bio && ev.city && ev.state && ev.paymentEmail ) {
 			this.stateService.event.setEvent( ev );
 			const event = this.stateService.event.getEvent();
-			event.map = this.stateService.event.getMap();
+			event.map = this.currentMap;
 			return this.service.market.create( event )
 				.then( result => {
 					this.stateService.event.setEvent( result );
@@ -28,19 +27,7 @@ class CreateEventController {
 		}
 	}
 
-	// saveTime( day, startTime, endTime ) {
-	// 	return this.service.market.editOne( id, {
-	// 		recurrence: {
-	// 			dayOfWeek: [ {
-	// 				day,
-	// 				hours: []
-	// 			} ]
-	// 		}
-	// 	} );
-	// }
-
 	saveEventDetailsWhileDesigningMap( event ) {
-		localStorage.setItem( 'event', JSON.stringify( event ) ); // TODO DELETE
 		this.stateService.event.setEvent( event );
 		this.state.go( 'newMap' );
 	}

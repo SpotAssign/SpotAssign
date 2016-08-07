@@ -38,12 +38,13 @@
 
 		<!--MAP-->
 		<div class="col s12 center mapContainer" ng-show="vm.currentStep < 3">
-			{{ vm.mapSize }}
+
 			<div ng-class="vm.mapSize ? vm.mapSize : ''"
 				 class="center"
 				 style="background:url( {{ vm.mapImage }} );background-size: contain;"
 				 id="map"
 			></div>
+
 		</div>
 
 		<button
