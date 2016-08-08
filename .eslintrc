@@ -21,7 +21,8 @@
 		"jquery": true
 	},
 	"rules": {
-    "template-curly-spacing": 1,
+    	"template-curly-spacing": 1,
+		"no-undef": 0,
 		"global-require": 0,
 		"space-before-function-paren": 0,
 		"import/default": 0,
