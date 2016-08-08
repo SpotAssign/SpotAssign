@@ -9,7 +9,7 @@ export default {
 		if ( !req.user ) {
 			throw new Error( 'user null' );
 		}
-		return res.redirect( '/#/dashboard' );
+		return res.redirect( '/#/admin/dashboard' );
 	},
 	// THIS FUNCTION IS CALLED WHEN THEY REDIRECT TO DASHBOARD, IT CHECKS IF THE
 	// GOOGLE OR FACEBOOK USER IS EXSISTING THEN RETURNS DATABASE USER OBJECT

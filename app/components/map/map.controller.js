@@ -42,6 +42,7 @@ class MapController {
 			);
 		} );
 }
+}
 
 MapController.$inject = [ 'service', '$state' ];
 
