@@ -6,7 +6,7 @@ import { service } from '../../shared/service';
 export const editEvent = angular.module( 'editEvent', [ sideNav.name ] )
 	.config( function( $stateProvider, $urlRouterProvider ) {
 	$stateProvider.state( 'editEvent', {
-		url: '/editEvent',
+		url: '/admin/editEvent',
 		template: '<edit-event></edit-event>'
 	} );
 } )

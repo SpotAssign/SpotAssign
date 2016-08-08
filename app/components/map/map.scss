@@ -1,7 +1,10 @@
+@import '../../styles/colors';
+@import url(https://fonts.googleapis.com/css?family=Heebo:100);
+
 #currentMap {
 	position: relative;
 	margin-top: 25px;
-	outline: 3px solid black;
+	outline: 3px solid $primary-gray;
 	outline-offset: 1px;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -17,12 +20,36 @@
 		vertical-align: center;
 		position: relative;
 		bottom: 5px;
+		z-index: 500;
 	}
 	#dollar {
 		font-size: 15px;
+		position: relative;
+		bottom: 3px;
 	}
 	.spot {
 		cursor: pointer;
+	}
+	div a div:hover {
+		opacity: .8;
+	}
+}
+.outside-map, .payment {
+	margin-top: 25%;
+	button {
+		background-color: $primary-gray;
+		margin-top: 25%;
+		padding: 10px 20px;
+		color: white;
+		border-radius: 8px;
+		border: none;
+		font: 14px/23px 'Heebo', serif;
+		font-size: 25px;
+		text-transform: uppercase;
+	}
+	button:hover {
+		text-decoration: none;
+		background-color: $secondary-gray;
 	}
 }
 

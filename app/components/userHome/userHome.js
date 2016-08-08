@@ -10,7 +10,7 @@ import { service } from '../../shared/service';
 export const userHome = angular.module( 'userHome', [ uiRouter, userSpots.name, rentalHistory.name, transactionHistory.name ] )
 .config( ( $stateProvider ) => {
 	$stateProvider.state( 'userHome', {
-		url: '/user',
+		url: '/user/dash',
 		template: '<user-home></user-home>'
 	} );
 } )

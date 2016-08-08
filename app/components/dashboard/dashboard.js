@@ -15,7 +15,7 @@ export const dashboard = angular.module( 'dashboard', [ sideNav.name, calendar.n
 	$urlRouterProvider.otherwise( '/' );
 
 	$stateProvider.state( 'dashboard', {
-		url: '/dashboard',
+		url: '/admin/dashboard',
 		template: '<dashboard></dashboard>'
 	} );
 } )

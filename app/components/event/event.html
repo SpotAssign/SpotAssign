@@ -1,13 +1,12 @@
 <div id="event">
-	<navbar></navbar>
+	<div class="navbar">
+		<h4 class="title">{{ vm.event.title }}Provo Farmer's Market</h4>
+	</div>
 	<div class="row">
 
 		<div class="top">
-			<h4 class="title">{{ vm.event.title }}</h4>
-			<img class="map" src="http://placehold.it/350x350" alt="map">
-			<p>
-				<a href="/#/event">Buy a spot</a>
-			</p>
+			<div ng-show="vm.stateParams.map ? vm.stateParams.map : vm.myMap"><map map="vm.stateParams.map ? vm.stateParams.map : vm.myMap"></map></div>
+			<div ng-show="vm.sleep"><map map="vm.sleep"></map></div>
 		</div>
 		<div class="mid col s12">
 			<div class="col s8 offset-s2 openclose">
@@ -49,5 +48,7 @@
 		</div>
 
 	</div>
-	<footer-directive></footer-directive>
+	<a href="http://www.spotassign.com"><div class="footer">
+		<img src="{{ vm.picture }}"/>
+	</div></a>
 </div>

@@ -123,7 +123,7 @@ const service = ( $http, $location ) => {
                         dates: newRes.dates,
                         user: newRes.userId,
                         market: newRes.marketId,
-                        booth: newRes.boothId,
+                        map: newRes.mapId,
                         payment: newRes.paymentId
                     }
                 } ).then( data => data );
