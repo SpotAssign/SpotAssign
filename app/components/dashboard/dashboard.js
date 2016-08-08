@@ -15,8 +15,17 @@ export const dashboard = angular.module( 'dashboard', [ sideNav.name, calendar.n
 	$urlRouterProvider.otherwise( '/' );
 
 	$stateProvider.state( 'dashboard', {
+<<<<<<< HEAD
+		url: '/admin/dashboard',
+		template: '<dashboard></dashboard>',
+		params: {
+			'event': null,
+			'map': null
+		}
+=======
 		url: '/dashboard',
 		template: '<dashboard></dashboard>'
+>>>>>>> dfd8ebdda5faadc967af2e70c4d917dd16419583
 	} );
 } )
 	.directive( 'dashboard', dashboardDirective )

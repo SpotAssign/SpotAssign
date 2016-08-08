@@ -10,7 +10,7 @@ export const createEvent = angular.module( 'createEvent', [ sideNav.name, logout
 		$urlRouterProvider.otherwise( '/' );
 
 		$stateProvider.state( 'createEvent', {
-			url: '/create',
+			url: '/admin/create',
 			template: '<create-event></create-event>'
 		} );
 	} )
