@@ -12,11 +12,18 @@ import { stateService } from '../../shared/stateService';
 export const dashboard = angular.module( 'dashboard', [ sideNav.name, calendar.name,
 	timePicker.name, logout.name, newMap.name, map.name ] )
 .config( function ( $stateProvider, $urlRouterProvider ) {
-	$urlRouterProvider.otherwise( '/' );
+	// $urlRouterProvider.otherwise( '/' );
 
 	$stateProvider.state( 'dashboard', {
-		url: '/admin/dashboard',
-		template: '<dashboard></dashboard>'
+		url: '/:event/dashboard',
+		template: '<dashboard></dashboard>',
+		resolve: {
+			getCurrentEvent( $stateParams ) {
+				return this.service.getEvent( $stateParams.event ).then( response => {
+					return response.data;
+				} );
+			}
+		}
 	} );
 } )
 	.directive( 'dashboard', dashboardDirective )

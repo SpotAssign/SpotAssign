@@ -9,7 +9,7 @@ export const event = angular.module( 'event', [ uiRouter, map.name ] )
 	$urlRouterProvider.otherwise( '/' );
 
 	$stateProvider.state( 'event', {
-		url: '/:event/', // This will have a dynamic url 'spotassign.com/provo'
+		url: '/:event', // This will have a dynamic url 'spotassign.com/provo'
 		template: '<event></event>'
 	} );
 } )

@@ -29,6 +29,7 @@ export default {
 	},
 	// POST REQUEST// DO WE NEED THEM TO HAVE A USER ACCOUNT FIRST?
 	addMarket( req, res ) {
+		console.log( req.body, 'this is req.body' );
 		new Markets( req.body ).save( ( err, market ) => {
 			if ( err ) {
 				return res.send( err );
