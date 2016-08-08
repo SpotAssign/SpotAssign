@@ -32,6 +32,9 @@ export default {
 	},
 	// POST REQUEST// DO WE NEED THEM TO HAVE A USER ACCOUNT FIRST?
 	addReservation( req, res ) {
+		if ( !req.user ) {
+			return res.status( 400 ).send( 'You must be logged in.' );
+		}
 		new Reservations( req.body ).save( ( err, reservation ) => {
 			if ( err ) {
 				return res.send( err );
