@@ -8,6 +8,7 @@ class CreateEventController {
 		this.currenUser = this.stateService.user.getCurrentUser();
 		this.currentEvent = this.stateService.event.getEvent();
 		this.currentMap = this.stateService.event.getMap();
+		console.log( currentMap, 'currentMap' );
 	}
 
 	createEvent( ev ) {

@@ -23,16 +23,10 @@
 				<label for="spotPrice">Price</label>
 			</div>
 			<div class="input-field col s12 m6">
-				<select ng-model="vm.spotShape" id="spotShape">
-					<option value="" disabled selected>Choose your option</option>
-					<option value="square">
-						Square
-					</option>
-					<option value="circle">
-						Circle
-					</option>
-				</select>
-				<label>Shape</label>
+				<select ng-model="vm.spotShape"
+						id="spotShape"
+						ng-options="shape.value as shape.display for shape in vm.shapes"
+				></select>
 			</div>
 			<div class="input-field col s12 m6">
 				<input id="spotColor"

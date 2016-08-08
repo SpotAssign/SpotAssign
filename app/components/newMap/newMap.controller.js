@@ -1,8 +1,35 @@
 class NewMapController {
-	constructor( service, $state, stateService ) {
+	constructor( service, $state, stateService, $scope ) {
 		this.service = service;
 		this.state = $state;
 		this.stateService = stateService;
+		this.scope = $scope;
+
+		this.sizes = [
+			{
+				value: 'small',
+				display: 'Small'
+			},
+			{
+				value: 'medium',
+				display: 'Medium'
+			},
+			{
+				value: 'large',
+				display: 'Large'
+			}
+		];
+
+		this.shapes = [
+			{
+				value: 'square',
+				display: 'Square'
+			},
+			{
+				value: 'circle',
+				display: 'Circle'
+			}
+		];
 
 		this.mapImage = '';
 		this.mapSize = 'small';
@@ -12,14 +39,14 @@ class NewMapController {
 		console.log( stateService.event.getEvent(), 'EVENT' );
 		console.log( stateService.user.getCurrentUser(), 'USER' );
 
-		$( document ).ready( function () {
+		$( '.selectOne' ).ready( function () {
 			$( '.imageUpload > button' )
 				.addClass( 'awesomeButton btn waves-effect waves-light' )
 				.removeClass( 'fp__btn' )
 				.text( 'upload background' );
-			$( 'select' ).material_select();
-			$( '.previousBtn' ).hide();
+			// $( '.selectOne' ).material_select();
 		} );
+			$( '.previousBtn' ).hide();
 	}
 
 	draggable() {
@@ -54,6 +81,7 @@ class NewMapController {
 			},
 			Blob => {
 				this.mapImage = Blob.url;
+				this.scope.$apply();
 			},
 			FPError => console.log( 'ERROR', FPError.toString() )
 		);
@@ -130,6 +158,7 @@ class NewMapController {
 			spots
 		};
 		this.stateService.event.setMap( map );
+		console.log( this.stateService.event.getMap(), 'GET MAP NEWMAPCTRL' );
 		this.currentMap = map;
 	}
 
@@ -162,6 +191,6 @@ class NewMapController {
 	}
 }
 
-NewMapController.$inject = [ 'service', '$state', 'stateService' ];
+NewMapController.$inject = [ 'service', '$state', 'stateService', '$scope' ];
 
 export { NewMapController };
