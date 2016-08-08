@@ -93,7 +93,8 @@ const service = ( $http, $location ) => {
                         startDate: editedMarket.startDate,
                         recurrence: editedMarket.recurrence,
                         endDate: editedMarket.endDate,
-                        admins: editedMarket.admins
+                        admins: editedMarket.admins,
+                        closedDates: editedMarket.closedDates
                     }
                 } ).then( ( { data } ) => { return data; } );
             },
@@ -185,6 +186,14 @@ const service = ( $http, $location ) => {
             deleteOne( id ) {
                 return $http.delete( `${api.url}/booths/${id}` )
                 .then( ( { data } ) => { return data; } );
+            }
+        },
+
+        holiday: {
+            year() {
+                const currentYear = new Date().getFullYear();
+                return $http.get( `https://holidayapi.com/v1/holidays?key=ac242d8c-df86-4568-a0cb-6a2540e62a86&country=US&year=${currentYear}`)
+                .then( ( { data } ) => { return data.holidays; } );
             }
         }
     };

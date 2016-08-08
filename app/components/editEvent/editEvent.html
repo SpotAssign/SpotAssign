@@ -53,13 +53,9 @@
 
 			<button class="btn orange" ng-click="vm.toggleMap()" ng-show="vm.stateParams.map ? vm.stateParams.map : vm.myMap">Make New Map</button>
 			<div ng-show="vm.stateParams.map ? vm.stateParams.map : vm.myMap"><map map="vm.stateParams.map ? vm.stateParams.map : vm.myMap"></map></div>
-
+			<div ng-show="vm.sleep"><map map="vm.sleep"></map></div>
 				</form>
 
-			</div>
-
-			<div class="center">
-				<button class="btn red" ng-click="vm.deleteEvent()">Delete Event</button>
 			</div>
 	</div>
 

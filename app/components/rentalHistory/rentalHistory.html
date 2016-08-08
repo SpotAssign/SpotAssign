@@ -2,5 +2,24 @@
 	<side-nav adminPanel="false"></side-nav>
 	<div class="rentalContainer">
 		<h1>Hey from {{ vm.greeting }}</h1>
+		<div>
+			<table>
+				<tr>
+			    <th>Transaction Date</th>
+			    <th>Reserved Dates</th>
+			    <th>Cost</th>
+			    <th>Trans. Total</th>
+			    <th>Payment Receipt Id</th>
+			  </tr>
+			  <tr ng-repeat="uData in vm.data">
+			    <td>{{ uData.TDate }}</td>
+			    <td>{{ uData.Days }}</td>
+			    <td>{{ uData.Cost }}</td>
+			    <td>{{ uData.Total }}</td>
+			    <td>{{ uData.Receipt_Id }}</td>
+			  </tr>
+			  	<!--<td>{{Total to Date}}</td>-->
+			</table>
+		</div>
 	</div>
 </div>

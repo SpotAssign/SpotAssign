@@ -13,6 +13,13 @@
 	.spotPrice {
 		color: white;
 		font-size: 20px;
+		text-align: center;
+		vertical-align: center;
+		position: relative;
+		bottom: 5px;
+	}
+	#dollar {
+		font-size: 15px;
 	}
 	.spot {
 		cursor: pointer;

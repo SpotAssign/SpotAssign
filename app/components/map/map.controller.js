@@ -1,7 +1,11 @@
 class MapController {
-	buySpot( spot ) {
+	constructor( props ) {
+}
+
+	buySpot( spot, id ) {
 		console.log( spot );
 		// Add to cart
+
 	}
 
 	recreateMap( positions ) {
