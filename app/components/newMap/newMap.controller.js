@@ -158,7 +158,6 @@ class NewMapController {
 			spots
 		};
 		this.stateService.event.setMap( map );
-		console.log( this.stateService.event.getMap(), 'GET MAP NEWMAPCTRL' );
 		this.currentMap = map;
 	}
 

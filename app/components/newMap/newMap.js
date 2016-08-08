@@ -1,6 +1,5 @@
 import angular from 'angular';
 import { service } from '../../shared/service';
-import { stateService } from '../../shared/stateService';
 
 import { newMapDirective } from './newMap.directive';
 import { stepOneDirective } from './steps/stepOne.directive';
@@ -24,5 +23,4 @@ export const newMap = angular.module( 'newMap', [ map.name, sideNav.name ] )
 	.directive( 'stepOne', stepOneDirective )
 	.directive( 'stepTwo', stepTwoDirective )
 	.directive( 'stepThree', stepThreeDirective )
-	.factory( 'service', service )
-	.factory( 'stateService', stateService );
+	.factory( 'service', service );

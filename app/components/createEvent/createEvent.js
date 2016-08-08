@@ -1,7 +1,6 @@
 import angular from 'angular';
 import { createEventDirective } from './createEvent.directive';
 import { service } from '../../shared/service';
-import { stateService } from '../../shared/stateService';
 
 import { sideNav } from '../sideNav/sideNav';
 import { logout } from '../logout/logout';
@@ -16,5 +15,4 @@ export const createEvent = angular.module( 'createEvent', [ sideNav.name, logout
 		} );
 	} )
 	.directive( 'createEvent', createEventDirective )
-	.factory( 'stateService', stateService )
 	.factory( 'service', service );

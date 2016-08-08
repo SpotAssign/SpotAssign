@@ -6,6 +6,8 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngAnimate from 'angular-animate';
 
+import { stateService } from './shared/stateService';
+
 // IMPORT COMPONENTS
 import { appDirective } from './app.directive';
 import { home } from './components/home/home';
@@ -30,4 +32,5 @@ angular.module( 'SpotAssign', [
 	manageUsers.name,
 	viewTransactions.name
 ] )
-	.directive( 'app', appDirective )
+	.service( 'stateService', stateService )
+	.directive( 'app', appDirective );

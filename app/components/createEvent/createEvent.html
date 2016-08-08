@@ -56,13 +56,13 @@
 								Your Map
 							</div>
 							<br>
-							<div class="map" ng-show="vm.event.map">
-								<map map="vm.event.map"></map>
+							<div class="map" ng-show="vm.currentMap">
+								<map map="vm.currentMap"></map>
 							</div>
 
 							<button
 								ng-click="vm.saveEventDetailsWhileDesigningMap( event )"
-								ng-show="!vm.event.map">Design Your Map
+								ng-show="!vm.currentMap">Design Your Map
 							</button>
 							<!-- <form stripe-form="stripeCallback" name="checkoutForm">
 

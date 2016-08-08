@@ -5,6 +5,7 @@ const stateService = ( $http, $location ) => {
 	return {
 		event: {
 			getMap() {
+				console.log( map, 'this is map' );
 				return map;
 			},
 			setMap( currentMap ) {
