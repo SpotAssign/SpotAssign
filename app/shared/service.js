@@ -188,7 +188,9 @@ const service = ( $http, $location ) => {
                 .then( data => data );
             }
         },
-
+        //  <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
+        //                           HOLIDAYS SERVICE
+        // <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
         holiday: {
             year() {
                 const currentYear = new Date().getFullYear();

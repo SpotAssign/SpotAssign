@@ -1,6 +1,103 @@
 <div id="timePicker">
 
-	<div class="setDOO">
+
+	<!--How often does this event occur?-->
+	<div class="setDOO" ng-show="vm.chooseFreq">
+		<h5>How often does this event occur?</h5>
+		<select class="browser-default" ng-model="freq">
+			<option ng-value="" disabled selected>Select Option</option>
+			<option value="once">Once</option>
+			<option value="monthly">Monthly</option>
+			<option value="weekly">Weekly</option>
+		</select>
+		<a class="waves-effect waves-light btn right-align-button" ng-click="vm.eventOccurFreq(freq)">NEXT</a>
+	</div>
+
+	<!--Once on-->
+	<div class="setDOO" ng-show="vm.once">
+		<h5>Once on..</h5>
+		<label></label>
+		<input type="date" class="datepicker" ng-model="once.date">
+		<div class="row">
+			<div class="col s5">
+				<div class="input-feild col s12">
+					<label class="col s12">Open</label>
+					<select class="browser-default col s6" ng-model="once.open.hour">
+					   <option value="" disabled selected>Hour</option>
+					   <option ng-repeat="hour in vm.hours" value="{{hour}}">{{hour}}</option>
+					 </select>
+					 <select class="browser-default col s6" ng-model="once.open.minute">
+					   <option value="" disabled selected>Minute</option>
+					   <option ng-repeat="minute in vm.minutes" value="{{minute}}">{{minute}}</option>
+					 </select>
+				</div>
+			</div>
+			<div class="col s5">
+				<div class="input-feild col s12">
+					<label class="col s12">Close</label>
+					<select class="browser-default col s6" ng-model="once.close.hour">
+					   <option value="" disabled selected>Hour</option>
+					   <option ng-repeat="hour in vm.hours" value="{{hour}}">{{hour}}</option>
+					 </select>
+					 <select class="browser-default col s6" ng-model="once.close.minute">
+					   <option value="" disabled selected>Minute</option>
+					   <option ng-repeat="minute in vm.minutes" value="{{minute}}">{{minute}}</option>
+					 </select>
+				</div>
+			</div>
+		</div>
+		<a class="waves-effect waves-light btn right-align-button" ng-click="vm.saveOnceEvent(once)">Save</a>
+	</div>
+
+	<!--Monthly On-->
+	<div class="setDOO row" ng-show="vm.monthly">
+		<h5>Monthly on...</h5>
+		<select class="browser-default col s5" name="" ng-model="Monthly.repeat.number">
+			<option value="first">First</option>
+			<option value="second">Second</option>
+			<option value="third">Third</option>
+			<option value="fourth">Fourth</option>
+		</select>
+		<select class="browser-default col s5" name="" ng-model="Monthly.repeat.day">
+			<option value="Mon">Monday</option>
+			<option value="Tue">Tuesday</option>
+			<option value="Wed">Wednesday</option>
+			<option value="Thur">Thursday</option>
+			<option value="Fri">Friday</option>
+			<option value="Sat">Saturday</option>
+			<option value="Sun">Sunday</option>
+		</select>
+		<div class="col s5">
+			<div class="input-feild col s12">
+				<label class="col s12">Open</label>
+				<select class="browser-default col s6" ng-model="Monthly.repeat.open.hour">
+				   <option value="" disabled selected>Hour</option>
+				   <option ng-repeat="hour in vm.hours" value="{{hour}}">{{hour}}</option>
+				 </select>
+				 <select class="browser-default col s6" ng-model="Monthly.repeat.open.minute">
+				   <option value="" disabled selected>Minute</option>
+				   <option ng-repeat="minute in vm.minutes" value="{{minute}}">{{minute}}</option>
+				 </select>
+			</div>
+		</div>
+		<div class="col s5">
+			<div class="input-feild col s12">
+				<label class="col s12">Close</label>
+				<select class="browser-default col s6" ng-model="Monthly.repeat.close.hour">
+				   <option value="" disabled selected>Hour</option>
+				   <option ng-repeat="hour in vm.hours" value="{{hour}}">{{hour}}</option>
+				 </select>
+				 <select class="browser-default col s6" ng-model="Monthly.repeat.close.minute">
+				   <option value="" disabled selected>Minute</option>
+				   <option ng-repeat="minute in vm.minutes" value="{{minute}}">{{minute}}</option>
+				 </select>
+			</div>
+		</div>
+		<a class="waves-effect waves-light btn right-align-button">NEXT</a>
+	</div>
+
+	<!--Weekly On-->
+	<div class="setDOO" ng-show="vm.weekly">
 		<h5>What are your days of operation?</h5>
 		<div class="allDaysCheckboxes">
 			<div class="dayCheckbox">
@@ -35,7 +132,8 @@
 		</div>
 	</div>
 
-	<div class="setDOO" id="HOO">
+	<!--Weekly Hours of Operation-->
+	<div class="setDOO" id="HOO" ng-show="vm.weekly">
 		<h5>What are your hours of operation?</h5>
 		<div class="daysSelected">
 
@@ -303,28 +401,29 @@
 		</div>
 	</div>
 
-
 	<!-- Add Holidays -->
-	<div class="setDOO">
+	<div class="setDOO" ng-show="vm.addHolidays">
 		<h5>Are you closed on holidays?</h5>
-		<input class="holidaySearch col s9" placeholder="Search by Holiday Name" type="text" name="name" ng-model="search">
-		<div class="col s2">
-			<label class="">Month</label>
-			<select class="browser-default" ng-model="month">
-			   <option ng-value="" disabled selected>Select Month</option>
-			   <option value="2016-01">January</option>
-			   <option value="2016-02">February</option>
-			   <option value="2016-03">March</option>
-			   <option value="2016-04">April</option>
-			   <option value="2016-05">May</option>
-			   <option value="2016-06">June</option>
-			   <option value="2016-07">July</option>
-			   <option value="2016-08">August</option>
-			   <option value="2016-09">September</option>
-			   <option value="2016-10">October</option>
-			   <option value="2016-11">November</option>
-			   <option value="2016-12">December</option>
-			 </select>
+		<div class="row">
+			<input class="holidaySearch col s8" placeholder="Search by Holiday Name" type="text" name="name" ng-model="search">
+			<div class="col s4">
+				<label class="">Month</label>
+				<select class="browser-default" ng-model="month">
+				   <option ng-value="" disabled selected>Select Month</option>
+				   <option value="2016-01">January</option>
+				   <option value="2016-02">February</option>
+				   <option value="2016-03">March</option>
+				   <option value="2016-04">April</option>
+				   <option value="2016-05">May</option>
+				   <option value="2016-06">June</option>
+				   <option value="2016-07">July</option>
+				   <option value="2016-08">August</option>
+				   <option value="2016-09">September</option>
+				   <option value="2016-10">October</option>
+				   <option value="2016-11">November</option>
+				   <option value="2016-12">December</option>
+				 </select>
+			</div>
 		</div>
 		<div class="holidaysContainer row" >
 			<div class="holidaysRepeat" ng-repeat="holiday in vm.holidays">
@@ -343,37 +442,36 @@
 						</div>
 					</li>
 				</ul>
-
-
 			</div>
+			<a class="waves-effect waves-light btn right-align-button" ng-click="vm.addHolidays = false">DONE</a>
 		</div>
-
 	</div>
 
-	<div class="setDOO">
+
+	<!--Open Times and Closed Times- Weekly-->
+	<div class="setDOO" ng-hide="vm.onceSchedule">
 		<div class="showBusinessSchedule">
 			<h5>Open</h5>
 			<ul>
 				<li class="row" ng-repeat="openDay in vm.openOn">
-					<div class="col s12">
+					<div class="">
 						<div class="">
-							<div class="openDayName col s4">
+							<div class="openDayName col s5">
 								{{openDay.name | uppercase }}
 							</div>
 							<div class="dayHours col s5">
 								<b>OPEN:</b>   {{openDay.open.hour}}:{{openDay.open.minute}}
 								<b>CLOSE:</b>   {{openDay.close.hour}}:{{openDay.close.minute}}
 							</div>
-							<div class="col s3">
-								<a class="waves-effect waves-light btn edit" ng-click="editDay = true">
-									<i class="material-icons">mode_edit</i>
-								</a>
+							<div class="col s2">
+								<a class="waves-effect waves-light btn edit" ng-click="editDay = true"><i class="material-icons">mode_edit</i></a>
 							</div>
 						</div>
 					</div>
 					<div class="col s12" ng-show="editDay">
 						<div class="row">
-							<div class="col s5">
+							<hr>
+							<div class="col s6">
 								<div class="input-feild col s12">
 									<label class="col s12">Open</label>
 									<select class="browser-default col s6" ng-model="openDay.open.hour">
@@ -387,7 +485,7 @@
 								</div>
 							</div>
 
-							<div class="col s5">
+							<div class="col s6">
 								<div class="input-feild col s12">
 									<label class="col s12">Close</label>
 									<select class="browser-default col s6" ng-model="openDay.close.hour">
@@ -400,10 +498,11 @@
 									 </select>
 								</div>
 							</div>
+
 						</div>
-						<div class="row">
-							<a class="waves-effect waves-light btn" ng-click="editDay = false">Delete Day</a>
-							<a class="waves-effect waves-light btn" ng-click="editDay = false">Save Changes</a>
+						<div class="">
+							<!-- <a class="waves-effect waves-light btn editMarketDayBtn" ng-click="editDay = false"><i class="material-icons">delete_forever</i></a> -->
+							<a class="waves-effect waves-light btn editMarketDayBtn" ng-click="editDay = false; vm.editSchedule(openDay)"><i class="material-icons">save</i></a>
 						</div>
 					</div>
 				</li>
@@ -412,21 +511,158 @@
 
 
 		<div class="showBusinessSchedule">
-			<h5>Observed Holidays</h5>
+		<div class="row">
+			<div class="col s6">
+				<h5>Observed Holidays</h5>
+			</div>
+			<div class="col s6">
+				<a class="waves-effect waves-light btn editMarketDayBtn" ng-click="vm.addHolidays = true;"><i class="material-icons">add</i></a>
+			</div>
+		</div>
 			<ul>
 				<li class="row" ng-repeat="closedDay in vm.closedDates">
 					<div class="col s5 closedDayName">
 						{{closedDay.name | uppercase}}
 					</div>
-					<div class="col s4 closedDayDate">
+					<div class="col s5 closedDayDate">
 						{{closedDay.date | date : short | uppercase}}
 					</div>
 					<div class="col s2">
-						<a class="waves-effect waves-light btn deleteHoliday" ng-click="">Delete</a>
+						<a class="waves-effect waves-light btn deleteHoliday" ng-click="vm.deleteHoliday(closedDay)"><i class="material-icons">delete_forever</i></a>
 					</div>
 				</li>
 			</ul>
 		</div>
 
 	</div>
+
+
+	<!--ONCE TIME SCHEDULE-->
+	<div class="setDOO" ng-show="vm.onceSchedule">
+		<div class="showBusinessSchedule" ng-show="vm.onceSchedule">
+			<h5>Open</h5>
+			<ul>
+				<li class="row">
+					<div class="">
+						<div class="">
+							<div class="openDayName col s5">
+								{{ vm.openOn.date | date : short }}
+							</div>
+							<div class="dayHours col s5">
+								<b>OPEN:</b>   {{vm.openOn.hours[0].open.minute}}:{{vm.openOn.hours[0].open.minute}}
+								<b>CLOSE:</b>
+								{{vm.openOn.hours[0].close.hour}}:{{vm.openOn.hours[0].close.minute}}
+							</div>
+							<div class="col s2">
+								<a class="waves-effect waves-light btn edit" ng-click="editDay = true"><i class="material-icons">mode_edit</i></a>
+							</div>
+						</div>
+					</div>
+					<div class="col s12" ng-show="editDay">
+						<div class="row">
+							<hr>
+							<div class="col s6">
+								<div class="input-feild col s12">
+									<label class="col s12">Open</label>
+									<select class="browser-default col s6" ng-model="vm.openOn.hours[0].open.hour">
+									   <option value="" disabled selected>Hour</option>
+									   <option ng-repeat="hour in vm.hours" value="{{hour}}">{{hour}}</option>
+									 </select>
+									 <select class="browser-default col s6" ng-model="vm.openOn.hours[0].open.minute">
+									   <option value="" disabled selected>Minute</option>
+									   <option ng-repeat="minute in vm.minutes" value="{{minute}}">{{minute}}</option>
+									 </select>
+								</div>
+							</div>
+
+							<div class="col s6">
+								<div class="input-feild col s12">
+									<label class="col s12">Close</label>
+									<select class="browser-default col s6" ng-model="vm.openOn.hours[0].close.hour">
+									   <option value="" disabled selected>Hour</option>
+									   <option ng-repeat="hour in vm.hours" value="{{hour}}">{{hour}}</option>
+									 </select>
+									 <select class="browser-default col s6" ng-model="vm.openOn.hours[0].close.minute">
+									   <option value="" disabled selected>Minute</option>
+									   <option ng-repeat="minute in vm.minutes" value="{{minute}}">{{minute}}</option>
+									 </select>
+								</div>
+							</div>
+
+						</div>
+						<div class="">
+							<!-- <a class="waves-effect waves-light btn editMarketDayBtn" ng-click="editDay = false"><i class="material-icons">delete_forever</i></a> -->
+							<a class="waves-effect waves-light btn editMarketDayBtn" ng-click="editDay = false; vm.editSchedule(vm.openOn)"><i class="material-icons">save</i></a>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<!--MONTHLY TIME SCHEUDLE-->
+	<div class="setDOO" ng-show="vm.monthlySchedule">
+		<div class="showBusinessSchedule" ng-show="vm.onceSchedule">
+			<h5>Open</h5>
+			<ul>
+				<li class="row">
+					<div class="">
+						<div class="">
+							<div class="openDayName col s5">
+								{{ vm.openOn.date | date : short }}
+							</div>
+							<div class="dayHours col s5">
+								<b>OPEN:</b>   {{vm.openOn.hours[0].open.minute}}:{{vm.openOn.hours[0].open.minute}}
+								<b>CLOSE:</b>
+								{{vm.openOn.hours[0].close.hour}}:{{vm.openOn.hours[0].close.minute}}
+							</div>
+							<div class="col s2">
+								<a class="waves-effect waves-light btn edit" ng-click="editDay = true"><i class="material-icons">mode_edit</i></a>
+							</div>
+						</div>
+					</div>
+					<div class="col s12" ng-show="editDay">
+						<div class="row">
+							<hr>
+							<div class="col s6">
+								<div class="input-feild col s12">
+									<label class="col s12">Open</label>
+									<select class="browser-default col s6" ng-model="vm.openOn.hours[0].open.hour">
+									   <option value="" disabled selected>Hour</option>
+									   <option ng-repeat="hour in vm.hours" value="{{hour}}">{{hour}}</option>
+									 </select>
+									 <select class="browser-default col s6" ng-model="vm.openOn.hours[0].open.minute">
+									   <option value="" disabled selected>Minute</option>
+									   <option ng-repeat="minute in vm.minutes" value="{{minute}}">{{minute}}</option>
+									 </select>
+								</div>
+							</div>
+
+							<div class="col s6">
+								<div class="input-feild col s12">
+									<label class="col s12">Close</label>
+									<select class="browser-default col s6" ng-model="vm.openOn.hours[0].close.hour">
+									   <option value="" disabled selected>Hour</option>
+									   <option ng-repeat="hour in vm.hours" value="{{hour}}">{{hour}}</option>
+									 </select>
+									 <select class="browser-default col s6" ng-model="vm.openOn.hours[0].close.minute">
+									   <option value="" disabled selected>Minute</option>
+									   <option ng-repeat="minute in vm.minutes" value="{{minute}}">{{minute}}</option>
+									 </select>
+								</div>
+							</div>
+
+						</div>
+						<div class="">
+							<!-- <a class="waves-effect waves-light btn editMarketDayBtn" ng-click="editDay = false"><i class="material-icons">delete_forever</i></a> -->
+							<a class="waves-effect waves-light btn editMarketDayBtn" ng-click="editDay = false; vm.editSchedule(vm.openOn)"><i class="material-icons">save</i></a>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+
+
 </div>
