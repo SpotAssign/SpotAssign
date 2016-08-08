@@ -13,3 +13,15 @@
         margin-right: auto;
     }
 }
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:300);
+
+.collection-item, .collection-header{
+    border: 1px solid black;
+}
+
+.collection-item:nth-child(odd) {
+  background-color: #FF9800;
+}
+.collection-item:nth-child(even) {
+  background-color: #FFFFFF;
+}
