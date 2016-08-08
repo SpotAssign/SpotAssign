@@ -1,11 +1,36 @@
 class MapController {
-	constructor( props ) {
+	constructor( service, $state ) {
+		this.clickSpot = false;
+		this.service = service;
+		this.state = $state;
+		this.showButton = true;
+		this.payment = false;
+
+		if ( this.state.current.name !== 'event' ) {
+			this.showButton = false;
+		}
 }
 
-	buySpot( spot, id ) {
-		console.log( spot );
-		// Add to cart
+	clickTheSpot( spot, id ) {
 
+
+		console.log( spot );
+		this.clickedSpot = spot;
+
+	}
+
+	buySpot() {
+		//
+		// reservation = {
+		// 	dates: newRes.dates,
+		// 	user: newRes.userId,
+		// 	market: newRes.marketId,
+		// 	map: newRes.mapId,
+		// 	payment: newRes.paymentId
+		// }
+		// this.service.reservation.create( reservation )
+		this.clickedSpot = false;
+		this.payment = true;
 	}
 
 	recreateMap( positions ) {
@@ -16,9 +41,9 @@ class MapController {
 </div>`
 			);
 		} );
-	}
+}
 }
 
-MapController.$inject = [];
+MapController.$inject = [ 'service', '$state' ];
 
 export { MapController };

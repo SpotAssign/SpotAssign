@@ -7,6 +7,48 @@ class EventController {
 			spots: []
 		};
 		this.stateParams = $stateParams;
+
+		const img = document.createElement( 'img' );
+		img.src = require( '../../img/SpotAssignLogo.png' );
+		this.picture = img.src;
+
+		this.sleep = {
+		'mapType': 'medium',
+		'mapImage': '',
+		'spots': [
+				{
+						'price': '32',
+						'type': 'square',
+						'color': 'rgb(56, 56, 56)',
+						'num': 1,
+						'height': '60px',
+						'width': '60px',
+						'top': '0px',
+						'left': '235px'
+				},
+				{
+						'price': '32',
+						'type': 'square',
+						'color': 'rgb(56, 56, 56)',
+						'num': 2,
+						'height': '60px',
+						'width': '60px',
+						'top': '50px',
+						'left': '165px'
+				},
+				{
+						'price': '323',
+						'type': 'square',
+						'color': 'rgb(56, 56, 56)',
+						'num': 3,
+						'height': '60px',
+						'width': '60px',
+						'top': '',
+						'left': ''
+				}
+		]
+	}
+
 	}
 
 	getEvent() {

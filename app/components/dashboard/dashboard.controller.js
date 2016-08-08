@@ -1,11 +1,10 @@
 class DashboardController {
-	constructor( service, $state, $timeout, $stateParams ) {
+	constructor( service, $state, $timeout, stateService ) {
 		this.service = service;
 		this.state = $state;
-		this.map = JSON.parse( localStorage.getItem( 'map' ) );
-		this.stateParams = $stateParams;
-		this.user = {};
 		this.timeout = $timeout;
+		this.stateService = stateService;
+
 		this.getCurrentUser();
 	}
 
@@ -14,18 +13,16 @@ class DashboardController {
 	getCurrentUser() {
 		return this.service.user.getCurrentOrCreate()
 			.then( user => {
-				this.timeout( () => {
-					this.user = user;
-					if ( !user.admin[0] ) {
-						this.state.go( 'createEvent' );
-					} else {
-						this.getMap();
-					}
-				} );
+				this.stateService.user.setCurrentUser( user );
+				if ( !user.admin[0] ) {
+					this.state.go( 'createEvent' );
+				} else {
+					this.getMap();
+				}
 			} );
 	}
 
-	getMap() {
+	getMap() { // TODO
 		return this.service.map.getOne( this.user.admin[this.user.admin.length - 1].map[this.user.admin[this.user.admin.length - 1].map.length - 1] ).then( response => {
 			localStorage.setItem( 'map', JSON.stringify( response ) );
 			this.map = response;
@@ -33,5 +30,5 @@ class DashboardController {
 	}
 
 }
-DashboardController.$inject = [ 'service', '$state', '$timeout', '$stateParams' ];
+DashboardController.$inject = [ 'service', '$state', '$timeout', 'stateService' ];
 export { DashboardController };

@@ -1,92 +1,52 @@
 class NewMapController {
-	constructor( service, $state, $timeout, mapValue ) {
-		this.timeout = $timeout;
+	constructor( service, $state, stateService, $scope ) {
 		this.service = service;
+		this.state = $state;
+		this.stateService = stateService;
+		this.scope = $scope;
+
+		this.sizes = [
+			{
+				value: 'small',
+				display: 'Small'
+			},
+			{
+				value: 'medium',
+				display: 'Medium'
+			},
+			{
+				value: 'large',
+				display: 'Large'
+			}
+		];
+
+		this.shapes = [
+			{
+				value: 'square',
+				display: 'Square'
+			},
+			{
+				value: 'circle',
+				display: 'Circle'
+			}
+		];
+
 		this.mapImage = '';
 		this.mapSize = 'small';
 		this.currentStep = 1;
 		this.spotTypes = [];
-		this.state = $state;
-		this.map = false;
-		this.getMap();
 		this.draggable();
-		$( document ).ready( function () {
+		console.log( stateService.event.getEvent(), 'EVENT' );
+		console.log( stateService.user.getCurrentUser(), 'USER' );
+
+		$( '.selectOne' ).ready( function () {
 			$( '.imageUpload > button' )
 				.addClass( 'awesomeButton btn waves-effect waves-light' )
 				.removeClass( 'fp__btn' )
 				.text( 'upload background' );
-			$( 'select' ).material_select();
-			$( '.previousBtn' ).hide();
+			// $( '.selectOne' ).material_select();
 		} );
-
-		this.mapValue = mapValue;
-	}
-
-	checkMapSize() {
-		this.mapSize = $( '#map-options' ).val();
-	}
-
-	addPicture() {
-		filepicker.setKey( 'AWWNzupn7QV1RRT2xGT0gz' );
-		filepicker.pick(
-			{
-				services: [ 'COMPUTER', 'CONVERT' ],
-				conversions: [ 'crop', 'rotate', 'filter' ],
-				mimetype: 'image/*',
-				container: 'modal',
-				cropRatio: [ 1 ],
-				cropForce: true
-			},
-			Blob => {
-				this.mapImage = Blob.url;
-			},
-			FPError => {
-				console.log( 'ERROR', FPError.toString() );
-			}
-		);
-	}
-
-	step( stepNum ) {
-		this.currentStep = stepNum;
-		if ( this.currentStep === 1 ) {
 			$( '.previousBtn' ).hide();
-			$( '.nextBtn' ).show();
-		} else if ( this.currentStep === 2 ) {
-			$( '.previousBtn' ).show();
-			$( '.nextBtn' ).show();
-		} else if ( this.currentStep === 3 ) {
-			$( '.previousBtn' ).show();
-			$( '.nextBtn' ).hide();
-		}
-	}
-
-	next() {
-		this.step( ++this.currentStep );
-	}
-	previous() {
-		this.step( --this.currentStep );
-	}
-	newType() {
-		if ( !this.spotShape ) {
-			this.spotShape = 'square';
-		} else {
-			this.spotTypes.push( {
-				shape: this.spotShape,
-				name: this.spotName,
-				price: this.spotPrice,
-				color: this.spotColor,
-				size: this.spotSize
-			} );
-		}
-	}
-	newBox( color, shape, price ) {
-		if ( !color ) color = '#383838';
-		$( '#map' ).append(
-			`<div class="box ${shape}" style="background-color:${color}">
-				<p class="spotNumber">$${price}</p>
-			</div>`
-		);
-		this.draggable();
 	}
 
 	draggable() {
@@ -106,6 +66,50 @@ class NewMapController {
 				minWidth: 60,
 				aspectRatio: true
 			} );
+	}
+
+	addPicture() {
+		filepicker.setKey( 'AWWNzupn7QV1RRT2xGT0gz' );
+		return filepicker.pick(
+			{
+				services: [ 'COMPUTER', 'CONVERT' ],
+				conversions: [ 'crop', 'rotate', 'filter' ],
+				mimetype: 'image/*',
+				container: 'modal',
+				cropRatio: [ 1 ],
+				cropForce: true
+			},
+			Blob => {
+				this.mapImage = Blob.url;
+				this.scope.$apply();
+			},
+			FPError => console.log( 'ERROR', FPError.toString() )
+		);
+	}
+
+	newType() {
+		if ( !this.spotColor ) this.spotColor = '#000000';
+		const type = {
+			shape: this.spotShape,
+			name: this.spotName,
+			price: this.spotPrice,
+			color: this.spotColor
+		};
+		if ( type.shape && type.name && type.price && type.color ) {
+			this.spotTypes.push( type );
+		} else {
+			Materialize.toast( 'Add all required fields.', 2000 );
+		}
+	}
+
+	newBox( color, shape, price ) {
+		if ( !color ) color = '#383838';
+		$( '#map' ).append(
+			`<div class="box ${shape}" style="background-color:${color}">
+				<p class="spotNumber">$${price}</p>
+			</div>`
+		);
+		this.draggable();
 	}
 
 	getMapPositions() {
@@ -143,33 +147,49 @@ class NewMapController {
 				}
 			);
 		} );
-		this.saveMap( positions );
+		this.saveMyMap( positions );
 	}
 
-	createMap() {
-		this.service.map.create( this.finalMap ).then( response => {
-			console.log( response, 'line 146 newMapCtrl this is our map' );
-			const savedData = JSON.parse( localStorage.getItem( 'event' ) );
-			this.state.go( 'createEvent', { map: response, event: savedData } );
-		} );
-	}
-
-	getMap() {
-		this.myMap = JSON.parse( localStorage.getItem( 'map' ) );
-	}
-
-	saveMap( spots ) {
-		this.finalMap = {
-			mapType: this.mapSize,
-			mapImage: this.mapImage,
+	saveMyMap( spots ) {
+		const map = {
+			name: this.mapName,
+			size: this.mapSize,
+			image: this.mapImage,
 			spots
 		};
-		this.mapValue = this.finalMap;
+		this.stateService.event.setMap( map );
+		this.currentMap = map;
 	}
 
+	step( stepNum ) {
+		this.currentStep = stepNum;
+		if ( this.currentStep === 1 ) {
+			$( '.previousBtn' ).hide();
+			$( '.nextBtn' ).show();
+		} else if ( this.currentStep === 2 ) {
+			if ( this.mapName && this.mapSize ) {
+				$( '.previousBtn' ).show();
+				$( '.nextBtn' ).show();
+			} else {
+				this.currentStep--;
+				Materialize.toast( 'Please insert required information.', 2000 );
+			}
+		} else if ( this.currentStep === 3 ) {
+			$( '.previousBtn' ).show();
+			$( '.nextBtn' ).hide();
+			this.getMapPositions();
+		}
+	}
+
+	next() {
+		this.step( ++this.currentStep );
+	}
+
+	previous() {
+		this.step( --this.currentStep );
+	}
 }
 
-
-NewMapController.$inject = [ 'service', '$state', '$timeout', 'mapValue' ];
+NewMapController.$inject = [ 'service', '$state', 'stateService', '$scope' ];
 
 export { NewMapController };

@@ -6,6 +6,7 @@ import { timePicker } from '../timePicker/timePicker';
 import { logout } from '../logout/logout';
 import { newMap } from '../newMap/newMap';
 import { map } from '../map/map';
+import { stateService } from '../../shared/stateService';
 
 
 export const dashboard = angular.module( 'dashboard', [ sideNav.name, calendar.name,
@@ -14,12 +15,9 @@ export const dashboard = angular.module( 'dashboard', [ sideNav.name, calendar.n
 	$urlRouterProvider.otherwise( '/' );
 
 	$stateProvider.state( 'dashboard', {
-		url: '/dashboard',
-		template: '<dashboard></dashboard>',
-		params: {
-			'event': null,
-			'map': null
-		}
+		url: '/admin/dashboard',
+		template: '<dashboard></dashboard>'
 	} );
 } )
-.directive( 'dashboard', dashboardDirective );
+	.directive( 'dashboard', dashboardDirective )
+	.factory( 'stateService', stateService );
