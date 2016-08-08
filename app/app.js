@@ -6,6 +6,8 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngAnimate from 'angular-animate';
 
+import { stateService } from './shared/stateService';
+
 // IMPORT COMPONENTS
 import { appDirective } from './app.directive';
 import { home } from './components/home/home';
@@ -16,7 +18,6 @@ import { newMap } from './components/newMap/newMap';
 import { editEvent } from './components/editEvent/editEvent';
 import { manageUsers } from './components/manageUsers/manageUsers';
 import { viewTransactions } from './components/viewTransactions/viewTransactions';
-
 
 // START MODULE
 angular.module( 'SpotAssign', [
@@ -31,5 +32,5 @@ angular.module( 'SpotAssign', [
 	manageUsers.name,
 	viewTransactions.name
 ] )
-	.value( 'mapValue', null )
+	.service( 'stateService', stateService )
 	.directive( 'app', appDirective );

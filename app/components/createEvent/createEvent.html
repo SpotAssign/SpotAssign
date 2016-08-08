@@ -1,9 +1,9 @@
 <div id="createEvent">
 	<side-nav admin-panel="true"></side-nav>
 	<div class="side-nav-space">
-		<new-map class="new-map" show-map="vm.hasMap" ng-hide="!vm.hasMap"></new-map>
+		<new-map class="new-map" ng-show="vm.showCreateMap"></new-map>
 
-		<div class="create-event-wrapper row" ng-hide="vm.hasMap">
+		<div class="create-event-wrapper row" ng-hide="vm.showCreateMap">
 			<div class="col s10">
 				<h4 id="company-title">Create an Event
 					<hr class="divider">
@@ -17,23 +17,25 @@
 					<br>
 					<div class="col s6">
 						Title:
-						<input id="title" type="text" ng-model="eventTitle">
+						<input id="title" type="text" ng-model="event.title">
 					</div>
 				</div>
 
 				<div class="col s12">
 					Bio:
-					<textarea id="bio" class="materialize-textarea" ng-model="bio"></textarea>
+					<textarea id="bio" class="materialize-textarea"
+							  ng-model="event.bio"
+					></textarea>
 				</div>
 
 				<div class="col s6">
 					City:
-					<input id="city" type="text" ng-model="city">
+					<input id="city" type="text" ng-model="event.city">
 				</div>
 
 				<div class="col s6">
 					State:
-					<input id="state" type="text" ng-model="state">
+					<input id="state" type="text" ng-model="event.state">
 				</div>
 
 				<div>
@@ -44,7 +46,9 @@
 						</div>
 						<br>
 
-						<div class="col s6">Email: <input id="email" type="text" ng-model="paymentEmail"></div>
+						<div class="col s6">Email:
+							<input id="email" type="text" ng-model="event.paymentEmail">
+						</div>
 
 						<div class="col s12 payment">
 							<div class="payment-header">
@@ -52,12 +56,13 @@
 								Your Map
 							</div>
 							<br>
-							<div class="map" ng-show="vm.mapValue">
-								<!--<map map="vm.mapValue"></map>-->
+							<div class="map" ng-show="vm.currentMap">
+								<map map="vm.currentMap"></map>
 							</div>
+
 							<button
-								ng-click="vm.saveEventDetailsWhileDesigningMap( eventTitle, bio, city, state, paymentEmail )"
-								ng-show="!vm.mapValue">Design Your Map
+								ng-click="vm.saveEventDetailsWhileDesigningMap( event )"
+								ng-show="!vm.currentMap">Design Your Map
 							</button>
 							<!-- <form stripe-form="stripeCallback" name="checkoutForm">
 
@@ -80,7 +85,7 @@
 
 					<div class="center">
 						<button class="btn create-event-button" type="submit"
-								ng-click="vm.createEvent( eventTitle, bio, city, state, paymentEmail, vm.stateParams.map._id )">
+								ng-click="vm.createEvent( event )">
 							Create Event
 						</button>
 					</div>

@@ -7,9 +7,7 @@ export const newMapDirective = () => {
 		controller,
 		template,
 		controllerAs: 'vm',
-		scope: {
-			showMap: '='
-		},
+		scope: {},
 		replace: true,
 		restrict: 'E'
 	};

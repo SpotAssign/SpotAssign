@@ -1,0 +1,68 @@
+<div id="stepTwo">
+	<h4 class="center title">Event Spots</h4>
+	<form class="col s12 center">
+		<div class="row">
+			<div class="input-field col s12 m6">
+				<i class="fa fa-tag prefix" aria-hidden="true"></i>
+				<input id="spotName"
+					   type="text"
+					   class="validate"
+					   ng-model="vm.spotName"
+				>
+				<label for="spotName">Spot Name</label>
+			</div>
+			<div class="input-field col s12 m6">
+				<i class="fa fa-usd prefix" aria-hidden="true"></i>
+				<input min="4.99"
+					   step="0.01"
+					   id="spotPrice"
+					   type="number"
+					   class="validate"
+					   ng-model="vm.spotPrice"
+				>
+				<label for="spotPrice">Price</label>
+			</div>
+			<div class="input-field col s12 m6">
+				<select ng-model="vm.spotShape"
+						id="spotShape"
+						ng-options="shape.value as shape.display for shape in vm.shapes"
+				></select>
+			</div>
+			<div class="input-field col s12 m6">
+				<input id="spotColor"
+					   class="validate"
+					   type="color"
+					   ng-model="vm.spotColor"
+				>
+			</div>
+		</div>
+		<button
+			ng-click="vm.newType()"
+			class="awesomeButton btn waves-effect waves-light addType"
+		>
+			Add Spot
+		</button>
+	</form>
+
+	<div class="col s12" ng-if="vm.spotTypes.length !== 0">
+		<ul class="collection">
+			<li class="collection-item avatar" ng-repeat="type in vm.spotTypes">
+				<div class="col s3">
+					<div style="background-color: {{ type.color }}"
+						 class="{{ type.shape }}"
+					></div>
+				</div>
+				<div class="col s6 spotTypeContainer">
+					<span class="spotTypeName center title">{{ type.name }}</span>
+					<span class="spotTypePrice center title">${{ type.price }}</span>
+				</div>
+				<div class="col s3">
+					<a class="addBox"
+					   ng-click="vm.newBox(type.color, type.shape, type.price)">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+					</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>

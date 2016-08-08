@@ -1,5 +1,6 @@
 <div id="newMap">
-	<div class="row">
+	<side-nav admin-panel="true"></side-nav>
+	<div class="newMap row">
 
 		<nav class="newmap-nav">
 			<div class="nav-wrapper">
@@ -24,126 +25,26 @@
 		</nav>
 
 		<div class="col s8 offset-s2" ng-show="vm.currentStep === 1">
-
-			<h3 class="center title">New map</h3>
-
-			<form class="col s12">
-
-				<div class="input-field col s12 m8 offset-m2">
-					<i class="fa fa-tag prefix" aria-hidden="true"></i>
-					<input id="name" ng-model="vm.mapName" type="text" class="validate">
-					<label for="name">Title</label>
-				</div>
-
-				<div class="input-field col s12 m8 offset-m2">
-					<i class="fa fa-map-o prefix" aria-hidden="true"></i>
-					<select ng-selected="vm.checkMapSize()" ng-model="vm.mapSize" id="map-options">
-						<option value="small" selected>Small - 300x300px</option>
-						<option value="medium">Medium - 450x450px</option>
-						<option value="large">Large - 600x600px</option>
-					</select>
-					<label>Map size {{ vm.mapSize }}</label>
-				</div>
-
-				<div class="imageUpload center col s12 m6 offset-m3">
-
-					<button ng-click="vm.addPicture()"></button>
-
-				</div>
-
-			</form>
+			<step-one></step-one>
 		</div>
 
 		<div class="col s8 offset-s2" ng-show="vm.currentStep === 2">
-			<h4 class="center title">Event Spots</h4>
-			<form class="col s12 center">
-				<div class="row">
-					<div class="input-field col s12 m6">
-						<i class="fa fa-tag prefix" aria-hidden="true"></i>
-						<input id="spotName"
-							   type="text"
-							   class="validate"
-							   ng-model="vm.spotName"
-						>
-						<label for="spotName">Spot Name</label>
-					</div>
-					<div class="input-field col s12 m6">
-						<i class="fa fa-usd prefix" aria-hidden="true"></i>
-						<input min="4.99"
-							   step="0.01"
-							   id="spotPrice"
-							   type="number"
-							   class="validate"
-							   ng-model="vm.spotPrice"
-						>
-						<label for="spotPrice">Price</label>
-					</div>
-					<div class="input-field col s12 m6">
-						<select ng-model="vm.spotShape">
-							<option value="" disabled selected>Choose your option</option>
-							<option value="square">
-								Square
-							</option>
-							<option value="circle">
-								Circle
-							</option>
-						</select>
-						<label>Shape</label>
-					</div>
-					<div class="input-field col s12 m6">
-						<input id="spotColor"
-							   class="validate"
-							   type="color"
-							   ng-model="vm.spotColor"
-						>
-					</div>
-				</div>
-				<button ng-click="vm.newType()" class="awesomeButton btn waves-effect waves-light addType">Add Spot
-				</button>
-			</form>
-
-			<div class="col s12" ng-if="vm.spotTypes.length !== 0">
-				<ul class="collection">
-					<li class="collection-item avatar" ng-repeat="type in vm.spotTypes">
-						<div class="col s3">
-							<div style="background-color: {{ type.color ? type.color : '#383838' }}"
-								 class="{{ type.shape }}"
-							></div>
-						</div>
-						<div class="col s6 spotTypeContainer">
-							<span class="spotTypeName center title">{{ type.name }}</span>
-							<span class="spotTypePrice center title">${{ type.price }}</span>
-						</div>
-						<div class="col s3">
-							<a class="addBox"
-							   ng-click="vm.newBox(type.color, type.shape, type.price)">
-								<i class="fa fa-plus" aria-hidden="true"></i>
-							</a>
-						</div>
-					</li>
-				</ul>
-			</div>
+			<step-two></step-two>
 		</div>
 
-		<div class="col s8 offset-s2" ng-show="vm.currentStep === 3">
-			<h3 class="center title">{{ vm.mapName }}</h3>
-			<div class="col s12 center finalMapContainer">
-				<map map="vm.finalMap"></map>
-				<button ng-hide="vm.currentStep !== 3"
-						class="orange confirmBtn awesomeButton center waves-effect waves-light btn"
-						ng-click="vm.createMap()">
-					Save Map
-				</button>
-			</div>
+		<div class="col s8 offset-s2" ng-if="vm.currentStep === 3">
+			<step-three></step-three>
 		</div>
 
 		<!--MAP-->
 		<div class="col s12 center mapContainer" ng-show="vm.currentStep < 3">
+
 			<div ng-class="vm.mapSize ? vm.mapSize : ''"
 				 class="center"
 				 style="background:url( {{ vm.mapImage }} );background-size: contain;"
 				 id="map"
 			></div>
+
 		</div>
 
 		<button

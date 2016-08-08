@@ -12,7 +12,7 @@ const service = ( $http, $location ) => {
         user: {
             getAll( query ) {
                 return $http.get( `${api.url}/api/users` )
-                .then( ( { data } ) => { return data; } );
+                .then( data => data );
             },
             // This function will either get the current user,
             // or create a new user if no email is known to exsist in the DB
@@ -32,7 +32,7 @@ const service = ( $http, $location ) => {
             },
             getOne( id ) {
                 return $http.get( `${api.url}/api/users/${id}` )
-                .then( ( { data } ) => { return data; } );
+                .then( data => data );
             },
             editOne( id, editedUser ) {
                 return $http( {
@@ -43,7 +43,7 @@ const service = ( $http, $location ) => {
                         boothCompName: editedUser.boothCompName,
                         paymentInfo: editedUser.paymentInfo
                     }
-                } ).then( ( { data } ) => { return data; } );
+                } ).then( data => data );
             },
             logout () {
                 localStorage.clear();
@@ -56,11 +56,11 @@ const service = ( $http, $location ) => {
         market: {
             getAll( query ) {
                 return $http.get( `${api.url}/api/markets` )
-                .then( ( { data } ) => { return data; } );
+                .then( data => data );
             },
             getOne( id ) {
                 return $http.get( `${api.url}/api/markets/${id}` )
-                .then( ( { data } ) => { return data; } );
+                .then( data => data );
             },
             create( newMarket ) {
                 return $http( {
@@ -78,7 +78,7 @@ const service = ( $http, $location ) => {
                         admins: newMarket.admins,
 												map: newMarket.map
                     }
-                } ).then( ( { data } ) => { return data; } );
+                } ).then( data => data );
             },
             editOne( id, editedMarket ) {
                 return $http( {
@@ -96,11 +96,11 @@ const service = ( $http, $location ) => {
                         admins: editedMarket.admins,
                         closedDates: editedMarket.closedDates
                     }
-                } ).then( ( { data } ) => { return data; } );
+                } ).then( data => data );
             },
             deleteOne( id ) {
                 return $http.delete( `${api.url}/api/markets/${id}` )
-                .then( ( { data } ) => { return data; } );
+                .then( data => data );
             }
         },
         //  <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
@@ -109,11 +109,11 @@ const service = ( $http, $location ) => {
         reservation: {
             getAll( query ) {
                 return $http.get( `${api.url}/api/reservations` )
-                .then( ( { data } ) => { return data; } );
+                .then( data => data );
             },
             getOne( id ) {
                 return $http.get( `${api.url}/api/reservations/${id}` )
-                .then( ( { data } ) => { return data; } );
+                .then( data => data );
             },
             create( newRes ) {
                 return $http( {
@@ -126,7 +126,7 @@ const service = ( $http, $location ) => {
                         booth: newRes.boothId,
                         payment: newRes.paymentId
                     }
-                } ).then( ( { data } ) => { return data; } );
+                } ).then( data => data );
             },
             editOne( id, editedRes ) {
                 return $http( {
@@ -138,11 +138,11 @@ const service = ( $http, $location ) => {
                         market: editedRes.marketId,
                         booth: editedRes.boothId
                     }
-                } ).then( ( { data } ) => { return data; } );
+                } ).then( data => data );
             },
             deleteOne( id ) {
                 return $http.delete( `${api.url}/reservations/${id}` )
-                .then( ( { data } ) => { return data; } );
+                .then( data => data );
             }
         },
         //  <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
@@ -151,11 +151,11 @@ const service = ( $http, $location ) => {
         map: {
             getAll( query ) {
                 return $http.get( `${api.url}/api/map` )
-                .then( ( { data } ) => { return data; } );
+                .then( data => data );
             },
             getOne( id ) {
                 return $http.get( `${api.url}/api/map/${id}` )
-                .then( ( { data } ) => { return data; } );
+                .then( data => data );
             },
             create( newMap ) {
                 return $http( {
@@ -170,7 +170,7 @@ const service = ( $http, $location ) => {
 												mapImage: newMap.mapImage,
 												spots: newMap.spots
                     }
-                } ).then( ( { data } ) => { return data; } );
+                } ).then( data => data );
             },
             editOne( id, editedBooth ) {
                 return $http( {
@@ -181,11 +181,11 @@ const service = ( $http, $location ) => {
                         availableDates: editedBooth.availableDates,
                         location: editedBooth.location
                     }
-                } ).then( ( { data } ) => { return data; } );
+                } ).then( data => data );
             },
             deleteOne( id ) {
                 return $http.delete( `${api.url}/booths/${id}` )
-                .then( ( { data } ) => { return data; } );
+                .then( data => data );
             }
         },
 
