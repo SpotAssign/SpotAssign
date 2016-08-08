@@ -38,7 +38,9 @@
 		font-weight: bold;
 	}
 
-		.holidaySearch {}
+		.holidaySearch {
+			margin-top: 18px;
+		}
 
 		.holidaysContainer {
 
@@ -97,8 +99,15 @@
 			}
 
 			.deleteHoliday {
+				float: right;
 				margin-top: 5px;
 				margin-bottom: 5px;
+			}
+
+			.editMarketDayBtn {
+				float: right;
+				margin-bottom: 5px;
+				margin-right: 5px;
 			}
 
 
