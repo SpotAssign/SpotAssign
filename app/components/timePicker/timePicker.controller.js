@@ -34,10 +34,8 @@ class TimePickerController {
           this.market = market;
           this.closedDates = market.closedDates;
           this.openOn = market.recurrence.dayOfWeek;
-          if (market.recurrence.frequency) {
-              this.chooseFreq= false;
-          }
-          else if (market.recurrence.frequency === "once") {
+          if ( market.recurrence.frequency === "once" ) {
+              this.chooseFreq = false;
               this.weeklySchedule = false;
               this.onceSchedule = true;
               this.openOn = {
@@ -45,13 +43,14 @@ class TimePickerController {
                   hours: market.recurrence.dayOfWeek
               }
           }
-          else if (market.recurrence.frequency === "monthly") {
+          else if ( market.recurrence.frequency === "monthly" ) {
+            this.chooseFreq = false;
             this.weeklySchedule = false;
             this.monthlySchedule = true;
             this.onceSchedule = false;
           }
           else if (market.recurrence.frequency === "weekly" ) {
-
+              this.chooseFreq= false;
           }
       } );
   }
@@ -64,6 +63,7 @@ class TimePickerController {
     }
     const editedObj = {
         recurrence: {
+            frequency: "weekly",
             dayOfWeek: this.openOn
         }
     };
@@ -71,6 +71,8 @@ class TimePickerController {
     return this.service.market.editOne( this.marketID, editedObj )
         .then( response => {
             this.getUpdatedMarket( this.marketID );
+            this.weekly = false;
+            this.addHolidays = true;
         } );
 }
 

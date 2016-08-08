@@ -442,11 +442,9 @@
 						</div>
 					</li>
 				</ul>
-
-
 			</div>
+			<a class="waves-effect waves-light btn right-align-button" ng-click="vm.addHolidays = false">DONE</a>
 		</div>
-
 	</div>
 
 
@@ -513,7 +511,14 @@
 
 
 		<div class="showBusinessSchedule">
-			<h5>Observed Holidays</h5>
+		<div class="row">
+			<div class="col s6">
+				<h5>Observed Holidays</h5>
+			</div>
+			<div class="col s6">
+				<a class="waves-effect waves-light btn editMarketDayBtn" ng-click="vm.addHolidays = true;"><i class="material-icons">add</i></a>
+			</div>
+		</div>
 			<ul>
 				<li class="row" ng-repeat="closedDay in vm.closedDates">
 					<div class="col s5 closedDayName">
@@ -530,7 +535,6 @@
 		</div>
 
 	</div>
-
 
 
 	<!--ONCE TIME SCHEDULE-->
