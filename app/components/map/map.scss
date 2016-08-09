@@ -33,25 +33,26 @@
 	div a div:hover {
 		opacity: .8;
 	}
-}
-.outside-map, .payment {
-	margin-top: 25%;
-	button {
-		background-color: $primary-gray;
+	.outside-map, .payment {
 		margin-top: 25%;
-		padding: 10px 20px;
-		color: white;
-		border-radius: 8px;
-		border: none;
-		font: 14px/23px 'Heebo', serif;
-		font-size: 25px;
-		text-transform: uppercase;
-	}
-	button:hover {
-		text-decoration: none;
-		background-color: $secondary-gray;
+		button {
+			background-color: $primary-gray;
+			margin-top: 25%;
+			padding: 10px 20px;
+			color: white;
+			border-radius: 8px;
+			border: none;
+			font: 14px/23px 'Heebo', serif;
+			font-size: 25px;
+			text-transform: uppercase;
+		}
+		button:hover {
+			text-decoration: none;
+			background-color: $secondary-gray;
+		}
 	}
 }
+
 
 .small {
 	width: 300px;

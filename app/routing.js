@@ -25,7 +25,6 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 	};
 
 	$stateProvider
-		// HOME TODO ERROR PAGE
 		.state( 'home', { url: '/', template: '<home></home>' } )
 		.state( 'findEvent', {
 			url: '/find-events',
@@ -98,6 +97,10 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 			template: '<new-map></new-map>',
 			resolve: { isLogged }
 		} )
+		.state( 'error', {
+			url: '/error',
+			template: '<error></error>'
+		} );
 	// TBD
 	// .state( 'calendar', { // TODO Change URL
 	// 	url: '/calendar',
