@@ -1,0 +1,61 @@
+@import '../../styles/colors';
+
+#userFindEvent {
+	.userFindEventContainer {
+		margin-left: 350px;
+		.row h6 {
+			position: relative;
+			top: 22px;
+			font-weight: bold;
+		}
+	}
+	.MktInfo {
+		margin-right: 10%;
+		display: inline;
+		text-justify: newspaper;
+	}
+	.collapsible-centering {
+		text-align: justify;
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+	.MktPic {
+		float: right;
+	}
+	.findEventImage {
+		float: right;
+		max-height: 50px;
+		max-width: 45px;
+		margin-top: 3px;
+	}
+
+	.MktImage {
+		max-height: 50px;
+		max-width: 45px;
+		margin: 3px;
+		// margin-left: 35px;
+	}
+	.divider {
+	 position: relative;
+	 width: 96.5%;
+	 right: 1.5%;
+	 height: 1px;
+	 background-color: $secondary-gray;
+	 border: $secondary-gray;
+	}
+	h4 {
+	 margin-top: 8%;
+	 font-size: 20px;
+	 text-transform: uppercase;
+	 margin-bottom: 5%;
+ }
+ #company-title {
+	 margin-top: 5%;
+ }
+ .collapsible {
+	 margin-left: 2.5%;
+ }
+}

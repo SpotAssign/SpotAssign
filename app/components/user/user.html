@@ -1,10 +1,44 @@
 <div id="userHome">
 	<side-nav adminPanel="false"></side-nav>
-	<div class="UserHomeContainer">
+	<div class="UserHomeContainer" ng-show="!welcome">
 
-		<user-spots></user-spots>
+		<div class="welcome-message">
+			<div class="mark">
+				<img id="mark-photo" ng-src="{{ vm.markPhoto }}" alt="Spot Assign Mark" ng-show="vm.markPhoto">
+			</div>
+			<h3>Welcome to Spot Assign!</h3>
+			<div class="pointers">
+				<h6>There are a few things that you should know to get started:</h6>
+				<ol>
+					<li>To create an event, click "Create Event" and fill out the necessary fields.</li>
+					<li>When you create an event you will be taken to a different dashboard where you will be able to access all your event information including user, payment, and map information.</li>
+					<li>To find events or event information you can use the "Find Event" page.</li>
+				</ol>
+			</div>
 
-		<rental-history></rental-history>
+			<div class="row">
+				<div class="col s2 offset-s1 feature-box center">
+					<a ui-sref="createEvent">
+					<i class="fa fa-plus-circle fa-5x" aria-hidden="true"></i>
+					<h5>Create an event</h5></a>
+				</div>
+				<div class="col s2 offset-s2 feature-box center">
+					<a ui-sref="userFindEvent">
+					<i class="fa fa-ticket fa-5x" aria-hidden="true"></i>
+					<h5>Find an event</h5></a>
+				</div>
+				<div class="col s2 offset-s2 feature-box center">
+					<a ui-sref="user">
+					<i class="fa fa-share-alt fa-5x" aria-hidden="true"></i>
+					<h5>Invite your friends</h5></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="event" ng-show="currentUser.markets.length > 1">
+			<user-spots></user-spots>
+			<rental-history></rental-history>
+		</div>
 
 	</div>
 </div>

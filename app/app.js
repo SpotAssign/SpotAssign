@@ -36,6 +36,7 @@ import { user } from './components/user/user';
 import { userSpots } from './components/userSpots/userSpots';
 import { viewTransactions } from './components/viewTransactions/viewTransactions';
 import { error } from './components/error/error';
+import { userFindEvent } from './components/userFindEvent/userFindEvent';
 
 // START MODULE
 angular.module( 'SpotAssign', [
@@ -63,7 +64,8 @@ angular.module( 'SpotAssign', [
 	user.name,
 	userSpots.name,
 	viewTransactions.name,
-	error.name
+	error.name,
+	userFindEvent.name
 ] )
 	.directive( 'app', appDirective )
 	.factory( 'userService', userService )
