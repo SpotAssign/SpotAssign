@@ -6,31 +6,79 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngAnimate from 'angular-animate';
 
-import { stateService } from './shared/stateService';
+import { appDirective } from './app.directive';
+import { routing } from './routing';
+import { userService } from './services/userService';
+import { eventService } from './services/eventService';
+import { mapService } from './services/mapService';
+import { reservationService } from './services/reservationService';
 
 // IMPORT COMPONENTS
-import { appDirective } from './app.directive';
-import { home } from './components/home/home';
-import { event } from './components/event/event';
+// import { calendar } from './components/calendar/calendar';
+import { checkout } from './components/checkout/checkout';
+import { createEvent } from './components/createEvent/createEvent';
 import { dashboard } from './components/dashboard/dashboard';
-import { userHome } from './components/userHome/userHome';
-import { newMap } from './components/newMap/newMap';
 import { editEvent } from './components/editEvent/editEvent';
+import { event } from './components/event/event';
+import { findEvent } from './components/findEvent/findEvent';
+import { footer } from './components/footer/footer';
+import { home } from './components/home/home';
+import { logout } from './components/logout/logout';
 import { manageUsers } from './components/manageUsers/manageUsers';
+import { map } from './components/map/map';
+import { navbar } from './components/navbar/navbar';
+import { newMap } from './components/newMap/newMap';
+import { rentalHistory } from './components/rentalHistory/rentalHistory';
+import { sideNav } from './components/sideNav/sideNav';
+// import { timePicker } from './components/timePicker/timePicker';
+import { transactionHistory } from './components/transactionHistory/transactionHistory';
+import { user } from './components/user/user';
+import { userSpots } from './components/userSpots/userSpots';
 import { viewTransactions } from './components/viewTransactions/viewTransactions';
 
 // START MODULE
 angular.module( 'SpotAssign', [
 	uiRouter,
 	ngAnimate,
-	home.name,
-	event.name,
+	// COMPONENTS
+	// calendar.name,
+	checkout.name,
+	createEvent.name,
 	dashboard.name,
-	userHome.name,
-	newMap.name,
 	editEvent.name,
+	event.name,
+	findEvent.name,
+	footer.name,
+	home.name,
+	logout.name,
 	manageUsers.name,
+	map.name,
+	navbar.name,
+	newMap.name,
+	rentalHistory.name,
+	sideNav.name,
+	// timePicker.name,
+	transactionHistory.name,
+	user.name,
+	userSpots.name,
 	viewTransactions.name
 ] )
-	.service( 'stateService', stateService )
-	.directive( 'app', appDirective );
+	.directive( 'app', appDirective )
+	.factory( 'userService', userService )
+	.factory( 'eventService', eventService )
+	.factory( 'mapService', mapService )
+	.factory( 'reservationService', reservationService )
+	.config( routing )
+	.run( function ( $rootScope, $state ) {
+		$rootScope.$on(
+			'$stateChangeError',
+			( evnt, toState, toParams, fromState, fromParams, error ) => {
+				if ( error === 'AUTH_REQUIRED' ) {
+					$state.go( 'home' );
+				}
+				if ( error === 'NO_EVENT' ) {
+					$state.go( 'findEvent' );
+				}
+			}
+		);
+	} );

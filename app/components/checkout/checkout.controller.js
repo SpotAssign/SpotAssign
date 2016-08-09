@@ -1,17 +1,4 @@
-class CheckoutController {
-    constructor( service ) {
-        this.newMessage = 'hi there from controller';
-        this.current = {};
-        this.service = service;
-        this.getCurrentUser();
-    }
-    getCurrentUser() {
-        return this.service.user.getAll()
-        .then( ( currentUser ) => {
-            this.current = currentUser;
-        } );
-    }
-}
+class CheckoutController {}
 
-CheckoutController.$inject= [ 'service' ];
+CheckoutController.$inject = [];
 export { CheckoutController };

@@ -1,10 +1,4 @@
-class TransactionHistoryController {
-  constructor( service ) {
-    this.service = service;
-    this.greeting = 'TransactionHistoryController!';
-  }
-}
+class TransactionHistoryController {}
 
-TransactionHistoryController.$inject = [ 'service' ];
-
+TransactionHistoryController.$inject = [];
 export { TransactionHistoryController };

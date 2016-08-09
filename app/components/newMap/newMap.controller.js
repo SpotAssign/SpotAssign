@@ -1,52 +1,45 @@
 class NewMapController {
-	constructor( service, $state, stateService, $scope ) {
-		this.service = service;
+	constructor( $state, $scope, $stateParams, mapService ) {
 		this.state = $state;
-		this.stateService = stateService;
 		this.scope = $scope;
+		this.stateParams = $stateParams;
+		this.mapService = mapService;
 
 		this.sizes = [
-			{
-				value: 'small',
-				display: 'Small'
-			},
-			{
-				value: 'medium',
-				display: 'Medium'
-			},
-			{
-				value: 'large',
-				display: 'Large'
-			}
+			{ value: 'small', display: 'Small' },
+			{ value: 'medium', display: 'Medium' },
+			{ value: 'large', display: 'Large' }
 		];
-
 		this.shapes = [
-			{
-				value: 'square',
-				display: 'Square'
-			},
-			{
-				value: 'circle',
-				display: 'Circle'
-			}
+			{ value: 'square', display: 'Square' },
+			{ value: 'circle', display: 'Circle' }
 		];
 
 		this.mapImage = '';
 		this.mapSize = 'small';
 		this.currentStep = 1;
 		this.spotTypes = [];
-		this.draggable();
-		console.log( stateService.event.getEvent(), 'EVENT' );
-		console.log( stateService.user.getCurrentUser(), 'USER' );
 
-		$( '.selectOne' ).ready( function () {
+		$( document ).ready( function () {
 			$( '.imageUpload > button' )
 				.addClass( 'awesomeButton btn waves-effect waves-light' )
 				.removeClass( 'fp__btn' )
 				.text( 'upload background' );
-			// $( '.selectOne' ).material_select();
-		} );
 			$( '.previousBtn' ).hide();
+		} );
+
+		this.checkParams();
+		this.draggable();
+	}
+
+	checkParams() {
+		if ( this.stateParams.isAdmin === 'admin' ) {
+			this.sideNav = true;
+		} else if ( this.stateParams.isAdmin === 'user' ) {
+			this.sideNav = false;
+		} else {
+			this.state.go( 'userHome' );
+		}
 	}
 
 	draggable() {
@@ -96,7 +89,12 @@ class NewMapController {
 			color: this.spotColor
 		};
 		if ( type.shape && type.name && type.price && type.color ) {
-			this.spotTypes.push( type );
+			let isUnique = true;
+			this.spotTypes.map( item => {
+				if ( item.name === type.name ) isUnique = false;
+				return item;
+			} );
+			if ( isUnique ) this.spotTypes.push( type );
 		} else {
 			Materialize.toast( 'Add all required fields.', 2000 );
 		}
@@ -147,18 +145,21 @@ class NewMapController {
 				}
 			);
 		} );
-		this.saveMyMap( positions );
-	}
-
-	saveMyMap( spots ) {
-		const map = {
+		this.currentMap = {
 			name: this.mapName,
 			size: this.mapSize,
 			image: this.mapImage,
-			spots
+			spots: positions
 		};
-		this.stateService.event.setMap( map );
-		this.currentMap = map;
+	}
+
+	saveMyMap() {
+		this.mapService.setState( this.currentMap );
+		if ( !this.sideNav ) {
+			this.state.go( 'createEvent' );
+		} else {
+			this.state.go( `editEvent` );
+		}
 	}
 
 	step( stepNum ) {
@@ -190,6 +191,6 @@ class NewMapController {
 	}
 }
 
-NewMapController.$inject = [ 'service', '$state', 'stateService', '$scope' ];
+NewMapController.$inject = [ '$state', '$scope', '$stateParams', 'mapService' ];
 
 export { NewMapController };

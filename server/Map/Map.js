@@ -2,20 +2,19 @@ import mongoose, { Schema } from 'mongoose';
 
 const Map = Schema(
 	{
-		nickname: { type: String },
+		name: { type: String },
 		availableDates: [ { type: Date } ],
-		market: {
+		event: {
 			type: Schema.Types.ObjectId,
-			ref: `Markets`
+			ref: `Events`
 		},
 		reservations: [ {
 			type: Schema.Types.ObjectId,
 			ref: `Reservations`
 		} ],
-		location: { type: Object },
-		mapType: String,
-		mapImage: Object,
-		spots: Array
+		size: { type: String },
+		image: { type: String },
+		spots: { type: Array }
 	}
 );
 

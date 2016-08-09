@@ -1,43 +1,89 @@
 class CreateEventController {
-	constructor( service, stateService, $timeout, $state ) {
-		this.service = service;
-		this.stateService = stateService;
-		this.timeout = $timeout;
-		this.state = $state;
+	constructor( eventService, mapService, $location, $scope, userService ) {
+		this.eventService = eventService;
+		this.mapService = mapService;
+		this.location = $location;
+		this.scope = $scope;
+		this.userService = userService;
 
-		this.currenUser = this.stateService.user.getCurrentUser();
-		this.currentEvent = this.stateService.event.getEvent();
-		this.currentMap = this.stateService.event.getMap();
+		this.event = this.eventService.getState();
+		this.currentMap = this.mapService.getState();
+
+		$( document ).ready( function () {
+			$( '.imageUpload > button' )
+				.addClass( 'awesomeButton btn waves-effect waves-light' )
+				.removeClass( 'fp__btn' )
+				.text( 'upload image' );
+		} );
 	}
 
-	createEvent( ev ) {
+	addPicture() {
+		filepicker.setKey( 'AWWNzupn7QV1RRT2xGT0gz' );
+		return filepicker.pick(
+			{
+				services: [ 'COMPUTER', 'CONVERT' ],
+				conversions: [ 'crop', 'rotate', 'filter' ],
+				mimetype: 'image/*',
+				container: 'modal',
+				cropRatio: [ 3 ],
+				cropForce: true
+			},
+			Blob => {
+				this.event.photo = Blob.url;
+				this.scope.$apply();
+			},
+			FPError => console.log( 'ERROR', FPError.toString() )
+		);
+	}
+
+	createEvent() {
 		if ( !this.currentMap ) {
 			Materialize.toast( 'You must design a map to create an event.', 2000 );
-		} else if ( ev.title && ev.bio && ev.city && ev.state && ev.paymentEmail ) {
-			this.stateService.event.setEvent( ev );
-			const event = this.stateService.event.getEvent();
-			event.map = this.currentMap;
-			return this.service.market.create( event )
-				.then( result => {
-					this.stateService.event.setEvent( result );
-					this.state.go( 'dashboard' );
+		} else if (
+			this.event.title &&
+			this.event.bio &&
+			this.event.city &&
+			this.event.state &&
+			this.event.paymentEmail &&
+			this.event.photo
+		) {
+			// CREATE MAP IN DB
+			this.mapService.create( this.currentMap ).then( res => {
+				// CREATE EVENT IN DB
+				const event = {
+					name: this.event.title,
+					website: this.event.website,
+					location: {
+						city: this.event.city,
+						state: this.event.state
+					},
+					admins: [ this.userService.getState()._id ],
+					bio: this.event.bio,
+					paymentInfo: this.event.paymentEmail,
+					photo: this.event.photo,
+					maps: res,
+					currentMap: res
+				};
+				this.eventService.create( event ).then( response => {
+					this.location.path( `/event/${response.name}` );
 				} );
+			} );
 		} else {
-			Materialize.toast( 'Please insert all the Event required Information.', 2000 );
+			Materialize.toast( 'Please insert all the required Information.', 2000 );
 		}
 	}
 
-	saveEventDetailsWhileDesigningMap( event ) {
-		this.stateService.event.setEvent( event );
-		this.state.go( 'newMap' );
+	saveEventDetailsWhileDesigningMap() {
+		this.eventService.setState( this.event );
+		this.location.path( `/create-map/user` );
 	}
-
 }
 
 CreateEventController.$inject = [
-	'service',
-	'stateService',
-	'$timeout',
-	'$state'
+	'eventService',
+	'mapService',
+	'$location',
+	'$scope',
+	'userService'
 ];
 export { CreateEventController };

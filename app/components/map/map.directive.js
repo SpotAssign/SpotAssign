@@ -8,7 +8,8 @@ export const mapDirective = () => {
 		template,
 		controllerAs: 'vm',
 		scope: {
-			map: '='
+			map: '=',
+			show: '='
 		},
 		replace: true,
 		restrict: 'E'

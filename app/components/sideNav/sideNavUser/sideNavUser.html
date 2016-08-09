@@ -3,7 +3,7 @@
 	<nav class="sideNav-top hide-on-med-and-up">
 		<div class="nav-wrapper">
 			<!--Logo on Small-->
-			<img ng-src="http://placehold.it/150x150" href="#"
+			<img ng-src="http://placehold.it/150x150"
 				 class="sideNav-logo brand-logo brand-logo-small center">
 			<!--Sidebar btn-->
 			<a href="#" data-activates="mobile-nav" class="button-collapse sideNav-hamb">
@@ -17,20 +17,28 @@
 
 		<li class="sideNav-logo-mobile-container">
 			<img class="sideNav-logo-mobile"
-				ng-src="{{vm.userProfilePhoto}}"
+				ng-src="{{vm.currentUser.photo}}"
 			>
 		</li>
-		<li class="sideNav-item" ui-sref="userHome">
+
+		<li class="sideNav-item" ui-sref="user">
 			<a class="nav-items-mobile">
 				<i class="fa fa-home" aria-hidden="true"></i>
 				My Dashboard
 			</a>
 		</li>
 
+		<li class="sideNav-item" >
+			<a class="nav-items-mobile" ui-sref="createEvent">
+				<i class="fa fa-plus" aria-hidden="true"></i>
+				Create Event
+			</a>
+		</li>
+
 		<li class="sideNav-item" ui-sref="userSpots">
 			<a class="nav-items-mobile">
 				<i class="fa fa-map-marker" aria-hidden="true"></i>
-				My spots
+				My Spots
 			</a>
 		</li>
 
@@ -40,13 +48,6 @@
 				Rental History
 			</a>
 		</li>
-
-		<!--<li class="sideNav-item" ui-sref="transactionHistory">-->
-		<!--	<a class="nav-items-mobile">-->
-		<!--		<i class="fa fa-credit-card-alt" aria-hidden="true"></i>-->
-		<!--		View Transactions-->
-		<!--	</a>-->
-		<!--</li>-->
 
 		<li class="sideNav-item" ng-click="vm.logout()">
 			<a class="nav-items-mobile">

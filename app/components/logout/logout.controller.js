@@ -1,9 +1,4 @@
-class LogoutController {
-  constructor() {
-    this.greeting = 'LogoutController!';
-  }
-}
+class LogoutController {}
 
 LogoutController.$inject = [];
-
 export { LogoutController };

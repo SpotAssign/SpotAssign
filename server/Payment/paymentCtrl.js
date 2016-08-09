@@ -7,7 +7,7 @@ export default {
 	getPayments( req, res ) {
 		Payments.find( ( req.query ) )
 			.populate( 'user' )
-			.populate( 'market' )
+			.populate( 'event' )
 			.populate( 'reservation' )
 			.exec( ( err, payments ) => {
 				if ( err ) {
@@ -19,7 +19,7 @@ export default {
 	getThisPayment( req, res ) {
 		Payments.findById( req.params.id )
 			.populate( 'user' )
-			.populate( 'market' )
+			.populate( 'event' )
 			.populate( 'reservation' )
 			.exec( ( err, payment ) => {
 				if ( err ) {
@@ -35,7 +35,6 @@ export default {
 				return res.send( err );
 			}
 			Reservations.findByIdAndUpdate( req.body.user, { $push: { payment: payment._id } }, {
-				safe: true,
 				upsert: true,
 				new: true
 			}, ( error, user ) => {
@@ -70,7 +69,6 @@ export default {
 				payment.user,
 				{ $pull: { payment: { $in: [ req.params.id ] } } },
 				{
-					safe: true,
 					upsert: true,
 					new: true
 				}, ( error, user ) => {
