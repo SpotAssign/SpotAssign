@@ -2,26 +2,22 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 	$urlRouterProvider.otherwise( '/' );
 
 	const isLogged = ( $q, userService ) => {
-		if ( !userService.getState() ) {
-			return $q.reject( 'AUTH_REQUIRED' );
-		}
+		if ( !userService.getState() ) return $q.reject( 'AUTH_REQUIRED' );
 		return $q.resolve();
 	};
 
 	const setCurrentUser = ( $q, userService ) => {
 		return userService.getCurrentUser().then( result => {
-			if ( !userService.getState() ) {
-				return $q.reject( 'AUTH_REQUIRED' );
-			}
+			if ( !userService.getState() ) return $q.reject( 'AUTH_REQUIRED' );
 			return $q.resolve();
 		} );
 	};
 
 	const getCurrentEvent = ( $q, eventService, $stateParams ) => {
-		return eventService.getOne( $stateParams.name ).then( result => {
-			if ( !eventService.getState() ) {
-				return $q.reject( 'NO_EVENT' );
-			}
+		return eventService.getEventByName( $stateParams.name ).then( result => {
+			console.log( result );
+			eventService.setState( result );
+			if ( !eventService.getState() ) return $q.reject( 'NO_EVENT' );
 			return $q.resolve();
 		} );
 	};
@@ -30,7 +26,7 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 		// HOME TODO ERROR PAGE
 		.state( 'home', { url: '/', template: '<home></home>' } )
 		.state( 'findEvent', {
-			url: '/findEvent',
+			url: '/find-events',
 			template: '<find-event></find-event>'
 		} )
 		// USER

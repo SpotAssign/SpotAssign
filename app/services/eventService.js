@@ -10,30 +10,33 @@ const eventService = $http => {
 			return this.event;
 		},
 		getAll( query ) {
-			return $http.get( `${api}/api/markets` )
+			return $http.get( `${api}/api/events` )
 				.then( data => data );
 		},
-		getOne( name ) { // this
-			return $http.get( `${api}/api/events/${name}` )
-				.then( data => data );
+		getEventByName( name ) {
+			return $http.get( `${api}/api/event/${name}` )
+				.then( result => {
+					this.setState( result.data );
+					return result.data;
+				} );
 		},
 		create( newMarket ) {
 			return $http( {
 				method: 'POST',
-				url: `${api}/api/markets`,
+				url: `${api}/api/event`,
 				data: newMarket
-			} ).then( data => this.set( data ) );
+			} ).then( result => this.setState( result.data ) );
 		},
 		editOne( id, editedMarket ) {
 			return $http( {
 				method: 'PUT',
-				url: `${api}/api/markets/${id}`,
+				url: `${api}/api/event/${id}`,
 				data: editedMarket
-			} ).then( data => this.set( data ) );
+			} ).then( result => this.setState( result.data ) );
 		},
 		deleteOne( id ) {
-			return $http.delete( `${api}/api/markets/${id}` )
-				.then( data => this.set( null ) );
+			return $http.delete( `${api}/api/event/${id}` )
+				.then( data => this.setState( null ) );
 		},
 		holidayYear() {
 			const currentYear = new Date().getFullYear();

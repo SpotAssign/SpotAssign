@@ -2,7 +2,9 @@ import mongoose, { Schema } from 'mongoose';
 
 const Events = Schema(
 	{
+		title: { type: String },
 		name: { type: String },
+		website: { type: String },
 		location: { type: Object },
 		bio: { type: String },
 		paymentInfo: { type: Object },
@@ -17,8 +19,7 @@ const Events = Schema(
 				close: { type: Object }, // must be two numbers, open and close for the Day
 				open: { type: Object },
 				value: { type: Boolean }
-			}
-			]
+			} ]
 		},
 		closedDates: { type: Array },
 		endDate: { type: Date },
@@ -30,10 +31,14 @@ const Events = Schema(
 			type: Schema.Types.ObjectId,
 			ref: `Users`
 		} ],
-		map: [ {
+		maps: [ {
 			type: Schema.Types.ObjectId,
 			ref: `Map`
-		} ]
+		} ],
+		currentMap: {
+			type: Schema.Types.ObjectId,
+			ref: `Map`
+		}
 	}
 );
 

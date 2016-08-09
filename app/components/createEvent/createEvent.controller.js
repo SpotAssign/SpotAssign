@@ -52,6 +52,7 @@ class CreateEventController {
 				// CREATE EVENT IN DB
 				const event = {
 					name: this.event.title,
+					website: this.event.website,
 					location: {
 						city: this.event.city,
 						state: this.event.state
@@ -59,10 +60,10 @@ class CreateEventController {
 					bio: this.event.bio,
 					paymentInfo: this.event.paymentEmail,
 					photo: this.event.photo,
-					map: res
+					maps: res,
+					currentMap: res
 				};
 				this.eventService.create( event ).then( response => {
-					this.eventService.setState( response );
 					this.location.path( `/event/${response.name}/` );
 				} );
 			} );

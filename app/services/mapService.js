@@ -35,7 +35,7 @@ const mapService = $http => {
 		editOne( id, editedBooth ) {
 			return $http( {
 				method: 'PUT',
-				url: `${api}/api/booths/${id}`,
+				url: `${api}/api/map/${id}`,
 				data: {
 					nickname: editedBooth.nickname,
 					availableDates: editedBooth.availableDates,
@@ -44,7 +44,7 @@ const mapService = $http => {
 			} ).then( data => data );
 		},
 		deleteOne( id ) {
-			return $http.delete( `${api}/booths/${id}` )
+			return $http.delete( `${api}/map/${id}` )
 				.then( data => data );
 		}
 	};

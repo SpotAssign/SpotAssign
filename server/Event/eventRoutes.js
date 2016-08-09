@@ -4,7 +4,7 @@ import middleware from '../middleware/middleware';
 export default function ( app ) {
 	// GET REQUEST
 	app.get( '/api/events', middleware, eventCtrl.getEvents );
-	app.get( '/api/event/:id', middleware, eventCtrl.getThisEvent );
+	app.get( '/api/event/:name', eventCtrl.getEventByName );
 
 	// POST REQUEST
 	app.post( '/api/event', middleware, eventCtrl.addEvent );

@@ -12,9 +12,8 @@ const Map = Schema(
 			type: Schema.Types.ObjectId,
 			ref: `Reservations`
 		} ],
-		location: { type: Object },
-		mapType: String,
-		mapImage: Object,
+		size: String,
+		image: Object,
 		spots: Array
 	}
 );

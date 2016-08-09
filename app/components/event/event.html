@@ -1,54 +1,63 @@
 <div id="event">
 	<div class="navbar">
-		<h4 class="title">{{ vm.event.title }}Provo Farmer's Market</h4>
+		<h4 class="title">{{ vm.event.title }}</h4>
 	</div>
 	<div class="row">
 
 		<div class="top">
-			<div ng-show="vm.stateParams.map ? vm.stateParams.map : vm.myMap"><map map="vm.stateParams.map ? vm.stateParams.map : vm.myMap"></map></div>
-			<div ng-show="vm.sleep"><map map="vm.sleep"></map></div>
+			<map map="vm.event.currentMap"></map>
 		</div>
+
 		<div class="mid col s12">
+
 			<div class="col s8 offset-s2 openclose">
 				<h4 style="float: left;"><b>Open Date:</b> 01/01/2000</h4>
 				<h4 style="float: right;"><b>Close Date:</b> 01/01/2000</h4>
 			</div>
+
 			<div class="col s6 m3">
 				<h4><u>Sunday</u></h4>
 				<p>9AM - 5PM</p>
 			</div>
+
 			<div class="col s6 m3">
 				<h4><u>Monday</u></h4>
 				<p>9AM - 5PM</p>
 			</div>
+
 			<div class="col s6 m3">
 				<h4><u>Tuesday</u></h4>
 				<p>9AM - 5PM</p>
 			</div>
+
 			<div class="col s6 m3">
 				<h4><u>Wednesday</u></h4>
 				<p>9AM - 5PM</p>
 			</div>
+
 			<div class="col s6 m3">
 				<h4><u>Thursday</u></h4>
 				<p>9AM - 5PM</p>
 			</div>
+
 			<div class="col s6 m3">
 				<h4><u>Friday</u></h4>
 				<p>9AM - 5PM</p>
 			</div>
+
 			<div class="col s6 m3">
 				<h4><u>Saturday</u></h4>
 				<p>9AM - 5PM</p>
 			</div>
-		</div>
 
-		<div class="bottom col s12">
-			<map map="vm.map"></map>
 		</div>
 
 	</div>
-	<a href="http://www.spotassign.com"><div class="footer">
-		<img src="{{ vm.picture }}"/>
-	</div></a>
+
+	<a href="{{ vm.event.website || 'https://www.spotassign.com' }}">
+		<div class="footer">
+			<img class="eventPhoto" src="{{ vm.event.photo }}"/>
+		</div>
+	</a>
+
 </div>
