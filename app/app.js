@@ -35,6 +35,7 @@ import { transactionHistory } from './components/transactionHistory/transactionH
 import { user } from './components/user/user';
 import { userSpots } from './components/userSpots/userSpots';
 import { viewTransactions } from './components/viewTransactions/viewTransactions';
+import { error } from './components/error/error';
 
 // START MODULE
 angular.module( 'SpotAssign', [
@@ -61,7 +62,8 @@ angular.module( 'SpotAssign', [
 	transactionHistory.name,
 	user.name,
 	userSpots.name,
-	viewTransactions.name
+	viewTransactions.name,
+	error.name
 ] )
 	.directive( 'app', appDirective )
 	.factory( 'userService', userService )

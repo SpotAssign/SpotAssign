@@ -35,14 +35,14 @@
 			</a>
 		</li>
 
-		<li class="sideNav-item" ui-sref="userSpots">
+		<li class="sideNav-item" ui-sref="userSpots" ng-show="vm.currentUser.markets.length > 0">
 			<a class="nav-items-mobile">
 				<i class="fa fa-map-marker" aria-hidden="true"></i>
 				My Spots
 			</a>
 		</li>
 
-		<li class="sideNav-item" ui-sref="rentalHistory">
+		<li class="sideNav-item" ui-sref="rentalHistory" ng-show="vm.currentUser.markets.length > 0">
 			<a class="nav-items-mobile">
 				<i class="fa fa-sliders" aria-hidden="true"></i>
 				Rental History
