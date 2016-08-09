@@ -19,17 +19,22 @@ class TimePickerController {
 	getCurrentUser() {
 		return this.userService.getCurrentUser()
 			.then( user => {
-				this.userService.setState( user )
-				this.eventService.setState( user.event );
+				for ( let i = 0; i < user.events.length; i++ ) {
+					if ( user.events[i].admins[0] === user._id ) {
+						this.eventService.setState( user.events[i] );
+					}
+				}
+				this.current = this.userService.getState();
+				this.event = this.eventService.getState();
 				this.getMarketClosedDays();
 				this.getUpdatedMarket();
 			} );
 	}
 
 	getUpdatedMarket() {
-		return this.userService.getEventByName( this.event.title )
+		return this.eventService.getEventByName( this.event.title )
 			.then( event => {
-				this.userEvent.setState( event );
+				this.eventService.setState( event );
 				this.closedDates = event.closedDates;
 				this.openOn = event.recurrence.dayOfWeek;
 			} );
@@ -50,11 +55,11 @@ class TimePickerController {
 			recurrence: {
 				dayOfWeek: this.openOn
 			}
-		}
-		return this.service.market.editOne( this.event._id, editedObj )
+		};
+		return this.eventService.getEventByName( this.event._id, editedObj )
 			.then( response => {
-				this.getUpdatedMarket()
-			} )
+				this.getUpdatedMarket();
+			} );
 	}
 
 	// Gets Holidays from Current Year
@@ -62,11 +67,11 @@ class TimePickerController {
 		this.eventService.holidayYear()
 			.then( holidayData => {
 				this.holidays = holidayData;
-			} )
+			} );
 	}
 
 	getMarketClosedDays() {
-		return this.eventService.market.getOne( this.event.title )
+		return this.eventService.getEventByName( this.event.title )
 			.then( event => {
 				this.eventService.setState( event );
 				this.closedDates = event.closedDates;
@@ -77,12 +82,12 @@ class TimePickerController {
 		this.closedDates.push( hol );
 		const editedObject = {
 			closedDates: this.closedDates
-		}
-		return this.userService.editOne( this.event._id, editedObject )
+		};
+		return this.eventService.editOne( this.event._id, editedObject )
 			.then( event => {
 				this.eventService.setState( event );
 				this.closedDates = event.closedDates;
-			} )
+			} );
 	}
 
 
