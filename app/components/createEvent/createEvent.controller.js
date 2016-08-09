@@ -1,11 +1,13 @@
 class CreateEventController {
-	constructor( service, stateService, $location, $scope ) {
-		this.service = service;
-		this.stateService = stateService;
+	constructor( eventService, mapService, $location, $scope ) {
+		this.eventService = eventService;
+		this.mapService = mapService;
 		this.location = $location;
+		this.scope = $scope;
 
-		this.event = this.stateService.event.getEvent();
-		this.currentMap = this.stateService.event.getMap();
+		this.event = this.eventService.getState();
+		this.currentMap = this.mapService.getState();
+
 		$( document ).ready( function () {
 			$( '.imageUpload > button' )
 				.addClass( 'awesomeButton btn waves-effect waves-light' )
@@ -45,8 +47,8 @@ class CreateEventController {
 			this.event.photo
 		) {
 			// CREATE MAP IN DB
-			this.service.map.create( this.currentMap ).then( res => {
-				this.stateService.event.setMap( res );
+			this.mapService.create( this.currentMap ).then( res => {
+				this.mapService.setState( res );
 				// CREATE EVENT IN DB
 				const event = {
 					name: this.event.title,
@@ -57,10 +59,10 @@ class CreateEventController {
 					bio: this.event.bio,
 					paymentInfo: this.event.paymentEmail,
 					photo: this.event.photo,
-					map: this.stateService.event.getMap()
+					map: res
 				};
-				this.service.market.create( event ).then( response => {
-					this.stateService.event.setEvent( response );
+				this.eventService.create( event ).then( response => {
+					this.eventService.setState( response );
 					this.location.path( `/event/${response.name}/` );
 				} );
 			} );
@@ -70,15 +72,14 @@ class CreateEventController {
 	}
 
 	saveEventDetailsWhileDesigningMap() {
-		this.stateService.event.setEvent( this.event );
+		this.eventService.setState( this.event );
 		this.location.path( `/create-map/user` );
 	}
-
 }
 
 CreateEventController.$inject = [
-	'service',
-	'stateService',
+	'eventService',
+	'mapService',
 	'$location',
 	'$scope'
 ];

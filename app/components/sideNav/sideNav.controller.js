@@ -1,8 +1,7 @@
 class SideNavController {
 	constructor( userService ) {
-
-		this.currentUser = userService.getState();
 		this.userService = userService;
+		this.currentUser = userService.getState();
 
 		$( '.button-collapse' ).sideNav( {
 			menuWidth: 300,

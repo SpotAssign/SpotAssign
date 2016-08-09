@@ -1,5 +1,4 @@
 import angular from 'angular';
-import { service } from '../../services/service';
 
 import { newMapDirective } from './newMap.directive';
 import { stepOneDirective } from './steps/stepOne.directive';
@@ -12,5 +11,4 @@ export const newMap = angular.module( 'newMap', [] )
 	.directive( 'newMap', newMapDirective )
 	.directive( 'stepOne', stepOneDirective )
 	.directive( 'stepTwo', stepTwoDirective )
-	.directive( 'stepThree', stepThreeDirective )
-	.factory( 'service', service );
+	.directive( 'stepThree', stepThreeDirective );

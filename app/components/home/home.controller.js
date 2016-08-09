@@ -1,4 +1,4 @@
-export class HomeController {
+export class HomeController { // TODO RESET STATE
     constructor() {
 			const booths = document.createElement( 'img' );
 			booths.src = require( '../../img/booths.jpg' );

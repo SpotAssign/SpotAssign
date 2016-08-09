@@ -1,40 +1,24 @@
 class NewMapController {
-	constructor( $state, stateService, $scope, $stateParams ) {
+	constructor( $state, $scope, $stateParams, mapService ) {
 		this.state = $state;
-		this.stateService = stateService;
 		this.scope = $scope;
 		this.stateParams = $stateParams;
+		this.mapService = mapService;
 
 		this.sizes = [
-			{
-				value: 'small',
-				display: 'Small'
-			},
-			{
-				value: 'medium',
-				display: 'Medium'
-			},
-			{
-				value: 'large',
-				display: 'Large'
-			}
+			{ value: 'small', display: 'Small' },
+			{ value: 'medium', display: 'Medium' },
+			{ value: 'large', display: 'Large' }
 		];
 		this.shapes = [
-			{
-				value: 'square',
-				display: 'Square'
-			},
-			{
-				value: 'circle',
-				display: 'Circle'
-			}
+			{ value: 'square', display: 'Square' },
+			{ value: 'circle', display: 'Circle' }
 		];
 
 		this.mapImage = '';
 		this.mapSize = 'small';
 		this.currentStep = 1;
 		this.spotTypes = [];
-		this.draggable();
 
 		$( document ).ready( function () {
 			$( '.imageUpload > button' )
@@ -43,7 +27,9 @@ class NewMapController {
 				.text( 'upload background' );
 			$( '.previousBtn' ).hide();
 		} );
+
 		this.checkParams();
+		this.draggable();
 	}
 
 	checkParams() {
@@ -168,7 +154,7 @@ class NewMapController {
 	}
 
 	saveMyMap() {
-		this.stateService.event.setMap( this.currentMap );
+		this.mapService.setState( this.currentMap );
 		if ( !this.sideNav ) {
 			this.state.go( 'createEvent' );
 		} else {
@@ -205,6 +191,6 @@ class NewMapController {
 	}
 }
 
-NewMapController.$inject = [ '$state', 'stateService', '$scope', '$stateParams' ];
+NewMapController.$inject = [ '$state', '$scope', '$stateParams', 'mapService' ];
 
 export { NewMapController };

@@ -2,7 +2,7 @@ import mongoose, { Schema } from 'mongoose';
 
 const Map = Schema(
 	{
-		nickname: { type: String },
+		name: { type: String },
 		availableDates: [ { type: Date } ],
 		market: {
 			type: Schema.Types.ObjectId,

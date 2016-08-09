@@ -1,33 +1,19 @@
 class viewTransactionsController {
-	constructor( service, $timeout, $state ) {
-		this.event = {};
-		this.service = service;
-		this.timeout = $timeout;
+	constructor( eventService, $state ) {
+		this.eventService = eventService;
+
 		this.state = $state;
-		this.user= {};
-		this.marketID = [];
-		this.marketUsers = [];
-		this.getCurrentUser();
+		this.eventId = [];
+		this.eventUsers = [];
 	}
 
-	getCurrentUser() {
-		return this.service.user.getCurrentOrCreate()
-		.then( user => {
-			this.timeout( () => {
-				this.user = user;
-				this.marketID = user.admin[0]._id;
-				this.getMarketUsers( user.admin[0]._id );
-			} );
-		} );
-	}
-
-	getMarketUsers(marketID) {
-		return this.service.market.getOne( marketID )
-		.then ( market => {
-			this.marketUsers = market.users;
+	getEventUsers( eventId ) { // TODO eventName
+		return this.eventService.getOne( eventId )
+		.then( event => {
+			this.eventUsers = event.users;
 		} );
 	}
 }
 
-viewTransactionsController.$inject = [ 'service', '$timeout', '$state' ];
+viewTransactionsController.$inject = [ 'eventService', '$state' ];
 export { viewTransactionsController };

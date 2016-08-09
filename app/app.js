@@ -9,9 +9,12 @@ import ngAnimate from 'angular-animate';
 import { appDirective } from './app.directive';
 import { routing } from './routing';
 import { userService } from './services/userService';
+import { eventService } from './services/eventService';
+import { mapService } from './services/mapService';
+import { reservationService } from './services/reservationService';
 
 // IMPORT COMPONENTS
-import { calendar } from './components/calendar/calendar';
+// import { calendar } from './components/calendar/calendar';
 import { checkout } from './components/checkout/checkout';
 import { createEvent } from './components/createEvent/createEvent';
 import { dashboard } from './components/dashboard/dashboard';
@@ -27,7 +30,7 @@ import { navbar } from './components/navbar/navbar';
 import { newMap } from './components/newMap/newMap';
 import { rentalHistory } from './components/rentalHistory/rentalHistory';
 import { sideNav } from './components/sideNav/sideNav';
-import { timePicker } from './components/timePicker/timePicker';
+// import { timePicker } from './components/timePicker/timePicker';
 import { transactionHistory } from './components/transactionHistory/transactionHistory';
 import { user } from './components/user/user';
 import { userSpots } from './components/userSpots/userSpots';
@@ -38,7 +41,7 @@ angular.module( 'SpotAssign', [
 	uiRouter,
 	ngAnimate,
 	// COMPONENTS
-	calendar.name,
+	// calendar.name,
 	checkout.name,
 	createEvent.name,
 	dashboard.name,
@@ -54,7 +57,7 @@ angular.module( 'SpotAssign', [
 	newMap.name,
 	rentalHistory.name,
 	sideNav.name,
-	timePicker.name,
+	// timePicker.name,
 	transactionHistory.name,
 	user.name,
 	userSpots.name,
@@ -62,6 +65,9 @@ angular.module( 'SpotAssign', [
 ] )
 	.directive( 'app', appDirective )
 	.factory( 'userService', userService )
+	.factory( 'eventService', eventService )
+	.factory( 'mapService', mapService )
+	.factory( 'reservationService', reservationService )
 	.config( routing )
 	.run( function ( $rootScope, $state ) {
 		$rootScope.$on(
