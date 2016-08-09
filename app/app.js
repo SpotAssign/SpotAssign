@@ -30,7 +30,7 @@ import { navbar } from './components/navbar/navbar';
 import { newMap } from './components/newMap/newMap';
 import { rentalHistory } from './components/rentalHistory/rentalHistory';
 import { sideNav } from './components/sideNav/sideNav';
-// import { timePicker } from './components/timePicker/timePicker';
+import { timePicker } from './components/timePicker/timePicker';
 import { transactionHistory } from './components/transactionHistory/transactionHistory';
 import { user } from './components/user/user';
 import { userSpots } from './components/userSpots/userSpots';
@@ -58,7 +58,7 @@ angular.module( 'SpotAssign', [
 	newMap.name,
 	rentalHistory.name,
 	sideNav.name,
-	// timePicker.name,
+	timePicker.name,
 	transactionHistory.name,
 	user.name,
 	userSpots.name,
