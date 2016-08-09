@@ -1,13 +1,21 @@
-import { userService } from './services/userService';
-
 const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 	$urlRouterProvider.otherwise( '/' );
 
-	const isLogged = ( $q ) => {
-		if ( !userService.state.get() || !userService.api.getCurrentUser() ) {
+	const isLogged = ( $q, userService ) => {
+		console.log( userService.getState() );
+		if ( !userService.getState() ) {
 			return $q.reject( 'AUTH_REQUIRED' );
 		}
 		return $q.resolve();
+	};
+
+	const setCurrentUser = ( $q, userService ) => {
+		return userService.getCurrentUser().then( result => {
+			if ( !userService.getState() ) {
+				return $q.reject( 'AUTH_REQUIRED' );
+			}
+			return $q.resolve();
+		} );
 	};
 
 	$stateProvider
@@ -17,12 +25,12 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 				url: '/user',
 				template: '<user></user>',
 				resolve: {
-					// isLogged
+					setCurrentUser
 				}
 			}
 		);
 };
-// TODO Do I need this?!?
+
 routing.$inject = [
 	'$locationProvider',
 	'$urlRouterProvider',

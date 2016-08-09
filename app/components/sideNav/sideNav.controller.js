@@ -1,7 +1,9 @@
 class SideNavController {
 	constructor( userService ) {
-		this.currentUser = userService.state.get();
-		this.userProfilePhoto = '';
+
+		this.currentUser = userService.getState();
+		this.userService = userService;
+
 		$( '.button-collapse' ).sideNav( {
 			menuWidth: 300,
 			edge: 'left',
@@ -10,7 +12,7 @@ class SideNavController {
 	}
 
 	logout() {
-		return this.userService.api.logout();
+		return this.userService.logout();
 	}
 
 }
