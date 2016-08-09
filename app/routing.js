@@ -105,7 +105,7 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 		.state( 'error', {
 			url: '/error',
 			template: '<error></error>'
-		} )
+		} );
 	// TBD
 	// .state( 'calendar', { // TODO Change URL
 	// 	url: '/calendar',
