@@ -55,10 +55,9 @@ export default {
 		Users.findOne( { email: req.user._json.email }, ( err, user ) => {
 			if ( user ) {
 				Users.findById( user._id )
-					.populate( 'payment' )
+					.populate( 'payments' )
 					.populate( 'reservations' )
-					.populate( 'event' )
-					.populate( 'admin' )
+					.populate( 'events' )
 					.exec( ( error, currentUser ) => {
 						if ( error ) {
 							return res.status( 500 ).json( error );
@@ -89,13 +88,12 @@ export default {
 		}
 	},
 
-	// GET ALL USERS TODO return only necessary info
+	// GET ALL USERS 
 	getUsers( req, res ) {
 		Users.find( ( req.query ) )
-			.populate( 'payment' )
+			.populate( 'payments' )
 			.populate( 'reservations' )
-			.populate( 'event' )
-			.populate( 'admin' )
+			.populate( 'events' )
 			.exec( ( err, users ) => {
 				if ( err ) {
 					return res.status( 500 ).json( err );
@@ -106,10 +104,9 @@ export default {
 	// GET A USER
 	getThisUser( req, res ) {
 		Users.findById( req.params.id )
-			.populate( 'payment' )
+			.populate( 'payments' )
 			.populate( 'reservations' )
-			.populate( 'event' )
-			.populate( 'admin' )
+			.populate( 'events' )
 			.exec( ( err, user ) => {
 				if ( err ) {
 					return res.status( 500 ).json( err );
@@ -123,10 +120,9 @@ export default {
 			return res.status( 400 ).send( 'Not in User' );
 		}
 		Users.findByIdAndUpdate( req.params.id, req.body )
-			.populate( 'payment' )
+			.populate( 'payments' )
 			.populate( 'reservations' )
-			.populate( 'event' )
-			.populate( 'admin' )
+			.populate( 'events' )
 			.exec( ( err, user ) => {
 				if ( err ) {
 					return res.send( err );
