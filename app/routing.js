@@ -14,10 +14,14 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 	};
 
 	const getCurrentEvent = ( $q, eventService, $stateParams ) => {
-		return eventService.getEventByName( $stateParams.name ).then( result => {
-			if ( !eventService.getState() ) return $q.reject( 'NO_EVENT' );
+		if ( !eventService.getState() ) {
+			return eventService.getEventByName( $stateParams.name ).then( result => {
+				if ( !eventService.getState() ) return $q.reject( 'NO_EVENT' );
+				return $q.resolve();
+			} );
+		} else {
 			return $q.resolve();
-		} );
+		}
 	};
 
 	$stateProvider
@@ -66,34 +70,27 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 		.state( 'editEvent', {
 			url: '/event/:name/edit-event',
 			template: '<edit-event></edit-event>',
-			// resolve: { isLogged }
+			resolve: { isLogged, getCurrentEvent }
 		} )
 		.state( 'dashboard', {
 			url: '/event/:name/dashboard',
 			template: '<dashboard></dashboard>',
-			// resolve: {
-			// 	isLogged,
-			// 	getCurrentEvent( $stateParams ) { // TODO is this working?!?
-			// 		return this.service.getEvent( $stateParams.event ).then( response => {
-			// 			return response.data;
-			// 		} );
-			// 	}
-			// }
+			resolve: { isLogged, getCurrentEvent }
 		} )
 		.state( 'checkout', {
 			url: '/event/:name/checkout',
 			template: '<checkout></checkout>',
-			// resolve: { isLogged }
+			resolve: { isLogged, getCurrentEvent }
 		} )
 		.state( 'manageUsers', {
 			url: '/event/:name/manage-users',
 			template: '<manage-users></manage-users>',
-			// resolve: { isLogged }
+			resolve: { isLogged, getCurrentEvent }
 		} )
 		.state( 'viewTransactions', {
 			url: 'event/:name/transactions',
 			template: '<view-transactions></view-transactions>',
-			// resolve: { isLogged }
+			resolve: { isLogged, getCurrentEvent }
 		} )
 		// GLOBAL
 		.state( 'newMap', {
@@ -101,16 +98,16 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 			template: '<new-map></new-map>',
 			resolve: { isLogged }
 		} )
-		// TBD
-		// .state( 'calendar', { // TODO Change URL
-		// 	url: '/calendar',
-		// 	template: '<calendar></calendar>',
-		// 	resolve: { isLogged }
-		// } )
-		// .state( 'timePicker', {
-		// 	url: '/timepicker',
-		// 	template: '<time-picker></time-picker>'
-		// } );
+	// TBD
+	// .state( 'calendar', { // TODO Change URL
+	// 	url: '/calendar',
+	// 	template: '<calendar></calendar>',
+	// 	resolve: { isLogged }
+	// } )
+	// .state( 'timePicker', {
+	// 	url: '/timepicker',
+	// 	template: '<time-picker></time-picker>'
+	// } );
 };
 
 routing.$inject = [

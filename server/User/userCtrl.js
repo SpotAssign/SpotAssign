@@ -9,7 +9,7 @@ function createGoogle( req, res ) {
 		photo: req.user._json.picture
 	} ).save( ( errs, newUser ) => {
 		if ( errs ) {
-			return res.redirect( '/#/' ); // TODO ERROR PAGE
+			return res.redirect( '/#/error' );
 		}
 		return res.redirect( '/#/user' );
 	} );
@@ -24,7 +24,7 @@ function createFacebook( req, res ) {
 		photo: `https://graph.facebook.com/${req.user.identities[ 0 ].user_id}/picture?width=9999`
 	} ).save( ( errs, newUser ) => {
 		if ( errs ) {
-			return res.redirect( '/#/' ); // TODO ERROR PAGE
+			return res.redirect( '/#/error' );
 		}
 		return res.redirect( '/#/user' );
 	} );
@@ -39,7 +39,7 @@ function createAccount( req, res ) {
 		photo: req.user._json.picture
 	} ).save( ( errs, newUser ) => {
 		if ( errs ) {
-			return res.redirect( '/#/' ); // TODO ERROR PAGE
+			return res.redirect( '/#/error' );
 		}
 		return res.redirect( '/#/user' );
 	} );
