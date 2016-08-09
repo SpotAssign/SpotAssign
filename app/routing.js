@@ -43,6 +43,11 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 			template: '<create-event></create-event>',
 			resolve: { isLogged }
 		} )
+		.state( 'userFindEvent', {
+			url: '/user/find-event',
+			template: '<user-find-event></user-find-event>',
+			resolve: { isLogged }
+		} )
 		.state( 'rentalHistory', {
 			url: '/user/history',
 			template: '<rental-history></rental-history>',

@@ -1,9 +1,50 @@
-#userHome {
+@import '../../styles/colors';
+@import url(https://fonts.googleapis.com/css?family=Heebo:100);
 
+#userHome {
+	.UserHomeContainer {
+		margin-top: 50px;
+		margin-left: 300px;
+		font-family: Heebo, 'serif';
+	}
+	.event {
+	}
+	.welcome-message h6, ol {
+		margin-left: 5%;
+	}
+	.welcome-message {
+		.mark {
+			text-align: center;
+			#mark-photo {
+				height: 200px;
+			}
+		}
+	}
+	.row {
+		.feature-box {
+			margin-top: 10%;
+			border: 1px solid black;
+			border-radius: 25px;
+			padding-top: 10px;
+		}
+		.feature-box:hover {
+			background-color: $primary-orange;
+			border: 1px solid $primary-orange;
+			color: white;
+			cursor: pointer;
+		}
+		a {
+			color: inherit;
+		}
+	}
+	.pointers {
+		margin-top: 8%;
+	}
+	.welcome-message h3 {
+		text-align: center;
+	}
 }
-.UserHomeContainer {
-	margin-top: 50px;
-}
+
 
 @media ( max-width:600px ) and (min-width: 300px)  {
     .UserHomeContainer {
@@ -11,5 +52,7 @@
         margin-right: auto;
     }
 }
+
+
 
 @import url(https://fonts.googleapis.com/css?family=Work+Sans:300);
