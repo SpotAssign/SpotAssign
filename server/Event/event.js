@@ -12,7 +12,7 @@ const Events = Schema(
 		startDate: { type: Date },
 		recurrence: {
 			// can be "year", "day", "week", "hour".. here we will use "week"
-			frequency: { type: String, default: 'week' },
+			frequency: { type: String },
 			interval: { type: Number, default: 1 },
 			dayOfWeek: [ {
 				name: { type: Object }, // choose from "M", "T", "W", "Th", "F", "Sat" and "Sun"
