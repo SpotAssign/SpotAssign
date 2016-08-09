@@ -1,7 +1,7 @@
 import { timePickerDirective } from './timePicker.directive';
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import { service } from '../../shared/service';
+import { service } from '../../services/service';
 
 
 // DELETE ROUTER IF NOT NEEDED

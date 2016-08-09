@@ -1,55 +1,12 @@
 // Checkout the checkout.js for how to use on the module
 // Checkout the CheckoutController for how to use in the controller
+import { stateService } from './stateService';
 
-const service = ( $http, $location ) => {
+const service = ( $http, $location, stateService ) => {
     const api = {
         url: 'http://localhost:8080'
     };
     return {
-        //  <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
-        //                          USERS SERVICE
-        // <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
-        user: {
-            getAll( query ) {
-                return $http.get( `${api.url}/api/users` )
-                .then( data => data );
-            },
-            // This function will either get the current user,
-            // or create a new user if no email is known to exsist in the DB
-            getCurrentOrCreate() {
-                return $http.get( `${api.url}/user` )
-                .then( ( { data } ) => {
-                    localStorage.setItem( 'currentUser', JSON.stringify( data ) );
-                    if ( localStorage.getItem( 'userPhoto' ) ) {
-                        return data;
-                    } localStorage.setItem( 'userPhoto', JSON.stringify( data.photo ) );
-                    return data;
-                } );
-            },
-            getLocalUser() {
-                const LocalUser = localStorage.getItem( 'currentUser' );
-                return JSON.parse( LocalUser );
-            },
-            getOne( id ) {
-                return $http.get( `${api.url}/api/users/${id}` )
-                .then( data => data );
-            },
-            editOne( id, editedUser ) {
-                return $http( {
-                    method: 'PUT',
-                    url: `${api.url}/api/users/${id}`,
-                    data: {
-                        phoneNumber: editedUser.phoneNumber,
-                        boothCompName: editedUser.boothCompName,
-                        paymentInfo: editedUser.paymentInfo
-                    }
-                } ).then( data => data );
-            },
-            logout () {
-                localStorage.clear();
-                return $location.url( `/v2/logout?returnTo=${api.url}/#/` );
-            }
-        },
         //  <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
         //                          MARKETS SERVICE
         // <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
@@ -199,5 +156,5 @@ const service = ( $http, $location ) => {
     };
 };
 
-service.$inject = [ '$http', '$location' ];
+service.$inject = [ '$http', '$location', 'stateService' ];
 export { service };

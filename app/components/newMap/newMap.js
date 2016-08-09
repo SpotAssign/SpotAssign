@@ -1,5 +1,5 @@
 import angular from 'angular';
-import { service } from '../../shared/service';
+import { service } from '../../services/service';
 
 import { newMapDirective } from './newMap.directive';
 import { stepOneDirective } from './steps/stepOne.directive';

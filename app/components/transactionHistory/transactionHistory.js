@@ -1,7 +1,7 @@
 import { transactionHistoryDirective } from './transactionHistory.directive';
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import { service } from '../../shared/service';
+import { service } from '../../services/service';
 
 export const transactionHistory = angular.module( 'transactionHistory', [ uiRouter ] )
 .config( ( $stateProvider ) => {

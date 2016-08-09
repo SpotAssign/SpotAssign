@@ -1,7 +1,7 @@
 import angular from 'angular';
 import { manageUsersDirective } from './manageUsers.directive';
 import { sideNav } from '../sideNav/sideNav';
-import { service } from '../../shared/service';
+import { service } from '../../services/service';
 
 export const manageUsers = angular.module( 'manageUsers', [ sideNav.name ] )
 	.config( function( $stateProvider, $urlRouterProvider ) {

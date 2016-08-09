@@ -1,21 +1,6 @@
 import Users from './Users';
 
-function createFacebook() {
-	new Users( {
-		firstName: req.user._json.given_name,
-		lastName: req.user._json.family_name,
-		email: req.user._json.email,
-		creationDate: new Date(),
-		photo: `https://graph.facebook.com/${req.user.identities[0].user_id}/picture?width=9999`
-	} ).save( ( err, newUser ) => {
-		if ( err ) {
-			return res.status( 500 ).json( err );
-		}
-		return res.status( 200 ).json( newUser ).redirect( '/#/user' );
-	} );
-}
-
-function createGoogle() {
+function createGoogle( req, res ) {
 	new Users( {
 		firstName: req.user._json.given_name,
 		lastName: req.user._json.family_name,
@@ -24,13 +9,28 @@ function createGoogle() {
 		photo: req.user._json.picture
 	} ).save( ( errs, newUser ) => {
 		if ( errs ) {
-			return res.status( 500 ).json( errs );
+			return res.redirect( '/#/' ); // TODO ERROR PAGE
 		}
-		return res.status( 200 ).json( newUser ).redirect( '/#/user' );
+		return res.redirect( '/#/user' );
 	} );
 }
 
-function createAccount() {
+function createFacebook( req, res ) {
+	new Users( {
+		firstName: req.user._json.given_name,
+		lastName: req.user._json.family_name,
+		email: req.user._json.email,
+		creationDate: new Date(),
+		photo: `https://graph.facebook.com/${req.user.identities[ 0 ].user_id}/picture?width=9999`
+	} ).save( ( errs, newUser ) => {
+		if ( errs ) {
+			return res.redirect( '/#/' ); // TODO ERROR PAGE
+		}
+		return res.redirect( '/#/user' );
+	} );
+}
+
+function createAccount( req, res ) {
 	new Users( {
 		firstName: req.user._json.given_name,
 		lastName: req.user._json.family_name,
@@ -39,9 +39,9 @@ function createAccount() {
 		photo: req.user._json.picture
 	} ).save( ( errs, newUser ) => {
 		if ( errs ) {
-			return res.status( 500 ).json( errs );
+			return res.redirect( '/#/' ); // TODO ERROR PAGE
 		}
-		return res.status( 200 ).json( newUser ).redirect( '/#/user' );
+		return res.redirect( '/#/user' );
 	} );
 }
 
@@ -49,18 +49,16 @@ export default {
 	// ************************************************************************
 	// 								Get Auth with Auth0
 	// ************************************************************************
-	// THIS FUNCTION ONLY HAS THE USER OBJECT FROM FACEBOOK OR GOOGLE
 	getAuth( req, res, next ) {
 		if ( !req.user ) {
 			throw new Error( 'user null' );
-			return res.redirect( '/#/' );
 		} else {
 			next();
 		}
 	},
 	// THIS FUNCTION IS CALLED WHEN THEY REDIRECT TO DASHBOARD, IT CHECKS IF THE
 	// GOOGLE OR FACEBOOK USER IS EXSISTING THEN RETURNS DATABASE USER OBJECT
-	getAuthUser( req, res, next ) {
+	getAuthUser( req, res ) {
 		Users.findOne( { email: req.user._json.email }, ( err, user ) => {
 			if ( user ) {
 				Users.findById( user._id )
@@ -76,19 +74,21 @@ export default {
 					} );
 			} else if ( err ) {
 				return res.status( 500 ).json( err );
-			} else {
-				if ( req.user.identities[0].provider === 'google-oauth2' ) {
-					createGoogle();
-				} else if ( req.user.identities[0].provider === 'facebook' ) {
-					createFacebook();
-				} else {
-					createAccount();
-				}
 			}
 		} );
 	},
 
-	// GET ALL USERS
+	createUser( req, res ) {
+		if ( req.user.identities[ 0 ].provider === 'google-oauth2' ) {
+			createGoogle( req, res );
+		} else if ( req.user.identities[ 0 ].provider === 'facebook' ) {
+			createFacebook( req, res );
+		} else {
+			createAccount( req, res );
+		}
+	},
+
+	// GET ALL USERS TODO return only necessary info
 	getUsers( req, res ) {
 		Users.find( ( req.query ) )
 			.populate( 'payment' )
@@ -103,7 +103,7 @@ export default {
 			} );
 	},
 	// GET A USER
-	getThisUser( req, res, next ) {
+	getThisUser( req, res ) {
 		Users.findById( req.params.id )
 			.populate( 'payment' )
 			.populate( 'reservations' )

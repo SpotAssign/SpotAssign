@@ -1,7 +1,7 @@
 import { editEventDirective } from './editEvent.directive';
 import angular from 'angular';
 import { sideNav } from '../sideNav/sideNav';
-import { service } from '../../shared/service';
+import { service } from '../../services/service';
 
 export const editEvent = angular.module( 'editEvent', [ sideNav.name ] )
 	.config( function( $stateProvider, $urlRouterProvider ) {

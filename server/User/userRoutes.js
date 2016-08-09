@@ -8,16 +8,13 @@ export default function ( app ) {
 		'/callback',
 		passport.authenticate( 'auth0', { failureRedirect: '/' } ),
 		userCtrl.getAuth,
-		middleware,
-		userCtrl.getAuthUser
+		userCtrl.createUser
 	);
-	// app.get( '/user', middleware, userCtrl.getAuthUser );
-
+	app.get( '/api/user', middleware, userCtrl.getAuthUser );
 
 	// GET REQUEST
 	app.get( '/api/users', middleware, userCtrl.getUsers );
 	app.get( '/api/users/:id', middleware, userCtrl.getThisUser );
-
 
 	// PUT REQUEST
 	app.put( '/api/users/:id', middleware, userCtrl.editUser );

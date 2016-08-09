@@ -1,7 +1,7 @@
 import angular from 'angular';
 import { checkoutDirective } from './checkout.directive';
 import { sideNav } from '../sideNav/sideNav';
-import { service } from '../../shared/service';
+import { service } from '../../services/service';
 
 export const checkoutEvent = angular.module( 'checkoutEvent', [ sideNav.name ] )
 	.config( function ( $stateProvider, $urlRouterProvider ) {

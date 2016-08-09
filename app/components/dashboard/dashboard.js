@@ -6,7 +6,7 @@ import { timePicker } from '../timePicker/timePicker';
 import { logout } from '../logout/logout';
 import { newMap } from '../newMap/newMap';
 import { map } from '../map/map';
-import { stateService } from '../../shared/stateService';
+import { stateService } from '../../services/stateService';
 
 
 export const dashboard = angular.module( 'dashboard', [ sideNav.name, calendar.name,

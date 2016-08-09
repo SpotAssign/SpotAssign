@@ -1,6 +1,6 @@
 import angular from 'angular';
 import { createEventDirective } from './createEvent.directive';
-import { service } from '../../shared/service';
+import { service } from '../../services/service';
 
 import 'filepicker-js';
 import { sideNav } from '../sideNav/sideNav';

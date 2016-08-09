@@ -1,7 +1,7 @@
 import { userSpotsDirective } from './userSpots.directive';
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import { service } from '../../shared/service';
+import { service } from '../../services/service';
 import { sideNav } from '../sideNav/sideNav';
 
 
