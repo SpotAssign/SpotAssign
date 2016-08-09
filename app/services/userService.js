@@ -17,7 +17,7 @@ const userService = ( $http, $location ) => {
 					return result.data;
 				} );
 		},
-		getOne( id ) {
+		getOne( id ) { // TODO do we need this?!?
 			return $http.get( `${api}/api/users/${id}` )
 				.then( data => data );
 		},
