@@ -4,15 +4,17 @@ export default function ( req, res, next ) {
 	// Step 1
 	// (Comment out the following block)
 	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	return next()
+	return next();
 	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 	// Step 2
 	// ( Uncomment block below )
 	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	// const notLoggedIn = { userAuthenticated: false };
 	// if ( req.isAuthenticated() ) {
 	// 	return next();
-	// } return res.json( notLoggedIn );
+	// } else {
+	// 	const notLoggedIn = { userAuthenticated: false };
+	// 	return res.json( notLoggedIn );
+	// }
 	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }

@@ -1,4 +1,3 @@
-import Users from '../User/Users';
 import Markets from '../Market/Markets';
 import Map from './Map';
 

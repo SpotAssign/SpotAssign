@@ -16,7 +16,7 @@ export const newMap = angular.module( 'newMap', [ map.name, sideNav.name ] )
 
 		$stateProvider.state( 'newMap', {
 			template: '<new-map></new-map>',
-			url: '/newMap' // TODO
+			url: '/create-map/:isAdmin'
 		} );
 	} )
 	.directive( 'newMap', newMapDirective )

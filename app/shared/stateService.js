@@ -12,6 +12,7 @@ const stateService = ( $http, $location ) => {
 				map = currentMap;
 			},
 			getEvent() {
+				console.log( event, 'this is event' );
 				return event;
 			},
 			setEvent( ev ) {

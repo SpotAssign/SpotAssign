@@ -22,7 +22,7 @@ const Users = mongoose.Schema(
 			type: mongoose.Schema.Types.ObjectId,
 			ref: `Markets`
 		} ],
-		admin: [ {
+		admin: [ { // TODO Delete
 			type: mongoose.Schema.Types.ObjectId,
 			ref: `Markets`
 		} ]

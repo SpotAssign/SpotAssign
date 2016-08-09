@@ -2,6 +2,7 @@ import angular from 'angular';
 import { createEventDirective } from './createEvent.directive';
 import { service } from '../../shared/service';
 
+import 'filepicker-js';
 import { sideNav } from '../sideNav/sideNav';
 import { logout } from '../logout/logout';
 
@@ -10,7 +11,7 @@ export const createEvent = angular.module( 'createEvent', [ sideNav.name, logout
 		$urlRouterProvider.otherwise( '/' );
 
 		$stateProvider.state( 'createEvent', {
-			url: '/admin/create',
+			url: '/create-event',
 			template: '<create-event></create-event>'
 		} );
 	} )

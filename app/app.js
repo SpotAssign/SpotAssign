@@ -14,6 +14,8 @@ import { home } from './components/home/home';
 import { event } from './components/event/event';
 import { dashboard } from './components/dashboard/dashboard';
 import { userHome } from './components/userHome/userHome';
+
+// IMPORT SUB COMPONENTS
 import { newMap } from './components/newMap/newMap';
 import { editEvent } from './components/editEvent/editEvent';
 import { manageUsers } from './components/manageUsers/manageUsers';

@@ -16,7 +16,7 @@ const Markets = Schema(
 				name: { type: Object }, // choose from "M", "T", "W", "Th", "F", "Sat" and "Sun"
 				close: { type: Object }, // must be two numbers, open and close for the Day
 				open: { type: Object },
-				value: {type: Boolean }
+				value: { type: Boolean }
 			}
 			]
 		},
