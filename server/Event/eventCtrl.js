@@ -57,19 +57,23 @@ export default {
 		}
 		new Events( req.body ).save( ( err, event ) => {
 			if ( err ) return res.send( err );
+			console.log( event, 'HERE' );
 			Users.findByIdAndUpdate(
-				req.body.admins,
-				{ $push: { admin: event._id } },
-				{ safe: true, upsert: true, new: true }, error => {
+				event.admins[0],
+				{ $push: { events: event._id } },
+				{ upsert: true, new: true }, error => {
 				if ( error ) return res.send( error );
 			} );
-			Map.findByIdAndUpdate( // TODO event map id not working properly
-				event._id,
-				{ $push: { event: event._id } },
-				{ safe: true, upsert: true, new: true }, error => {
+			Map.findByIdAndUpdate(
+				event.currentMap,
+				{ $set: { event: event._id } },
+				{ upsert: true, new: true }, ( error, result ) => {
 					if ( error ) return res.send( error );
+					if ( result ) {
+						console.log( event );
+						return res.status( 200 ).json( event );
+					}
 			} );
-			return res.json( event );
 		} );
 	},
 	// PUT
@@ -98,7 +102,7 @@ export default {
 			Users.findByIdAndUpdate(
 				event.user,
 				{ $pull: { event: { $in: [ req.params.id ] } } },
-				{ safe: true, upsert: true, new: true }, ( error, user ) => {
+				{ upsert: true, new: true }, ( error, user ) => {
 				if ( error ) {
 					return res.send( err );
 				}

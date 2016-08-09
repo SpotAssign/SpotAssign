@@ -21,10 +21,6 @@ const Users = mongoose.Schema(
 		events: [ {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: `Events`
-		} ],
-		admin: [ { // TODO Delete
-			type: mongoose.Schema.Types.ObjectId,
-			ref: `Events`
 		} ]
 	}
 );

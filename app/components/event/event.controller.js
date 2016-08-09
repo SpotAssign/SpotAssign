@@ -11,5 +11,4 @@ class EventController {
 }
 
 EventController.$inject = [ 'eventService' ];
-
 export { EventController };

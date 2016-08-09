@@ -15,8 +15,6 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 
 	const getCurrentEvent = ( $q, eventService, $stateParams ) => {
 		return eventService.getEventByName( $stateParams.name ).then( result => {
-			console.log( result );
-			eventService.setState( result );
 			if ( !eventService.getState() ) return $q.reject( 'NO_EVENT' );
 			return $q.resolve();
 		} );
@@ -68,34 +66,34 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 		.state( 'editEvent', {
 			url: '/event/:name/edit-event',
 			template: '<edit-event></edit-event>',
-			resolve: { isLogged }
+			// resolve: { isLogged }
 		} )
 		.state( 'dashboard', {
 			url: '/event/:name/dashboard',
 			template: '<dashboard></dashboard>',
-			resolve: {
-				isLogged,
-				getCurrentEvent( $stateParams ) { // TODO is this working?!?
-					return this.service.getEvent( $stateParams.event ).then( response => {
-						return response.data;
-					} );
-				}
-			}
+			// resolve: {
+			// 	isLogged,
+			// 	getCurrentEvent( $stateParams ) { // TODO is this working?!?
+			// 		return this.service.getEvent( $stateParams.event ).then( response => {
+			// 			return response.data;
+			// 		} );
+			// 	}
+			// }
 		} )
 		.state( 'checkout', {
 			url: '/event/:name/checkout',
 			template: '<checkout></checkout>',
-			resolve: { isLogged }
+			// resolve: { isLogged }
 		} )
 		.state( 'manageUsers', {
 			url: '/event/:name/manage-users',
 			template: '<manage-users></manage-users>',
-			resolve: { isLogged }
+			// resolve: { isLogged }
 		} )
 		.state( 'viewTransactions', {
 			url: 'event/:name/transactions',
 			template: '<view-transactions></view-transactions>',
-			resolve: { isLogged }
+			// resolve: { isLogged }
 		} )
 		// GLOBAL
 		.state( 'newMap', {

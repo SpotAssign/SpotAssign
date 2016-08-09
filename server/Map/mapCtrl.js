@@ -33,7 +33,7 @@ export default {
 			}
 			return res.status( 200 ).json( map );
 			// Events.findByIdAndUpdate( req.body.user.events[ req.body.user.events.length - 1 ]._id, { $push: { map: map._id } }, {
-			// 	safe: true,
+			// 	,
 			// 	upsert: true,
 			// 	new: true
 			// }, ( error, user ) => {
@@ -67,7 +67,6 @@ export default {
 				return res.send( err );
 			}
 			Events.findByIdAndUpdate( map.user, { $pull: { map: { $in: [ req.params.id ] } } }, {
-				safe: true,
 				upsert: true,
 				new: true
 			}, ( error, user ) => {

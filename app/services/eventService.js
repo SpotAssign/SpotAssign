@@ -4,9 +4,11 @@ const eventService = $http => {
 	return {
 		setState( evnt ) {
 			this.event = evnt;
+			console.log( 'GET EVENT %%%%%%%%%%%%%%%%%%%%%%%% ', this.event );
 			return this.event;
 		},
 		getState() {
+			console.log( 'SET EVENT %%%%%%%%%%%%%%%%%%%%%%%% ', this.event );
 			return this.event;
 		},
 		getAll( query ) {

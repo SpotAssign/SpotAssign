@@ -1,9 +1,10 @@
 class CreateEventController {
-	constructor( eventService, mapService, $location, $scope ) {
+	constructor( eventService, mapService, $location, $scope, userService ) {
 		this.eventService = eventService;
 		this.mapService = mapService;
 		this.location = $location;
 		this.scope = $scope;
+		this.userService = userService;
 
 		this.event = this.eventService.getState();
 		this.currentMap = this.mapService.getState();
@@ -48,7 +49,6 @@ class CreateEventController {
 		) {
 			// CREATE MAP IN DB
 			this.mapService.create( this.currentMap ).then( res => {
-				this.mapService.setState( res );
 				// CREATE EVENT IN DB
 				const event = {
 					name: this.event.title,
@@ -57,6 +57,7 @@ class CreateEventController {
 						city: this.event.city,
 						state: this.event.state
 					},
+					admins: [ this.userService.getState()._id ],
 					bio: this.event.bio,
 					paymentInfo: this.event.paymentEmail,
 					photo: this.event.photo,
@@ -64,7 +65,7 @@ class CreateEventController {
 					currentMap: res
 				};
 				this.eventService.create( event ).then( response => {
-					this.location.path( `/event/${response.name}/` );
+					this.location.path( `/event/${response.name}` );
 				} );
 			} );
 		} else {
@@ -82,6 +83,7 @@ CreateEventController.$inject = [
 	'eventService',
 	'mapService',
 	'$location',
-	'$scope'
+	'$scope',
+	'userService'
 ];
 export { CreateEventController };

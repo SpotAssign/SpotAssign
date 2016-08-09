@@ -4,18 +4,20 @@ const mapService = $http => {
 	return {
 		setState( m ) {
 			this.map = m;
+			console.log( 'SET MAP $$$$$$$$$$$$$$ ', this.map );
 			return this.map;
 		},
 		getState() {
+			console.log( 'GET MAP $$$$$$$$$$$$$$ ', this.map );
 			return this.map;
 		},
 		getAll( query ) {
 			return $http.get( `${api}/api/map` )
-				.then( data => data );
+				.then( res => res.data );
 		},
 		getOne( id ) {
 			return $http.get( `${api}/api/map/${id}` )
-				.then( data => data );
+				.then( res => res.data );
 		},
 		create( newMap ) {
 			return $http( {
@@ -30,7 +32,9 @@ const mapService = $http => {
 					mapImage: newMap.mapImage,
 					spots: newMap.spots
 				}
-			} ).then( res => res.data );
+			} ).then( res => {
+				this.setState( res.data );
+			} );
 		},
 		editOne( id, editedBooth ) {
 			return $http( {
@@ -41,11 +45,15 @@ const mapService = $http => {
 					availableDates: editedBooth.availableDates,
 					location: editedBooth.location
 				}
-			} ).then( data => data );
+			} ).then( res => {
+				this.setState( res.data );
+			} );
 		},
 		deleteOne( id ) {
 			return $http.delete( `${api}/map/${id}` )
-				.then( data => data );
+				.then( res => {
+					this.setState( res.data );
+				} );
 		}
 	};
 };

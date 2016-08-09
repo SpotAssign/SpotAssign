@@ -35,7 +35,6 @@ export default {
 				return res.send( err );
 			}
 			Reservations.findByIdAndUpdate( req.body.user, { $push: { payment: payment._id } }, {
-				safe: true,
 				upsert: true,
 				new: true
 			}, ( error, user ) => {
@@ -70,7 +69,6 @@ export default {
 				payment.user,
 				{ $pull: { payment: { $in: [ req.params.id ] } } },
 				{
-					safe: true,
 					upsert: true,
 					new: true
 				}, ( error, user ) => {
