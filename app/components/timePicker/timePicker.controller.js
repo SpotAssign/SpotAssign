@@ -24,6 +24,7 @@ class TimePickerController {
       return this.service.user.getCurrentOrCreate()
       .then( user => {
             this.user = user;
+			console.log(user);
             this.marketID = user.admin[0]._id;
             this.getUpdatedMarket( user.admin[0]._id );
       } );
