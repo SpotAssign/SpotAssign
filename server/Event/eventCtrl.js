@@ -31,6 +31,7 @@ export default {
 					return res.status( 500 ).json( err );
 				}
 				if ( event ) {
+					console.log( event );
 					const filteredEvent = {
 						admins: event.admins,
 						bio: event.bio,
@@ -57,22 +58,22 @@ export default {
 		}
 		new Events( req.body ).save( ( err, event ) => {
 			if ( err ) return res.send( err );
-			console.log( event, 'HERE' );
 			Users.findByIdAndUpdate(
 				event.admins[0],
-				{ $push: { events: event._id } },
-				{ upsert: true, new: true }, error => {
-				if ( error ) return res.send( error );
-			} );
-			Map.findByIdAndUpdate(
-				event.currentMap,
-				{ $set: { event: event._id } },
-				{ upsert: true, new: true }, ( error, result ) => {
-					if ( error ) return res.send( error );
-					if ( result ) {
-						console.log( event );
-						return res.status( 200 ).json( event );
-					}
+				{ $push: { events: event._id } }, ( err, result ) => {
+				if ( err ) {
+					return res.send( err );
+				} else {
+
+				Map.findByIdAndUpdate(
+					event.currentMap,
+					{ $push: { event: event._id } }, ( error, result ) => {
+						if ( error ) return res.send( error );
+						if ( result ) {
+							return res.status( 200 ).json( event );
+						}
+				} );
+			}
 			} );
 		} );
 	},

@@ -9,7 +9,7 @@
 		font-family: 'Heebo', serif;
 	}
 	.footer {
-		padding-top: 18px;
+		padding-top: 10px;
 		padding-left: 5%;
 	}
 	a img {
@@ -32,17 +32,23 @@
 	}
 	.top {
 		background: #efefef;
-		background-image: url('http://imgur.com/bvPVKvS');
 		height: 100%;
 		padding-top: 40px;
-    	margin-bottom: 60px;
-    	text-align: center;
+    margin-bottom: 60px;
+    text-align: center;
 
 		p {
 			font: 14px/23px 'Heebo', sans-serif;
 			font-size: 25px;
 			margin-bottom: 70px;
 		}
+	}
+	.picture-top {
+		background: #efefef;
+		height: 100%;
+		padding-top: 60px;
+		padding-bottom: 60px;
+		text-align: center;
 	}
 	.mid {
 		text-align: center;
@@ -57,10 +63,15 @@
 		margin-top: 70px;
 		padding-top: 50px;
 	}
-	.event-photo {
+	a .footer img {
 		width: 100%;
 		max-height: 300px;
 		object-fit: cover;
+	}
+	.eventPhoto {
+		text-align: center;
+		margin-top: 5%;
+		// margin-bottom: 5%;
 	}
 	.map {
 		margin-top: 40px;
