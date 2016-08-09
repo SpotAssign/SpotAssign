@@ -10,17 +10,17 @@ const reservationService = $http => {
 			return this.reservation;
 		},
 		getAll( query ) {
-			return $http.get( `${api.url}/api/reservations` )
+			return $http.get( `${api}/api/reservations` )
 				.then( data => data );
 		},
 		getOne( id ) {
-			return $http.get( `${api.url}/api/reservations/${id}` )
+			return $http.get( `${api}/api/reservations/${id}` )
 				.then( data => data );
 		},
 		create( newRes ) {
 			return $http( {
 				method: 'POST',
-				url: `${api.url}/api/reservations`,
+				url: `${api}/api/reservations`,
 				data: {
 					dates: newRes.dates,
 					user: newRes.userId,
@@ -33,7 +33,7 @@ const reservationService = $http => {
 		editOne( id, editedRes ) {
 			return $http( {
 				method: 'PUT',
-				url: `${api.url}/api/reservations/${id}`,
+				url: `${api}/api/reservations/${id}`,
 				data: {
 					dates: editedRes.dates,
 					user: editedRes.userId,
@@ -43,7 +43,7 @@ const reservationService = $http => {
 			} ).then( data => data );
 		},
 		deleteOne( id ) {
-			return $http.delete( `${api.url}/reservations/${id}` )
+			return $http.delete( `${api}/reservations/${id}` )
 				.then( data => data );
 		}
 	};

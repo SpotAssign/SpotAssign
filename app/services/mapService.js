@@ -10,17 +10,17 @@ const mapService = $http => {
 			return this.map;
 		},
 		getAll( query ) {
-			return $http.get( `${api.url}/api/map` )
+			return $http.get( `${api}/api/map` )
 				.then( data => data );
 		},
 		getOne( id ) {
-			return $http.get( `${api.url}/api/map/${id}` )
+			return $http.get( `${api}/api/map/${id}` )
 				.then( data => data );
 		},
 		create( newMap ) {
 			return $http( {
 				method: 'POST',
-				url: `${api.url}/api/map`,
+				url: `${api}/api/map`,
 				data: {
 					name: newMap.name,
 					availableDates: newMap.availableDates,
@@ -35,7 +35,7 @@ const mapService = $http => {
 		editOne( id, editedBooth ) {
 			return $http( {
 				method: 'PUT',
-				url: `${api.url}/api/booths/${id}`,
+				url: `${api}/api/booths/${id}`,
 				data: {
 					nickname: editedBooth.nickname,
 					availableDates: editedBooth.availableDates,
@@ -44,7 +44,7 @@ const mapService = $http => {
 			} ).then( data => data );
 		},
 		deleteOne( id ) {
-			return $http.delete( `${api.url}/booths/${id}` )
+			return $http.delete( `${api}/booths/${id}` )
 				.then( data => data );
 		}
 	};

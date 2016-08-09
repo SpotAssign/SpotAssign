@@ -8,7 +8,7 @@ export default {
 	getReservations( req, res ) {
 		Reservations.find( ( req.query ) )
 			.populate( 'user' )
-			.populate( 'market' )
+			.populate( 'event' )
 			.populate( 'payment' )
 			.populate( 'map' )
 			.exec( ( err, reservation ) => {
@@ -20,7 +20,7 @@ export default {
 	getThisReservation( req, res ) {
 		Reservations.findById( req.params.id )
 			.populate( 'user' )
-			.populate( 'market' )
+			.populate( 'event' )
 			.populate( 'payment' )
 			.populate( 'map' )
 			.exec( ( err, payment ) => {

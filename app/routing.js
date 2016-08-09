@@ -17,6 +17,15 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 		} );
 	};
 
+	const getCurrentEvent = ( $q, eventService, $stateParams ) => {
+		return eventService.getOne( $stateParams.name ).then( result => {
+			if ( !eventService.getState() ) {
+				return $q.reject( 'NO_EVENT' );
+			}
+			return $q.resolve();
+		} );
+	};
+
 	$stateProvider
 		// HOME TODO ERROR PAGE
 		.state( 'home', { url: '/', template: '<home></home>' } )
@@ -53,10 +62,12 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 			resolve: { isLogged }
 		} )
 		// EVENT
-		.state( 'event', { // TODO resolve with the params event
+		.state( 'event', {
 			url: '/event/:name',
 			template: '<event></event>',
-			resolve: {}
+			resolve: {
+				getCurrentEvent
+			}
 		} )
 		.state( 'editEvent', {
 			url: '/event/:name/edit-event',

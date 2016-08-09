@@ -76,6 +76,9 @@ angular.module( 'SpotAssign', [
 				if ( error === 'AUTH_REQUIRED' ) {
 					$state.go( 'home' );
 				}
+				if ( error === 'NO_EVENT' ) {
+					$state.go( 'findEvent' );
+				}
 			}
 		);
 	} );

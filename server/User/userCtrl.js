@@ -57,7 +57,7 @@ export default {
 				Users.findById( user._id )
 					.populate( 'payment' )
 					.populate( 'reservations' )
-					.populate( 'markets' )
+					.populate( 'event' )
 					.populate( 'admin' )
 					.exec( ( error, currentUser ) => {
 						if ( error ) {
@@ -94,7 +94,7 @@ export default {
 		Users.find( ( req.query ) )
 			.populate( 'payment' )
 			.populate( 'reservations' )
-			.populate( 'market' )
+			.populate( 'event' )
 			.populate( 'admin' )
 			.exec( ( err, users ) => {
 				if ( err ) {
@@ -108,7 +108,7 @@ export default {
 		Users.findById( req.params.id )
 			.populate( 'payment' )
 			.populate( 'reservations' )
-			.populate( 'market' )
+			.populate( 'event' )
 			.populate( 'admin' )
 			.exec( ( err, user ) => {
 				if ( err ) {
@@ -125,7 +125,7 @@ export default {
 		Users.findByIdAndUpdate( req.params.id, req.body )
 			.populate( 'payment' )
 			.populate( 'reservations' )
-			.populate( 'market' )
+			.populate( 'event' )
 			.populate( 'admin' )
 			.exec( ( err, user ) => {
 				if ( err ) {

@@ -4,9 +4,9 @@ const Map = Schema(
 	{
 		name: { type: String },
 		availableDates: [ { type: Date } ],
-		market: {
+		event: {
 			type: Schema.Types.ObjectId,
-			ref: `Markets`
+			ref: `Events`
 		},
 		reservations: [ {
 			type: Schema.Types.ObjectId,

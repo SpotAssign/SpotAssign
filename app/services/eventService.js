@@ -13,8 +13,8 @@ const eventService = $http => {
 			return $http.get( `${api}/api/markets` )
 				.then( data => data );
 		},
-		getOne( id ) { // TODO Change to search by name
-			return $http.get( `${api}/api/markets/${id}` )
+		getOne( name ) { // this
+			return $http.get( `${api}/api/events/${name}` )
 				.then( data => data );
 		},
 		create( newMarket ) {

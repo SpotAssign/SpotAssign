@@ -18,13 +18,13 @@ const Users = mongoose.Schema(
 			type: mongoose.Schema.Types.ObjectId,
 			ref: `Reservations`
 		} ],
-		markets: [ {
+		events: [ {
 			type: mongoose.Schema.Types.ObjectId,
-			ref: `Markets`
+			ref: `Events`
 		} ],
 		admin: [ { // TODO Delete
 			type: mongoose.Schema.Types.ObjectId,
-			ref: `Markets`
+			ref: `Events`
 		} ]
 	}
 );

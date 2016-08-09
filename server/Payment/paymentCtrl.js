@@ -7,7 +7,7 @@ export default {
 	getPayments( req, res ) {
 		Payments.find( ( req.query ) )
 			.populate( 'user' )
-			.populate( 'market' )
+			.populate( 'event' )
 			.populate( 'reservation' )
 			.exec( ( err, payments ) => {
 				if ( err ) {
@@ -19,7 +19,7 @@ export default {
 	getThisPayment( req, res ) {
 		Payments.findById( req.params.id )
 			.populate( 'user' )
-			.populate( 'market' )
+			.populate( 'event' )
 			.populate( 'reservation' )
 			.exec( ( err, payment ) => {
 				if ( err ) {

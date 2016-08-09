@@ -1,11 +1,11 @@
-import Markets from '../Market/Markets';
+import Events from '../Event/event';
 import Map from './Map';
 
 export default {
 	// GET REQUEST
 	getMap( req, res ) {
 		Map.find( ( req.query ) )
-			.populate( 'market' )
+			.populate( 'event' )
 			.populate( 'reservations' )
 			.exec( ( err, map ) => {
 				if ( err ) {
@@ -16,7 +16,7 @@ export default {
 	},
 	getThisMap( req, res ) {
 		Map.findById( req.params.id )
-			.populate( 'market' )
+			.populate( 'event' )
 			.populate( 'reservations' )
 			.exec( ( err, map ) => {
 				if ( err ) {
@@ -32,7 +32,7 @@ export default {
 				return res.send( err );
 			}
 			return res.status( 200 ).json( map );
-			// Markets.findByIdAndUpdate( req.body.user.markets[ req.body.user.markets.length - 1 ]._id, { $push: { map: map._id } }, {
+			// Events.findByIdAndUpdate( req.body.user.events[ req.body.user.events.length - 1 ]._id, { $push: { map: map._id } }, {
 			// 	safe: true,
 			// 	upsert: true,
 			// 	new: true
@@ -49,7 +49,7 @@ export default {
 		if ( !req.params.id ) {
 			return res.status( 400 ).send( 'Not in User' );
 		} Map.findByIdAndUpdate( req.params.id, req.body )
-		.populate( 'market' )
+		.populate( 'event' )
 		.populate( 'reservations' )
 		.exec( ( err, map ) => {
 			if ( err ) {
@@ -66,7 +66,7 @@ export default {
 			if ( err ) {
 				return res.send( err );
 			}
-			Markets.findByIdAndUpdate( map.user, { $pull: { map: { $in: [ req.params.id ] } } }, {
+			Events.findByIdAndUpdate( map.user, { $pull: { map: { $in: [ req.params.id ] } } }, {
 				safe: true,
 				upsert: true,
 				new: true

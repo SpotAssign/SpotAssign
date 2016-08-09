@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
-const Markets = Schema(
+const Events = Schema(
 	{
 		name: { type: String },
 		location: { type: Object },
@@ -37,4 +37,4 @@ const Markets = Schema(
 	}
 );
 
-export default mongoose.model( 'Markets', Markets );
+export default mongoose.model( 'Events', Events );
