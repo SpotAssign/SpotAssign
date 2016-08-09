@@ -2,7 +2,6 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 	$urlRouterProvider.otherwise( '/' );
 
 	const isLogged = ( $q, userService ) => {
-		console.log( userService.getState() );
 		if ( !userService.getState() ) {
 			return $q.reject( 'AUTH_REQUIRED' );
 		}

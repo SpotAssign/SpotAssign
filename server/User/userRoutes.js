@@ -7,7 +7,7 @@ export default function ( app ) {
 	app.get(
 		'/callback',
 		passport.authenticate( 'auth0', { failureRedirect: '/' } ),
-		userCtrl.getAuth,
+		userCtrl.userExists,
 		userCtrl.createUser
 	);
 	app.get( '/api/user', middleware, userCtrl.getAuthUser );

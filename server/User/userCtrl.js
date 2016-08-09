@@ -49,13 +49,6 @@ export default {
 	// ************************************************************************
 	// 								Get Auth with Auth0
 	// ************************************************************************
-	getAuth( req, res, next ) {
-		if ( !req.user ) {
-			throw new Error( 'user null' );
-		} else {
-			next();
-		}
-	},
 	// THIS FUNCTION IS CALLED WHEN THEY REDIRECT TO DASHBOARD, IT CHECKS IF THE
 	// GOOGLE OR FACEBOOK USER IS EXSISTING THEN RETURNS DATABASE USER OBJECT
 	getAuthUser( req, res ) {
@@ -75,6 +68,14 @@ export default {
 			} else if ( err ) {
 				return res.status( 500 ).json( err );
 			}
+		} );
+	},
+
+	userExists( req, res, next ) {
+		if ( !req.user ) throw new Error( 'user null' );
+		Users.findOne( { email: req.user._json.email }, ( err, user ) => {
+			if ( user ) return res.redirect( '/#/user' );
+			next();
 		} );
 	},
 
