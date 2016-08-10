@@ -1,6 +1,12 @@
 class EventController {
-	constructor( eventService ) {
+	constructor( eventService, mapService, $stateParams, $timeout ) {
+		// eventService.getEventByName( $stateParams.name ).then( response => {
+		// 	$timeout(() => {
+		// 		this.event = response;
+		// 		console.log( this.event, 'THIS IS THIS.EVENT' );
+		// 	} );
 		this.event = eventService.getState();
+		// } );
 
 		$( '.carousel.carousel-slider' ).carousel( { full_width: true } );
 
@@ -10,5 +16,5 @@ class EventController {
 	}
 }
 
-EventController.$inject = [ 'eventService' ];
+EventController.$inject = [ 'eventService', 'mapService', '$stateParams', '$timeout' ];
 export { EventController };

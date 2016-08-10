@@ -61,11 +61,13 @@ class CreateEventController {
 					bio: this.event.bio,
 					paymentInfo: this.event.paymentEmail,
 					photo: this.event.photo,
-					maps: res,
-					currentMap: res
+					maps: res._id,
+					currentMap: res._id
 				};
 				this.eventService.create( event ).then( response => {
-					this.location.path( `/event/${response.name}` );
+					console.log( response, 'THIS IS RESPONSE' );
+					this.eventService.setState( response );
+					this.location.path( `/event/${response.name}/dashboard` );
 				} );
 			} );
 		} else {

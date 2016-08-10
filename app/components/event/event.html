@@ -4,7 +4,7 @@
 	</div>
 	<div class="row">
 
-		<div class="top">
+		<div class="top" ng-show="vm.event.currentMap">
 			<map map="vm.event.currentMap"></map>
 		</div>
 
@@ -54,9 +54,17 @@
 
 	</div>
 
+	<div class="picture-top eventPhoto" ng-show="vm.event.photo">
+		<img src="{{ vm.event.photo }}"/>
+	</div>
+
+<!-- <div class="eventPhoto">
+	<img src="{{ vm.event.photo }}"/>
+</div> -->
+
 	<a href="{{ vm.event.website || 'https://www.spotassign.com' }}">
 		<div class="footer">
-			<img class="eventPhoto" src="{{ vm.event.photo }}"/>
+			<h5>{{ vm.event.website || 'spotassign.com' }}</h5>
 		</div>
 	</a>
 

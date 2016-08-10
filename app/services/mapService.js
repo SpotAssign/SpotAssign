@@ -20,6 +20,7 @@ const mapService = $http => {
 				.then( res => res.data );
 		},
 		create( newMap ) {
+			
 			return $http( {
 				method: 'POST',
 				url: `${api}/api/map`,
@@ -28,12 +29,13 @@ const mapService = $http => {
 					availableDates: newMap.availableDates,
 					market: newMap.marketId,
 					location: newMap.location,
-					mapType: newMap.mapType,
-					mapImage: newMap.mapImage,
+					size: newMap.size,
+					image: newMap.image,
 					spots: newMap.spots
 				}
 			} ).then( res => {
 				this.setState( res.data );
+				return res.data;
 			} );
 		},
 		editOne( id, editedBooth ) {

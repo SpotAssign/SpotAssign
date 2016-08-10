@@ -1,4 +1,8 @@
-class DashboardController {}
+class DashboardController {
+	constructor( eventService ) {
+		this.event = eventService.getState();
+	}
+}
 
-DashboardController.$inject = [];
+DashboardController.$inject = [ 'eventService' ];
 export { DashboardController };
