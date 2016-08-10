@@ -8,7 +8,7 @@ export default {
 	getReservations( req, res ) {
 		Reservations.find( ( req.query ) )
 			.populate( 'user' )
-			.populate( 'market' )
+			.populate( 'event' )
 			.populate( 'payment' )
 			.populate( 'map' )
 			.exec( ( err, reservation ) => {
@@ -20,7 +20,7 @@ export default {
 	getThisReservation( req, res ) {
 		Reservations.findById( req.params.id )
 			.populate( 'user' )
-			.populate( 'market' )
+			.populate( 'event' )
 			.populate( 'payment' )
 			.populate( 'map' )
 			.exec( ( err, payment ) => {
@@ -40,7 +40,6 @@ export default {
 				return res.send( err );
 			}
 			Payments.findByIdAndUpdate( req.body.user, { $push: { reservation: reservation._id } }, {
-				safe: true,
 				upsert: true,
 				new: true
 			}, ( error, user ) => {
@@ -76,7 +75,6 @@ export default {
 				reservation.user,
 				{ $pull: { reservation: { $in: [ req.params.id ] } } },
 				{
-					safe: true,
 					upsert: true,
 					new: true
 				}, ( error, user ) => {

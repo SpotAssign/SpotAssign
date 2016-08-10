@@ -1,9 +1,4 @@
-class FooterController {
-  constructor() {
-    this.greeting = 'FooterController!';
-  }
-}
+class FooterController {}
 
 FooterController.$inject = [];
-
 export { FooterController };

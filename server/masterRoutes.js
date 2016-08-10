@@ -1,5 +1,5 @@
 import userRoutes from './User/userRoutes';
-import marketRoutes from './Market/marketRoutes';
+import eventRoutes from './Event/eventRoutes';
 import mapRoutes from './Map/mapRoutes';
 import paymentRoutes from './Payment/paymentRoutes';
 import reservationRoutes from './Reservation/reservationRoutes';
@@ -7,7 +7,7 @@ import reservationRoutes from './Reservation/reservationRoutes';
 export default function ( app ) {
 	userRoutes( app );
 	mapRoutes( app );
-	marketRoutes( app );
+	eventRoutes( app );
 	paymentRoutes( app );
 	reservationRoutes( app );
 }

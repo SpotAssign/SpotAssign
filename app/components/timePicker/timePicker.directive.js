@@ -7,10 +7,8 @@ export const timePickerDirective = () => {
 		controller,
 		template,
 		controllerAs: 'vm',
-		scope: {
-			hours: '='
-		},
-		replace: true,
+		scope: {},
+		// replace: true,
 		restrict: 'E'
   	};
 };

@@ -1,9 +1,10 @@
 <div id="createEvent">
-	<side-nav admin-panel="true"></side-nav>
-	<div class="side-nav-space">
-		<new-map class="new-map" ng-show="vm.showCreateMap"></new-map>
 
-		<div class="create-event-wrapper row" ng-hide="vm.showCreateMap">
+	<side-nav admin-panel="false"></side-nav>
+
+	<div class="side-nav-space">
+
+		<div class="create-event-wrapper row">
 			<div class="col s10">
 				<h4 id="company-title">Create an Event
 					<hr class="divider">
@@ -17,25 +18,40 @@
 					<br>
 					<div class="col s6">
 						Title:
-						<input id="title" type="text" ng-model="event.title">
+						<input id="title" type="text" ng-model="vm.event.title">
+					</div>
+					<div class="imageUpload center col s6">
+						<button ng-click="vm.addPicture()" ng-hide="vm.event.photo"></button>
+						<img id="event-photo-upload" src="{{ vm.event.photo }}" alt="Event Photo Upload" ng-show="vm.event.photo">
 					</div>
 				</div>
 
-				<div class="col s12">
-					Bio:
-					<textarea id="bio" class="materialize-textarea"
-							  ng-model="event.bio"
-					></textarea>
+				<div class="row">
+					<div class="col s6">
+						Bio:
+						<textarea id="bio"
+								  class="materialize-textarea"
+								  ng-model="vm.event.bio"
+						></textarea>
+					</div>
+
+					<div class="col s6">
+						Website URL:
+						<input id="website" type="text" ng-model="vm.event.website">
+					</div>
 				</div>
 
-				<div class="col s6">
-					City:
-					<input id="city" type="text" ng-model="event.city">
-				</div>
+				<div class="row">
+					<div class="col s6">
+						City:
+						<input id="city" type="text" ng-model="vm.event.city">
+					</div>
 
-				<div class="col s6">
-					State:
-					<input id="state" type="text" ng-model="event.state">
+
+					<div class="col s6">
+						State:
+						<input id="state" type="text" ng-model="vm.event.state">
+					</div>
 				</div>
 
 				<div>
@@ -46,12 +62,23 @@
 						</div>
 						<br>
 
+					<div class="row">
 						<div class="col s6">Email:
-							<input id="email" type="text" ng-model="event.paymentEmail">
+							<input id="email" type="text" ng-model="vm.event.paymentEmail">
 						</div>
-
-						<div class="col s12 payment">
-							<div class="payment-header">
+						<div class="center">
+							<button
+								ng-show="!vm.currentMap"
+								ng-click="vm.saveEventDetailsWhileDesigningMap()"
+								class="awesomeButton btn waves-effect waves-light"
+							>
+								Design Your Map
+							</button>
+							</div>
+					</div>
+					<div class="row">
+						<div class="col s6 payment">
+							<div class="payment-header" ng-show="vm.currentMap">
 								<i class="material-icons header-icon">place</i>
 								Your Map
 							</div>
@@ -59,11 +86,9 @@
 							<div class="map" ng-show="vm.currentMap">
 								<map map="vm.currentMap"></map>
 							</div>
+						</div>
+					</div>
 
-							<button
-								ng-click="vm.saveEventDetailsWhileDesigningMap( event )"
-								ng-show="!vm.currentMap">Design Your Map
-							</button>
 							<!-- <form stripe-form="stripeCallback" name="checkoutForm">
 
                                             <div class = "col s5">
@@ -79,13 +104,12 @@
                                             </div>
 
                             </form> -->
-						</div>
 
 					</div>
 
 					<div class="center">
 						<button class="btn create-event-button" type="submit"
-								ng-click="vm.createEvent( event )">
+								ng-click="vm.createEvent()">
 							Create Event
 						</button>
 					</div>

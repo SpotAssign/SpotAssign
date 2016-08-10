@@ -1,9 +1,15 @@
 <div id="stepTwo">
-	<h4 class="center title">Event Spots</h4>
-	<form class="col s12 center">
+
+	<div class="col s10 new-map-title">
+		<h4 id="company-title">Event Spots
+			<hr class="divider">
+		</h4>
+	</div>
+
+	<form class="col s12">
 		<div class="row">
-			<div class="input-field col s12 m6">
-				<i class="fa fa-tag prefix" aria-hidden="true"></i>
+			<div class="input-field col s2">
+				<!-- <i class="fa fa-tag prefix" aria-hidden="true"></i> -->
 				<input id="spotName"
 					   type="text"
 					   class="validate"
@@ -11,8 +17,8 @@
 				>
 				<label for="spotName">Spot Name</label>
 			</div>
-			<div class="input-field col s12 m6">
-				<i class="fa fa-usd prefix" aria-hidden="true"></i>
+			<div class="input-field col s2">
+				<!-- <i class="fa fa-usd prefix" aria-hidden="true"></i> -->
 				<input min="4.99"
 					   step="0.01"
 					   id="spotPrice"
@@ -22,26 +28,27 @@
 				>
 				<label for="spotPrice">Price</label>
 			</div>
-			<div class="input-field col s12 m6">
+			<div class="input-field col s2">
 				<select ng-model="vm.spotShape"
 						id="spotShape"
 						ng-options="shape.value as shape.display for shape in vm.shapes"
 				></select>
 			</div>
-			<div class="input-field col s12 m6">
+			<div class="input-field col s1">
 				<input id="spotColor"
 					   class="validate"
 					   type="color"
 					   ng-model="vm.spotColor"
 				>
 			</div>
-		</div>
 		<button
 			ng-click="vm.newType()"
-			class="awesomeButton btn waves-effect waves-light addType"
+			class="awesomeButton btn waves-effect waves-light addType add-spot-button"
 		>
-			Add Spot
+			Create Spot
 		</button>
+
+	</div>
 	</form>
 
 	<div class="col s12" ng-if="vm.spotTypes.length !== 0">

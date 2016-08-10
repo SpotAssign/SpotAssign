@@ -1,4 +1,3 @@
-import passport from 'passport';
 import Auth0Strategy from 'passport-auth0';
 import config from './config/config';
 
@@ -16,16 +15,5 @@ const strategy = new Auth0Strategy(
 		return done( null, profile );
 	}
 );
-
-passport.use( strategy );
-
-// This is not a best practice, but we want to keep things simple for now
-passport.serializeUser( ( user, done ) => {
-	done( null, user );
-} );
-
-passport.deserializeUser( ( user, done ) => {
-	done( null, user );
-} );
 
 export default strategy;

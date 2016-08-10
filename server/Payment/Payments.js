@@ -10,9 +10,9 @@ const Payments = Schema(
 			type: Schema.Types.ObjectId,
 			ref: `Users`
 		},
-		market: {
+		event: {
 			type: Schema.Types.ObjectId,
-			ref: `Markets`
+			ref: `Events`
 		},
 		reservation: {
 			type: Schema.Types.ObjectId,

@@ -1,15 +1,20 @@
 <div id="stepOne">
-	<h3 class="center title">New map</h3>
 
-	<form class="col s12">
+	<form>
 
-		<div class="input-field col s12 m8 offset-m2">
-			<i class="fa fa-tag prefix" aria-hidden="true"></i>
+		<div class="col s10 new-map-title">
+			<h4 id="company-title">New Map
+				<hr class="divider">
+			</h4>
+		</div>
+
+		<div class="map-row">
+		<div class="input-field col s3">
 			<input id="name" ng-model="vm.mapName" type="text" class="validate">
 			<label for="name">Title</label>
 		</div>
 
-		<div class="col s12 m8 offset-m2">
+		<div class="col s3 input-field">
 			<select ng-model="vm.mapSize"
 					id="map-options"
 					class="selectOne"
@@ -18,8 +23,9 @@
 			</select>
 		</div>
 
-		<div class="imageUpload center col s12 m6 offset-m3">
+		<div class="imageUpload input-field center col s3">
 			<button ng-click="vm.addPicture()"></button>
+		</div>
 		</div>
 
 	</form>

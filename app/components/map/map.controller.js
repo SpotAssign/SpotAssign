@@ -1,22 +1,16 @@
-class MapController {
-	constructor( service, $state ) {
-		this.clickSpot = false;
-		this.service = service;
+class MapController { // TODO Show btn
+	constructor( $state, reservationService ) {
 		this.state = $state;
+		this.reservationService = reservationService;
+
+		this.clickSpot = false;
 		this.showButton = true;
 		this.payment = false;
-
-		if ( this.state.current.name !== 'event' ) {
-			this.showButton = false;
-		}
-}
+	}
 
 	clickTheSpot( spot, id ) {
-
-
 		console.log( spot );
 		this.clickedSpot = spot;
-
 	}
 
 	buySpot() {
@@ -28,7 +22,7 @@ class MapController {
 		// 	map: newRes.mapId,
 		// 	payment: newRes.paymentId
 		// }
-		// this.service.reservation.create( reservation )
+		// this.reservationService.create( reservation )
 		this.clickedSpot = false;
 		this.payment = true;
 	}
@@ -41,9 +35,9 @@ class MapController {
 </div>`
 			);
 		} );
-}
+	}
 }
 
-MapController.$inject = [ 'service', '$state' ];
+MapController.$inject = [ '$state', 'reservationService' ];
 
 export { MapController };

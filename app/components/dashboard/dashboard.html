@@ -1,169 +1,33 @@
 <div>
 	<side-nav admin-panel="true"></side-nav>
 	<div class="row side-nav-space">
-		<div class="col s12" ng-show="vm.user.admin.length > 0">
+		<div class="col s12">
 
 
 			<h4 id="company-title"><i class="material-icons dash-icon">business</i> Event Information <hr class="divider"></h4>
-			<h6>Name: {{ vm.user.admin[vm.user.admin.length - 1].name }} </h6>
+			<h6>Name: {{ vm.event.name }} </h6>
 
-			<h6>Location: {{ vm.user.admin[vm.user.admin.length - 1].location.city }}, {{ vm.user.admin[vm.user.admin.length - 1].location.state }} </h6>
+			<h6>Location: {{ vm.event.location.city }}, {{ vm.event.location.state }} </h6>
 
-			<h6>Bio: {{ vm.user.admin[vm.user.admin.length - 1].bio }} </h6>
+			<h6>Bio: {{ vm.event.bio }} </h6>
 
-			<h6>Payment Email: {{ vm.user.admin[vm.user.admin.length - 1].paymentInfo }}</h6>
+			<h6>Payment Email: {{ vm.event.paymentInfo }}</h6>
 
-			<h6>Photo: {{ vm.photo }} </h6>
+			<h6>Photo: <br><img class="dashboard-event-photo" src="{{ vm.event.photo }}" alt="Your Event Photo"></h6>
 
-			<h6>Event URL: <a ui-sref="event({ name: vm.user.admin[vm.user.admin.length - 1].name })">VISIT YOUR URL</a></h6>
+			<h6>Event URL: <a ui-sref="event({ name: vm.event.name })">http://www.spotassign.com/event/{{ vm.event.name }}</a></h6>
 
 			<h4><i class="material-icons dash-icon">place</i> Your Event Map <hr class="divider"></h4>
 			<div class="event-map" ng-show="vm.stateParams.map ? vm.stateParams.map : vm.map"><map map="vm.stateParams.map ? vm.stateParams.map : vm.map"></map></div>
 
 			<h4><i class="material-icons dash-icon">schedule</i> Schedule and Hours <hr class="divider"></h4>
 
-			<h6>Open Date: {{ vm.params.eventTitle }}</h6>
-
-			<h6>Close Date: {{ vm.location }}</h6><br>
-
-			<h6>Are you closed on any days? {{ vm.location }} </h6><br>
-
-			<h6>Sunday: </h6>
-			<h6>Monday: </h6>
-			<h6>Tuesday: </h6>
-			<h6>Wednesday: </h6>
-			<h6>Thursday: </h6>
-			<h6>Friday: </h6>
-			<h6>Saturday: </h6>
 
 
-			<div class="row" ng-if="editDates">
-				<div class="col s4">
-					<h6 class="col s6 calendar-header">Open Date: </h6>
-					<calendar class="col s6" date="vm.openDate"></calendar>
-				</div>
-				<div class="col s4 offset-s1">
-					<h6 class="col s6 calendar-header">Close Date: </h6>
-					<calendar class="col s6" date="vm.closeDate"></calendar>
-				</div>
+			<div class="row">
+				<time-picker></time-picker>
 			</div>
 
-			<div class="col s12 days-of-the-week" ng-if="editDays">
-
-				<div class="row">
-					<p class="col s2 day">Sunday:</p>
-					<time-picker hours="vm.sunHours1" class="col s3"></time-picker>
-					<p class="col s1 to">to</p>
-					<time-picker hours="vm.sunHours2" class="col s3"></time-picker>
-					<div class="row">
-						<div class="col s1">
-							<button class="action-button"><i class="fa fa-pencil-square-o"></i></button>
-						</div>
-
-						<div class="col s1">
-							<button class="action-button"><i class="fa fa-floppy-o"></i></button>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<p class="col s2 day">Monday:</p>
-					<time-picker hours="vm.monHours1" class="col s3"></time-picker>
-					<p class="col s1 to">to</p>
-					<time-picker hours="vm.monHours2" class="col s3"></time-picker>
-					<div class="row">
-						<div class="col s1">
-							<button class="action-button"><i class="fa fa-pencil-square-o"></i></button>
-						</div>
-
-						<div class="col s1">
-							<button class="action-button"><i class="fa fa-floppy-o"></i></button>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<p class="col s2 day">Tuesday:</p>
-					<time-picker hours="vm.tueHours1" class="col s3"></time-picker>
-					<p class="col s1 to">to</p>
-					<time-picker hours="vm.tueHours2" class="col s3"></time-picker>
-					<div class="row">
-						<div class="col s1">
-							<button class="action-button"><i class="fa fa-pencil-square-o"></i></button>
-						</div>
-
-						<div class="col s1">
-							<button class="action-button"><i class="fa fa-floppy-o"></i></button>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<p class="col s2 day">Wednesday:</p>
-					<time-picker hours="vm.wedHours1" class="col s3"></time-picker>
-					<p class="col s1 to">to</p>
-					<time-picker hours="vm.wedHours2" class="col s3"></time-picker>
-					<div class="row">
-						<div class="col s1">
-							<button class="action-button"><i class="fa fa-pencil-square-o"></i></button>
-						</div>
-
-						<div class="col s1">
-							<button class="action-button"><i class="fa fa-floppy-o"></i></button>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<p class="col s2 day">Thursday:</p>
-					<time-picker hours="vm.thurHours1" class="col s3"></time-picker>
-					<p class="col s1 to">to</p>
-					<time-picker hours="vm.thurHours2" class="col s3"></time-picker>
-					<div class="row">
-						<div class="col s1">
-							<button class="action-button"><i class="fa fa-pencil-square-o"></i></button>
-						</div>
-
-						<div class="col s1">
-							<button class="action-button"><i class="fa fa-floppy-o"></i></button>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<p class="col s2 day">Friday:</p>
-					<time-picker hours="vm.friHours1" class="col s3"></time-picker>
-					<p class="col s1 to">to</p>
-					<time-picker hours="vm.friHours2" class="col s3"></time-picker>
-					<div class="row">
-						<div class="col s1">
-							<button class="action-button"><i class="fa fa-pencil-square-o"></i></button>
-						</div>
-
-						<div class="col s1">
-							<button class="action-button"><i class="fa fa-floppy-o"></i></button>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<p class="col s2 day">Saturday:</p>
-					<time-picker hours="vm.satHours1" class="col s3"></time-picker>
-					<p class="col s1 to">to</p>
-					<time-picker hours="vm.satHours2" class="col s3"></time-picker>
-					<div class="row">
-						<div class="col s1">
-							<button class="action-button"><i class="fa fa-pencil-square-o"></i></button>
-						</div>
-
-						<div class="col s1">
-							<button class="action-button"><i class="fa fa-floppy-o"></i></button>
-						</div>
-					</div>
-				</div>
-
-
-			</div>
 		</div>
 	</div>
 

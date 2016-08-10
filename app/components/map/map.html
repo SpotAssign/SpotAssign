@@ -1,4 +1,3 @@
-
 <div id="map">
 	<div id="currentMap"
 		 ng-class="map.size ? map.size : ''"
@@ -16,23 +15,26 @@
 			</a>
 		</div>
 
-</div>
-<div class = "col s6">
-<div class="outside-map" ng-show="vm.clickedSpot; !vm.payment">
-	<h5>Available Date: </h5>
-	<h5>Price: ${{ vm.clickedSpot.price }}</h5>
-	<button ng-show="vm.showButton" ng-click="vm.buySpot()">Book Now</button>
-</div>
-<div class="payment" ng-show="vm.payment">
-	<div>
-		<h5>Dates:</h5>
-		<h5>Price:</h5>
-		<h5>Total: </h5>
-		<button ng-click="vm.payment = false; vm.clickedSpot = true">Back</button>
-		<button>Pay</button>
 	</div>
-</div>
 
-</div>
+	<div class="col s6">
+
+		<div class="outside-map" ng-show="vm.clickedSpot; !vm.payment">
+			<h5>Available Date: </h5>
+			<h5>Price: ${{ vm.clickedSpot.price }}</h5>
+			<button ng-show="vm.showButton" ng-click="vm.buySpot()">Book Now</button>
+		</div>
+
+		<div class="payment" ng-show="vm.payment">
+			<div>
+				<h5>Dates:</h5>
+				<h5>Price:</h5>
+				<h5>Total: </h5>
+				<button ng-click="vm.payment = false; vm.clickedSpot = true">Back</button>
+				<button>Pay</button>
+			</div>
+		</div>
+
+	</div>
 
 </div>

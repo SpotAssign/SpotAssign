@@ -1,12 +1,11 @@
 class UserSpotsController {
-	constructor( service ) {
-		this.service = service;
+	constructor() {
 		$( document ).ready( function () {
 			$( '.collapsible' ).collapsible();
 		} );
 	}
 }
 
-UserSpotsController.$inject = [ 'service' ];
+UserSpotsController.$inject = [];
 
 export { UserSpotsController };
