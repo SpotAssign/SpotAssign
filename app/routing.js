@@ -112,10 +112,10 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 	// 	template: '<calendar></calendar>',
 	// 	resolve: { isLogged }
 	// } )
-	.state( 'timePicker', {
-		url: '/timepicker',
-		template: '<time-picker></time-picker>'
-	} );
+	// .state( 'timePicker', {
+	// 	url: '/timepicker',
+	// 	template: '<time-picker></time-picker>'
+	// } );
 };
 
 routing.$inject = [
