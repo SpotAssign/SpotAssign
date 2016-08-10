@@ -7,6 +7,9 @@ class CreateEventController {
 		this.userService = userService;
 
 		this.event = this.eventService.getState();
+		if ( !this.event ) {
+			this.event = {};
+		}
 		this.currentMap = this.mapService.getState();
 
 		$( document ).ready( function () {

@@ -21,7 +21,8 @@
 						<input id="title" type="text" ng-model="vm.event.title">
 					</div>
 					<div class="imageUpload center col s6">
-						<button ng-click="vm.addPicture()"></button>
+						<button ng-click="vm.addPicture()" ng-hide="vm.event.photo"></button>
+						<img id="event-photo-upload" src="{{ vm.event.photo }}" alt="Event Photo Upload" ng-show="vm.event.photo">
 					</div>
 				</div>
 
@@ -65,16 +66,6 @@
 						<div class="col s6">Email:
 							<input id="email" type="text" ng-model="vm.event.paymentEmail">
 						</div>
-
-						<div class="col s6 payment">
-							<div class="payment-header" ng-show="vm.currentMap">
-								<i class="material-icons header-icon">place</i>
-								Your Map
-							</div>
-							<br>
-							<div class="map" ng-show="vm.currentMap">
-								<map map="vm.currentMap"></map>
-							</div>
 						<div class="center">
 							<button
 								ng-show="!vm.currentMap"
@@ -83,6 +74,17 @@
 							>
 								Design Your Map
 							</button>
+							</div>
+					</div>
+					<div class="row">
+						<div class="col s6 payment">
+							<div class="payment-header" ng-show="vm.currentMap">
+								<i class="material-icons header-icon">place</i>
+								Your Map
+							</div>
+							<br>
+							<div class="map" ng-show="vm.currentMap">
+								<map map="vm.currentMap"></map>
 							</div>
 						</div>
 					</div>

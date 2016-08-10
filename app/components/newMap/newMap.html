@@ -26,20 +26,20 @@
 			</div>
 		</nav>
 
-		<div class="col s8 offset-s2" ng-show="vm.currentStep === 1">
+		<div class="col s12" ng-show="vm.currentStep === 1">
 			<step-one></step-one>
 		</div>
 
-		<div class="col s8 offset-s2" ng-show="vm.currentStep === 2">
+		<div class="col s12" ng-show="vm.currentStep === 2">
 			<step-two></step-two>
 		</div>
 
-		<div class="col s8 offset-s2" ng-if="vm.currentStep === 3">
+		<div class="col s12" ng-if="vm.currentStep === 3">
 			<step-three></step-three>
 		</div>
 
 		<!--MAP-->
-		<div class="col s12 center mapContainer" ng-show="vm.currentStep < 3">
+		<div class="col s12 mapContainer" ng-show="vm.currentStep < 3">
 
 			<div ng-class="vm.mapSize ? vm.mapSize : ''"
 				 class="center"
