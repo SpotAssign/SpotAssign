@@ -9,6 +9,6 @@ export const footerDirective = () => {
 		controllerAs: 'vm',
 		scope: {},
 		replace: true,
-		restrict: 'E'
+		restrict: 'EA'
   	};
 };
