@@ -5,25 +5,25 @@
 				<div class="col s12 m8 offset-m2">
 					<!-- <h3 class="center">Search event in your area!</h3> -->
 					<h5>Search</h5>
-					<div class="input-field col s5">
+					<div class="input-field col s7">
           				<input id="title" type="text" class="validate" ng-model="search.title">
           				<label for="title">Name</label>
         			</div>
-					<div class="input-field col s4">
-          				<input id="location.city" type="text" class="validate" ng-model="search.location.city">
-          				<label for="location.city">City</label>
+					<div class="input-field col s5">
+          				<input id="location.city" type="text" class="validate" ng-model="search.location">
+          				<label for="location.city">Location</label>
         			</div>
-					<select class="input-field col s3 default-browser">
+					<!-- <select class="input-field col s3 default-browser">
 						<label for="location.state">State</label>
 						<option ng-repeat="state in vm.states" id="location.state" class="validate" value="state" ng-model="search.location.state">{{state}}</option>
-					</select>
+					</select> -->
 				</div>
 			</div>
 
 			<div class="row">
 				<ul class="collapsible col s14 m10 offset-m1" data-collapsible="accordion">
 
-					<li ng-repeat="event in vm.events | filter:search" title="Click for market details">
+					<li ng-repeat="event in vm.events | filter: search" title="Click for market details">
 						<div class="collapsible-header">
 							<ul class="collapsible-centering">
 								<li class="MktInfo"><strong>Name:</strong> {{event.title }}</li>
