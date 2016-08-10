@@ -1,11 +1,13 @@
+@import '../../styles/colors';
+
 #timePicker {
 
 	/*Set Days of Operation*/
 	.setDOO {
 		display: block;
-		margin-left: auto;
-		margin-right: auto;
-		width: 550px;
+		margin-left: 20px;
+		margin-right: 20px;
+		width: 500px;
 
 		h5 {
 			margin-bottom: 20px;
@@ -29,6 +31,7 @@
 	.right-align-button {
 		margin-top: 35px;
 		margin-left: 395px;
+		background-color: $primary-orange;
 	}
 
 	/*This is the day name under Hours of Operation*/
@@ -85,6 +88,7 @@
 				float: right;
 				margin-top: 5px;
 				margin-bottom: 5px;
+				background-color: $primary-orange;
 			}
 
 			.closedDayName {
@@ -102,12 +106,19 @@
 				float: right;
 				margin-top: 5px;
 				margin-bottom: 5px;
+				background-color: $primary-orange;
 			}
 
 			.editMarketDayBtn {
 				float: right;
 				margin-bottom: 5px;
 				margin-right: 5px;
+				background-color: $primary-orange;
+			}
+
+			.addHolidayInWeeklyBtn {
+				margin-top: 10px;
+				background-color: $primary-orange;
 			}
 
 
