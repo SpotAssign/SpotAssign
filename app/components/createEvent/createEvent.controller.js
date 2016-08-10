@@ -67,7 +67,7 @@ class CreateEventController {
 				this.eventService.create( event ).then( response => {
 					console.log( response, 'THIS IS RESPONSE' );
 					this.eventService.setState( response );
-					this.location.path( `/event/${response.name}` );
+					this.location.path( `/event/${response.name}/dashboard` );
 				} );
 			} );
 		} else {
