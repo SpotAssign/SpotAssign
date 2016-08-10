@@ -1,7 +1,8 @@
 class EditEventController {
-	constructor( $stateParams, $state, eventService ) {
+	constructor( $stateParams, $state, eventService, mapService ) {
 		this.state = $state;
 		this.stateParams = $stateParams;
+		this.map = this.mapService.getState();
 
 		this.sleep = {
 			mapType: 'medium',
@@ -77,6 +78,6 @@ class EditEventController {
 
 
 }
-EditEventController.$inject = [ '$stateParams', '$state', 'eventService' ];
+EditEventController.$inject = [ '$stateParams', '$state', 'eventService', 'mapService' ];
 
 export { EditEventController };

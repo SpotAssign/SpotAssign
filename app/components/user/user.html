@@ -2,13 +2,14 @@
 	<side-nav adminPanel="false"></side-nav>
 	<div class="UserHomeContainer" ng-show="!welcome">
 
-		<div class="welcome-message">
+		<div class="welcome-message container">
 			<div class="mark">
 				<img id="mark-photo" ng-src="{{ vm.markPhoto }}" alt="Spot Assign Mark" ng-show="vm.markPhoto">
 			</div>
 			<h3>Welcome to Spot Assign!</h3>
+			<h6>There are a few things that you should know to get started.</h6>
 			<div class="pointers">
-				<h6>There are a few things that you should know to get started:</h6>
+
 				<ol>
 					<li>To create an event, click "Create Event" and fill out the necessary fields.</li>
 					<li>When you create an event you will be taken to a different dashboard where you will be able to access all your event information including user, payment, and map information.</li>
@@ -17,17 +18,20 @@
 			</div>
 
 			<div class="row">
-				<a ui-sref="createEvent"><div class="col s2 offset-s1 feature-box center">
-					<i class="fa fa-plus-circle fa-5x" aria-hidden="true"></i>
-					<h5>Create an event</h5>
+				<a ui-sref="createEvent"><div class="col s3 feature-box center">
+					<img class="user-icons" src="{{ vm.createEvent }}" alt="">
+					<!-- <i class="fa fa-plus-circle fa-5x" aria-hidden="true"></i> -->
+					<h5 class="button-header">Create Event</h5>
 				</div></a>
-				<a ui-sref="userFindEvent"><div class="col s2 offset-s2 feature-box center">
-					<i class="fa fa-ticket fa-5x" aria-hidden="true"></i>
-					<h5>Find an event</h5>
+				<a ui-sref="userFindEvent"><div class="col s3 offset-s1 feature-box center">
+					<!-- <i class="fa fa-ticket fa-5x" aria-hidden="true"></i> -->
+					<img class="user-icons" src="{{ vm.findEvent }}" alt="">
+					<h5 class="button-header">Find Event</h5>
 				</div></a>
-				<a ui-sref="user"><div class="col s2 offset-s2 feature-box center">
-					<i class="fa fa-share-alt fa-5x" aria-hidden="true"></i>
-					<h5>Invite your friends</h5>
+				<a ui-sref="user"><div class="col s3 offset-s1 feature-box center">
+					<!-- <i class="fa fa-share-alt fa-5x" aria-hidden="true"></i> -->
+					<img class="user-icons" src="{{ vm.inviteFriends }}" alt="">
+					<h5 class="button-header">Invite Friends</h5>
 				</div></a>
 			</div>
 		</div>

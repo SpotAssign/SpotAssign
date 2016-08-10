@@ -4,7 +4,7 @@
 #currentMap {
 	position: relative;
 	margin-top: 25px;
-	outline: 3px solid $primary-gray;
+	outline: 1px solid black;
 	outline-offset: 1px;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -21,6 +21,7 @@
 		position: relative;
 		bottom: 5px;
 		z-index: 500;
+		font-family: 'Heebo', sans-serif;
 	}
 	#dollar {
 		font-size: 15px;
@@ -55,16 +56,16 @@
 
 
 .small {
-	width: 300px;
-	height: 300px;
-}
-
-.medium {
 	width: 450px;
 	height: 450px;
 }
 
-.large {
+.medium {
 	width: 600px;
 	height: 600px;
+}
+
+.large {
+	width: 750px;
+	height: 750px;
 }
