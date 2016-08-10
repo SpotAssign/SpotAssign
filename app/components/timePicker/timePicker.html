@@ -128,12 +128,12 @@
 				<input type="checkbox" id="Sunday" ng-model="Sunday.value"/>
 				<label for="Sunday">Sunday</label>
 			</div>
-			<a class="waves-effect waves-light btn right-align-button">NEXT</a>
+			<a class="waves-effect waves-light btn right-align-button" ng-click="weeklyHours=true; vm.weekly=false">NEXT</a>
 		</div>
 	</div>
 
 	<!--Weekly Hours of Operation-->
-	<div class="setDOO" id="HOO" ng-show="vm.weekly">
+	<div class="setDOO" id="HOO" ng-show="weeklyHours">
 		<h5>What are your hours of operation?</h5>
 		<div class="daysSelected">
 
@@ -397,7 +397,7 @@
 				</div>
 			</div>
 
-			<a class="waves-effect waves-light btn right-align-button" ng-click="vm.saveSchedule( [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday] )">SAVE SCHEDULE</a>
+			<a class="waves-effect waves-light btn right-align-button" ng-click="vm.saveSchedule( [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday] ); weeklyHours = false">SAVE</a>
 		</div>
 	</div>
 
@@ -449,7 +449,7 @@
 
 
 	<!--Open Times and Closed Times- Weekly-->
-	<div class="setDOO" ng-hide="vm.onceSchedule">
+	<div class="setDOO" ng-show="vm.weeklySetSchedule">
 		<div class="showBusinessSchedule">
 			<h5>Open</h5>
 			<ul>
