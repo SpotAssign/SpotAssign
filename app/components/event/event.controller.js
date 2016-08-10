@@ -1,18 +1,37 @@
 class EventController {
 	constructor( eventService, mapService, $stateParams, $timeout ) {
-		// eventService.getEventByName( $stateParams.name ).then( response => {
-		// 	$timeout(() => {
-		// 		this.event = response;
-		// 		console.log( this.event, 'THIS IS THIS.EVENT' );
-		// 	} );
 		this.event = eventService.getState();
-		// } );
-
+		this.weekly = false;
+		this.holidays= false;
+		this.once = false;
+		this.monthly = false;
+		this.openOn = [];
+		this.getScheduleType();
 		$( '.carousel.carousel-slider' ).carousel( { full_width: true } );
 
 		const img = document.createElement( 'img' );
 		img.src = require( '../../img/SpotAssignLogo.png' );
 		this.picture = img.src;
+
+	}
+
+	getScheduleType() {
+		if ( this.event.recurrence.frequency==='weekly' ) {
+			this.weekly = true;
+			this.holidays = true;
+			this.getSchedule();
+		}
+		else if  ( this.event.recurrence.frequency==='monthly' ) {
+			this.monthly = true;
+			this.holidays = true;
+			this.getSchedule();
+		}
+		else if ( this.event.recurrence.frequency==='once' ) {
+			this.once = true;
+		}
+	}
+	getSchedule() {
+		this.openOn = this.event.recurrence.dayOfWeek;
 	}
 }
 

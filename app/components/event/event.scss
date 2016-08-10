@@ -17,6 +17,7 @@
 	}
 	.row {
 		padding: 0;
+		margin-bottom: 0;
 	}
 	.carousel.carousel-slider {
 		max-height: 500px;
@@ -30,12 +31,7 @@
 		color: white;
 		padding-top: 15px;
 	}
-	.top {
-		background: #efefef;
-		height: 100%;
-		padding-top: 40px;
-    margin-bottom: 60px;
-    text-align: center;
+
 
 		p {
 			font: 14px/23px 'Heebo', sans-serif;
@@ -46,8 +42,6 @@
 	.picture-top {
 		background: #efefef;
 		height: 100%;
-		padding-top: 60px;
-		padding-bottom: 60px;
 		text-align: center;
 	}
 	.mid {
@@ -68,14 +62,78 @@
 		max-height: 300px;
 		object-fit: cover;
 	}
-	.eventPhoto {
-		text-align: center;
-		margin-top: 5%;
-		// margin-bottom: 5%;
-	}
+
 	.map {
 		margin-top: 40px;
 		width: 70%;
 		max-height: 350px;
 	}
+
+
+	.pictureHeader {
+		img {
+			width: 100%;
+		}
+	}
+
+	.detailsRow {
+
+		h5 {
+			text-align: left;
+			display: inline-block;
+			font-weight: bold;
+		}
+		i {
+			text-align: left;
+		}
+
+		.location {
+			width: 80%;
+			margin-left: auto;
+			margin-right: auto;
+			padding-top: 10px;
+			font-size: 1.5em;
+			text-align: left;
+			font-weight: bold;
+		}
+
+		.bio {
+			width: 80%;
+			margin-left: auto;
+			margin-right: auto;
+			text-align: justify;
+		}
+
+		.website {
+			float: right;
+			padding-bottom: 20px;
+		}
+		.schedule {
+			.openDayName {
+				text-align: left;
+				font-weight: bold;
+			}
+			li {
+				width: 80%;
+				margin-left: auto;
+				margin-bottom: 3px;
+				margin-right: auto;
+				border: 1px solid rgba(119, 114, 118, 0.46);
+			}
+		}
+	}
+
+	.mapRow {
+		.top {
+			padding-top: 20px;
+		}
+
+		map {
+			width: 100px;
+		}
+
+
+
+
+
 }
