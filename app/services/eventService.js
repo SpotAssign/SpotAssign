@@ -13,7 +13,7 @@ const eventService = $http => {
 		},
 		getAll( query ) {
 			return $http.get( `${api}/api/events` )
-				.then( data => data );
+				.then( events => events.data );
 		},
 		getEventByName( name ) {
 			return $http.get( `${api}/api/event/${name}` )
