@@ -20,7 +20,6 @@ class FindEventController {
 	getAllEvents(){
 		this.eventService.getAll()
 		.then( events => {
-			console.log(events);
 			this.events = events;
 		} )
 	}
