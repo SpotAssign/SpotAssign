@@ -3,9 +3,12 @@
 
 .home-body {
 	color: $secondary-gray;
+	min-height: calc(87vh - 30px);
 	font-family: 'Nunito', sans-serif;
+	overflow: hidden;
 	.row {
 		margin: 20px !important;
+		display: block;
 		.slides {
 			.home-photo {
 			}
@@ -50,4 +53,13 @@
 	.fa-desktop, .fa-map-marker, .fa-credit-card-alt  {
 		color: $secondary-gray;
 	}
+	
 }
+.footer {
+	height:30px;
+	line-height: 0px;
+}
+.wrapper {
+	height: 100%
+}
+// * { border: 1px solid red; }

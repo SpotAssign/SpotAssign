@@ -7,7 +7,7 @@ export const findEventDirective = () => {
 		controller,
 		template,
 		controllerAs: 'vm',
-		restrict: 'E',
+		restrict: 'EA',
 		replace: true,
 		scope: {}
 	};

@@ -13,11 +13,6 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: space-between;
-		width: 100%;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: space-between;
 
 	}
 	.MktPic {
@@ -36,4 +31,20 @@
 		margin: 3px;
 		// margin-left: 35px;
 	}
+	
+	.container {
+	min-height: calc(86vh - 30px);
 }
+}
+
+.footer {
+	height:30px;
+	margin: 0;
+	clear: both;
+	width:100%;
+}
+.wrapper {
+	height: 100%;
+}
+
+
