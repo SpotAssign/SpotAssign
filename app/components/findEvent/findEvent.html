@@ -24,7 +24,7 @@
 			<div class="row">
 				<ul class="collapsible col s14 m10 offset-m1" data-collapsible="accordion">
 
-					<li ng-repeat="event in vm.events | filter: search" title="Click for market details">
+					<li ng-repeat="event in vm.events | filter: search | limitTo: 10 | orderBy: event.title" title="Click for market details">
 						<div class="collapsible-header">
 							<ul class="collapsible-centering">
 								<li class="MktInfo"><strong>Name:</strong> {{event.title }}</li>
