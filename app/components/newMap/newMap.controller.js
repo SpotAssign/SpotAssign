@@ -1,9 +1,10 @@
 class NewMapController {
-	constructor( $state, $scope, $stateParams, mapService ) {
+	constructor( $state, $scope, $stateParams, mapService, $location ) {
 		this.state = $state;
 		this.scope = $scope;
 		this.stateParams = $stateParams;
 		this.mapService = mapService;
+		this.location = $location;
 
 		this.sizes = [
 			{ value: 'small', display: 'Small' },
@@ -33,12 +34,12 @@ class NewMapController {
 	}
 
 	checkParams() {
-		if ( this.stateParams.isAdmin === 'admin' ) {
+		if ( this.stateParams.isAdmin === 'edit' ) {
 			this.sideNav = true;
 		} else if ( this.stateParams.isAdmin === 'user' ) {
 			this.sideNav = false;
 		} else {
-			this.state.go( 'userHome' );
+			this.state.go( 'user' );
 		}
 	}
 
@@ -155,11 +156,9 @@ class NewMapController {
 
 	saveMyMap() {
 		this.mapService.setState( this.currentMap );
-		if ( !this.sideNav ) {
+		this.stateParams.isAdmin === 'edit' ?
+			this.location.path( `event/${this.stateParams.event}/edit-event` ) :
 			this.state.go( 'createEvent' );
-		} else {
-			this.state.go( `editEvent` );
-		}
 	}
 
 	step( stepNum ) {
@@ -191,6 +190,12 @@ class NewMapController {
 	}
 }
 
-NewMapController.$inject = [ '$state', '$scope', '$stateParams', 'mapService' ];
+NewMapController.$inject = [
+	'$state',
+	'$scope',
+	'$stateParams',
+	'mapService',
+	'$location'
+];
 
 export { NewMapController };

@@ -3,10 +3,7 @@ import Users from '../User/Users';
 import Map from '../Map/Map';
 
 function exists( name ) {
-	Events.findOne( { name }, ( err, result ) => {
-		if ( err ) return false;
-		return true;
-	} );
+	Events.findOne( { name }, err => err );
 }
 
 export default {
@@ -15,7 +12,7 @@ export default {
 		Events.find( ( req.query ) )
 			.populate( 'admins' )
 			.populate( 'users' )
-			.populate( 'map' )
+			.populate( 'maps' )
 			.exec( ( err, events ) => {
 				if ( err ) {
 					return res.status( 500 ).json( err );
@@ -26,25 +23,27 @@ export default {
 	getEventByName( req, res ) {
 		Events.findOne( { name: req.params.name.toLowerCase() } )
 			.populate( 'currentMap' )
+			.populate( 'maps' )
 			.exec( ( err, event ) => {
 				if ( err ) {
 					return res.status( 500 ).json( err );
 				}
 				if ( event ) {
 					console.log( event );
-					const filteredEvent = {
-						admins: event.admins,
-						bio: event.bio,
-						closedDates: event.closedDates,
-						location: event.location,
-						activeMap: event.activeMap,
-						name: event.name,
-						title: event.title,
-						photo: event.photo,
-						currentMap: event.currentMap,
-						recurrence: event.recurrence
-					};
-					return res.status( 200 ).json( filteredEvent );
+					// const filteredEvent = {
+					// 	admins: event.admins,
+					// 	bio: event.bio,
+					// 	closedDates: event.closedDates,
+					// 	location: event.location,
+					// 	activeMap: event.activeMap,
+					// 	name: event.name,
+					// 	maps: event.maps,
+					// 	title: event.title,
+					// 	photo: event.photo,
+					// 	currentMap: event.currentMap,
+					// 	recurrence: event.recurrence
+					// };
+					return res.status( 200 ).json( event );
 				}
 				return res.status( 200 ).json( null );
 			} );
@@ -64,16 +63,15 @@ export default {
 				if ( err ) {
 					return res.send( err );
 				} else {
-
-				Map.findByIdAndUpdate(
-					event.currentMap,
-					{ $push: { event: event._id } }, ( error, result ) => {
-						if ( error ) return res.send( error );
-						if ( result ) {
-							return res.status( 200 ).json( event );
-						}
-				} );
-			}
+					Map.findByIdAndUpdate(
+						event.currentMap,
+						{ $push: { event: event._id } }, ( error, result ) => {
+							if ( error ) return res.send( error );
+							if ( result ) {
+								return res.status( 200 ).json( event );
+							}
+					} );
+				}
 			} );
 		} );
 	},

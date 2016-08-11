@@ -9,7 +9,7 @@ export const mapDirective = () => {
 		controllerAs: 'vm',
 		scope: {
 			map: '=',
-			show: '='
+			shouldShow: '='
 		},
 		replace: true,
 		restrict: 'E'

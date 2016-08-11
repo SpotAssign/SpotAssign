@@ -11,10 +11,6 @@ const Reservations = Schema(
 			type: Schema.Types.ObjectId,
 			ref: `Events`
 		},
-		map: {
-			type: Schema.Types.ObjectId,
-			ref: `Map`
-		},
 		payment: {
 			type: Schema.Types.ObjectId,
 			ref: `Payments`

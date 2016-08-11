@@ -1,65 +1,25 @@
 class EditEventController {
-	constructor( $stateParams, $state, eventService, mapService ) {
+	constructor( $stateParams, $state, eventService, mapService, $location ) {
 		this.state = $state;
 		this.stateParams = $stateParams;
-		this.map = this.mapService.getState();
+		this.eventService = eventService;
+		this.location = $location;
 
-		this.sleep = {
-			mapType: 'medium',
-			mapImage: '',
-			spots: [
-				{
-					price: '32',
-					type: 'square',
-					color: 'rgb(56, 56, 56)',
-					num: 1,
-					height: '60px',
-					width: '60px',
-					top: '0px',
-					left: '235px'
-				},
-				{
-					price: '32',
-					type: 'square',
-					color: 'rgb(56, 56, 56)',
-					num: 2,
-					height: '60px',
-					width: '60px',
-					top: '50px',
-					left: '165px'
-				},
-				{
-					price: '323',
-					type: 'square',
-					color: 'rgb(56, 56, 56)',
-					num: 3,
-					height: '60px',
-					width: '60px',
-					top: '',
-					left: ''
-				}
-			]
-		};
+		this.event = eventService.getState();
+		this.map = mapService.getState();
 	}
 
+	createMap() {
+		console.log( `/create-map/user/edit` );
+		this.location.path( `/create-map/edit/${this.event.name}` );
+	}
 
-	editEvent( title, bio, city, state, paymentInfo ) {
-
-		city = city ? city : document.getElementById( 'city' ).value;
-		state = state ? state : document.getElementById( 'state' ).value;
-
-		this.eventService.editOne( this.event._id, {
-			name: title,
-			location: {
-				city,
-				state
-			},
-			bio,
-			paymentInfo
-		} ).then( response => {
+	editEvent() {
+		this.eventService.editOne( this.event._id, this.event ).then( response => {
+			console.log( response );
 			this.user = response;
 			if ( response ) {
-				// Materialize.toast( 'Settings saved.', 1000 );
+				Materialize.toast( 'Settings saved.', 1000 );
 			}
 		} );
 	}
@@ -71,13 +31,13 @@ class EditEventController {
 			}
 		} );
 	}
-
-	toggleMap() {
-		this.map = !this.map;
-	}
-
-
 }
-EditEventController.$inject = [ '$stateParams', '$state', 'eventService', 'mapService' ];
+EditEventController.$inject = [
+	'$stateParams',
+	'$state',
+	'eventService',
+	'mapService',
+	'$location'
+];
 
 export { EditEventController };
