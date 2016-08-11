@@ -24,52 +24,52 @@ class CalendarController {
 		this.onStop = function() {};
 		this.getDisabledDates();
 	}
-
 	getDisabledDates() {
-		this.event = this.eventService.getState();
-		const possibleDisabled = [ 1, 2, 3, 4, 5, 6, 7 ];
-		if ( this.event.recurrence.dayOfWeek) {
-			for ( let i = 0; i < this.event.recurrence.dayOfWeek.length; i++ ) {
-				if ( this.event.recurrence.dayOfWeek[i].name === 'Monday' ) {
-					let index = possibleDisabled.indexOf( 2 );
-					possibleDisabled.splice( index, 1 );
+			this.event = this.eventService.getState();
+			const possibleDisabled = [ 1, 2, 3, 4, 5, 6, 7 ];
+			if ( this.event.recurrence.dayOfWeek) {
+				for ( let i = 0; i < this.event.recurrence.dayOfWeek.length; i++ ) {
+					if ( this.event.recurrence.dayOfWeek[i].name === 'Monday' ) {
+						let index = possibleDisabled.indexOf( 2 );
+						possibleDisabled.splice( index, 1 );
+					}
+					else if ( this.event.recurrence.dayOfWeek[i].name === 'Tuesday' ) {
+						let index = possibleDisabled.indexOf( 3 );
+						possibleDisabled.splice( index, 1 );
+					}
+					else if ( this.event.recurrence.dayOfWeek[i].name === 'Wednesday' ) {
+						let index = possibleDisabled.indexOf( 4 );
+						possibleDisabled.splice( index, 1 );
+					}
+					else if ( this.event.recurrence.dayOfWeek[i].name === 'Thursday' ) {
+						let index = possibleDisabled.indexOf( 5 );
+						possibleDisabled.splice( index, 1 );
+					}
+					else if ( this.event.recurrence.dayOfWeek[i].name === 'Friday' ) {
+						let index = possibleDisabled.indexOf( 6 );
+						possibleDisabled.splice( index, 1 );
+					}
+					else if ( this.event.recurrence.dayOfWeek[i].name === 'Saturday' ) {
+						let index = possibleDisabled.indexOf( 7 );
+						possibleDisabled.splice( index, 1 );
+					}
+					else if ( this.event.recurrence.dayOfWeek[i].name === 'Sunday' ) {
+						let index = possibleDisabled.indexOf( 0 );
+						possibleDisabled.splice( index, 1 );
+					}
 				}
-				else if ( this.event.recurrence.dayOfWeek[i].name === 'Tuesday' ) {
-					let index = possibleDisabled.indexOf( 3 );
-					possibleDisabled.splice( index, 1 );
-				}
-				else if ( this.event.recurrence.dayOfWeek[i].name === 'Wednesday' ) {
-					let index = possibleDisabled.indexOf( 4 );
-					possibleDisabled.splice( index, 1 );
-				}
-				else if ( this.event.recurrence.dayOfWeek[i].name === 'Thursday' ) {
-					let index = possibleDisabled.indexOf( 5 );
-					possibleDisabled.splice( index, 1 );
-				}
-				else if ( this.event.recurrence.dayOfWeek[i].name === 'Friday' ) {
-					let index = possibleDisabled.indexOf( 6 );
-					possibleDisabled.splice( index, 1 );
-				}
-				else if ( this.event.recurrence.dayOfWeek[i].name === 'Saturday' ) {
-					let index = possibleDisabled.indexOf( 7 );
-					possibleDisabled.splice( index, 1 );
-				}
-				else if ( this.event.recurrence.dayOfWeek[i].name === 'Sunday' ) {
-					let index = possibleDisabled.indexOf( 0 );
-					possibleDisabled.splice( index, 1 );
+				for ( var i = 0; i < possibleDisabled.length; i++ ) {
+					this.disable.push( possibleDisabled[i] )
 				}
 			}
-			for ( var i = 0; i < possibleDisabled.length; i++ ) {
-				this.disable.push( possibleDisabled[i] )
-			}
-		}
-		if ( this.event.closedDates ) {
-			for (let i = 0; i < this.event.closedDates.length; i++) {
-				this.disable.push(this.event.closedDates[i].date);
+			if ( this.event.closedDates ) {
+				for (let i = 0; i < this.event.closedDates.length; i++) {
+					this.disable.push(this.event.closedDates[i].date);
+				}
 			}
 		}
 	}
-}
+
 
 CalendarController.$inject = [ 'eventService', 'userService' ];
 

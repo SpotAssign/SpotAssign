@@ -76,7 +76,6 @@ class MapController { // TODO Show btn
 				}
 			}
 		}
-	}
 
 	clickTheSpot( spot, id ) {
 		console.log( spot );
