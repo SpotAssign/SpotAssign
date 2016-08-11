@@ -107,15 +107,11 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 			template: '<error></error>'
 		} )
 	// TBD
-	// .state( 'calendar', { // TODO Change URL
-	// 	url: '/calendar',
-	// 	template: '<calendar></calendar>',
-	// 	resolve: { isLogged }
-	// } )
-	// .state( 'timePicker', {
-	// 	url: '/timepicker',
-	// 	template: '<time-picker></time-picker>'
-	// } );
+	.state( 'calendar', { // TODO Change URL
+		url: '/calendar',
+		template: '<calendar></calendar>',
+	} )
+
 };
 
 routing.$inject = [
