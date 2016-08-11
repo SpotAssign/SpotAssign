@@ -2,6 +2,7 @@ class EditEventController {
 	constructor( $stateParams, $state, eventService, mapService ) {
 		this.state = $state;
 		this.stateParams = $stateParams;
+		this.mapService = mapService;
 		this.map = this.mapService.getState();
 
 		this.sleep = {

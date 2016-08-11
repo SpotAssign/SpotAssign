@@ -5,12 +5,12 @@
 	>
 
 		<div ng-repeat="spot in map.spots">
-			<a ng-click="vm.buySpot( spot ); vm.clickTheSpot( spot, spot.$$hashKey )">
+			<a ng-click="vm.buySpot( spot, spot.$$hashKey );">
 				<div
 					style="position:absolute;background-color:{{spot.color}};left:{{spot.left}};top:{{spot.top}};width:{{spot.width}};height:{{spot.height}}"
 					class="{{spot.type}} spot"
 				>
-					<p class="spotPrice"><span id="dollar">$</span>{{spot.price}}</p>
+					<p class="spotPrice"><span id="dollar">$</span>{{ spot.price}}</p>
 				</div>
 			</a>
 		</div>
@@ -22,18 +22,24 @@
 		<div class="outside-map" ng-show="vm.clickedSpot; !vm.payment">
 			<h5>Available Date: </h5>
 			<h5>Price: ${{ vm.clickedSpot.price }}</h5>
-			<button ng-show="vm.showButton" ng-click="vm.buySpot()">Book Now</button>
+			<button ng-show="vm.showButton" ng-click="vm.payment = true">Book Now</button>
 		</div>
 
 		<div class="payment" ng-show="vm.payment">
+
 			<div>
 				<h5>Dates:</h5>
 				<h5>Price:</h5>
 				<h5>Total: </h5>
-				<button ng-click="vm.payment = false; vm.clickedSpot = true">Back</button>
-				<button>Pay</button>
 			</div>
-		</div>
+        <div class="center">
+
+							<button ng-click="vm.payment = false; vm.clickedSpot = true">Back</button>
+              <button id="customButton" ng-click="vm.payNow( vm.clickedSpot.price )">Purchase</button>
+            </form>
+        </div>
+    </div>
+
 
 	</div>
 

@@ -51,9 +51,9 @@
 				<i class="material-icons header-icon">place</i>
 			Your Map</div><br>
 
-			<button class="btn orange" ng-click="vm.toggleMap()" ng-show="vm.stateParams.map ? vm.stateParams.map : vm.myMap">Make New Map</button>
-			<div ng-show="vm.stateParams.map ? vm.stateParams.map : vm.myMap"><map map="vm.stateParams.map ? vm.stateParams.map : vm.myMap"></map></div>
-			<div ng-show="vm.sleep"><map map="vm.sleep"></map></div>
+			<button class="btn orange" ng-click="vm.toggleMap()" ng-show="vm.map ? vm.map : vm.myMap">Make New Map</button>
+			<div ng-show="vm.map ? vm.map : vm.myMap"><map map="vm.map ? vm.map : vm.myMap"></map></div>
+			<div ng-show="vm.map"><map map="vm.map"></map></div>
 				</form>
 
 			</div>
