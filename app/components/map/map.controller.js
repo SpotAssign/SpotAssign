@@ -75,6 +75,7 @@ class MapController { // TODO Show btn
 					this.disable.push(this.event.closedDates[i].date);
 				}
 			}
+			console.log(this.disable);
 		}
 
 	clickTheSpot( spot, id ) {
@@ -106,6 +107,7 @@ class MapController { // TODO Show btn
 		} );
 	}
 }
+
 
 MapController.$inject = [ '$state', 'reservationService',  'eventService', 'userService'  ];
 
