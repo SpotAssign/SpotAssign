@@ -117,7 +117,6 @@ class MapController { // TODO Show btn
 
 	clickTheSpot( spot, id ) {
 		console.log( spot );
->>>>>>> 2847261978048b169cccfcb5101f6377f78f8d0a
 		this.clickedSpot = spot;
 	}
 
