@@ -73,6 +73,7 @@ export default {
 	userExists( req, res, next ) {
 		if ( !req.user ) throw new Error( 'user null' );
 		Users.findOne( { email: req.user._json.email }, ( err, user ) => {
+			if ( err ) return res.redirect( '/#/error' );
 			if ( user ) return res.redirect( '/#/user' );
 			next();
 		} );
@@ -88,7 +89,7 @@ export default {
 		}
 	},
 
-	// GET ALL USERS 
+	// GET ALL USERS
 	getUsers( req, res ) {
 		Users.find( ( req.query ) )
 			.populate( 'payments' )

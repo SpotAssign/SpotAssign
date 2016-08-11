@@ -1,14 +1,19 @@
-const eventService = $http => {
+const eventService = ( $http, $location ) => {
 	const api = 'http://localhost:8080';
 	const event = null;
 	return {
 		setState( evnt ) {
-			this.event = evnt;
-			console.log( 'GET EVENT %%%%%%%%%%%%%%%%%%%%%%%% ', this.event );
-			return this.event;
+			if ( evnt === undefined ) {
+				console.log( 'EVENT IS UNDEFINED' );
+				$location.path( '/#/' );
+			} else {
+				this.event = evnt;
+				console.log( 'SET EVENT %%%%%%%%%%%%%%%%%%%%%%%% ', this.event );
+				return this.event;
+			}
 		},
 		getState() {
-			console.log( 'SET EVENT %%%%%%%%%%%%%%%%%%%%%%%% ', this.event );
+			console.log( 'GET EVENT %%%%%%%%%%%%%%%%%%%%%%%% ', this.event );
 			return this.event;
 		},
 		getAll( query ) {
@@ -50,5 +55,5 @@ const eventService = $http => {
 	};
 };
 
-eventService.$inject = [ '$http' ];
+eventService.$inject = [ '$http', '$location' ];
 export { eventService };

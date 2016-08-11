@@ -1,13 +1,12 @@
 class manageUsersController {
-	constructor( service, $timeout, $state ) {
+	constructor( userService, $timeout, $state ) {
 		this.event = {};
-		this.service = service;
+		this.userService = userService;
 		this.timeout = $timeout;
 		this.state = $state;
-		this.user= {};
+		this.user = this.userService.getState();
 		this.marketID = [];
 		this.marketUsers = [];
-		this.getCurrentUser();
 	}
 
 	getCurrentUser() {
@@ -44,5 +43,5 @@ class manageUsersController {
 	}
 }
 
-manageUsersController.$inject = [ 'service', '$timeout', '$state' ];
+manageUsersController.$inject = [ 'userService', '$timeout', '$state' ];
 export { manageUsersController };
