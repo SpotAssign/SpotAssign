@@ -1,3 +1,6 @@
+@import '../../styles/colors';
+
+
 #calendarDir {
 	ul {
 		width: 500px;
@@ -5,4 +8,32 @@
 		margin-left: auto;
 		margin-right: auto;
 	}
+
+	.picker__table {
+
+		background-color: white;
+	}
+
+	tr {
+		background-color: white;
+	}
+
+	#calendar_table {
+		border: black 2px solid;
+	}
+
+
+	.picker__date-display {
+		background-color: $primary-gray;
+	}
+
+	.picker__day--disabled {
+		border-radius: 100%;
+  		background:rgb(139, 51, 51);
+		text-decoration: line-through;
+	}
+
+	.picker__weekday-display {
+		  background-color: $primary-gray;
+		}
 }

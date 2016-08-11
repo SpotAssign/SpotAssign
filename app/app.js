@@ -14,7 +14,7 @@ import { mapService } from './services/mapService';
 import { reservationService } from './services/reservationService';
 
 // IMPORT COMPONENTS
-// import { calendar } from './components/calendar/calendar';
+import { calendar } from './components/calendar/calendar';
 import { checkout } from './components/checkout/checkout';
 import { createEvent } from './components/createEvent/createEvent';
 import { dashboard } from './components/dashboard/dashboard';
@@ -43,7 +43,7 @@ angular.module( 'SpotAssign', [
 	uiRouter,
 	ngAnimate,
 	// COMPONENTS
-	// calendar.name,
+	calendar.name,
 	checkout.name,
 	createEvent.name,
 	dashboard.name,

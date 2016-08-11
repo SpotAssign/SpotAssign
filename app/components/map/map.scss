@@ -2,6 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Heebo:100);
 
 #currentMap {
+	overflow: visible;
 	position: relative;
 	margin-top: 25px;
 	outline: 1px solid black;
@@ -22,6 +23,42 @@
 		bottom: 5px;
 		z-index: 500;
 		font-family: 'Heebo', sans-serif;
+
+		a {
+			overflow: visible;
+		}
+
+
+			.picker__table {
+				overflow: visible;
+				background-color: white;
+				z-index: 20;
+			}
+
+			tr {
+				background-color: white;
+			}
+
+			#calendar_table {
+				border: black 2px solid;
+			}
+
+
+			.picker__date-display {
+				background-color: $primary-gray;
+			}
+
+			.picker__day--disabled {
+				border-radius: 100%;
+		  		background:rgb(139, 51, 51);
+				text-decoration: line-through;
+			}
+
+			.picker__weekday-display {
+				  background-color: $primary-gray;
+				}
+
+
 	}
 	#dollar {
 		font-size: 15px;
