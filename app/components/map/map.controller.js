@@ -1,4 +1,5 @@
 class MapController { // TODO Show btn
+
 	constructor( $state, reservationService, eventService, userService ) {
 		this.userService = userService;
 		this.eventService = eventService;
@@ -9,6 +10,42 @@ class MapController { // TODO Show btn
 		this.clickSpot = false;
 		this.showButton = true;
 		this.payment = false;
+		this.user = userService.getState();
+		// Close Checkout on page navigation:
+		$( document ).ready( function() {
+			$( window ).on( 'popstate', function() {
+				handler.close();
+			});
+		} );
+}
+
+
+	payNow( amount ) {
+
+		console.log( amount, 'AMOUNT' );
+		let description = `1 spot for ${ amount }`;
+
+		let handler = StripeCheckout.configure({
+		key: 'pk_test_UGZfnTwt3mfQdpkvRPnWEqEP',
+		image: require( '../../img/SpotAccessMark.png' ),
+		locale: 'auto',
+		token: function( token ) {
+			console.log( token.id );
+		}
+	});
+
+		handler.open({
+			name: 'Spot Assign',
+			description,
+			zipCode: true,
+			currency: "usd",
+			amount
+		});
+	}
+
+
+
+	clickTheSpot() {
 
 		const currentTime = new Date();
 		this.currentTime = currentTime;
@@ -80,21 +117,18 @@ class MapController { // TODO Show btn
 
 	clickTheSpot( spot, id ) {
 		console.log( spot );
+>>>>>>> 2847261978048b169cccfcb5101f6377f78f8d0a
 		this.clickedSpot = spot;
 	}
 
-	buySpot() {
-		//
-		// reservation = {
-		// 	dates: newRes.dates,
-		// 	user: newRes.userId,
-		// 	market: newRes.marketId,
-		// 	map: newRes.mapId,
-		// 	payment: newRes.paymentId
-		// }
-		// this.reservationService.create( reservation )
+	payForSpot() {
+
+	}
+
+	buySpot( spot, id ) {
+		console.log( spot, id, 'this is spot & id' );
 		this.clickedSpot = false;
-		this.payment = true;
+		this.spot = spot;
 	}
 
 	recreateMap( positions ) {

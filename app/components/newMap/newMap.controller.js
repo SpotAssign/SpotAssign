@@ -38,7 +38,7 @@ class NewMapController {
 		} else if ( this.stateParams.isAdmin === 'user' ) {
 			this.sideNav = false;
 		} else {
-			this.state.go( 'userHome' );
+			this.state.go( 'user' );
 		}
 	}
 
