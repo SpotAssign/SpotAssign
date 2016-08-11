@@ -20,7 +20,6 @@ const mapService = $http => {
 				.then( res => res.data );
 		},
 		create( newMap ) {
-			
 			return $http( {
 				method: 'POST',
 				url: `${api}/api/map`,

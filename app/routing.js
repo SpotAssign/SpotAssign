@@ -24,19 +24,21 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 		}
 	};
 
+	const resetStates = ( eventService, userService, mapService, reservationService ) => {
+		eventService.setState( null );
+		userService.setState( null );
+		mapService.setState( null );
+		reservationService.setState( null );
+	};
+
 	$stateProvider
-		.state( 'home', { url: '/', template: '<home></home>' } )
-		.state( 'findEvent', {
-			url: '/find-events',
-			template: '<find-event></find-event>'
-		} )
+		.state( 'home', { url: '/', template: '<home></home>', resolve: { resetStates } } )
+		.state( 'findEvent', { url: '/find-events', template: '<find-event></find-event>' } )
 		// USER
 		.state( 'user', {
 			url: '/user',
 			template: '<user></user>',
-			resolve: {
-				setCurrentUser
-			}
+			resolve: { setCurrentUser }
 		} )
 		.state( 'createEvent', {
 			url: '/user/create-event',
@@ -67,9 +69,7 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 		.state( 'event', {
 			url: '/event/:name',
 			template: '<event></event>',
-			resolve: {
-				getCurrentEvent
-			}
+			resolve: { getCurrentEvent }
 		} )
 		.state( 'editEvent', {
 			url: '/event/:name/edit-event',
@@ -98,20 +98,21 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 		} )
 		// GLOBAL
 		.state( 'newMap', {
-			url: '/create-map/:isAdmin',
+			url: '/create-map/:isAdmin/:event',
 			template: '<new-map></new-map>',
 			resolve: { isLogged }
 		} )
-		.state( 'error', {
-			url: '/error',
-			template: '<error></error>'
-		} )
+		.state( 'error', { url: '/error', template: '<error></error>', resolve: { resetStates } } )
 	// TBD
-	.state( 'calendar', { // TODO Change URL
-		url: '/calendar',
-		template: '<calendar></calendar>',
-	} )
-
+	// .state( 'calendar', { // TODO Change URL
+	// 	url: '/calendar',
+	// 	template: '<calendar></calendar>',
+	// 	resolve: { isLogged }
+	// } )
+	// .state( 'timePicker', {
+	// 	url: '/timepicker',
+	// 	template: '<time-picker></time-picker>'
+	// } );
 };
 
 routing.$inject = [

@@ -4,18 +4,24 @@ const userService = ( $http, $location ) => {
 	return {
 		setState( user ) {
 			currentUser = user;
-			console.log( 'SET USER ########## ', currentUser );
 		},
 		getState() {
-			console.log( 'GET USER ########## ', currentUser );
 			return currentUser;
 		},
 		getCurrentUser() {
-			return $http.get( `${api}/api/user` )
-				.then( result => {
-					this.setState( result.data );
-					return result.data;
-				} );
+			if ( !currentUser ) {
+				return $http.get( `${api}/api/user` )
+					.then( result => {
+						if ( result.data.firstName ) {
+							this.setState( result.data );
+							return result.data;
+						} else {
+							$location.path( '/#/' );
+						}
+					} );
+			} else {
+				return currentUser;
+			}
 		},
 		getAll() {
 			return $http.get( `${api}/api/users` )

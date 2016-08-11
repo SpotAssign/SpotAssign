@@ -1,93 +1,93 @@
 <div id="event">
-	<div class="navbar col s12">
-		<h4 class="title">{{ vm.event.title }}</h4>
-	</div>
+<div class="navbar col s12">
+	<h4 class="title">{{ vm.event.title }}</h4>
+</div>
 
-	<div class="row pictureHeader">
-		<div class="picture-top" ng-show="vm.event.photo">
-			<img src="{{ vm.event.photo }}"/>
+<div class="row pictureHeader">
+	<div class="picture-top" ng-show="vm.event.photo">
+		<img src="{{ vm.event.photo }}"/>
+	</div>
+</div>
+
+<div class="row detailsRow">
+	<div class="mid col s12">
+		<div class="description col s12 m6">
+			<i class="material-icons">info_outline</i> <h5>ABOUT</h5>
+			<hr>
+				<div class="location">
+					{{vm.event.location.city}}, {{vm.event.location.state}}
+				</div>
+
+				<div class="bio">
+					{{vm.event.bio}}
+				</div>
+
+				<div class="website">
+					<a href="vm.event.website">Official Website</a>
+				</div>
 		</div>
-	</div>
-
-	<div class="row detailsRow">
-		<div class="mid col s12">
-			<div class="description col s12 m6">
-				<i class="material-icons">info_outline</i> <h5>ABOUT</h5>
+		<div class="schedule col s12 m6" ng-show="vm.weekly">
+			<div class="">
+				<i class="material-icons">schedule</i> <h5>HOURS</h5>
 				<hr>
-					<div class="location">
-						{{vm.event.location.city}}, {{vm.event.location.state}}
-					</div>
-
-					<div class="bio">
-						{{vm.event.bio}}
-					</div>
-
-					<div class="website">
-						<a href="vm.event.website">Official Website</a>
-					</div>
-			</div>
-			<div class="schedule col s12 m6" ng-show="vm.weekly">
-				<div class="">
-					<i class="material-icons">schedule</i> <h5>HOURS</h5>
-					<hr>
-					<ul>
-						<li class="row" ng-repeat="openDay in vm.openOn">
+				<ul>
+					<li class="row" ng-repeat="openDay in vm.openOn">
+						<div class="">
 							<div class="">
-								<div class="">
-									<div class="openDayName col s4">
-										{{openDay.name | uppercase }}
-									</div>
-									<div class="dayHours col s8">
-										<b>OPEN:</b>   {{openDay.open.hour}}:{{openDay.open.minute}}
-										<b>CLOSE:</b>   {{openDay.close.hour}}:{{openDay.close.minute}}
-									</div>
-									<div class="col s2">
-									</div>
+								<div class="openDayName col s4">
+									{{openDay.name | uppercase }}
+								</div>
+								<div class="dayHours col s8">
+									<b>OPEN:</b>   {{openDay.open.hour}}:{{openDay.open.minute}}
+									<b>CLOSE:</b>   {{openDay.close.hour}}:{{openDay.close.minute}}
+								</div>
+								<div class="col s2">
 								</div>
 							</div>
-						</li>
-					</ul>
-				</div>
+						</div>
+					</li>
+				</ul>
 			</div>
-			<div class="schedule col s12 m6" ng-show="vm.monthly">
-				<h1>Need to put monthly schedule</h1>
-			</div>
-			<div class="schedule col s12 m6" ng-show="vm.once">
-				<div class="showBusinessSchedule" ng-show="vm.onceSchedule">
-					<h5>Open</h5>
-					<ul>
-						<li class="row">
+		</div>
+		<div class="schedule col s12 m6" ng-show="vm.monthly">
+			<h1>Need to put monthly schedule</h1>
+		</div>
+		<div class="schedule col s12 m6" ng-show="vm.once">
+			<div class="showBusinessSchedule" ng-show="vm.onceSchedule">
+				<h5>Open</h5>
+				<ul>
+					<li class="row">
+						<div class="">
 							<div class="">
-								<div class="">
-									<div class="openDayName col s5">
-										{{ vm.openOn.date | date : short }}
-									</div>
-									<div class="dayHours col s5">
-										<b>OPEN:</b>   {{vm.openOn.hours[0].open.minute}}:{{vm.openOn.hours[0].open.minute}}
-										<b>CLOSE:</b>
-										{{vm.openOn.hours[0].close.hour}}:{{vm.openOn.hours[0].close.minute}}
-									</div>
+								<div class="openDayName col s5">
+									{{ vm.openOn.date | date : short }}
+								</div>
+								<div class="dayHours col s5">
+									<b>OPEN:</b>   {{vm.openOn.hours[0].open.minute}}:{{vm.openOn.hours[0].open.minute}}
+									<b>CLOSE:</b>
+									{{vm.openOn.hours[0].close.hour}}:{{vm.openOn.hours[0].close.minute}}
 								</div>
 							</div>
-						</li>
-					</ul>
-				</div>
+						</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<hr>
-	<div class="row mapRow">
-		<div class="top col s6" ng-show="vm.event.currentMap">
-			<map map="vm.event.currentMap"></map>
-		</div>
+<hr>
+<div class="row mapRow">
+	<div class="top col s6" ng-show="vm.event.currentMap">
+		<map map="vm.event.currentMap" should-show="false"></map>
 	</div>
+</div>
 
 
-	<a href="{{ vm.event.website || 'https://www.spotassign.com' }}">
-		<div class="footer">
-			<h5>{{ vm.event.website || 'spotassign.com' }}</h5>
-		</div>
-	</a>
+<a href="{{ vm.event.website || 'https://www.spotassign.com' }}">
+	<div class="footer">
+		<h5>{{ vm.event.website || 'spotassign.com' }}</h5>
+	</div>
+</a>
 
 </div>
