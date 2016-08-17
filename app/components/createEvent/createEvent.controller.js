@@ -80,7 +80,7 @@ class CreateEventController {
 
 	saveEventDetailsWhileDesigningMap() {
 		this.eventService.setState( this.event );
-		this.location.path( `/create-map/user` );
+		this.location.path( `/create-map/user/no-event` );
 	}
 }
 

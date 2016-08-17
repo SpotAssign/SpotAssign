@@ -35,7 +35,6 @@ import { transactionHistory } from './components/transactionHistory/transactionH
 import { user } from './components/user/user';
 import { userSpots } from './components/userSpots/userSpots';
 import { viewTransactions } from './components/viewTransactions/viewTransactions';
-import { error } from './components/error/error';
 import { userFindEvent } from './components/userFindEvent/userFindEvent';
 
 // START MODULE
@@ -64,7 +63,6 @@ angular.module( 'SpotAssign', [
 	user.name,
 	userSpots.name,
 	viewTransactions.name,
-	error.name,
 	userFindEvent.name
 ] )
 	.directive( 'app', appDirective )
@@ -78,9 +76,11 @@ angular.module( 'SpotAssign', [
 			'$stateChangeError',
 			( evnt, toState, toParams, fromState, fromParams, error ) => {
 				if ( error === 'AUTH_REQUIRED' ) {
+					console.log( 'Redirected to HOME with AUTH_REQUIRED' );
 					$state.go( 'home' );
 				}
 				if ( error === 'NO_EVENT' ) {
+					console.log( 'Redirected to findEvent with NO_EVENT' );
 					$state.go( 'findEvent' );
 				}
 			}

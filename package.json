@@ -41,7 +41,6 @@
     "passport": "^0.3.2",
     "passport-auth0": "^0.5.2",
     "sc-date-time": "^1.1.7",
-    "semantic-ui": "^2.2.2",
     "toastr": "^2.1.2"
   },
   "devDependencies": {

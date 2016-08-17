@@ -34,6 +34,7 @@ class NewMapController {
 	}
 
 	checkParams() {
+		console.log( this.stateParams.isAdmin, 'STATE PARAMS' );
 		if ( this.stateParams.isAdmin === 'edit' ) {
 			this.sideNav = true;
 		} else if ( this.stateParams.isAdmin === 'user' ) {

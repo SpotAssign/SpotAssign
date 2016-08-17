@@ -1,19 +1,19 @@
 <div class="wrapper">
-<div id="findEvent">
-	<navbar></navbar>
+	<div id="findEvent">
+		<navbar></navbar>
 		<div class="container">
 			<div class="row">
 				<div class="col s12 m8 offset-m2">
 					<!-- <h3 class="center">Search event in your area!</h3> -->
 					<h5>Search</h5>
 					<div class="input-field col s7">
-          				<input id="title" type="text" class="validate" ng-model="search.title">
-          				<label for="title">Name</label>
-        			</div>
+						<input id="title" type="text" class="validate" ng-model="search.title">
+						<label for="title">Name</label>
+					</div>
 					<div class="input-field col s5">
-          				<input id="location.city" type="text" class="validate" ng-model="search.location">
-          				<label for="location.city">Location</label>
-        			</div>
+						<input id="location.city" type="text" class="validate" ng-model="search.location">
+						<label for="location.city">Location</label>
+					</div>
 					<!-- <select class="input-field col s3 default-browser">
 						<label for="location.state">State</label>
 						<option ng-repeat="state in vm.states" id="location.state" class="validate" value="state" ng-model="search.location.state">{{state}}</option>
@@ -24,16 +24,19 @@
 			<div class="row">
 				<ul class="collapsible col s14 m10 offset-m1" data-collapsible="accordion">
 
-					<li ng-repeat="event in vm.events | filter: search | limitTo: 10 | orderBy: event.title" title="Click for market details">
+					<li ng-repeat="event in vm.events | filter: search | limitTo: 10 | orderBy: event.title"
+						title="Click for market details">
 						<div class="collapsible-header">
 							<ul class="collapsible-centering">
 								<li class="MktInfo"><strong>Name:</strong> {{event.title }}</li>
-								<li class="MktInfo"><strong>Location:</strong> {{event.location.city}},{{event.location.state}}</li>
+								<li class="MktInfo"><strong>Location:</strong>
+									{{event.location.city}},{{event.location.state}}
+								</li>
 							</ul>
 						</div>
 						<div class="collapsible-body">
 							<div class="eventImgDiv">
-								<img class="eventImg" ng-src="{{event.photo}}" />
+								<img class="eventImg" ng-src="{{event.photo}}"/>
 							</div>
 							<div id="eventTitle">
 								{{event.title }}
@@ -41,12 +44,14 @@
 							<div id="eventDescription">
 								{{event.bio}}
 							</div>
-							<div id="eventContact"><strong>Contact:</strong> {{event.admins[0].email}}</div>
+							<div id="eventContact">
+								<strong>Contact:</strong> {{event.admins[0].email}}
+							</div>
 							<div id="eventLink"><a href="/#/event/{{event.name}}"> Event Page</a></div>
 						</div>
-		</div>
+			</div>
 
-</div>
-</div>
-<div class="footer" footer-directive></div>
+		</div>
+	</div>
+	<div class="footer" footer-directive></div>
 </div>

@@ -2,81 +2,65 @@ class TimePickerController {
 	constructor( userService, eventService ) {
 		this.userService = userService;
 		this.eventService = eventService;
-		this.getCurrentUser();
-		this.current = {};
-		this.event = {};
+		this.event = eventService.getState();
 		this.hours = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
 			18, 19, 20, 21, 22, 23, 24 ];
 		this.minutes = [ '00', '15', '30', '45' ];
 		this.chooseFreq = true;
-    	this.once = false;
+		this.once = false;
 		this.weeklySetSchedule = false;
-    	this.monthly = false;
-    	this.weekly = false;
+		this.monthly = false;
+		this.weekly = false;
 		this.addHolidays = false;
 		this.user = {};
 		this.holidays = [];
 		this.closedDates = [];
 		this.openOn = [];
 		this.getHolidays();
-		this.event = {};
-	}
-
-	getCurrentUser() {
-		return this.userService.getCurrentUser()
-			.then( user => {
-				for ( let i = 0; i < user.events.length; i++ ) {
-					if ( user.events[i].admins[0] === user._id ) {
-						this.eventService.setState( user.events[i] );
-					}
-				}
-				this.current = this.userService.getState();
-				this.event = this.eventService.getState();
-				this.getEventClosedDays();
-				this.getUpdatedEvent();
-			} );
+		this.getEventClosedDays();
+		this.getUpdatedEvent();
 	}
 
 	getUpdatedEvent() {
-		return this.eventService.getEventByName( this.event.title )
+		return this.eventService.getEventByName( this.event.name )
 			.then( event => {
 				this.eventService.setState( event );
 				this.closedDates = event.closedDates;
 				this.openOn = event.recurrence.dayOfWeek;
 				if ( event.recurrence.frequency === 'once' ) {
-					 this.chooseFreq = false;
-					 this.weeklySchedule = false;
-					 this.onceSchedule = true;
-					 this.openOn = {
-						 date: event.startDate,
-						 hours: event.recurrence.dayOfWeek
-					 }
-				 }
+					this.chooseFreq = false;
+					this.weeklySchedule = false;
+					this.onceSchedule = true;
+					this.openOn = {
+						date: event.startDate,
+						hours: event.recurrence.dayOfWeek
+					};
+				}
 				else if ( event.recurrence.frequency === 'monthly' ) {
-				   this.chooseFreq = false;
-				   this.weeklySchedule = false;
-				   this.monthlySchedule = true;
-				   this.onceSchedule = false;
-				 }
+					this.chooseFreq = false;
+					this.weeklySchedule = false;
+					this.monthlySchedule = true;
+					this.onceSchedule = false;
+				}
 				else if ( event.recurrence.frequency === 'weekly' ) {
-					 this.chooseFreq= false;
-					 this.weeklySetSchedule = true;
-				 }
+					this.chooseFreq = false;
+					this.weeklySetSchedule = true;
+				}
 			} );
 	}
 
 	saveSchedule( days ) {
 		for ( let i = 0; i < days.length; i++ ) {
 			// for ( let x = 0; x < this.openOn.length; x++ ) {
-				if ( days[ i ].value ) {
-			// 		if ( days[ i ].name === this.openOn[ x ].name ) {
-			// 			this.openOn[ x ] = days[ i ];
-			// 		}
-					this.openOn.push( days[ i ] );
-				}
+			if ( days[ i ].value ) {
+				// 		if ( days[ i ].name === this.openOn[ x ].name ) {
+				// 			this.openOn[ x ] = days[ i ];
+				// 		}
+				this.openOn.push( days[ i ] );
+			}
 			// }
 		}
-		console.log(this.openOn);
+		console.log( this.openOn );
 		const editedObj = {
 			recurrence: {
 				frequency: 'weekly',
@@ -141,9 +125,10 @@ class TimePickerController {
 					close: event.close
 				}
 			}
-		}; return this.eventService.editOne( this.event._id, onceEvent )
-		.then( event => {
-			this.getUpdatedEvent();
+		};
+		return this.eventService.editOne( this.event._id, onceEvent )
+			.then( event => {
+				this.getUpdatedEvent();
 			} );
 	}
 
@@ -151,10 +136,10 @@ class TimePickerController {
 		if ( this.onceSchedule ) {
 			const openClose = [
 				{
-					open: updatedDay.hours[0].open,
-					close: updatedDay.hours[0].close
+					open: updatedDay.hours[ 0 ].open,
+					close: updatedDay.hours[ 0 ].close
 				}
-			]
+			];
 			const editedObject = {
 				recurrence: {
 					frequency: 'once',
@@ -162,14 +147,14 @@ class TimePickerController {
 				}
 			};
 			return this.eventService.editOne( this.event._id, editedObject )
-			.then( response => {
-				this.getUpdatedEvent();
-			} );
-		};
+				.then( response => {
+					this.getUpdatedEvent();
+				} );
+		}
 		this.openOn.map( day => {
 			const deleteIndex = this.openOn.indexOf( day );
 			if ( day.name === updatedDay.name ) {
-				this.openOn[deleteIndex] = updatedDay;
+				this.openOn[ deleteIndex ] = updatedDay;
 			}
 		} );
 		const editedObject = {
@@ -179,9 +164,9 @@ class TimePickerController {
 			}
 		};
 		return this.eventService.editOne( this.event._id, editedObject )
-		.then( event => {
-			this.getUpdatedEvent();
-		} );
+			.then( event => {
+				this.getUpdatedEvent();
+			} );
 	}
 
 	deleteHoliday( holiday ) {
@@ -195,10 +180,10 @@ class TimePickerController {
 		const editedObject = {
 			closedDates: this.closedDates
 		};
-		return this.eventService.editOne( this.event._id , editedObject )
-		.then( event => {
-			this.getUpdatedEvent();
-		} );
+		return this.eventService.editOne( this.event._id, editedObject )
+			.then( event => {
+				this.getUpdatedEvent();
+			} );
 	}
 
 }

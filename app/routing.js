@@ -2,12 +2,14 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 	$urlRouterProvider.otherwise( '/' );
 
 	const isLogged = ( $q, userService ) => {
+		console.log( 'isLogged' );
 		if ( !userService.getState() ) return $q.reject( 'AUTH_REQUIRED' );
 		return $q.resolve();
 	};
 
 	const setCurrentUser = ( $q, userService ) => {
 		return userService.getCurrentUser().then( result => {
+			console.log( 'setCurrentUser' );
 			if ( !userService.getState() ) return $q.reject( 'AUTH_REQUIRED' );
 			return $q.resolve();
 		} );
@@ -19,9 +21,7 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 				if ( !eventService.getState() ) return $q.reject( 'NO_EVENT' );
 				return $q.resolve();
 			} );
-		} else {
-			return $q.resolve();
-		}
+		} return $q.resolve();
 	};
 
 	const resetStates = ( eventService, userService, mapService, reservationService ) => {
@@ -33,13 +33,9 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 
 	$stateProvider
 		.state( 'home', { url: '/', template: '<home></home>', resolve: { resetStates } } )
-		.state( 'findEvent', { url: '/find-events', template: '<find-event></find-event>' } )
+		.state( 'findEvent', { url: '/find-events/', template: '<find-event></find-event>' } )
 		// USER
-		.state( 'user', {
-			url: '/user',
-			template: '<user></user>',
-			resolve: { setCurrentUser }
-		} )
+		.state( 'user', { url: '/user', template: '<user></user>', resolve: { setCurrentUser } } )
 		.state( 'createEvent', {
 			url: '/user/create-event',
 			template: '<create-event></create-event>',
@@ -66,11 +62,7 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 			resolve: { isLogged }
 		} )
 		// EVENT
-		.state( 'event', {
-			url: '/event/:name',
-			template: '<event></event>',
-			resolve: { getCurrentEvent }
-		} )
+		.state( 'event', { url: '/event/:name', template: '<event></event>', resolve: { getCurrentEvent } } )
 		.state( 'editEvent', {
 			url: '/event/:name/edit-event',
 			template: '<edit-event></edit-event>',
@@ -101,18 +93,7 @@ const routing = ( $locationProvider, $urlRouterProvider, $stateProvider ) => {
 			url: '/create-map/:isAdmin/:event',
 			template: '<new-map></new-map>',
 			resolve: { isLogged }
-		} )
-		.state( 'error', { url: '/error', template: '<error></error>', resolve: { resetStates } } )
-	// TBD
-	// .state( 'calendar', { // TODO Change URL
-	// 	url: '/calendar',
-	// 	template: '<calendar></calendar>',
-	// 	resolve: { isLogged }
-	// } )
-	// .state( 'timePicker', {
-	// 	url: '/timepicker',
-	// 	template: '<time-picker></time-picker>'
-	// } );
+		} );
 };
 
 routing.$inject = [

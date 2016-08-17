@@ -9,7 +9,7 @@ function exists( name ) {
 export default {
 	// GET
 	getEvents( req, res ) {
-		Events.find( ( req.query ) )
+		Events.find( {} )
 			.populate( 'admins' )
 			.populate( 'users' )
 			.populate( 'maps' )

@@ -18,7 +18,10 @@ const eventService = ( $http, $location ) => {
 		},
 		getAll( query ) {
 			return $http.get( `${api}/api/events` )
-				.then( events => events.data );
+				.then( events => {
+					console.log( events.data );
+					return events.data;
+				} );
 		},
 		getEventByName( name ) {
 			return $http.get( `${api}/api/event/${name}` )
